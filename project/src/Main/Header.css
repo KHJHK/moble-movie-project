@@ -4,9 +4,19 @@
   padding: 0;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   width: 1200px;
   margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  /* background-color: #999; */
+  margin: 0;
+  color: #FFFFFF;
 }
 
 
@@ -16,13 +26,7 @@ header {
   z-index: 2;
   margin: 0px auto;
   background-color: white;
-
-
-
 }
-
-
-
 
 .firstpart {
   height: 50px;
@@ -30,7 +34,6 @@ header {
   margin: 10px auto;
   position: relative;
 }
-
 
 #toppicture {
   width: 170px;
@@ -41,6 +44,7 @@ header {
 .TopMenu {
   width: 300px;
   display: grid;
+
   grid-template-columns: 1fr 1fr 1fr;
   position: absolute;
   top: 10px;
@@ -48,17 +52,15 @@ header {
   height: 40px;
 }
 
-
 .TopMenu1 {
+
   text-align: center;
   padding-top: 7px;
 }
 
-
 .TopMenu2 {
   padding-top: 7px;
   text-align: center;
-
   border-left: 1px solid gray;
   border-right: 1px solid gray;
 }
@@ -66,13 +68,6 @@ header {
 .TopMenu3 {
   padding-top: 7px;
   text-align: center;
-}
-
-
-
-* {
-  margin: 0;
-  padding: 0;
 }
 
 /* ul li태그에 리스트 스타일을 없앰 */
@@ -89,7 +84,6 @@ ul li a {
 /* 글자크기를 16px 맑은 고딕 굵게하고 width넓이 700, 높이 50만큼 배경색은 #ccc, 글자색은 검정색, 라인높이50px
 menu박스 가운데정렬, 글자가운데 정렬 */
 #menu {
-
   font: bold 16px "malgun gothic";
   width: 700px;
   height: 50px;
@@ -98,7 +92,6 @@ menu박스 가운데정렬, 글자가운데 정렬 */
   line-height: 50px;
   margin: 10px auto;
   text-align: center;
-
 }
 
 /* menu태그 자식의 ul의 자식 li를 왼쪽정렬과 넓이 140설정 */
@@ -118,13 +111,9 @@ menu박스 가운데정렬, 글자가운데 정렬 */
   border-bottom-left-radius: 5px;
 }
 
-
-
-
 #menu>ul>li:hover>ul {
   display: block;
 }
-
 
 #menu>ul>li>ul>li:hover {
   background: orange;
@@ -136,7 +125,6 @@ menu박스 가운데정렬, 글자가운데 정렬 */
   width: 100%;
   height: 400px;
   object-fit: fill;
-
 }
 
 .trailer {
@@ -145,9 +133,7 @@ menu박스 가운데정렬, 글자가운데 정렬 */
   border-radius: 3%;
 }
 
-
 .video {
-
   background-color: yellow;
   z-index: -1;
   position: relative;

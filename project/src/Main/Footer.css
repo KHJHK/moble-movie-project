@@ -4,19 +4,17 @@
   padding: 0;
 }
 
-/* body {
+html,
+body {
+  height: 100%;
+}
+
+body {
   width: 1200px;
   margin: 0px auto;
-} */
-
-footer {
-  width: 1200px;
-  height: 200px;
-
-  position: absolute;
-  border-top: 1px solid #c4c4c4;
-  padding-top: 15px;
-  color: #808080;
-  font-size: 15px;
-  background-color: red;
+  display: flex;
+  flex-direction: column;
+  background-color: #999;
+  margin: 0;
+  color: #FFFFFF;
 }

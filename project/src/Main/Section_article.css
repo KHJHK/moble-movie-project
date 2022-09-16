@@ -1,35 +1,39 @@
+/* Section_article.css */
 * {
     margin: 0;
     padding: 0;
 }
 
+html,
+body {
+    height: 100%;
+}
+
 body {
     width: 1200px;
     margin: 0px auto;
-
-    background-color: #1F324B;
-}
-
-p {
-    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    /* background-color: #999; */
+    margin: 0;
 }
 
-h3 {
-    margin: 20px;
-    margin-top: 30px;
+/* 상영중인 영화 */
+h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: left;
 }
-
 
 .swiper-slide {
-    /* height: 300px; */
+    /* background: #1F324B; */
     text-align: center;
-    background: #1F324B;
 }
 
 .swiper-slide img {
     display: block;
     max-width: 100%;
     max-height: 100%;
-    object-fit: cover;
+    /* object-fit: cover; */
 }

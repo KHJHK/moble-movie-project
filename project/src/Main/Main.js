@@ -1,6 +1,6 @@
 // Main.js
 import React from "react";
-import "./Main.css";
+// import "./Main.css";
 
 import Header from "./Header";
 import Section_Header from "./Section_Header";
@@ -15,7 +15,7 @@ const Main = () => {
       <Section_Header />
       <Section_article01 />
       <Section_article02 />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

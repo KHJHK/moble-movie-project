@@ -1,3 +1,5 @@
+// Section_article01.js
+
 import React from "react";
 import "./Section_article.css";
 // Import Swiper styles
@@ -107,7 +109,7 @@ const MovieList03 = [
 export default () => {
   return (
     <div>
-      <h3>개봉 예정작</h3>
+      <h2>개봉 예정작</h2>
       <Swiper
         spaceBetween={30} //위 slidesPerview 여백
         slidesPerView={6} //레이아웃 뷰 개수

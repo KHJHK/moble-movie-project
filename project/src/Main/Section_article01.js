@@ -1,3 +1,5 @@
+// Section_article01.js
+
 import React from "react";
 import "./Section_article.css";
 // Import Swiper styles
@@ -208,7 +210,7 @@ const Button = () => {
 export default () => {
   return (
     <div>
-      <h3>현재 상영중인 영화</h3>
+      <h2>현재 상영중인 영화</h2>
       <Swiper
         spaceBetween={30} //위 slidesPerview 여백
         slidesPerView={6} //레이아웃 뷰 개수

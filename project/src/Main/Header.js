@@ -20,7 +20,7 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="maincenter">
+        <div class="maincenter">
           <div id="menu">
             <ul>
               <li>
