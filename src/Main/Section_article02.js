@@ -1,6 +1,7 @@
 // Section_article01.js
 
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Section_article.css";
 // Import Swiper styles
 import "swiper/css"; //basic
@@ -236,12 +237,16 @@ export default () => {
       >
         {MovieList01.map((data01) => (
           <SwiperSlide key={data01.key}>
-            <img src={data01.img} alt={data01.name}></img>
+            <Link to="/Movie_MovieInformation">
+              <img src={data01.img} alt={data01.name}></img>
+            </Link>
             <br />
             <p>{data01.name}</p>
             <p>{data01.date}</p>
             <br />
-            <button>예매하기</button>
+            <Link to="/Ticketing">
+              <button>예매하기</button>
+            </Link>
             <br />
             <br />
           </SwiperSlide>

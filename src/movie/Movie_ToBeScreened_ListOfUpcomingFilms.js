@@ -1,6 +1,7 @@
 import React from "react";
 import { dummy } from "./MovieDummy";
 import Movie from "./Movie";
+import { Link } from "react-router-dom";
 
 const Movie_ToBeScreened_ListOfUpcomingFilms = () => {
   return (

@@ -21,6 +21,7 @@ body {
   height: 400px;
   object-fit: fill;
 }
+
 .trailer {
   position: relative;
   height: 400px;
@@ -28,5 +29,5 @@ body {
 }
 
 section {
-  padding-bottom: 105px;  
+  padding-bottom: 105px;
 }

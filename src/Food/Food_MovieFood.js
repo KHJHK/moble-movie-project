@@ -1,17 +1,17 @@
-// Member_Logout.js
+// Food_MovieFood.js
 import React from "react";
 import Footer from "../Main/Footer";
 import Header from "../Main/Header";
-import "./Member_Logout.css";
+import "./Food_MovieFood.css";
 
-const Member_Logout = () => {
+const Food_MovieFood = () => {
   return (
     <div>
       <Header />
-      <p>로그아웃</p>
+      <h3>무비푸드</h3>
       <Footer />
     </div>
   );
 };
 
-export default Member_Logout;
+export default Food_MovieFood;

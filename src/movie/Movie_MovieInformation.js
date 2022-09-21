@@ -1,17 +1,15 @@
-// Member_Logout.js
 import React from "react";
 import Footer from "../Main/Footer";
 import Header from "../Main/Header";
-import "./Member_Logout.css";
 
-const Member_Logout = () => {
+const Movie_MovieInformation = () => {
   return (
     <div>
       <Header />
-      <p>로그아웃</p>
+      <h3>영화 상세정보</h3>
       <Footer />
     </div>
   );
 };
 
-export default Member_Logout;
+export default Movie_MovieInformation;

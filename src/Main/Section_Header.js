@@ -1,5 +1,6 @@
+// Section_Header.js
 import React from "react";
-import ReactPlayer from 'react-player';
+import ReactPlayer from "react-player";
 import "./Section_Header.css";
 
 const Section_Header = () => {
@@ -20,15 +21,15 @@ const Section_Header = () => {
         /> */}
       </div>
       <div align="center" className="trailer">
-        <ReactPlayer 
-        className='react-player'
-        url={'https://youtu.be/fzUKUfHeIYA'} 
-        height='400px'
-        playing={true}        // 자동 재생 on
-        muted={true}          // 자동 재생 on
-        light={false}         // 플레이어 모드
-        pip={true}            // pip 모드 설정 여부
-        loop={true}
+        <ReactPlayer
+          className="react-player"
+          url={"https://youtu.be/fzUKUfHeIYA"}
+          height="400px"
+          playing={true} // 자동 재생 on
+          muted={true} // 자동 재생 on
+          light={false} // 플레이어 모드
+          pip={true} // pip 모드 설정 여부
+          loop={true}
         />
       </div>
     </div>

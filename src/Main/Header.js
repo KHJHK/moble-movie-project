@@ -1,3 +1,4 @@
+// Header.js
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
@@ -33,11 +34,9 @@ const Header = () => {
             <React.Fragment>
               <strong onClick={openModalLogin}>로그인</strong>
               <Member_Login
-            
                 open={modalOpenLogin}
                 close={closeModalLogin}
-              ></Member_Login
-            >
+              ></Member_Login>
             </React.Fragment>
             {/* </Link> */}
           </div>
@@ -81,9 +80,9 @@ const Header = () => {
                 <li id="smallmenu">
                   <Link to="/Ticketing">예매하기</Link>
                 </li>
-                <li id="smallmenu">
+                {/* <li id="smallmenu">
                   <a href="#">상영시간표</a>
-                </li>
+                </li> */}
               </ul>
             </li>
 
@@ -91,15 +90,17 @@ const Header = () => {
               <a href="#">극장</a>
               <ul>
                 <li id="smallmenu">
-                  <a href="#">영화관 위치정보</a>
+                  <Link to="/Theater_MovieTheaterLocationInformation">
+                    영화관 위치정보
+                  </Link>
                 </li>
                 <li id="smallmenu">
-                  <a href="#">상영관</a>
+                  <Link to="/Theater_Theater">상영관</Link>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#">무비푸드</a>
+              <Link to="/Food_MovieFood">무비푸드</Link>
               <ul>
                 <li id="smallmenu">
                   <a href="#">팝콘</a>
@@ -113,10 +114,10 @@ const Header = () => {
               <a href="#">공지사항</a>
               <ul>
                 <li id="smallmenu">
-                  <a href="#">공지사항</a>
+                  <Link to="/Notice">공지사항</Link>
                 </li>
                 <li id="smallmenu">
-                  <a href="#">Q&A</a>
+                  <Link to="/Notice_Questions">Q&A</Link>
                 </li>
               </ul>
             </li>

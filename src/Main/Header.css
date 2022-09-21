@@ -12,7 +12,7 @@ body {
 
 header {
   /* 스크롤 내릴 때 메뉴바 */
-  /* width: 1200px; */ 
+  /* width: 1200px; */
   /* position: fixed; */
   z-index: 2;
   margin: 0px auto;
@@ -81,7 +81,7 @@ menu박스 가운데정렬, 글자가운데 정렬 */
   /* 메뉴바 전체크기 */
   width: 1000px;
   height: 50px;
-  
+
   background: #1F324B;
   color: black;
   line-height: 50px;

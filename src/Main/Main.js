@@ -12,7 +12,7 @@ const Main = () => {
   return (
     <div>
       <Header />
-      <Section_Header/>
+      <Section_Header />
       <Section_article01 />
       <Section_article02 />
       <Footer />

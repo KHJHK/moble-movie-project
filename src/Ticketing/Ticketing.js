@@ -1,14 +1,15 @@
 import React from "react";
-import "./Ticketing.css";
+import "./Ticketing_TicketingMain.css";
 import Footer from "../Main/Footer";
 import Header from "../Main/Header";
-import TicketingMain from "./TicketingMain";
+
+import Ticketing_TicketingMain from "./Ticketing_TicketingMain";
 
 const Ticketing = () => {
   return (
     <div>
       <Header />
-      <TicketingMain />
+      <Ticketing_TicketingMain />
       {/* <Footer /> */}
     </div>
   );
