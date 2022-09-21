@@ -7,11 +7,12 @@
 body {
     width: 1280px;
     margin: 0px auto;
+    /* background: #1F324B; */
 }
 
 .all {
-    background-color: #1F324B;
-    color: #FFFFFF;
+    /* background-color: #1F324B; */
+    color: #000000;
 }
 
 /* 상영중인 영화 */

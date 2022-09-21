@@ -223,9 +223,9 @@ export default () => {
         autoplay={{ delay: 3000 }} //Autoplay 자동재생 슬라이드
         pagination={{ clickable: true }}
         breakpoints={{
-          720: {
-            slidesPerView: 2,
-          },
+          // 720: {
+          //   slidesPerView: 2,
+          // },
           900: {
             slidesPerView: 4,
           },
@@ -247,43 +247,6 @@ export default () => {
           </SwiperSlide>
         ))}
       </Swiper>
-
-      {/* <Swiper
-        spaceBetween={30} //위 slidesPerview 여백
-        slidesPerView={6} //레이아웃 뷰 개수
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
-        scrollbar={{ draggable: true }}
-        navigation
-        loop={true} //반복 재생 여부
-        direction={"horizontal"} // 수평 슬라이드
-        autoplay={{ delay: 3000 }} //Autoplay 자동재생 슬라이드
-        pagination={{ clickable: true }}
-        breakpoints={{
-          720: {
-            slidesPerView: 2,
-          },
-          900: {
-            slidesPerView: 4,
-          },
-          1180: {
-            slidesPerView: 6,
-          },
-        }}
-      >
-        {MovieList02.map((data01) => (
-          <SwiperSlide key={data01.key}>
-            <img src={data01.img} alt={data01.name}></img>
-            <br />
-            <p>{data01.name}</p>
-            <p>{data01.date}</p>
-            <br />
-            <button>예매하기</button>
-            <br />
-            <br />
-          </SwiperSlide>
-        ))}
-      </Swiper> */}
     </div>
   );
 };

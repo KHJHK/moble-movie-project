@@ -1,0 +1,36 @@
+.app-container {
+    /* 가로배치 */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.movie-container {
+    width: 180px;
+    margin: 5px;
+    /* background-color: #373b69; */
+    border-radius: 5%;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.movie-container img {
+    width: 180px;
+    height: 250px;
+    border-radius: 5%;
+    /* max-width: 100%; */
+}
+
+.movie-info {
+    /* display: flex; */
+    padding: 5px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.movie-info p {
+    margin: 0;
+}
+
+.movie-info span {
+    margin-left: 3px;
+}
