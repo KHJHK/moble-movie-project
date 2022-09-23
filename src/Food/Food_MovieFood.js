@@ -6,9 +6,11 @@ import "./Food_MovieFood.css";
 
 const Food_MovieFood = () => {
   return (
-    <div>
+    <div className="Section">
       <Header />
-      <h3>무비푸드</h3>
+      <div className="Section">
+        <h3>무비푸드</h3>
+      </div>
       <Footer />
     </div>
   );

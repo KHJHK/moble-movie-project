@@ -8,7 +8,9 @@ const Theater_Theater = () => {
   return (
     <div>
       <Header />
+      <div className="Section">
       <h3>상영관</h3>
+      </div>
       <Footer />
     </div>
   );

@@ -11,7 +11,9 @@ const Notice = () => {
   return (
     <div>
       <Header />
-      <Notice_NoticeMain />
+      <div className="Section">
+        <Notice_NoticeMain />
+      </div>
       <Footer />
     </div>
   );

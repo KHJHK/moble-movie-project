@@ -12,9 +12,12 @@ const Main = () => {
   return (
     <div>
       <Header />
-      <Section_Header />
-      <Section_article01 />
-      <Section_article02 />
+      <div className="Section">
+        <Section_Header />
+        <Section_article01 />
+        <Section_article02 />
+      </div>
+
       <Footer />
     </div>
   );
