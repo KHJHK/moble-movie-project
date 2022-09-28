@@ -10,5 +10,5 @@ import com.movie.vo.TestVo;
 @Mapper
 public interface TestDao {
 	public List<TestVo> getTest();
-	public int insertMovie(Map map);
+	public int insertMovie(TestVo testVo);
 }

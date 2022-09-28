@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en" xmlns:th="http://thymeleaf.org">
+<meta charset="UTF-8">
+
+<style>
+	table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+	
+	td, th{
+		border: 1px solid black;
+		text-align: left;
+	}
+	
+	tr:nth-child(even){
+		background-color:#dddddd;
+	}
+</style>
+
+<title>Movie Test</title>
+	</head>
+<body>
+	<h1>Movie</h1>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Open Date</th>
+				<th>Popularity</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="movie : ${movieList}">
+			 	<td><span th:text="${movie.movie_id}"></span></td>
+				<td><span th:text="${movie.movie_name}"></span></td>
+				<td><span th:text="${movie.movie_open_date}"></span></td>
+				<td><span th:text="${movie.movie_popularity}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

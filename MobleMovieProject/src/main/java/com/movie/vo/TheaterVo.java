@@ -8,7 +8,6 @@ public class TheaterVo {
 	private CinemaVo cinema_id;
 	private CinemaVo cinema_name;
 	private String theater_name;
-	private Integer theater_seat;
-	private Integer theater_price;
-
+	private Long theater_seat;
+	private Long theater_price;
 }

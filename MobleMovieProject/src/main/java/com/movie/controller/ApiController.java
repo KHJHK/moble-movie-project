@@ -13,7 +13,7 @@ import com.movie.apiControl.JsonReader;
 @RestController
 public class ApiController {
 	String BASE_URL = "https://api.themoviedb.org/3/movie/";
-	String MOVIE_API_KEY = "?api_key=6ed60ba54dadef320e23f64e1cfd5b1f&language=ko-KR";
+	String MOVIE_API_KEY = "?api_key=6ed60ba54dadef320e23f64e1cfd5b1f&language=ko&page=1&region=KR";
 	String apiUrl = "";
 	
 	@GetMapping("/info")

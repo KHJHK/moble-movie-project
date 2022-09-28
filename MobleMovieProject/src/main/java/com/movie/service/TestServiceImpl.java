@@ -25,10 +25,7 @@ public class TestServiceImpl implements TestService {
 	@Override
 	public int insertMovie(TestVo testVo) {
 		// TODO Auto-generated method stub
-		Map<String,String> map = new HashMap<String,String>();
-		map.put("id", String.valueOf(testVo.getId()));
-		map.put("title", testVo.getTitle());
-		return testDao.insertMovie(map);
+		return testDao.insertMovie(testVo);
 	}
 
 }

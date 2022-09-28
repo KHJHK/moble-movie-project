@@ -8,7 +8,7 @@
 	</select>
 	
 	<!-- parameterType = map 타입으로 받아서 넣어줘야함 -->
-	<insert id="insertMovie" parameterType = "java.util.Map">
+	<insert id="insertMovie" parameterType = "com.movie.vo.TestVo">
 		INSERT
 		INTO testMovie (id, title)
 		VALUES (#{id}, #{title});

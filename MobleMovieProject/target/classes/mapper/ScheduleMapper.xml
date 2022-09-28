@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="com.movie.dao.ScheduleDao">
+	<select id="findOverlapSchedule" parameterType = "com.movie.vo.ScheduleVo" resultType="ScheduleVo">
+		SELECT * 
+		FROM schedule
+		Where theater_id = #{theater_id} AND schedule_date = #{schedule_date} AND schedule_time = #{schedule_time};
+	</select>
+</mapper>
