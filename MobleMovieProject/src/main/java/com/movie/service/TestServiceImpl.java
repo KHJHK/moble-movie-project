@@ -1,9 +1,7 @@
 //DAO를 통해 가져온 함수 사용(클래스 - 실제 구현 부분)
 package com.movie.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

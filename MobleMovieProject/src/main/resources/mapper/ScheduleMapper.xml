@@ -8,4 +8,10 @@
 		FROM schedule
 		Where theater_id = #{theater_id} AND schedule_date = #{schedule_date} AND schedule_time = #{schedule_time};
 	</select>
+	
+	<insert id="insertSchedule" parameterType = "com.movie.vo.ScheduleVo">
+		INSERT
+		INTO schedule (movie_id, theater_id, schedule_date, schedule_time)
+		VALUES (#{movie_id}, #{theater_id}, #{schedule_date}, #{schedule_time});
+	</insert>
 </mapper>

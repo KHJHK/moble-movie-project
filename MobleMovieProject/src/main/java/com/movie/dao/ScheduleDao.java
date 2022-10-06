@@ -7,4 +7,5 @@ import com.movie.vo.ScheduleVo;
 @Mapper
 public interface ScheduleDao {
 	public ScheduleVo findOverlapSchedule(ScheduleVo scheduleVo);
+	public int insertSchedule(ScheduleVo scheduleVo);
 }

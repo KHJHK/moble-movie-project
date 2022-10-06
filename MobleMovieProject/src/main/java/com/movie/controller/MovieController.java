@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.movie.apiControl.JsonReader;
 import com.movie.dao.MovieDao;
 import com.movie.dao.TestDao;
+import com.movie.function.ScheduleMaker;
 import com.movie.service.CinemaService;
 import com.movie.service.MovieService;
 import com.movie.service.TestService;
@@ -36,6 +37,9 @@ public class MovieController {
 	private MovieService movieService;
 	@Autowired
 	private MovieDao movieDao;
+	
+	@Autowired
+	ScheduleMaker scheduleMaker;
 	
 	@RequestMapping(value="/index2")
 	public String index2(Model model) {
@@ -89,8 +93,6 @@ public class MovieController {
 
 	@RequestMapping(value="/indexMovie")
 	public String movieList(Model model) throws ParseException {
-		//영화 테이블 초기화
-		movieService.deleteAllMovie();
 		
 		apiUrl = BASE_URL + "now_playing" + MOVIE_API_KEY;
 		
@@ -102,7 +104,6 @@ public class MovieController {
 		JSONArray jsonArr = (JSONArray) jsonMainObj.get("results");
 		
 		MovieVo movieVo = new MovieVo();
-		
 		if(jsonArr.size() > 0) {
 			for(int i = 0; i < jsonArr.size(); i++) {
 				JSONObject jsonSubObj = (JSONObject) jsonArr.get(i);
@@ -113,13 +114,14 @@ public class MovieController {
 				Double jsonPopularity = (Double)jsonSubObj.get("popularity");
 				String jsonPoster = (String)jsonSubObj.get("poster_path");
 				
-				if(movieService.findMovieById(jsonId) != null) {
+				if(movieService.findMovieById(jsonId) == null) {
 					movieVo.setMovie_id(jsonId);
 					movieVo.setMovie_name(jsonTitle);
 					movieVo.setMovie_open_date(jsonDate);
 					movieVo.setMovie_popularity(jsonPopularity);
 					movieVo.setMovie_poster_path(jsonPoster);
 					movieService.insertMovie(movieVo);
+					scheduleMaker.makeSchedule(jsonId);
 				}//if end
 			}//for end
 		}//if end

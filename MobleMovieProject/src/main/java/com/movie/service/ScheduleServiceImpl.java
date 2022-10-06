@@ -20,4 +20,10 @@ public class ScheduleServiceImpl implements ScheduleService{
 			return false;			
 		}
 	}
+
+	@Override
+	public int insertSchedule(ScheduleVo scheduleVo) {
+		return scheduleDao.insertSchedule(scheduleVo);
+	}
+	
 }
