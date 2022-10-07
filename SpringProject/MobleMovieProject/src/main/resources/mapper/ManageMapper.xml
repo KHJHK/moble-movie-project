@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.movie.dao.ManageDao">
+
+	<!-- 관리자 리스트 출력 -->
+	<select id="AdminList" resultType="com.movie.vo.MemberVo" >
+        SELECT member_id, member_account, member_name, member_email, member_nickname,
+        member_birth, member_reg_date, member_modify_date
+          FROM member
+         WHERE member_auth = #{member_auth}
+    </select>
+
+	<!-- 회원 리스트 출력 -->
+	 <select id="UserList" resultType="com.movie.vo.MemberVo" >
+        SELECT member_id, member_account, member_name, member_email, member_nickname,
+        member_birth, member_reg_date, member_modify_date
+          FROM member
+         WHERE member_auth = #{member_auth}
+    </select>
+    
+	<!-- 탈퇴 회원 리스트 출력 -->
+	<select id="ResignList" resultType="com.movie.vo.MemberVo" >
+        SELECT member_id, member_account, member_name, member_email, member_nickname,
+        member_birth, member_reg_date, member_modify_date
+          FROM member
+         WHERE member_auth = #{member_auth}
+    </select>
+    
+	<!-- 강제 탈퇴 -->
+ 	<update id="DeleteMember" >
+    	UPDATE member SET
+    	member_auth = #{member_auth},
+    	member_modify_date = #{member_modify_date}
+    	where member_account = #{member_account} and
+    	member_email = #{member_email}
+    </update>  
+</mapper>

@@ -1,0 +1,42 @@
+<!--회원가입 페이지-->
+<!--signup.html-->
+<!DOCTYPE html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<form method="post" action="/member/signup">
+    <div class="container">
+        <h1>회원가입</h1>
+        <div class="form-group">
+            <label for="inputEmail4">아이디 입력</label>
+            <input type="text" class="form-control" id="inputEmail4" name="member_account" placeholder="사용자 아이디">
+        </div>
+                <div class="form-group">
+            <label for="inputPassword4">비밀번호 입력</label>
+            <input type="password" class="form-control" id="inputPassword4" name="member_pw" placeholder="사용자 비밀번호">
+        </div>
+        <div class="form-group">
+            <label for="inputAddress">이메일 입력</label>
+            <input type="text" class="form-control" id="inputAddress" name="member_email" placeholder="사용자 이메일">
+        </div>
+        <div class="form-group">
+            <label for="inputAddress">이름 입력</label>
+            <input type="text" class="form-control" id="inputAddress" name="member_name" placeholder="사용자 이름">
+        </div>
+        <div class="form-group">
+            <label for="inputAddress">닉네임 입력</label>
+            <input type="text" class="form-control" id="inputAddress" name="member_nickname" placeholder="사용자 닉네임">
+        </div>
+        <div class="form-group">
+            <label for="inputAddress">생일 입력</label>
+            <input type="text" class="form-control" id="inputAddress" name="member_birth" placeholder="생일 입력">
+        </div>
+        <button type="submit" class="btn btn-primary">가입 완료</button>
+    </div>
+</form>
+</body>
+</html>

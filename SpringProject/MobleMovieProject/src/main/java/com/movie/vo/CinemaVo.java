@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class CinemaVo {
-	private int cinema_id;
-	private String cinema_name;
+	private Long cinema_id;
+	private Long cinema_name;
 	private String cinema_location;
-	private int cinema_theater_num;
+	private Integer cinema_theater_num;
 }

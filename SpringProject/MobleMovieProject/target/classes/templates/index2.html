@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en" xmlns:th="http://thymeleaf.org">
+<meta charset="UTF-8">
+
+<style>
+	table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+	
+	td, th{
+		border: 1px solid black;
+		text-align: left;
+	}
+	
+	tr:nth-child(even){
+		background-color:#dddddd;
+	}
+</style>
+
+<title>please</title>
+	</head>
+<body>
+	<h1>plz</h1>
+	
+	<table>
+		<thead>
+			<tr>
+				<th>영화관 번호</th>
+				<th>이름</th>
+				<th>주소</th>
+				<th>상영관 수</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="cinema : ${cinemaList}">
+			 	<td><span th:text="${cinema.cinema_id}"></span></td>
+				<td><span th:text="${cinema.cinema_name}"></span></td>
+				<td><span th:text="${cinema.cinema_location}"></span></td>
+				<td><span th:text="${cinema.cinema_theater_num}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

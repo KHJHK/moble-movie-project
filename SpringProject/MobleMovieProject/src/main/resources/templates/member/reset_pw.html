@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<form method="post" action="/member/reset_pw">
+    <div class="container">
+        <h1>비밀번호 찾기</h1>
+        <div class="form-group">
+            <label for="inputAddress">인증번호 받은 이메일</label>
+            <input type="text" class="form-control" id="inputAddress" name="member_email" placeholder="인증번호 받은 이메일 입력">
+        </div>
+        <div class="form-group">
+            <label for="inputAddress">인증번호 입력</label>
+            <input type="text" class="form-control" id="inputAddress" name="member_code" placeholder="인증번호 입력">
+        </div>
+        <br>
+        <h1>비밀번호 변경</h1>
+        <div class="form-group">
+            <label for="inputAddress">변경할 비밀번호</label>
+            <input type="password" class="form-control" id="inputPassword4" name="member_pw" placeholder="비밀번호 입력">
+        </div>
+        <div class="form-group">
+            <label for="inputAddress">비밀번호 재확인</label>
+            <input type="password" class="form-control" id="inputPassword4" name="member_pw_2" placeholder="비밀번호 재입력">
+        </div>
+        <button type="submit" class="btn btn-primary">비밀번호 재설정</button>
+        <button type="button" class="btn btn-primary" onClick="location.href='login'">메인 화면 으로</button>
+        <div th:text="${msg}"></div>
+    </div>
+</form>
+</body>
+</html>
