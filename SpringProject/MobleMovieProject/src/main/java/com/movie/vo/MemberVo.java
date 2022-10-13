@@ -1,7 +1,5 @@
 package com.movie.vo;
 
-import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
 

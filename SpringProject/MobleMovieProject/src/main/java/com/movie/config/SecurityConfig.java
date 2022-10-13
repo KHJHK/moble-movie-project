@@ -33,13 +33,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                         .defaultSuccessUrl("/member/login_success") // 로그인 성공 시 이동할 경로.
                         .failureUrl("/member/login_fail") // 인증에 실패했을 때 보여주는 화면 url, 로그인 form으로 파라미터값 error=true로 보낸
 //                .permitAll()
-                .and()
-//             .logout()
-//                 .permitAll()
-//                 .logoutUrl("/logout")
-//                 .logoutSuccessUrl("/");
-//             .and()
-                 .csrf().disable();		//로그인 창
+                        .and()
+                        .logout()
+                        .logoutSuccessUrl("/logout") // 로그아웃 성공시 리다이렉트 주소
+                        .invalidateHttpSession(true) // 로그아웃 이후 세션 전체 삭제 여부
+                        .deleteCookies("JSESSIONID")
+                        .and()
+                        .csrf().disable();		//로그인 창
 
 //             .exceptionHandling()
 //                 .accessDeniedPage("/accessDenied_page"); // 권한이 없는 대상이 접속을시도했을 때

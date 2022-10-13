@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en" xmlns:th="http://thymeleaf.org">
+<meta charset="UTF-8">
+
+<style>
+	table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+	
+	td, th{
+		border: 1px solid black;
+		text-align: left;
+	}
+	
+	tr:nth-child(even){
+		background-color:#dddddd;
+	}
+</style>
+
+<title>공지 사항 </title>
+	</head>
+<body>
+<form method="post" action="/manage/manage_notice">
+<h1>공지사항 관리자 페이지</h1>
+	<h2>공지 사항 리스트</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>카테고리</th>
+				<th>제목</th>
+				<th>등록일자</th>
+				<th>조회수</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="notice : ${noticeList}">
+			 	<td><span th:text="${notice.notice_id}"></span></td>
+				<td><span th:text="${notice.category_name}"></span></td>
+				<td><a th:text="${notice.notice_title}" th:href="@{/manage/manage_notice_detail(id = ${notice.notice_id})}"></a></td>
+				<td><span th:text="${notice.notice_reg_date}"></span></td>
+				<td><span th:text="${notice.notice_count}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+	<button type="button" class="btn btn-primary" onClick="location.href='manage_notice_add'">공지사항 추가</button>
+	<br>
+		<h2>삭제된 공지 사항 리스트</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>카테고리</th>
+				<th>제목</th>
+				<th>등록일자</th>
+				<th>조회수</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="delete : ${deleteList}">
+			 	<td><span th:text="${delete.notice_id}"></span></td>
+				<td><span th:text="${delete.category_name}"></span></td>
+				<td><span th:text="${delete.notice_title}"></span></td>
+				<td><span th:text="${delete.notice_reg_date}"></span></td>
+				<td><span th:text="${delete.notice_count}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>
+</body>
+</html>

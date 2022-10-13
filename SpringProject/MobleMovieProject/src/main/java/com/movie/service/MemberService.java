@@ -41,7 +41,9 @@ public class MemberService implements UserDetailsService{
     //로그인
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		
 		MemberVo memberVo = memberDao.login(username);
+		
 		if(memberVo == null) {
 			throw new UsernameNotFoundException("User not authorized.");
 		}

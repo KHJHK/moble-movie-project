@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en" xmlns:th="http://thymeleaf.org">
+<meta charset="UTF-8">
+
+<style>
+	table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+	
+	td, th{
+		border: 1px solid black;
+		text-align: left;
+	}
+	
+	tr:nth-child(even){
+		background-color:#dddddd;
+	}
+</style>
+
+<title>공지 사항</title>
+	</head>
+<body>
+<form method="post" action="/board/QandA_detail">
+	<h1>Q & A</h1>
+	<h2>질문</h2>
+	<table>
+		<tbody>
+			<tr>
+				<td>번호</td>
+				<td><div th:text="${question_id}"></div></td>
+			</tr>
+			<tr>
+				<td>질문 제목</td>
+				<td><div th:text="${title}"></div></td>
+			</tr>
+			<tr>
+				<td>카테고리</td>
+				<td><div th:text="${category}"></div></td>
+			</tr>
+			<tr>
+				<td>질문자 아이디</td>
+				<td><div th:text="${account}"></div></td>
+			</tr>
+			<tr>
+				<td>업로드 날짜</td>
+				<td><div th:text="${reg_date}"></div></td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td><div th:text="${content}"></div></td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<button type="button" class="btn btn-primary" th:onClick="|location.href='@{QandA_update(question_id = ${question_id})}'|">수정</button>
+	<button type="button" class="btn btn-primary" th:onClick="|location.href='@{QandA_delete(question_id = ${question_id})}'|">삭제</button>
+	<br>
+	<h2>답변</h2>
+		<table>
+		<tbody>
+			<tr>
+				<td>답변 제목</td>
+				<td><div th:text="${answer_title}"></div></td>
+			</tr>
+			<tr>
+				<td>답변한 관리자</td>
+				<td><div th:text="${member_nickname}"></div></td>
+			</tr>
+			<tr>
+				<td>업로드 날짜</td>
+				<td><div th:text="${answer_reg_date}"></div></td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td><div th:text="${answer_content}"></div></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>
+</body>
+</html>

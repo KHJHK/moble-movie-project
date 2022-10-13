@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<form method="post" action="/board/QandA_add">
+    <div class="container">
+        <h1>질문 추가</h1>
+        <div class="form-group">
+            <label for="inputEmail4">등록할 카테고리</label>
+            <br>
+            <input type="radio" name="category_id" value=1>영화
+            <input type="radio" name="category_id" value=2>예매
+            <input type="radio" name="category_id" value=3>극장
+            <input type="radio" name="category_id" value=4>무비푸드
+        </div>
+        <div class="form-group">
+            <label for="inputEmail4">질문 제목</label>
+            <input type="text" class="form-control" id="inputEmail4" name="question_title" placeholder="제목 입력">
+        </div>
+        <div class="form-group">
+            <label for="inputEmail4">질문 내용</label>
+            <input type="text" class="form-control" id="inputEmail4" name="question_content" placeholder="내용 입력">
+        </div>
+                    
+        <button type="submit" class="btn btn-primary">등록완료</button>
+    </div>
+</form>
+</body>
+</html>

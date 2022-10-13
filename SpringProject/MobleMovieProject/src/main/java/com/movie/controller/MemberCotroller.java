@@ -1,8 +1,13 @@
 package com.movie.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,7 +44,13 @@ public class MemberCotroller {
 		MemberVo memberVo = (MemberVo) a.getPrincipal();
 		model.addAttribute("info", memberVo.getMember_account()+" 의 "+memberVo.getMember_name()+"님");
 		return "member/login_success";
+	}
 	
+	//로그아웃
+	@GetMapping("/member/logout")
+	public String logoutPage(HttpServletRequest request,HttpServletResponse response) {
+		new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
+		return "member/logout";
 	}
 	
 	//회원가입

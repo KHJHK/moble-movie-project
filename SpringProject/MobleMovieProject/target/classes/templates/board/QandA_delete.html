@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user access</title>
+</head>
+<body>
+<form method="post" action="/board/QandA_delete">
+<input type="hidden" th:name="question_id" th:value="${question_id}"/>
+<h1>질문을 삭제 하겠습니까?</h1>
+<button type="submit" class="btn btn-primary">삭제</button>
+<button type="button" class="btn btn-primary" onClick="location.href='QandA'">공지사항 리스트로</button>
+<div th:text="${msg}"></div>
+</form>
+</body>
+</html>

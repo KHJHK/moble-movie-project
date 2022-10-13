@@ -43,7 +43,7 @@
 		
 		<tbody>
 			<tr th:each="admin : ${adminList}">
-			 	<td><span th:text="${admin.member_id}"></span></td>
+			 	<td><span th:text="${adminNum}"></span></td>
 				<td><span th:text="${admin.member_account}"></span></td>
 				<td><span th:text="${admin.member_name}"></span></td>
 				<td><span th:text="${admin.member_email}"></span></td>
@@ -73,7 +73,7 @@
 		
 		<tbody>
 			<tr th:each="user : ${userList}">
-			 	<td><span th:text="${user.member_id}"></span></td>
+			 	<td><span th:text="${userNum}"></span></td>
 				<td><span th:text="${user.member_account}"></span></td>
 				<td><span th:text="${user.member_name}"></span></td>
 				<td><span th:text="${user.member_email}"></span></td>
@@ -102,7 +102,7 @@
 		
 		<tbody>
 			<tr th:each="resign : ${resignList}">
-			 	<td><span th:text="${resign.member_id}"></span></td>
+			 	<td><span th:text="${resignNum}"></span></td>
 				<td><span th:text="${resign.member_account}"></span></td>
 				<td><span th:text="${resign.member_name}"></span></td>
 				<td><span th:text="${resign.member_email}"></span></td>
