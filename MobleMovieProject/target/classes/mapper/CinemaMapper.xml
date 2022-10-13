@@ -6,4 +6,16 @@
 	<select id="getCinemaInfo" resultType="CinemaVo">
 		SELECT * FROM cinema
 	</select>
+	
+	<select id="getCinemaLocation" resultType="string">
+		SELECT cinema_location 
+		FROM cinema 
+		GROUP BY cinema_location;
+	</select>
+	
+	<select id="getCinemaNameByLocation" parameterType = "java.lang.String" resultType="java.lang.String">
+		SELECT cinema_name 
+		FROM cinema 
+		WHERE cinema_location = #{cinema_location}
+	</select>
 </mapper>

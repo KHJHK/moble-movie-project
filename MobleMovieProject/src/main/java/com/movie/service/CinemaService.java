@@ -8,4 +8,6 @@ import com.movie.vo.CinemaVo;
 
 public interface CinemaService {
 	public List<CinemaVo> getCinemaInfo();
+	public List<String> getCinemaLocation();
+	public List<String> getCinemaNameByLocation(String location);
 }

@@ -9,9 +9,57 @@
 		Where theater_id = #{theater_id} AND schedule_date = #{schedule_date} AND schedule_time = #{schedule_time};
 	</select>
 	
+	<select id="findScheduleDate" parameterType = "com.movie.vo.ScheduleVo" resultType="String">
+		SELECT schedule_date
+		FROM schedule
+		Where movie_id = #{movie_id} AND cinema_name = #{cinema_name}
+		GROUP BY schedule_date
+	</select>
+	
+	<select id="findScheduleByDetail" parameterType = "com.movie.vo.ScheduleVo" resultType="ScheduleVo">
+		SELECT * 
+		FROM schedule
+		WHERE movie_id = #{movie_id} AND schedule_date = #{schedule_date} AND cinema_name = #{cinema_name};
+	</select>
+	
+	<select id="getCinemaLocationByMovieId" parameterType = "String" resultType="String">
+		SELECT cinema_location
+		FROM schedule
+		INNER JOIN cinema on schedule.cinema_name = cinema.cinema_name
+		WHERE schedule.movie_id = #{movie_id}
+		GROUP BY cinema_location;
+	</select>
+	
+	<select id="getCinemaNameByInfo" parameterType = "hashMap" resultType="String">
+		SELECT cinema.cinema_name
+		FROM schedule
+		INNER JOIN cinema on schedule.cinema_name = cinema.cinema_name
+		WHERE schedule.movie_id = #{movie_id} AND cinema.cinema_location = #{cinema_location}
+		GROUP BY cinema_name;
+	</select>
+	
+	<select id="getScheduleDateByInfo" parameterType = "hashMap" resultType="String">
+		SELECT schedule_date
+		FROM schedule
+		WHERE movie_id = #{movie_id} AND cinema_name = #{cinema_name}
+	</select>
+	
+	<select id="getScheduleTimeAndTheater" parameterType = "hashMap" resultType="com.movie.vo.ScheduleVo">
+		SELECT *
+		FROM schedule
+		WHERE movie_id = #{movie_id} AND cinema_name = #{cinema_name} AND schedule_date = #{schedule_date}
+		ORDER BY schedule_time ASC
+	</select>
+	
 	<insert id="insertSchedule" parameterType = "com.movie.vo.ScheduleVo">
 		INSERT
-		INTO schedule (movie_id, theater_id, schedule_date, schedule_time)
-		VALUES (#{movie_id}, #{theater_id}, #{schedule_date}, #{schedule_time});
+		INTO schedule (movie_id, theater_id, schedule_date, schedule_time, cinema_name, theater_name)
+		VALUES (#{movie_id}, #{theater_id}, #{schedule_date}, #{schedule_time}, #{cinema_name}, #{theater_name});
 	</insert>
+	
+	<delete id = "deleteSchedule" parameterType = "com.movie.vo.ScheduleVo">
+		DELETE
+		FROM schedule
+		<![CDATA[WHERE schedule_date <= #{schedule_date} AND schedule_time < #{schedule_time}]]>
+	</delete>
 </mapper>

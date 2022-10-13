@@ -11,4 +11,6 @@ import com.movie.vo.CinemaVo;
 @Mapper
 public interface CinemaDao {
 	public List<CinemaVo> getCinemaInfo();
+	public List<String> getCinemaLocation();
+	public List<String> getCinemaNameByLocation(String location);
 }

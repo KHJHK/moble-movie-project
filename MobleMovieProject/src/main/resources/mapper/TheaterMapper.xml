@@ -7,6 +7,7 @@
 		SELECT * 
 		FROM theater;
 	</select>
+	
 	<select id="selectAllTheaterId" resultType="Long">
 		SELECT theater_id 
 		FROM theater;

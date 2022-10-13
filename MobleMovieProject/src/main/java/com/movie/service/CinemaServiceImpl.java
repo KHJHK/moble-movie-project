@@ -20,4 +20,15 @@ public class CinemaServiceImpl implements CinemaService {
 		return cinemaDao.getCinemaInfo();
 	}
 
+	@Override
+	public List<String> getCinemaLocation() {
+		// TODO Auto-generated method stub
+		return cinemaDao.getCinemaLocation();
+	}
+
+	@Override
+	public List<String> getCinemaNameByLocation(String location) {
+		// TODO Auto-generated method stub
+		return cinemaDao.getCinemaNameByLocation(location);
+	}
 }

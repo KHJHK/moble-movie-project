@@ -2,6 +2,8 @@ package com.movie.function;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -16,6 +18,7 @@ import com.movie.dao.TheaterDao;
 import com.movie.service.ScheduleService;
 import com.movie.service.TheaterService;
 import com.movie.vo.ScheduleVo;
+import com.movie.vo.TheaterVo;
 
 @Component
 public class ScheduleMaker {
@@ -41,8 +44,8 @@ public class ScheduleMaker {
 		
 		//영화가 상영 가능한 전체 경우의 수를 뽑기 위한 scheduleList 생성(scheduleList의 틀만 잡은 것이기 때문에 date/movie/id는 null)
 		if(scheduleList.isEmpty()) {
-			for(int theaterIdIdx = 0; theaterIdIdx < theaterService.selectAllTheaterId().size(); theaterIdIdx++) {
-				long theaterId = (theaterService.selectAllTheaterId()).get(theaterIdIdx);
+			for(int theaterIdIdx = 0; theaterIdIdx < theaterService.selectAllTheaterInfo().size(); theaterIdIdx++) {
+				TheaterVo theaterVo = (theaterService.selectAllTheaterInfo()).get(theaterIdIdx);
 				for(int dateIdx = 0; dateIdx < 4; dateIdx++) {
 					for(int timeIdx = 0; timeIdx < 4; timeIdx++) {
 						ScheduleVo svo = new ScheduleVo();
@@ -60,8 +63,10 @@ public class ScheduleMaker {
 							time = "18:00:00";
 							break;
 						}
-						
-						svo.setTheater_id(theaterId);
+
+						svo.setTheater_id(theaterVo.getTheater_id());
+						svo.setCinema_name(theaterVo.getCinema_name());
+						svo.setTheater_name(theaterVo.getTheater_name());
 						svo.setSchedule_time(time);
 						scheduleList.add(svo);
 					}//for end
@@ -81,7 +86,6 @@ public class ScheduleMaker {
         	scheduleListTemp.add(scheduleList.get(i));
         }
         
-        System.out.println(scheduleListTemp);
         for(int i = 0; i < scheduleListTemp.size(); i++) {
         	switch(i % 16) {
         	case 0: case 1: case 2: case 3:
@@ -106,7 +110,7 @@ public class ScheduleMaker {
         //DB에 schedule 넣기
         Random rand = new Random();
         int cnt = 0;
-        while(cnt < 20) {
+        while(cnt < 15) {
         	if(scheduleListTemp.isEmpty()) {
         		break;
         	}
@@ -120,6 +124,19 @@ public class ScheduleMaker {
         		cnt++;
         	}//if~else end
         }	//while end
+        
+        //현재 날짜 저장
+        String nowDateStr = df.format(cal.getTime());
+        //현재 시간 저장
+        LocalTime nowTime = LocalTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String nowTimeStr = nowTime.format(formatter);
+        ScheduleVo now = new ScheduleVo();
+        now.setSchedule_date(nowDateStr);
+        now.setSchedule_time(nowTimeStr);
+        
+        //현재 날짜, 시간 기준 오래된 스케줄 정보 삭제
+        scheduleService.deleteSchedule(now);
 	}
 }
 

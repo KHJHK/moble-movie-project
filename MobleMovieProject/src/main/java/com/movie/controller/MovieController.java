@@ -9,17 +9,24 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.movie.apiControl.JsonReader;
 import com.movie.dao.MovieDao;
+import com.movie.dao.ScheduleDao;
 import com.movie.dao.TestDao;
 import com.movie.function.ScheduleMaker;
 import com.movie.service.CinemaService;
 import com.movie.service.MovieService;
+import com.movie.service.ScheduleService;
 import com.movie.service.TestService;
 import com.movie.vo.CinemaVo;
 import com.movie.vo.MovieVo;
+import com.movie.vo.ScheduleVo;
 import com.movie.vo.TestVo;
 
 @Controller
@@ -37,6 +44,11 @@ public class MovieController {
 	private MovieService movieService;
 	@Autowired
 	private MovieDao movieDao;
+	
+	@Autowired
+	private ScheduleService scheduleService;
+	@Autowired
+	private ScheduleDao scheduleDao;
 	
 	@Autowired
 	ScheduleMaker scheduleMaker;
@@ -93,7 +105,6 @@ public class MovieController {
 
 	@RequestMapping(value="/indexMovie")
 	public String movieList(Model model) throws ParseException {
-		
 		apiUrl = BASE_URL + "now_playing" + MOVIE_API_KEY;
 		
 		// Json String 가져오기
@@ -132,5 +143,94 @@ public class MovieController {
 		//출력
 		model.addAttribute("movieList", movieList);
 		return "indexMovie";
+	}
+	
+//	@RequestMapping(value="/ticketingEx")
+//	public String ticketing(Model model) {
+//		List<MovieVo> movieList = movieService.getMovieInfo();
+//		List<String> cinemaLocation = cinemaService.getCinemaLocation();
+//		List<String> cinemaList = cinemaService.getCinemaNameByLocation(cinemaLocation.get(0));
+//		
+//		ScheduleVo svo = new ScheduleVo();
+//		svo.setMovie_id(movieList.get(10).getMovie_id());
+//		svo.setCinema_name(cinemaList.get(0));
+//		List<String> scheduleDate = scheduleService.findScheduleDate(svo);
+//		
+//		svo.setSchedule_date(scheduleDate.get(0));
+//		List<ScheduleVo> scheduleList = scheduleService.findScheduleByDetail(svo);
+//		
+//		model.addAttribute("movieList", movieList);	
+//		model.addAttribute("cinemaLocation", cinemaLocation);
+//		model.addAttribute("cinemaList", cinemaList);
+//		model.addAttribute("scheduleDate", scheduleDate);
+//		model.addAttribute("scheduleList", scheduleList);
+//		return "ticketing";
+//	}
+	@GetMapping(value="/ticketingEx")
+	public String ticketing(Model model) {
+		List<MovieVo> movieList = movieService.getMovieInfo();
+		List<String> cinemaLocation = cinemaService.getCinemaLocation();
+		List<String> cinemaList = cinemaService.getCinemaNameByLocation(cinemaLocation.get(0));
+		
+		ScheduleVo svo = new ScheduleVo();
+		svo.setMovie_id(movieList.get(10).getMovie_id());
+		svo.setCinema_name(cinemaList.get(0));
+		List<String> scheduleDate = scheduleService.findScheduleDate(svo);
+		
+		svo.setSchedule_date(scheduleDate.get(0));
+		List<ScheduleVo> scheduleList = scheduleService.findScheduleByDetail(svo);
+		
+		model.addAttribute("movieList", movieList);	
+		model.addAttribute("cinemaLocation", cinemaLocation);
+		model.addAttribute("cinemaList", cinemaList);
+		model.addAttribute("scheduleDate", scheduleDate);
+		model.addAttribute("scheduleList", scheduleList);
+		return "ticketing";
+	}
+	
+	@PostMapping(value="/ticketingEx")
+	public String ticketing2(Model model, @RequestParam("movie_id")String movie_id){
+		List<MovieVo> movieList = movieService.getMovieInfo();
+		List<String> cinemaLocation = cinemaService.getCinemaLocation();
+		List<String> cinemaList = cinemaService.getCinemaNameByLocation(cinemaLocation.get(0));
+		
+		ScheduleVo svo = new ScheduleVo();
+		svo.setMovie_id(movieList.get(10).getMovie_id());
+		svo.setCinema_name(cinemaList.get(0));
+		List<String> scheduleDate = scheduleService.findScheduleDate(svo);
+		
+		svo.setSchedule_date(scheduleDate.get(0));
+		List<ScheduleVo> scheduleList = scheduleService.findScheduleByDetail(svo);
+		
+		model.addAttribute("movieList", movieList);	
+		model.addAttribute("cinemaLocation", cinemaLocation);
+		model.addAttribute("cinemaList", cinemaList);
+		model.addAttribute("scheduleDate", scheduleDate);
+		model.addAttribute("scheduleList", scheduleList);
+		return "ticketing";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/ticketingEx2")
+	public List<MovieVo> ticketing3(Model model) throws ParseException {
+		List<MovieVo> movieList = movieService.getMovieInfo();
+		List<String> cinemaLocation = cinemaService.getCinemaLocation();
+		List<String> cinemaList = cinemaService.getCinemaNameByLocation(cinemaLocation.get(0));
+		
+		ScheduleVo svo = new ScheduleVo();
+		svo.setMovie_id(movieList.get(10).getMovie_id());
+		svo.setCinema_name(cinemaList.get(0));
+		List<String> scheduleDate = scheduleService.findScheduleDate(svo);
+		
+		svo.setSchedule_date(scheduleDate.get(0));
+		List<ScheduleVo> scheduleList = scheduleService.findScheduleByDetail(svo);
+		
+		model.addAttribute("movieList", movieList);	
+		model.addAttribute("cinemaLocation", cinemaLocation);
+		model.addAttribute("cinemaList", cinemaList);
+		model.addAttribute("scheduleDate", scheduleDate);
+		model.addAttribute("scheduleList", scheduleList);
+		
+		return movieList;
 	}
 }
