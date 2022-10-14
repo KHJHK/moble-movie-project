@@ -22,7 +22,7 @@
 		WHERE movie_id = #{movie_id} AND schedule_date = #{schedule_date} AND cinema_name = #{cinema_name};
 	</select>
 	
-	<select id="getCinemaLocationByMovieId" parameterType = "String" resultType="String">
+	<select id="getCinemaLocationByMovieId" parameterType = "int" resultType="String">
 		SELECT cinema_location
 		FROM schedule
 		INNER JOIN cinema on schedule.cinema_name = cinema.cinema_name

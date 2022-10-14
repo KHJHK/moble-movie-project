@@ -1,5 +1,6 @@
 package com.movie.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,8 +11,10 @@ import org.springframework.stereotype.Service;
 
 import com.movie.dao.MovieDao;
 import com.movie.dao.ScheduleDao;
+import com.movie.dao.SeatDao;
 import com.movie.vo.MovieVo;
 import com.movie.vo.ScheduleVo;
+import com.movie.vo.SeatVo;
 
 @Service
 public class TicketingService {
@@ -19,39 +22,67 @@ public class TicketingService {
 	MovieDao movieDao;
 	@Autowired
 	ScheduleDao scheduleDao;
-	
+	@Autowired
+	SeatDao seatDao;
 	
 	public List<MovieVo> getMovieList(){
 		return movieDao.getMovieInfo();
 	}
 	
-	public List<String> getCinemaLocationList(String movie_id){
-		return scheduleDao.getCinemaLocationByMovieId(movie_id);
+	public List<Map<String,String>> getCinemaLocationList(int movie_id){
+		List<String> locationStrList = scheduleDao.getCinemaLocationByMovieId(movie_id);
+		List<Map<String, String>> output = new ArrayList<Map<String, String>>();
+		for(int i = 0; i < locationStrList.size(); i++) {
+			HashMap<String, String> cinemaLocationData = new HashMap<>();
+			cinemaLocationData.put("cinema_location", locationStrList.get(i));
+			output.add(cinemaLocationData);
+		}
+		
+		return output;
 	}
 	
-	public List<String> getCinemaNameList(String movie_id, String cinema_location){
+	public List<Map<String, String>> getCinemaNameList(int movie_id, String cinema_location){
 		Map input = new HashMap<>();
 		input.put("movie_id", movie_id);
 		input.put("cinema_location", cinema_location);
 		
-		return scheduleDao.getCinemaNameByInfo(input);
+		List<String> cinemaNameStrList = scheduleDao.getCinemaNameByInfo(input);
+		List<Map<String, String>> output = new ArrayList<Map<String, String>>();
+		for(int i = 0; i < input.size(); i++) {
+			HashMap<String, String> cinemaNameData = new HashMap<>();
+			cinemaNameData.put("cinema_name", cinemaNameStrList.get(i));
+			output.add(cinemaNameData);
+		}
+		
+		return output;
 	}
 	
-	//list<string> 날짜 출력(거의 완성)이랑 JSONArray schedul_id, time 출력 만드는중
-	public List<String> getScheduleDateList(String movie_id, String cinema_name){
-		Map input = new HashMap<>();
+	public List<Map<String, String>> getScheduleDateList(int movie_id, String cinema_name){
+		Map<String, Object> input = new HashMap<>();
 		input.put("movie_id", movie_id);
 		input.put("cinema_name", cinema_name);
 		
-		return scheduleDao.getScheduleDateByInfo(input);
+		List<String> scheduleDateStrList = scheduleDao.getScheduleDateByInfo(input);
+		List<Map<String, String>> output = new ArrayList<Map<String, String>>();
+		for(int i = 0; i < input.size(); i++) {
+			HashMap<String, String> scheduleDateData = new HashMap<>();
+			scheduleDateData.put("cinema_name", scheduleDateStrList.get(i));
+			output.add(scheduleDateData);
+		}
+		
+		return output;
 	}
 	
-	public List<ScheduleVo> getScheduleTimeAndTheater(String movie_id, String cinema_name, String schedule_date) {
+	public List<ScheduleVo> getScheduleTimeAndTheater(int movie_id, String cinema_name, String schedule_date) {
 		Map input = new HashMap<>();
 		input.put("movie_id", movie_id);
 		input.put("cinema_name", cinema_name);
 		input.put("schedule_date", schedule_date);
 		
 		return scheduleDao.getScheduleTimeAndTheater(input);
+	}
+	
+	public List<SeatVo> getSeatInfo(int schedule_id){
+		return seatDao.getSeletedSeat(schedule_id);
 	}
 }

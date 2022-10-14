@@ -47,7 +47,7 @@ public class ScheduleServiceImpl implements ScheduleService{
 	}
 
 	@Override
-	public List<String> getCinemaLocationByMovieId(String movie_id) {
+	public List<String> getCinemaLocationByMovieId(int movie_id) {
 		return scheduleDao.getCinemaLocationByMovieId(movie_id);
 	}
 

@@ -1,0 +1,22 @@
+package com.movie.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.movie.dao.SeatDao;
+import com.movie.vo.SeatVo;
+
+@Service
+public class SeatServiceImpl implements SeatService{
+	@Autowired
+	SeatDao seatDao;
+
+	@Override
+	public List<SeatVo> getSeletedSeat(int schedule_id) {
+		return seatDao.getSeletedSeat(schedule_id);
+	}
+	
+	
+}

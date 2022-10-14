@@ -13,7 +13,7 @@ public interface ScheduleService {
 	public List<String> findScheduleDate(ScheduleVo scheduleVo);
 	public int insertSchedule(ScheduleVo scheduleVo);
 	public int deleteSchedule(ScheduleVo scheduleVo);
-	public List<String> getCinemaLocationByMovieId(String movie_id);
+	public List<String> getCinemaLocationByMovieId(int movie_id);
 	public List<String> getCinemaNameByInfo(Map info);
 	public List<String> getScheduleDateByInfo(Map info);
 	public List<ScheduleVo> getScheduleTimeAndTheater(Map info);
