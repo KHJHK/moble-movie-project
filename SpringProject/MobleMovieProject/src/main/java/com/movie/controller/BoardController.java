@@ -70,7 +70,7 @@ public class BoardController {
 	
 	//Q & A 세부내용
 	@GetMapping("/board/QandA_detail")
-	public String QandADetailForm(Model model, QuestionVo questionVo ,AnswerVo answerVo,@RequestParam("id")Long question_id) {
+	public String QandADetailForm(Model model, QuestionVo questionVo ,@RequestParam("id")Long question_id) {
 		questionVo = boardService.QuestionView(question_id);
 		model.addAttribute("question_id",questionVo.getQuestion_id());
 		model.addAttribute("title", questionVo.getQuestion_title());
@@ -78,11 +78,11 @@ public class BoardController {
 		model.addAttribute("account", questionVo.getMember_account());
 		model.addAttribute("reg_date", questionVo.getQuestion_reg_date());
 		model.addAttribute("content", questionVo.getQuestion_content());
+		AnswerVo answerVo = boardService.AnswerView(question_id);
 		if(answerVo == null) {
-
+			model.addAttribute("msg", "아직 답변이 없습니다.");
 			return "board/QandA_detail";
 		}else {
-		answerVo = boardService.AnswerView(question_id);
 		model.addAttribute("answer_title", answerVo.getAnswer_title());
 		model.addAttribute("member_nickname", answerVo.getMember_nickname());
 		model.addAttribute("answer_reg_date", answerVo.getAnswer_reg_date());

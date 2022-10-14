@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.movie.service.ManageService;
+import com.movie.vo.AnswerVo;
 import com.movie.vo.MailVo;
 import com.movie.vo.MemberVo;
 import com.movie.vo.NoticeVo;
@@ -189,31 +190,75 @@ public class ManageController {
 		model.addAttribute("member_account",questionVo.getMember_account() );
 		model.addAttribute("question_reg_date",questionVo.getQuestion_reg_date());
 		model.addAttribute("question_content", questionVo.getQuestion_content());
-		return "manage/manage_QandA_detail";
+		AnswerVo answerVo = manageService.ManageAnswerView(question_id);
+		if(answerVo == null) {
+			model.addAttribute("msg", "아직 답변이 없습니다.");
+			return "manage/manage_QandA_detail";
+		}else {
+			model.addAttribute("answer_id", answerVo.getAnswer_id());
+			model.addAttribute("answer_title", answerVo.getAnswer_title());
+			model.addAttribute("member_nickname", answerVo.getMember_nickname());
+			model.addAttribute("answer_reg_date", answerVo.getAnswer_reg_date());
+			model.addAttribute("answer_content", answerVo.getAnswer_content());
+			return "manage/manage_QandA_detail";
+		}
 	}
 	@PostMapping("/manage/manage_QandA_detail")
 	public String manageQandADetail() {
 		return "manage/manage_QandA_detail";
 	}
 	
-	//관리자 페이지 Q&A 질문 삭제
-	@GetMapping("/manage/manage_QandA_delete")
+	//관리자 페이지 Q & A 질문 삭제
+	@GetMapping("/manage/manage_question_delete")
 	public String manageQandADeleteForm(Model model,QuestionVo questionVo,@RequestParam("question_id")Long question_id) {
 		questionVo = manageService.ManageQuestionView(question_id);
 		model.addAttribute("question_id", question_id);
-		return "manage/manage_QandA_delete";
+		return "manage/manage_question_delete";
 	}
-	@PostMapping("/manage/manage_QandA_delete")
-	public String manageQandADelete(Model model,@RequestParam("question_id")Long question_id) {
-		int result = manageService.ManageQuestionDelete(question_id);
-		if(result == 1) {
-			model.addAttribute("msg", "삭제 되었습니다.");
-			return "manage/manage_QandA_delete";
-			}else {
-				model.addAttribute("msg", "삭제 실패 했습니다.");
-				return "manage/manage_QandA_delete";
-			}
+	@PostMapping("/manage/manage_question_delete")
+	public String manageQandADelete(@RequestParam("question_id")Long question_id) {
+		manageService.ManageQuestionDelete(question_id);
+			return "redirect:/manage/manage_QandA";
 	}
 	
+	//관리자 페이지 Q & A 답변 작성
+	@GetMapping("/manage/manage_answer_add")
+	public String manageAnswerAddForm(Model model,@RequestParam("question_id")Long question_id) {
+		model.addAttribute("question_id", question_id);
+		return "manage/manage_answer_add";
+	}
+	@PostMapping("/manage/manage_answer_add")
+	public String manageAnswerAdd(Authentication a, @RequestParam("question_id")Long question_id,
+			@RequestParam("answer_title")String answer_title, @RequestParam("answer_content")String answer_content) {
+		MemberVo memberVo = (MemberVo)a.getPrincipal();
+		manageService.ManageAnswerAdd(question_id, memberVo.getMember_id(), answer_title, answer_content);
+		return "redirect:/manage/manage_QandA";
+	}
+	
+	//관리자 페이지 Q & A 답변 수정
+	@GetMapping("/manage/manage_answer_update")
+	public String manageAnswerUpdateForm(Model model,@RequestParam("answer_id")Long answer_id) {
+		model.addAttribute("answer_id", answer_id);
+		return "manage/manage_answer_update";
+	}
+	@PostMapping("/manage/manage_answer_update")
+	public String manageAnswerUpdate(Model model,@RequestParam("answer_id")Long answer_id,
+			@RequestParam("answer_title")String answer_title,@RequestParam("answer_content")String answer_content) {
+		manageService.ManageAnswerUpdate(answer_id, answer_title, answer_content);
+		return "redirect:/manage/manage_QandA";
+	}
+	
+	//관리자 페이지 Q & A 답변 삭제
+	@GetMapping("/manage/manage_answer_delete")
+	public String manageAnswerDeleteForm(Model model,@RequestParam("answer_id")Long answer_id) {
+		model.addAttribute("answer_id", answer_id);
+		return "manage/manage_answer_delete";
+	}
+	@PostMapping("/manage/manage_answer_delete")
+	public String manageAnswerDelete(Model model,@RequestParam("answer_id")Long answer_id) {
+		manageService.ManageAnswerDelete(answer_id);
+		model.addAttribute("msg", "삭제되었습니다.");
+		return "redirect:/manage/manage_QandA";
+	}
 
 }

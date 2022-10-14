@@ -119,16 +119,40 @@
     </update> 
     
     <!-- 관리자 페이지 답변 내용 --> 
+    <select id="ManageAnswerView" resultType="com.movie.vo.AnswerVo" >
+        SELECT *
+          FROM answer
+          INNER JOIN question
+          ON answer.question_id = question.question_id
+          INNER JOIN member
+          ON answer.member_id = member.member_id
+          WHERE answer.question_id = #{question_id}
+    </select> 
 
 
     <!-- 관리자 페이지 답변 작성 -->
-    
+    <insert id="ManageAnswerAdd" parameterType="com.movie.vo.AnswerVo">
+    	INSERT INTO answer(
+    	question_id, member_id, answer_reg_date,
+    	answer_title, answer_content)
+    	VALUES(#{question_id}, #{member_id}, #{answer_reg_date},
+    	#{answer_title}, #{answer_content})
+    </insert>
     
     <!-- 관리자 페이지 답변 수정 -->
-    
+    <update id="ManageAnswerUpdate" >
+    	UPDATE answer SET
+    	answer_title = #{answer_title},
+    	answer_content = #{answer_content}
+    	where answer_id = #{answer_id}
+    </update> 
     
     <!-- 관리자 페이지 답변 삭제 -->
-    
+    <delete id="ManageAnswerDelete" >
+    	DELETE 
+    	from answer
+    	where answer_id = #{answer_id}
+    </delete> 
     
  
 </mapper>

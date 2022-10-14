@@ -58,8 +58,9 @@
 	<button type="button" class="btn btn-primary" th:onClick="|location.href='@{QandA_update(question_id = ${question_id})}'|">수정</button>
 	<button type="button" class="btn btn-primary" th:onClick="|location.href='@{QandA_delete(question_id = ${question_id})}'|">삭제</button>
 	<br>
-	<h2>답변</h2>
-		<table>
+	<div th:text="${msg}"></div>
+		<table th:if="!${msg}">
+		<h2>답변</h2>
 		<tbody>
 			<tr>
 				<td>답변 제목</td>

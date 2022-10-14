@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user access</title>
+</head>
+<body>
+<form method="post" action="manage_answer_delete">
+<input type="hidden" th:name="answer_id" th:value="${answer_id}"/>
+<h1>답변을 삭제 하겠습니까?</h1>
+<button type="submit" class="btn btn-primary">삭제</button>
+</form>
+</body>
+</html>

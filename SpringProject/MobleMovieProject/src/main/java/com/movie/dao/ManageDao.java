@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.movie.vo.AnswerVo;
 import com.movie.vo.MemberVo;
 import com.movie.vo.NoticeVo;
 import com.movie.vo.QuestionVo;
@@ -46,4 +47,15 @@ public interface ManageDao {
 	public QuestionVo ManageQuestionView(@Param("question_id")Long question_id);
 	//Q & A 질문삭제
 	public int ManageQuestionDelete(@Param("question_id")Long question_id);
+	//Q & A 답변 내용
+	public AnswerVo ManageAnswerView(@Param("question_id")Long question_id);
+	//Q & A 답변 추가
+	public void ManageAnswerAdd(@Param("question_id")Long question_id,@Param("member_id")Long member_id,
+			@Param("answer_reg_date")String answer_reg_date,@Param("answer_title")String answer_title,
+			@Param("answer_content")String answer_content);
+	//Q & A 답변 수정
+	public int ManageAnswerUpdate(@Param("answer_id")Long answer_id,@Param("answer_title")String answer_title,
+			@Param("answer_content")String answer_content);
+	//Q & A 답변 삭제
+	public int ManageAnswerDelete(@Param("answer_id")Long answer_id);
 }

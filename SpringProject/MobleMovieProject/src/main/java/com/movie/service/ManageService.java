@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.movie.dao.ManageDao;
+import com.movie.vo.AnswerVo;
 import com.movie.vo.MailVo;
 import com.movie.vo.MemberVo;
 import com.movie.vo.NoticeVo;
@@ -123,5 +124,26 @@ public class ManageService {
 	@Transactional
 	public int ManageQuestionDelete(Long question_id) {
 		return manageDao.ManageQuestionDelete(question_id);
+	}
+	//Q & A 답변 내용
+	@Transactional
+	public AnswerVo ManageAnswerView(Long question_id) {
+		AnswerVo answerVo = manageDao.ManageAnswerView(question_id);
+		return answerVo;
+	}
+	//Q & A 답변 작성
+	@Transactional
+	public void ManageAnswerAdd(Long question_id,Long member_id,String answer_title,String answer_content) {
+		manageDao.ManageAnswerAdd(question_id, member_id, localTime, answer_title, answer_content);
+	}
+	//Q & A 답변 수정
+	@Transactional
+	public int ManageAnswerUpdate(Long answer_id,String answer_title,String answer_content) {
+		return manageDao.ManageAnswerUpdate(answer_id, answer_title, answer_content);
+	}
+	//Q & A 답변 삭제
+	@Transactional
+	public int ManageAnswerDelete(Long answer_id) {
+		return manageDao.ManageAnswerDelete(answer_id);
 	}
 }
