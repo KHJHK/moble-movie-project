@@ -1,0 +1,67 @@
+/* Theater_MovieTheaterLocationInformation.css */
+
+.Theater_MovieTheaterLocationInformation {
+  width: 1000px;
+  height: 1000px;
+}
+
+.Theater_MovieTheaterLocationInformation li {
+  background: #595959;
+  margin: 10px;
+  padding: 10px;
+  color: #ffffff;
+  border-radius: 10px;
+  text-align: center;
+
+  text-decoration: none;
+  display: block;
+}
+
+.title_menu li:hover {
+  background: #ff6347;
+  transition: ease 0.1s;
+}
+
+/* 지역 선택
+상영관 선택 */
+.area,
+.area2 {
+  /* display: inline-block; */
+  float: left;
+  width: 480px;
+  height: 250px;
+
+  background: #e6e6e6;
+  margin: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* 극장 위치 */
+.area3 {
+  clear: both;
+
+  background: #e6e6e6;
+  margin: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* 지도 크기 설정 */
+#map {
+  margin: 10px;
+  display: inline-block;
+  width: 900px;
+  height: 500px;
+  border-radius: 10px;
+}
+
+.SelectedItem li {
+  width: 290px;
+  height: 25px;
+  float: left;
+  margin: 5px;
+  background: #1f324b;
+  color: #ffffff;
+  border-radius: 10px;
+}

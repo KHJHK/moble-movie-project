@@ -1,0 +1,144 @@
+/* Header.css */
+
+.firstpart {
+  height: 50px;
+  margin: 10px auto;
+  position: relative;
+}
+
+#toppicture {
+  width: 170px;
+  height: 50px;
+  position: absolute;
+}
+
+/* 로그인, 회원가입, 마이페이지 */
+.TopMenu {
+  width: 300px;
+  /* 가로 배치 */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* 오른쪽 */
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  height: 40px;
+}
+.TopMenu p :hover {
+  color: #ff6347;
+}
+
+.TopMenu1 {
+  text-align: center;
+  padding-top: 7px;
+}
+
+.TopMenu2 {
+  padding-top: 7px;
+  vertical-align: middle;
+  text-align: center;
+  border-left: 1px solid;
+  border-right: 1px solid;
+}
+
+.TopMenu3 {
+  padding-top: 7px;
+  text-align: center;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/* ul li태그에 리스트 스타일을 없앰 */
+ul li {
+  list-style: none;
+}
+
+/* a태그에 텍스트 밑줄을 없애고 색상을 #333 */
+ul li a {
+  color: white;
+}
+
+/* 글자크기를 16px 맑은 고딕 굵게하고 width넓이 700, 높이 50만큼 배경색은 #ccc, 글자색은 검정색, 라인높이50px
+menu박스 가운데정렬, 글자가운데 정렬 */
+#menu {
+  font: bold 16px "malgun gothic";
+  width: 1280px;
+  margin: 0px auto;
+  /* 메뉴바 전체크기 */
+  width: 1000px;
+  height: 50px;
+  /* 상단 메뉴바 배경색 */
+  background: #1f324b;
+  color: black;
+  border-radius: 20px;
+  line-height: 50px;
+  margin: 10px auto;
+  text-align: center;
+}
+
+/* menu태그 자식의 ul의 자식 li를 왼쪽정렬과 넓이 140설정 */
+#menu > ul > li {
+  display: inline-block;
+  width: 140px;
+  position: relative;
+}
+
+#menu > ul > li > ul {
+  width: 130px;
+  display: none;
+  position: absolute;
+  font-size: 14px;
+  background: skyblue;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+#menu > ul > li:hover > ul {
+  display: block;
+}
+
+#menu > ul > li > ul > li:hover {
+  background: orange;
+  transition: ease 1s;
+}
+
+/* ModalComponent CSS */
+
+.customStyles {
+  text-align: center;
+
+  width: 450px;
+  margin: 0 auto;
+  border-radius: 10px;
+  /* 팝업이 열릴때 스르륵 열리는 효과 */
+  animation: modal-show 0.3s;
+  overflow: hidden;
+  height: auto;
+}
+
+/* title */
+.Modal_fullTitle {
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+  padding: 10px;
+  background-color: #1f324b;
+  color: #fff;
+  font-weight: 700;
+}
+
+.close_btn {
+  position: absolute;
+  display: inline-block;
+  top: 0.1px;
+  bottom: 0.1px;
+  right: 15px;
+
+  width: 27px;
+  height: 27px;
+  text-align: center;
+  color: #d9d9d9;
+  border: 1px solid #d9d9d9;
+}

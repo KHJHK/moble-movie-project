@@ -1,0 +1,34 @@
+/* Movie_MovieInformation_Main.css */
+
+.Movie_MovieInformation_Main {
+  width: 1000px;
+  height: 1000px;
+}
+.Movie_MovieInformation_Main img {
+  float: left;
+  width: 200px;
+  height: 300px;
+}
+
+.MovieInfo {
+  background: red;
+}
+
+.overview {
+  clear: both;
+}
+
+#TableTitle {
+  width: 150px;
+}
+
+.Movie_MovieInformation_Main table {
+  margin: 20px;
+
+}
+.Movie_MovieInformation_Main th {
+  width: 220px;
+}
+.Movie_MovieInformation_Main td {
+  vertical-align: top;
+}
