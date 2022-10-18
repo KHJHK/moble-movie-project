@@ -6,7 +6,7 @@
 
 <!-- 회원 -->
 	<!-- 관리자 리스트 출력 -->
-	<select id="AdminList" resultType="com.movie.vo.MemberVo" >
+	<select id="adminList" resultType="com.movie.vo.MemberVo" >
         SELECT member_account, member_name, member_email, member_nickname,
         member_birth, member_reg_date, member_modify_date
           FROM member
@@ -14,7 +14,7 @@
     </select>
 
 	<!-- 회원 리스트 출력 -->
-	 <select id="UserList" resultType="com.movie.vo.MemberVo" >
+	 <select id="userList" resultType="com.movie.vo.MemberVo" >
         SELECT member_account, member_name, member_email, member_nickname,
         member_birth, member_reg_date, member_modify_date
           FROM member
@@ -22,7 +22,7 @@
     </select>
     
 	<!-- 탈퇴 회원 리스트 출력 -->
-	<select id="ResignList" resultType="com.movie.vo.MemberVo" >
+	<select id="resignList" resultType="com.movie.vo.MemberVo" >
         SELECT member_account, member_name, member_email, member_nickname,
         member_birth, member_reg_date, member_modify_date
           FROM member
@@ -30,7 +30,7 @@
     </select>
     
 	<!-- 강제 탈퇴 -->
- 	<update id="DeleteMember" >
+ 	<update id="deleteMember" >
     	UPDATE member SET
     	member_auth = #{member_auth},
     	member_modify_date = #{member_modify_date}
@@ -41,7 +41,7 @@
     	
 <!-- 공지사항 -->
 	<!-- 관리자 페이지 공지사항 리스트 -->
-	<select id="ManageNoticeList" resultType="com.movie.vo.NoticeVo" >
+	<select id="manageNoticeList" resultType="com.movie.vo.NoticeVo" >
         SELECT notice_id, category_name, notice_title, 
         notice_reg_date, notice_count
           FROM notice
@@ -51,7 +51,7 @@
     </select>
 
 	<!-- 관리자 페이지 공지사항 세부 내용 -->
-	<select id="ManageNoticeView" resultType="com.movie.vo.NoticeVo" >
+	<select id="manageNoticeView" resultType="com.movie.vo.NoticeVo" >
         SELECT *
           FROM notice
           INNER JOIN category
@@ -62,7 +62,7 @@
     </select> 
 
     <!-- 관리자 페이지 공지사항 추가 -->
-    <insert id="ManageNoticeAdd" parameterType="com.movie.vo.NoticeVo">
+    <insert id="manageNoticeAdd" parameterType="com.movie.vo.NoticeVo">
     	INSERT INTO notice(
     	member_id, category_id, notice_reg_date, notice_title,
     	notice_content, notice_count, notice_flag)
@@ -71,7 +71,7 @@
     </insert>
     
     <!-- 관리자 페이지 공지사항 수정 -->
-     <update id="ManageNoticeUpdate">
+     <update id="manageNoticeUpdate">
     	UPDATE notice SET
     	category_id = #{category_id},
     	notice_title = #{notice_title},
@@ -80,7 +80,7 @@
     </update>    
     
     <!-- 관리자 페이지 공지사항 삭제 -->
-    <update id="ManageNoticeDelete" >
+    <update id="manageNoticeDelete" >
     	UPDATE notice SET
     	notice_flag = "N"
     	where notice_id = #{notice_id}
@@ -89,7 +89,7 @@
   
 <!-- Q & A -->
 	<!-- 관리자 페이지 Q & A 리스트 -->
-	<select id="ManageQuestionList" resultType="com.movie.vo.QuestionVo" >
+	<select id="manageQuestionList" resultType="com.movie.vo.QuestionVo" >
         SELECT question_id, category_name, question_title, 
         member_account, question_reg_date
           FROM question
@@ -101,7 +101,7 @@
     </select>
 	
 	<!-- 관리자 페이지 Q & A 세부 내용 -->
-	<select id="ManageQuestionView" resultType="com.movie.vo.QuestionVo" >
+	<select id="manageQuestionView" resultType="com.movie.vo.QuestionVo" >
         SELECT *
           FROM question
           INNER JOIN category
@@ -112,14 +112,14 @@
     </select> 
 	
 	<!-- 관리자 페이지 질문 삭제 -->
-	<update id="ManageQuestionDelete" >
+	<update id="manageQuestionDelete" >
     	UPDATE question SET
     	question_flag = "N"
     	where question_id = #{question_id}
     </update> 
     
     <!-- 관리자 페이지 답변 내용 --> 
-    <select id="ManageAnswerView" resultType="com.movie.vo.AnswerVo" >
+    <select id="manageAnswerView" resultType="com.movie.vo.AnswerVo" >
         SELECT *
           FROM answer
           INNER JOIN question
@@ -131,7 +131,7 @@
 
 
     <!-- 관리자 페이지 답변 작성 -->
-    <insert id="ManageAnswerAdd" parameterType="com.movie.vo.AnswerVo">
+    <insert id="manageAnswerAdd" parameterType="com.movie.vo.AnswerVo">
     	INSERT INTO answer(
     	question_id, member_id, answer_reg_date,
     	answer_title, answer_content)
@@ -140,7 +140,7 @@
     </insert>
     
     <!-- 관리자 페이지 답변 수정 -->
-    <update id="ManageAnswerUpdate" >
+    <update id="manageAnswerUpdate" >
     	UPDATE answer SET
     	answer_title = #{answer_title},
     	answer_content = #{answer_content}
@@ -148,7 +148,7 @@
     </update> 
     
     <!-- 관리자 페이지 답변 삭제 -->
-    <delete id="ManageAnswerDelete" >
+    <delete id="manageAnswerDelete" >
     	DELETE 
     	from answer
     	where answer_id = #{answer_id}

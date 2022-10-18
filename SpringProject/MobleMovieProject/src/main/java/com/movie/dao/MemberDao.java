@@ -8,7 +8,7 @@ import com.movie.vo.MemberVo;
 @Mapper
 public interface MemberDao {
 	//회원가입
-	public void signup(MemberVo memberVo);
+	public int signup(MemberVo memberVo);
 	//로그인
 	public MemberVo login(String member_account);
 	//회원정보 수정

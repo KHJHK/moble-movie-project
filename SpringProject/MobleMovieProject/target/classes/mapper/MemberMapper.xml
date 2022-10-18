@@ -38,7 +38,7 @@
     </update>  
     
     <!-- 아이디 찾기 -->
-       <select id="findID" resultType="com.movie.vo.MemberVo" >
+    <select id="findID" resultType="com.movie.vo.MemberVo" >
         SELECT member_account
           FROM member
          WHERE member_name = #{member_name} and

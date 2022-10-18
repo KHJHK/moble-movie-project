@@ -13,34 +13,34 @@ import com.movie.vo.QuestionVo;
 public interface BoardDao {
 	
 	//공지사항 리스트
-	public List<NoticeVo> NoticeList();
+	public List<NoticeVo> noticeList();
 	
 	//공지사항 세부내용
-	public NoticeVo NoticeView(@Param("notice_id")Long notice_id);
+	public NoticeVo noticeView(@Param("notice_id")Long notice_id);
 	
 	//공지사항 조회수 증가
-	public int CountView(@Param("notice_id")Long notice_id);
+	public int countView(@Param("notice_id")Long notice_id);
 	
 	
 	//Q&A 리스트
-	public List<QuestionVo> QuestionList();
+	public List<QuestionVo> questionList();
 	
 	//Q&A 세부내용
-	public QuestionVo QuestionView(@Param("question_id")Long question_id);
+	public QuestionVo questionView(@Param("question_id")Long question_id);
 	
 	//Q&A 질문 작성
-	public void QuestionAdd(@Param("member_id")Long member_id,@Param("category_id")Long category_id,
+	public void questionAdd(@Param("member_id")Long member_id,@Param("category_id")Long category_id,
 			@Param("question_reg_date")String question_reg_date,@Param("question_title")String question_title,
 			@Param("question_content")String question_content);
 	
 	//Q&A 질문 수정
-	public int QuestionUpdate(@Param("member_id")Long member_id,@Param("question_id")Long question_id,@Param("category_id")Long category_id,
+	public int questionUpdate(@Param("member_id")Long member_id,@Param("question_id")Long question_id,@Param("category_id")Long category_id,
 			@Param("question_title")String question_title,@Param("question_content")String question_content);
 	
 	//Q&A 질문 삭제
-	public int QuestionDelete(@Param("member_id")Long member_id,@Param("question_id")Long question_id);
+	public int questionDelete(@Param("member_id")Long member_id,@Param("question_id")Long question_id);
 	
 	//Q&A 답변
-	public AnswerVo AnswerView(@Param("question_id")Long question_id);
+	public AnswerVo answerView(@Param("question_id")Long question_id);
 
 }

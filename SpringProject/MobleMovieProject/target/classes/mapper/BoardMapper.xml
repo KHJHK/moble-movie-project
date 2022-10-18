@@ -4,7 +4,7 @@
 <mapper namespace="com.movie.dao.BoardDao">
 
 	<!-- 공지사항 리스트 -->
-	<select id="NoticeList" resultType="com.movie.vo.NoticeVo" >
+	<select id="noticeList" resultType="com.movie.vo.NoticeVo" >
         SELECT notice_id, category_name, notice_title, 
         notice_reg_date, notice_count
           FROM notice
@@ -14,7 +14,7 @@
     </select>
     
     <!-- 공지사항 상세보기 -->
-     <select id="NoticeView" resultType="com.movie.vo.NoticeVo" >
+     <select id="noticeView" resultType="com.movie.vo.NoticeVo" >
         SELECT *
           FROM notice
           INNER JOIN category
@@ -25,7 +25,7 @@
     </select> 
     
     <!-- 공지사항 조회수 증가 -->
-    <update id="CountView" >
+    <update id="countView" >
     	UPDATE notice SET
     	notice_count = notice_count + 1
     	where notice_id = #{notice_id}
@@ -33,7 +33,7 @@
     
     
     <!-- Q & A 리스트 -->
-    <select id="QuestionList" resultType="com.movie.vo.QuestionVo" >
+    <select id="questionList" resultType="com.movie.vo.QuestionVo" >
         SELECT question_id, category_name, question_title, 
         member_account, question_reg_date
           FROM question
@@ -45,7 +45,7 @@
     </select>
     
     <!-- Q & A 상세보기 -->
-    <select id="QuestionView" resultType="com.movie.vo.QuestionVo" >
+    <select id="questionView" resultType="com.movie.vo.QuestionVo" >
         SELECT *
           FROM question
           INNER JOIN category
@@ -56,7 +56,7 @@
     </select> 
     
     <!-- Q & A 질문 작성 -->
-    <insert id="QuestionAdd" parameterType="com.movie.vo.QuestionVo">
+    <insert id="questionAdd" parameterType="com.movie.vo.QuestionVo">
     	INSERT INTO question(
     	member_id, category_id, question_reg_date, question_title,
     	question_content, question_flag)
@@ -65,7 +65,7 @@
     </insert>
     
     <!-- Q & A 질문 수정 -->
-    <update id="QuestionUpdate">
+    <update id="questionUpdate">
     	UPDATE question SET
     	category_id = #{category_id},
     	question_title = #{question_title},
@@ -75,7 +75,7 @@
     </update>  
     
     <!-- Q & A 질문 삭제 -->
-    <update id="QuestionDelete" >
+    <update id="questionDelete" >
     	UPDATE question SET
     	question_flag = "N"
     	where question_id = #{question_id}
@@ -83,7 +83,7 @@
     </update> 
     
     <!-- Q & A 답변 -->
-    <select id="AnswerView" resultType="com.movie.vo.AnswerVo" >
+    <select id="answerView" resultType="com.movie.vo.AnswerVo" >
         SELECT *
           FROM answer
           INNER JOIN question

@@ -30,12 +30,12 @@ public class MemberService implements UserDetailsService{
 
     //회원가입
     @Transactional
-    public void signup(MemberVo memberVo){
+    public int signup(MemberVo memberVo){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         memberVo.setMember_pw(passwordEncoder.encode(memberVo.getMember_pw()));
         memberVo.setMember_auth("USER");
         memberVo.setMember_reg_date(localTime);
-        memberDao.signup(memberVo);
+        return memberDao.signup(memberVo);
     }
 
     //로그인
