@@ -1,0 +1,25 @@
+/* Footer.css */
+footer {
+  width: 1000px;
+  height: auto;
+  background: #e6e6e6;
+
+  position: absolute;
+  color: #595959;
+  font-size: 15px;
+}
+
+footer a {
+  display: inline-block;
+  color: #595959;
+  font-size: 30px;
+}
+
+/* 링크 방문 시 */
+footer a:visited {
+  color: #595959;
+}
+
+footer p span {
+  display: inline-block;
+}

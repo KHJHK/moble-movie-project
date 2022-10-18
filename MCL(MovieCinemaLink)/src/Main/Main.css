@@ -1,0 +1,42 @@
+/* Main.css */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 1000px;
+  /* 위아래 여백 없이 가로 중앙에 배치 */
+  margin: 0px auto;
+}
+
+h3 {
+  margin: 20px;
+}
+
+button {
+  margin: 10px;
+  border-radius: 10px;
+  width: 100px;
+  height: 30px;
+  color: #ffffff;
+  background: #1f324b;
+  border: 1px solid #1f324b;
+}
+
+/* 로그인, 회원가입의 input,
+선택박스 CSS 적용 */
+input {
+  width: 200px;
+  height: auto;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 3px solid #1f324b;
+  text-align: left;
+}
+
+.Notice_btn {
+  text-align: right;
+}

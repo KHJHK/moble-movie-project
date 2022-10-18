@@ -1,0 +1,96 @@
+/* Food_MovieFood.css */
+
+.food {
+  z-index: -1;
+  /* margin-top: 50px; */
+  height: 1500px;
+  position: relative;
+  margin: 20px;
+}
+.Popcorn,
+.tea,
+.Ade,
+.coffee,
+.dessert {
+  /* margin-top: 100px; */
+  width: 1000px;
+  height: 300px;
+  position: relative;
+}
+
+.foodimg1,
+.foodimg2,
+.foodimg3,
+.foodimg4,
+.foodimg5 {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  position: absolute;
+  top: 90px;
+  left: 58px;
+  width: 941px;
+}
+
+#menuimg {
+  width: 140px;
+  height: 140px;
+  border-radius: 15px;
+}
+
+.food h1 {
+  position: absolute;
+  top: 12px;
+  left: 20px;
+}
+
+.underline {
+  width: 950px;
+  padding: 40px 0px 20px 0px;
+  border-bottom: 2px solid #595959;
+}
+
+.information {
+  /* background: rebeccapurple;
+    border: 1px solid; */
+  text-align: center;
+  background: #ffffff;
+  margin-top: 10px;
+  width: 140px;
+  height: 70px;
+  border-radius: 5px;
+}
+
+.scroll {
+  position: fixed;
+  height: 275px;
+  top: 0px;
+  right: 0px;
+  border: 1px;
+  margin-top: 220px;
+  margin-right: 30px;
+  background: #ffd700;
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+}
+
+#smallmenu1,
+#smallmenu2,
+#smallmenu3,
+#smallmenu4,
+#smallmenu5 {
+  border-bottom: 3px solid gray;
+  padding: 5px;
+}
+
+@media screen and (min-width: 1800px) {
+  .scroll {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .scroll {
+    display: none;
+  }
+}

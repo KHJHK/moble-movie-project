@@ -1,0 +1,10 @@
+/* Ticketing_SelectTime.css */
+
+.SelectTime {
+    float: right;
+    width: 700px;
+    height: auto;
+    position: static;
+    background-color: #D9D9D9;
+    margin: 10px 10px 10px 10px;
+}

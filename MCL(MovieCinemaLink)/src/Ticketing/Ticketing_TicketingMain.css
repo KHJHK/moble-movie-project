@@ -1,0 +1,99 @@
+/* 예매하기 : TicketingMain.css */
+
+/* 예매하기 */
+.Ticketing_TicketingMain {
+  width: 1000px;
+  height: 1300px;
+ 
+}
+
+.Ticketing_TicketingMain li {
+  background: #595959;
+  margin: 10px;
+  padding: 10px;
+  color: #ffffff;
+  border-radius: 10px;
+  text-align: center;
+
+  text-decoration: none;
+  display: block;
+}
+
+/* .Ticketing_TicketingMain li a:hover {
+  background: #ff6347;
+  color: #ffffff;
+} */
+
+/* 영화 선택 */
+.Ticketing_SelectMovie {
+  float: left;
+
+  width: 350px;
+  height: 620px;
+
+  background: #e6e6e6;
+  margin: 10px;
+  text-align: center;
+  border-radius: 10px;
+
+  /* 스크롤 */
+  overflow: auto;
+}
+
+/*영화 이미지값 리스트*/
+.SelectMovie .SelectIMG {
+  display: none;
+}
+
+/* 지역 선택,
+극장 선택,
+날짜 선택,
+시간 선택 */
+.Ticketing_Select_InlineBlock li {
+  display: inline-block;
+  width: 110px;
+}
+
+/* 지역 선택,
+극장 선택,
+날짜 선택,
+시간 선택 */
+.Ticketing_SelectRegion,
+.Ticketing_SelectCinema,
+.Ticketing_Theater,
+.Ticketing_SelectDate,
+.Ticketing_SelectTime {
+  float: left;
+
+  width: 600px;
+  height: auto;
+
+  background: #e6e6e6;
+  margin: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* 버튼 색 변경 */
+.SelectRegion,
+.SelectCinema,
+.SelectTheater,
+.SelectDate,
+.SelectTime,
+.TicketingSeat {
+  display: none;
+
+}
+
+li.SelectMV.clicked,
+li.SelectRG.clicked,
+li.SelectCN.clicked,
+li.SelectDT.clicked,
+li.SelectTI.clicked {
+  background-color: #ffd700;
+  color: #000000;
+  
+}
+
+li.SelectCN{float: left;}
+
