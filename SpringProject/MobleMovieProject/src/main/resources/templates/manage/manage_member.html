@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head lang="en" xmlns:th="http://thymeleaf.org">
+<meta charset="UTF-8">
+
+<style>
+	table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+	
+	td, th{
+		border: 1px solid black;
+		text-align: left;
+	}
+	
+	tr:nth-child(even){
+		background-color:#dddddd;
+	}
+</style>
+
+<title>회원 관리</title>
+	</head>
+<body>
+<form method="post" action="/manage/manage_member">
+	<h1>회원 관리</h1>
+	<button type="button" class="btn btn-primary" onClick="location.href='manage_mail'">회원에게 메일 보내기</button>
+		<h2>관리자 정보</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>관리자 번호</th>
+				<th>관리자 아이디</th>
+				<th>관리자 이름</th>
+				<th>관리자 이메일</th>
+				<th>관리자 닉네임</th>
+				<th>관리자 생일</th>
+				<th>관리자 가입일</th>
+				<th>관리자 정보 수정일</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="admin : ${adminList}">
+			 	<td><span th:text="${adminNum}"></span></td>
+				<td><span th:text="${admin.member_account}"></span></td>
+				<td><span th:text="${admin.member_name}"></span></td>
+				<td><span th:text="${admin.member_email}"></span></td>
+				<td><span th:text="${admin.member_nickname}"></span></td>
+				<td><span th:text="${admin.member_birth}"></span></td>
+				<td><span th:text="${admin.member_reg_date}"></span></td>
+				<td><span th:text="${admin.member_modify_date}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<h2>회원 정보	<button type="button" class="btn btn-primary" onClick="location.href='manage_delete'">회원 강제 탈퇴</button></h2>
+
+	<table>
+		<thead>
+			<tr>
+				<th>회원 번호</th>
+				<th>회원 아이디</th>
+				<th>회원 이름</th>
+				<th>회원 이메일</th>
+				<th>회원 닉네임</th>
+				<th>회원 생일</th>
+				<th>가입 승인일</th>
+				<th>회원 정보 수정일</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="user : ${userList}">
+			 	<td><span th:text="${userNum}"></span></td>
+				<td><span th:text="${user.member_account}"></span></td>
+				<td><span th:text="${user.member_name}"></span></td>
+				<td><span th:text="${user.member_email}"></span></td>
+				<td><span th:text="${user.member_nickname}"></span></td>
+				<td><span th:text="${user.member_birth}"></span></td>
+				<td><span th:text="${user.member_reg_date}"></span></td>
+				<td><span th:text="${user.member_modify_date}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+		<h2>탈퇴 회원 정보</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>탈퇴 회원 번호</th>
+				<th>탈퇴 회원 아이디</th>
+				<th>탈퇴 회원 이름</th>
+				<th>탈퇴 회원 이메일</th>
+				<th>탈퇴 회원 닉네임</th>
+				<th>탈퇴 회원 생일</th>
+				<th>탈퇴 회원 가입 승인일</th>
+				<th>탈퇴일 </th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="resign : ${resignList}">
+			 	<td><span th:text="${resignNum}"></span></td>
+				<td><span th:text="${resign.member_account}"></span></td>
+				<td><span th:text="${resign.member_name}"></span></td>
+				<td><span th:text="${resign.member_email}"></span></td>
+				<td><span th:text="${resign.member_nickname}"></span></td>
+				<td><span th:text="${resign.member_birth}"></span></td>
+				<td><span th:text="${resign.member_reg_date}"></span></td>
+				<td><span th:text="${resign.member_modify_date}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>
+</body>
+</html>

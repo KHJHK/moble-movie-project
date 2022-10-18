@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en" xmlns:th="http://thymeleaf.org">
+<meta charset="UTF-8">
+
+<style>
+	table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+	
+	td, th{
+		border: 1px solid black;
+		text-align: left;
+	}
+	
+	tr:nth-child(even){
+		background-color:#dddddd;
+	}
+</style>
+
+<title>Q & A </title>
+	</head>
+<body>
+<form method="post" action="/manage/manage_QandA">
+
+		<h1>Q & A 관리자 페이지</h1>
+		<h2>Q & A 리스트</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>카테고리</th>
+				<th>질문 제목</th>
+				<th>작성자</th>
+				<th>등록일자</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="question : ${questionList}">
+			 	<td><span th:text="${question.question_id}"></span></td>
+				<td><span th:text="${question.category_name}"></span></td>
+				<td><a th:text="${question.question_title}" th:href="@{/manage/manage_QandA_detail(id = ${question.question_id})}"></a></td>
+				<td><span th:text="${question.member_account}"></span></td>
+				<td><span th:text="${question.question_reg_date}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+		<h2>삭제된 Q & A 리스트</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>카테고리</th>
+				<th>질문 제목</th>
+				<th>작성자</th>
+				<th>등록일자</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="delete : ${deleteList}">
+			 	<td><span th:text="${delete.question_id}"></span></td>
+				<td><span th:text="${delete.category_name}"></span></td>
+				<td><span th:text="${delete.question_title}"></span></td>
+				<td><span th:text="${delete.member_account}"></span></td>
+				<td><span th:text="${delete.question_reg_date}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>
+</body>
+</html>

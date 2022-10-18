@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en" xmlns:th="http://thymeleaf.org">
+<meta charset="UTF-8">
+
+<style>
+	table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+	
+	td, th{
+		border: 1px solid black;
+		text-align: left;
+	}
+	
+	tr:nth-child(even){
+		background-color:#dddddd;
+	}
+</style>
+
+<title>공지 사항 </title>
+	</head>
+<body>
+<form method="post" action="/board/notice">
+	<h1>공지 사항</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>카테고리</th>
+				<th>제목</th>
+				<th>등록일자</th>
+				<th>조회수</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="notice : ${noticeList}">
+			 	<td><span th:text="${notice.notice_id}"></span></td>
+				<td><span th:text="${notice.category_name}"></span></td>
+				<td><a th:text="${notice.notice_title}" th:href="@{/board/notice_detail(id = ${notice.notice_id})}"></a></td>
+				<td><span th:text="${notice.notice_reg_date}"></span></td>
+				<td><span th:text="${notice.notice_count}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	</form>
+</body>
+</html>
