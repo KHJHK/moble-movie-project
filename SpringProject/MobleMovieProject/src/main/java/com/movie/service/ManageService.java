@@ -109,7 +109,7 @@ public class ManageService {
 		List<Map<String,Object>> output = new ArrayList<Map<String,Object>>();
 		for(int i = 0; i < noticeVoList.size(); i++) {
 			Map input = new HashMap<>();
-			input.put("notice_id", noticeVoList.get(i).getNotice_id());
+			input.put("notice_num", i+1);
 			input.put("category_name", noticeVoList.get(i).getCategory_name());
 			input.put("notice_reg_date", noticeVoList.get(i).getNotice_reg_date());
 			input.put("notice_title", noticeVoList.get(i).getNotice_title());
@@ -125,7 +125,7 @@ public class ManageService {
 		List<Map<String,Object>> output = new ArrayList<Map<String,Object>>();
 		for(int i = 0; i < noticeVoList.size(); i++) {
 			Map input = new HashMap<>();
-			input.put("notice_id", noticeVoList.get(i).getNotice_id());
+			input.put("notice_num", i+1);
 			input.put("category_name", noticeVoList.get(i).getCategory_name());
 			input.put("notice_reg_date", noticeVoList.get(i).getNotice_reg_date());
 			input.put("notice_title", noticeVoList.get(i).getNotice_title());
@@ -172,7 +172,7 @@ public class ManageService {
 		List<Map<String, Object>> output = new ArrayList<Map<String, Object>>();
 		for(int i = 0; i < questionVoList.size(); i++) {
 			Map input = new HashMap<>();
-			input.put("question_id", questionVoList.get(i).getQuestion_id());
+			input.put("question_num", i+1);
 			input.put("member_account", questionVoList.get(i).getMember_account());
 			input.put("category_name", questionVoList.get(i).getCategory_name());
 			input.put("question_reg_date", questionVoList.get(i).getQuestion_reg_date());
@@ -189,7 +189,7 @@ public class ManageService {
 		List<Map<String, Object>> output = new ArrayList<Map<String, Object>>();
 		for(int i = 0; i < questionVoList.size(); i++) {
 			Map input = new HashMap<>();
-			input.put("question_id", questionVoList.get(i).getQuestion_id());
+			input.put("question_num", i+1);
 			input.put("member_account", questionVoList.get(i).getMember_account());
 			input.put("category_name", questionVoList.get(i).getCategory_name());
 			input.put("question_reg_date", questionVoList.get(i).getQuestion_reg_date());
