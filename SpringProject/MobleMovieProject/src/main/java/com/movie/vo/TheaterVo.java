@@ -5,10 +5,9 @@ import lombok.Data;
 @Data
 public class TheaterVo {
 	private Long theater_id;
-	private CinemaVo cinema_id;
-	private CinemaVo cinema_name;
+	private Long cinema_id;
+	private String cinema_name;
 	private String theater_name;
-	private Integer theater_seat;
-	private Integer theater_price;
-
+	private Long theater_seat;
+	private Long theater_price;
 }
