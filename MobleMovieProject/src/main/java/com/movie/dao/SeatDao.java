@@ -9,5 +9,6 @@ import com.movie.vo.SeatVo;
 
 @Mapper
 public interface SeatDao {
-	public List<SeatVo> getSeletedSeat(@Param("schedule_id")int schedule_id);
+	public List<SeatVo> getSeletedSeat(@Param("schedule_id")Long schedule_id);
+	public int insertSeat(@Param("schedule_id")Long schedule_id, @Param("seat_num")Long seat_num, @Param("seat_name")String seat_name);
 }

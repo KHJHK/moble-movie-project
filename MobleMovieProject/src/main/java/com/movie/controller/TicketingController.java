@@ -53,7 +53,12 @@ public class TicketingController {
 	}
 	
 	@GetMapping("/selectSeat")
-	public List<SeatVo> selectSeat(@RequestParam("schedule_id")int schedule_id){
+	public List<SeatVo> selectSeat(@RequestParam("schedule_id")Long schedule_id){
 		return ticketingService.getSeatInfo(schedule_id);
+	}
+	
+	public int insertSeat(@RequestParam("schedule_id")Long schedule_id, @RequestParam("seat_num")Long seat_num, 
+			@RequestParam("seat_name")String seat_name) {
+		return ticketingService.insertSeat(schedule_id, seat_num, seat_name);
 	}
 }

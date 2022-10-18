@@ -8,5 +8,11 @@
 	FROM seat
 	WEHRE schedule_id = #{schedule_id}
 	</select>
+	
+	<insert id="insertSeat">
+	INSERT
+	INTO seat(schedule_id, seat_num, seat_name)
+	VALUES (#{schedule_id}, #{seat_num}, #{seat_name})
+	</insert>
 
 </mapper>

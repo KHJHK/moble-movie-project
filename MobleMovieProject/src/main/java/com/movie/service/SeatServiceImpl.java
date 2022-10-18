@@ -14,8 +14,13 @@ public class SeatServiceImpl implements SeatService{
 	SeatDao seatDao;
 
 	@Override
-	public List<SeatVo> getSeletedSeat(int schedule_id) {
+	public List<SeatVo> getSeletedSeat(Long schedule_id) {
 		return seatDao.getSeletedSeat(schedule_id);
+	}
+
+	@Override
+	public int insertSeat(Long schedule_id, Long seat_num, String seat_name) {
+		return seatDao.insertSeat(schedule_id, seat_num, seat_name);
 	}
 	
 	
