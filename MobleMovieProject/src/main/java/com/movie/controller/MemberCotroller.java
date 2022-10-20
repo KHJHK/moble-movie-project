@@ -33,26 +33,26 @@ public class MemberCotroller {
 	//로그인
 	@GetMapping("/login")
 	public String login() {
-		return "member/login";
+		return "login";
 	}
 	//로그인 실패
 	@GetMapping("/login_fail")
 	public String loginFail() {
-		return "member/login_fail";
+		return "로그인 실패";
 	}
 	//로그인 성공
 	@GetMapping("/login_success")
 	public String loginSuccess(Model model, Authentication a) {
 		MemberVo memberVo = (MemberVo) a.getPrincipal();
 		model.addAttribute("info", memberVo.getMember_account()+" 의 "+memberVo.getMember_name()+"님");
-		return "member/login_success";
+		return "로그인 성공";
 	}
 	
 	//로그아웃
 	@GetMapping("/logout")
 	public String logoutPage(HttpServletRequest request,HttpServletResponse response) {
 		new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
-		return "member/logout";
+		return "로그아웃 성공";
 	}
 	
 	//회원가입

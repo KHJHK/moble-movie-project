@@ -35,6 +35,7 @@ public class BoardService {
 		for(int i = 0; i < noticeVoList.size(); i++) {
 			Map input = new HashMap<>();
 			input.put("notice_num", i+1);
+			input.put("notice_id", noticeVoList.get(i).getNotice_id());
 			input.put("category_name", noticeVoList.get(i).getCategory_name());
 			input.put("notice_reg_date", noticeVoList.get(i).getNotice_reg_date());
 			input.put("notice_title", noticeVoList.get(i).getNotice_title());
@@ -73,6 +74,7 @@ public class BoardService {
 		for(int i = 0; i < questionVoList.size(); i++) {
 			Map input = new HashMap<>();
 			input.put("question_num", i+1);
+			input.put("question_id", questionVoList.get(i).getQuestion_id());
 			input.put("member_account", questionVoList.get(i).getMember_account());
 			input.put("category_name", questionVoList.get(i).getCategory_name());
 			input.put("question_reg_date", questionVoList.get(i).getQuestion_reg_date());
@@ -118,6 +120,7 @@ public class BoardService {
 	public Map answerView(Long question_id) {
 		AnswerVo answerVo = boardDao.answerView(question_id);
 		Map input = new HashMap<>();
+		input.put("question_id", answerVo.getQuestion_id());
 		input.put("answer_title",answerVo.getAnswer_title());
 		input.put("member_nickname",answerVo.getMember_nickname());
 		input.put("answer_reg_date",answerVo.getAnswer_reg_date());
