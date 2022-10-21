@@ -5,16 +5,16 @@ import "./Section_Header.css";
 
 const Section_Header = () => {
   return (
-    <div className="video">
-      <div className="background">
+    <div>
+      <div>
         <video muted autoPlay loop className="background">
           <source src="/mp4/universus.mp4" />
         </video>
       </div>
-      <div align="center" className="trailer">
+      <div>
         <ReactPlayer
-          className="react-player"
           url={"https://youtu.be/fzUKUfHeIYA"}
+          width="1000px"
           height="600px"
           playing={true} // 자동 재생 on
           muted={true} // 자동 재생 on

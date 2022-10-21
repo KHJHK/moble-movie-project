@@ -1,7 +1,9 @@
 /* Notice_NoticeInfo.css */
 
 .Notice_NoticeInfo_Main {
-  margin: 100px 10px 100px 10px;
+  width: 1000px;
+  height: auto;
+  margin: 100px auto;
 }
 
 .article_detail {
@@ -33,8 +35,4 @@
 
 .article_detail .article_body {
   margin: 30px;
-}
-
-.Notice_NoticeInfo_Main button {
-  float: right;
 }

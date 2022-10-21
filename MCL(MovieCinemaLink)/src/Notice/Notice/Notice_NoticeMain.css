@@ -1,16 +1,9 @@
 /* Notice_NoticeMain.css */
 
-/* reset */
-/* .clearfix:after {
-        content: '';
-        display: block;
-        clear: both;
-        background: red;
-    } */
-
-.container {
+.Notice_NoticeMain {
   width: 1000px;
-  margin: 0 auto;
+  height: auto;
+  margin: 0px auto;
 }
 
 .blind {

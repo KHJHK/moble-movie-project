@@ -1,20 +1,51 @@
 // Ticketing_SelectRegion.js
-import React,{useEffect} from "react";
-import {RegionClick} from "../Ticketing/Ticketing_Selectdoing";
-import {movieClicked,localStoragereset } from "../Ticketing/Ticketing_Selectdoing";
-const Ticketing_SelectRegion = () => {
+import React, { useEffect } from "react";
+import { RegionClick } from "../Ticketing/Ticketing_Selectdoing";
+import {
+  movieClicked,
+  localStoragereset,
+} from "../Ticketing/Ticketing_Selectdoing";
+import axios from "axios";
+import { useState } from "react";
+// import { useEffect } from "react";
+const Ticketing_SelectRegion = (props) => {
+  const [movie, setMovie] = useState([]);
 
-  
-  
+  var movie_id = localStorage.getItem("movie_id");
+
+  useEffect(() => {
+    axios
+      .get(
+        // `https://api.themoviedb.org/3/movie/now_playing?api_key=c4e59022826dc465ea5620d6adaa6813&language=ko&page=1&region=KR`
+        `http://localhost/ticketing/selectLocation?movie_id=${movie_id}`
+      )
+
+      .then((res) => {
+        //console.log("res.data.results : " + JSON.stringify(res.data.results));
+        // console.log("res.data.results : " + JSON.stringify(res.data.results[0]));
+        setMovie(res.data);
+      });
+  }, []);
+
   return (
     <div className="SelectRegion">
       <h3>지역 선택</h3>
-      <ul >
-        <li className="SelectRG" onClick={RegionClick}id="area1">천안</li>
-        <li className="SelectRG" onClick={RegionClick}id="area2">오산</li>
-        <li className="SelectRG" onClick={RegionClick}id="area3">평택</li>
-      </ul>
-      
+      {movie.map((item) => {
+        return (
+          <div>
+            <ul>
+              <li
+                className="SelectRG"
+                onClick={(e) => {
+                  RegionClick(e);
+                }}
+              >
+                {item.cinema_location}
+              </li>
+            </ul>
+          </div>
+        );
+      })}
     </div>
   );
 };

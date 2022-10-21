@@ -20,7 +20,7 @@
 
 .screen {
   border-radius: 8px;
-  background: #1F324B;
+  background: #1f324b;
   width: 100%;
   color: #ffffff;
   transform: rotateX(-30deg) scale(1.2);
@@ -41,7 +41,7 @@ a.loader {
   width: 100%;
   display: flex;
   background: #f0f0f0e6;
-  z-index: \"2\";
+  z-index: 1;
   justify-content: center;
   align-items: center;
 }
@@ -81,7 +81,7 @@ a.loader {
 
 .seat--selected {
   cursor: pointer;
-  background-color: #FFD700;
+  background-color: #ffd700;
   color: #000000;
 }
 
@@ -106,7 +106,7 @@ a.loader {
   width: max-content;
 }
 
-.seat-picker>*:not(:last-child) {
+.seat-picker > *:not(:last-child) {
   margin-top: 2px;
   margin-bottom: 2px;
 }
@@ -130,13 +130,11 @@ a.loader {
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #9E9E9E;
+  color: #9e9e9e;
 }
 
 #seatTest {
-
-display: none;
-
+  display: none;
 }
 
 /* 행, 열 그림자 */

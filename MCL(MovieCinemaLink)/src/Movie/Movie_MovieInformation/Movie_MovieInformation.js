@@ -7,7 +7,7 @@ const Movie_MovieInformation = () => {
   return (
     <div>
       <Header />
-      <Movie_MovieInformation_Main  />
+      <Movie_MovieInformation_Main />
       <Footer />
     </div>
   );

@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 import ReactModal from "react-modal";
 import { Modal, input, withWidth } from "@material-ui/core";
+import axios from "axios";
 
 const CustomModal = (props) => {
   const { isOpen } = props;
   return isOpen ? <ReactModal {...props} /> : null;
 };
 
-const Heading = ({ useCustomModal }) => <div style={modal}></div>;
+// const Heading = ({ useCustomModal }) => <div style={modal}></div>;
 
 //ModalComponent 스타일
 const customStyles = {
@@ -25,13 +26,24 @@ const customStyles = {
 };
 
 const Header = (props) => {
-  // 1: 로그인 2: ID/Pw찾기 3: 메일전송(PW찾기) 4: 회원가입 5: IW찾기
+  //로그인 유지 세션
+  let sessionStorage = window.sessionStorage;
+
+  let [loginId, setLoginId] = useState("");
+  let [loginPassword, setLoginPassword] = useState("");
+  let [savedLoginId, setSavedLoginId] = useState("");
+  let [savedLoginPassword, setSavedLoginPassword] = useState("");
+
+  // 1: 로그인 2: ID/Pw찾기 3: 메일전송(PW찾기) 4: 회원가입 5: IW찾기 6:회원가입완료
   const [useCustomModal, setUseCustomModal] = React.useState(false);
   const [showModal1, setShowModal1] = React.useState(false);
   const [showModal2, setShowModal2] = React.useState(false);
   const [showModal3, setShowModal3] = React.useState(false);
   const [showModal4, setShowModal4] = React.useState(false);
   const [showModal5, setShowModal5] = React.useState(false);
+  const [showModal6, setShowModal6] = React.useState(false);
+  const [showModal7, setShowModal7] = React.useState(false);
+  const [showModal8, setShowModal8] = React.useState(false);
 
   const ModalComponent = useCustomModal ? CustomModal : ReactModal;
 
@@ -65,7 +77,7 @@ const Header = (props) => {
 
     if (!emailIDRegex.test(emailIDCurrent)) {
       setEmailMessageID("이메일 형식이 틀렸습니다.");
-      setIsEmailID(falseddz);
+      setIsEmailID(false);
     } else {
       setEmailMessageID("올바른 이메일 형식입니다.");
       setIsEmailID(true);
@@ -90,7 +102,7 @@ const Header = (props) => {
     const idPWRegex = /[~!@#$%^&*()_+|<>?:{}.,/;='"|a-z|A-Z|0-9]/;
     const idPWCurrent = e.target.value;
     setIdPW(idPWCurrent);
-    ㅌ;
+
     if (!idPWRegex.test(idPWCurrent)) {
       setIdMessagePW("영문, 숫자만 입력 가능합니다.");
       setIsIdPW(false);
@@ -162,6 +174,7 @@ const Header = (props) => {
       setIsName(true);
     }
   };
+
   const onEmailChange = (e) => {
     const emailRegex =
       /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
@@ -227,6 +240,76 @@ const Header = (props) => {
       setIsNickname(true);
     }
   };
+
+  //visible
+  const [login, setLogin] = useState(false);
+
+  const logIn = (e) => {
+    if (
+      (sessionStorage.getItem("loginId"),
+      sessionStorage.getItem("loginPassword") == null)
+    ) {
+      return (
+        <div className="TopMenu">
+          <div className="TopMenu3">
+            <strong onClick={() => setShowModal1(true)}>로그인</strong>
+          </div>
+          <div className="TopMenu2">
+            <strong onClick={() => setShowModal4(true)}>회원가입</strong>
+          </div>
+        </div>
+      );
+    } else if (
+      (sessionStorage.getItem("loginId"),
+      sessionStorage.getItem("loginPassword") != null)
+    ) {
+      return (
+        <div className="TopMenu">
+          <div className="TopMenu2">
+            <Link to={"/"}>
+              <strong
+                onClick={() => {
+                  sessionStorage.removeItem("loginId", loginId),
+                    sessionStorage.removeItem("loginPassword", loginPassword),
+                    alert("로그아웃");
+                }}
+              >
+                로그아웃
+              </strong>
+            </Link>
+          </div>
+          <div className="TopMenu3">
+            <Link to="/Member_MyPage">
+              <strong> 마이페이지</strong>
+            </Link>
+          </div>
+        </div>
+      );
+    }
+  };
+
+  // axios({
+  //   method: "post",
+  //   url: "http://localhost:80/member/login",
+  //   data: {
+  //     username: loginId,
+  //     password: loginPassword,
+  //   },
+  // })
+  //   .then((res) => {
+  //     console.log(res);
+  //     dispatch(
+  //       setUser({
+  //         username: res.data.username,
+  //         password: res.data.password,
+  //       })
+  //     );
+
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
+
   return (
     <header>
       {/* 로고 */}
@@ -243,31 +326,110 @@ const Header = (props) => {
           onRequestClose={() => setShowModal1(false)}
           style={customStyles}
         >
-          <div className="customStyles">
-            <header className="Modal_fullTitle">
-              <strong className="Modal_title">로그인</strong>
-              <button
-                className="close_btn"
-                onClick={() => setShowModal1(false)}
-              >
-                &times;
-              </button>
-            </header>
-            <main>
-              <br />
-              <input type="text" placeholder="아이디" />
-              <br />
+          <form action="http://localhost:80/member/login_proc" method="post">
+            <div className="customStyles">
+              <header className="Modal_fullTitle">
+                <strong className="Modal_title">로그인</strong>
+                <button
+                  className="close_btn"
+                  onClick={() => setShowModal1(false)}
+                >
+                  &times;
+                </button>
+              </header>
+              <main>
+                <br />
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="아이디"
+                  onChange={(e) => {
+                    setLoginId(e.target.value);
+                  }}
+                />
+                <br />
 
-              <input type="password" placeholder="비밀번호" />
-              <br />
-              <p onClick={() => setShowModal2(true)}>아이디 / 비밀번호 찾기</p>
-              <br />
-              <button onClick={() => setShowModal1(false)}>로그인</button>
-              <button onClick={() => setShowModal4(true)}>회원가입</button>
-              <button onClick={() => setShowModal1(false)}>닫기</button>
-            </main>
-            <footer></footer>
-          </div>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="비밀번호"
+                  onChange={(e) => {
+                    setLoginPassword(e.target.value);
+                  }}
+                />
+                <br />
+                <strong onClick={() => setShowModal2(true)}>
+                  아이디 / 비밀번호 찾기
+                </strong>
+                <br />
+                <button
+                  type="submit"
+                  onClick={() => {
+                    // setShowModal1(false);
+                    // setLogin(true);
+                    sessionStorage.setItem("loginId", loginId);
+                    sessionStorage.setItem("loginPassword", loginPassword);
+
+                    setSavedLoginId(sessionStorage.getItem("loginId"));
+                    setSavedLoginPassword(
+                      sessionStorage.getItem("loginPassword")
+                    );
+
+                    // 시큐리티 전송
+                    // axios.post(`http://localhost:80/member/login`)
+                  }}
+                >
+                  로그인
+                </button>
+                <button onClick={() => setShowModal4(true)}>회원가입</button>
+                <button onClick={() => setShowModal1(false)}>닫기</button>
+              </main>
+            </div>
+          </form>
+        </ModalComponent>
+
+        {/* 로그인 성공 */}
+        <ModalComponent
+          isOpen={showModal7}
+          onRequestClose={() => setShowModal7(false)}
+          style={customStyles}
+        >
+          <form action="http://localhost:80/member/login_success">
+            <div className="customStyles">
+              <header className="Modal_fullTitle">
+                <strong>로그인 성공</strong>
+                <button
+                  className="close_btn"
+                  onClick={() => setShowModal7(false)}
+                >
+                  &times;
+                </button>
+              </header>
+              로그인 성공
+            </div>
+          </form>
+        </ModalComponent>
+
+        {/* 로그인 실패 */}
+        <ModalComponent
+          isOpen={showModal8}
+          onRequestClose={() => setShowModal8(false)}
+          style={customStyles}
+        >
+          <form action="http://localhost:80/member/login_fail">
+            <div className="customStyles">
+              <header className="Modal_fullTitle">
+                <strong>로그인 실패</strong>
+                <button
+                  className="close_btn"
+                  onClick={() => setShowModal8(false)}
+                >
+                  &times;
+                </button>
+              </header>
+              로그인 실패
+            </div>
+          </form>
         </ModalComponent>
 
         {/* ID/PW 찾기 */}
@@ -278,7 +440,7 @@ const Header = (props) => {
         >
           <div className="customStyles">
             <header className="Modal_fullTitle">
-              <strong className="Model_title">ID/PW 찾기</strong>
+              <strong>ID/PW 찾기</strong>
               <button
                 className="close_btn"
                 onClick={() => setShowModal2(false)}
@@ -319,7 +481,7 @@ const Header = (props) => {
               )}
               <br />
               <br />
-              <button onClick={() => setShowModal5(true)}>ID 찾기</button>
+              <button onClick={() => setShowModal5(true)}>ID찾기</button>
 
               <br />
               <br />
@@ -547,11 +709,11 @@ const Header = (props) => {
 
             <button
               type="submit"
-              // onClick={close}
+              onClick={() => setShowModal4(false)}
               disabled={!(isName && isEmail && isId && isPw && isPwCf)}
               //db로 보내기
             >
-              회원가입
+              회원가입완료
             </button>
             <button className="close" onClick={() => setShowModal4(false)}>
               닫기
@@ -576,37 +738,14 @@ const Header = (props) => {
               </button>
             </header>
             <main>
-              <br />
-              <br />
               <p>ID Text Ex:did***********</p>
-              <br />
-              <br />
             </main>
             <button onClick={() => setShowModal5(false)}>확인</button>
           </div>
         </ModalComponent>
 
         {/* =================================================================================== */}
-        <div class="TopMenu">
-          <div className="TopMenu1">
-            <p>
-              <strong onClick={() => setShowModal1(true)}>로그인</strong>
-            </p>
-          </div>
-          <div className="TopMenu2">
-            <p>
-              <strong onClick={() => setShowModal4(true)}>회원가입</strong>
-            </p>
-          </div>
-
-          <div className="TopMenu3">
-            <Link to="/Member_MyPage">
-              <p>
-                <strong> 마이페이지</strong>
-              </p>
-            </Link>
-          </div>
-        </div>
+        {logIn()}
       </div>
 
       <div class="maincenter">

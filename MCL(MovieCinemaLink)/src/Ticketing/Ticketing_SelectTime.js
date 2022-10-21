@@ -7,10 +7,18 @@ const Ticketing_SelectTime = () => {
     <div className="SelectTime">
       <h3>시간 선택</h3>
       <ul>
-        <li className="SelectTI"onClick={TimeClick}>AM 6:00</li>
-        <li className="SelectTI"onClick={TimeClick}>PM 12:0</li>
-        <li className="SelectTI"onClick={TimeClick}>PM 6:00</li>
-        <li className="SelectTI"onClick={TimeClick}>AM 12:0</li>
+        <li className="SelectTI" onClick={TimeClick}>
+          AM 6:00
+        </li>
+        <li className="SelectTI" onClick={TimeClick}>
+          PM 12:0
+        </li>
+        <li className="SelectTI" onClick={TimeClick}>
+          PM 6:00
+        </li>
+        <li className="SelectTI" onClick={TimeClick}>
+          AM 12:0
+        </li>
       </ul>
     </div>
   );

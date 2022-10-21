@@ -3,26 +3,21 @@
 import React, { useState } from "react";
 import SeatPicker from "react-seat-picker";
 import "./Ticketing_SelectSeat.css";
-import Ticketing_TicketingMain_result from "./Ticketing_TicketingMain_result"
+import Ticketing_TicketingMain_result from "./Ticketing_TicketingMain_result";
 const Ticketing_SelectSeat = (props) => {
-
   const { open, close, header } = props;
   const [modalOpenSignUp, setModalOpenSignUp] = useState(false);
 
   const openModalSignup = () => {
-
-    if(selected.toString()===''){
-      document.querySelector('#seatTest').style.display ='block'
-
+    if (selected.toString() === "") {
+      document.querySelector("#seatTest").style.display = "block";
+    } else {
+      setModalOpenSignUp(true);
     }
-
-    else{setModalOpenSignUp(true);}
-    
   };
   const closeModalSignUp = () => {
     setModalOpenSignUp(false);
   };
-
 
   const [selected, setSelected] = React.useState([]);
 
@@ -31,7 +26,7 @@ const Ticketing_SelectSeat = (props) => {
     const newTooltip = `${id} 선택가능`;
     addCb(row, number, id, newTooltip);
     addCb(row, number, id);
-    document.querySelector('#seatTest').style.display ='none'
+    document.querySelector("#seatTest").style.display = "none";
   };
 
   const removeSeatCallback = ({ row, number, id }, removeCb) => {
@@ -192,7 +187,7 @@ const Ticketing_SelectSeat = (props) => {
   ];
 
   const movievalue = selected.toString();
-  localStorage.setItem('movieSeat',movievalue);
+  localStorage.setItem("movieSeat", movievalue);
 
   return (
     <div className="TicketingSeat">
@@ -212,19 +207,18 @@ const Ticketing_SelectSeat = (props) => {
           <br />
           <p>선택한 좌석 : {selected.toString()}</p>
           <p id="seatTest"> 좌석을 선택해주세요!!</p>
-          
         </span>
         {/* <button className="btn btn-warning">Continue</button> */}
 
         <React.Fragment>
-            <button className="close" onClick={openModalSignup}>
-              예매하기
-            </button>
-            <Ticketing_TicketingMain_result
-              open={modalOpenSignUp}
-              close={closeModalSignUp}
-            ></Ticketing_TicketingMain_result>
-          </React.Fragment>
+          <button className="close" onClick={openModalSignup}>
+            예매하기
+          </button>
+          <Ticketing_TicketingMain_result
+            open={modalOpenSignUp}
+            close={closeModalSignUp}
+          ></Ticketing_TicketingMain_result>
+        </React.Fragment>
       </div>
     </div>
   );

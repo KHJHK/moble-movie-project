@@ -9,18 +9,12 @@ import { useEffect } from "react";
 // import {movieClicked} from "../Ticketing/Ticketing_Selectdoing";
 
 const Ticketing_SelectMovie = () => {
-
-
-  
   const [movie, setMovie] = useState([]);
-  
 
   axios
     .get(
       `https://api.themoviedb.org/3/movie/now_playing?api_key=c4e59022826dc465ea5620d6adaa6813&language=ko&page=1&region=KR`
     )
-
-    
 
     .then((res) => {
       //console.log("res.data.results : " + JSON.stringify(res.data.results));
@@ -29,21 +23,18 @@ const Ticketing_SelectMovie = () => {
     });
 
   return (
-    <div className="SelectMovie" >
-     
+    <div className="SelectMovie">
       <h3>영화 선택</h3>
       {movie.map((item) => {
-        
         return (
-          
           <div>
             <ul>
               <li className="SelectMV" onClick={movieClick}>
-              {item.title}
+                {item.title}
               </li>
-            </ul> 
+            </ul>
 
-              <ul>
+            <ul>
               <li className="SelectIMG">
                 {item.backdrop_path}
 
@@ -51,14 +42,10 @@ const Ticketing_SelectMovie = () => {
               </li>
             </ul>
           </div>
-          
         );
-       
       })}
-      </div>
-    
+    </div>
   );
-  
 };
 
 export default Ticketing_SelectMovie;

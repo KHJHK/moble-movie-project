@@ -14,7 +14,6 @@ const Member_Login = (props) => {
     setModalOpenSignUp(false);
   };
 
-  
   return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
     <div className={open ? "openModal modal" : "modal"}>
@@ -30,7 +29,7 @@ const Member_Login = (props) => {
             <br />
             <input type="text" placeholder="아이디" />
             <br />
-            
+
             <input type="text" placeholder="비밀번호" />
             <br />
             <text>아이디 / 비밀번호 찾기</text>

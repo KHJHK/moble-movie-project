@@ -1,16 +1,9 @@
 /* Questions_QuestionsMain.css */
 
-/* reset */
-/* .clearfix:after {
-        content: '';
-        display: block;
-        clear: both;
-        background: red;
-    } */
-
-.container {
+.Questions_QuestionsMain {
   width: 1000px;
-  margin: 0 auto;
+  height: auto;
+  margin: 0px auto;
 }
 
 .blind {

@@ -1,7 +1,9 @@
 /* Questions_QuestionsInfo.css */
 
-.Questions_QuestionsInfo {
-  margin: 100px 10px 100px 10px;
+.Questions_QuestionsInfo_Main {
+  width: 1000px;
+  height: auto;
+  margin: 100px auto;
 }
 
 .article_detail {
@@ -29,6 +31,10 @@
   border-radius: 10px;
   width: 300px;
   padding: 0px 30px 0px 30px;
+}
+
+.article_detail .article_body {
+  margin: 30px;
 }
 
 .article_detail .article_body {

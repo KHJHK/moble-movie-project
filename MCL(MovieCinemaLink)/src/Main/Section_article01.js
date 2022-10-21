@@ -1,18 +1,13 @@
 // Section_article01.js
-import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "./Section_article.css";
-
-// Import Swiper styles
-import "swiper/css"; //basic
-import "swiper/css/navigation";
-// import "swiper/css/pagination";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-// Autoplay
+import { Link, useParams } from "react-router-dom";
 import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
-// import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import axios from "axios";
+import "./Section_article.css";
+import "swiper/css";
+import "swiper/css/navigation";
+
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 const IMG_BASE_URL = "https://image.tmdb.org/t/p/w1280";
 

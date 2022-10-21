@@ -4,7 +4,6 @@
 .Ticketing_TicketingMain {
   width: 1000px;
   height: 1300px;
- 
 }
 
 .Ticketing_TicketingMain li {
@@ -82,7 +81,6 @@
 .SelectTime,
 .TicketingSeat {
   display: none;
-
 }
 
 li.SelectMV.clicked,
@@ -92,8 +90,8 @@ li.SelectDT.clicked,
 li.SelectTI.clicked {
   background-color: #ffd700;
   color: #000000;
-  
 }
 
-li.SelectCN{float: left;}
-
+li.SelectCN {
+  float: left;
+}

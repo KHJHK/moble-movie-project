@@ -1,13 +1,21 @@
 // Notice_NoticeMain.js
-import React from "react";
-import { useState } from "react";
-import { Notice_NoticeMainJson } from "../Notice/Notice_NoticeMainJson";
+import React, { useState, useEffect } from "react";
+import "./Notice_NoticeMain.css";
 import Notice_NoticeMain_Notice from "./Notice_NoticeMain_Notice";
+import axios from "axios";
 
 const Notice_NoticeMain = () => {
-  const [id, setId] = useState("");
+  // DB 데이터 불러오기
+  const [notice, setNotice] = useState([]);
+  useEffect(() => {
+    axios.get(`http://localhost:80/board/notice`).then((res) => {
+      // console.log("res.data : " + JSON.stringify(res[1]));
+      setNotice(res.data);
+    });
+  }, []);
+
   return (
-    <section>
+    <div className="Notice_NoticeMain">
       <h3>공지사항</h3>
 
       {/* 검색창 */}
@@ -49,12 +57,14 @@ const Notice_NoticeMain = () => {
               </th>
             </tr>
           </thead>
-          {/* 데이터 불러오기 */}
+
           <tbody>
-            {Notice_NoticeMainJson.results.map((item) => {
+            {/* 데이터 불러오기 */}
+            {notice.map((item) => {
               return (
                 <Notice_NoticeMain_Notice
                   notice_id={item.notice_id}
+                  notice_num={item.notice_num}
                   category_name={item.category_name}
                   notice_title={item.notice_title}
                   notice_reg_date={item.notice_reg_date}
@@ -66,7 +76,7 @@ const Notice_NoticeMain = () => {
           </tbody>
         </table>
       </div>
-    </section>
+    </div>
   );
 };
 

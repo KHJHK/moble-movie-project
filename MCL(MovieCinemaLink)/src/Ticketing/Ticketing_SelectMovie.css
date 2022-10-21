@@ -9,9 +9,7 @@
     margin: 10px 10px 10px 10px;
 } */
 
-.SelectMV :active{
-    
-        background-color: #ffd700;
-        color: #000000;
-        
+.SelectMV :active {
+  background-color: #ffd700;
+  color: #000000;
 }

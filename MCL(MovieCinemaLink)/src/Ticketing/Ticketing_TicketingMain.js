@@ -9,23 +9,21 @@ import Ticketing_SelectCinema from "./Ticketing_SelectCinema";
 import Ticketing_SelectDate from "./Ticketing_SelectDate";
 import Ticketing_SelectTime from "./Ticketing_SelectTime";
 
-
 // import SelectSeat.css
 import "./Ticketing_SelectSeat.css";
 import Ticketing_SelectSeat from "./Ticketing_SelectSeat";
-import {movieClicked,localStoragereset} from "../Ticketing/Ticketing_Selectdoing";
-import "../Ticketing/Ticketing_Selectdoing"
+import {
+  movieClicked,
+  localStoragereset,
+} from "../Ticketing/Ticketing_Selectdoing";
+import "../Ticketing/Ticketing_Selectdoing";
 import { useEffect } from "react";
 
 // Select 동작 구현
 
-
 const Ticketing_TicketingMain = () => {
-  
-  var movievalue = localStorage.getItem('key');
-  console.log("Test MOVIE : "+movievalue);
-
-  
+  var movievalue = localStorage.getItem("key");
+  console.log("Test MOVIE : " + movievalue);
 
   // movieClicked ();
   return (
@@ -65,13 +63,8 @@ const Ticketing_TicketingMain = () => {
       <div className="Ticketing_SelectSeat">
         <Ticketing_SelectSeat />
       </div>
-      
-      
-      
     </div>
   );
-  
-  
 };
 
 export default Ticketing_TicketingMain;

@@ -1,24 +1,9 @@
 /* Section_Header.css */
 
-.video {
-  background: #1f324b;
-  z-index: -1;
-  position: relative;
-}
-
 .background {
+  z-index: -1;
   position: absolute;
   width: 100%;
   height: 600px;
   object-fit: fill;
-}
-
-.trailer {
-  position: relative;
-  height: 600px;
-  border-radius: 10px;
-}
-
-section {
-  padding-bottom: 105px;
 }

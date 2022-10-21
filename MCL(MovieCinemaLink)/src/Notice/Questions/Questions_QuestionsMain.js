@@ -1,15 +1,22 @@
 // Questions_QuestionsMain.js
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Questions_QuestionsMain.css";
-import { useState } from "react";
-import { Questions_QuestionsMainJson } from "../Questions/Questions_QuestionsMainJson";
 import Questions_QuestionsMain_Questions from "./Questions_QuestionsMain_Questions";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Questions_QuestionsMain = () => {
-  const [id, setId] = useState("");
+  // DB 데이터 불러오기
+  const [questions, setQuestionsInfo] = useState([]);
+  useEffect(() => {
+    axios.get(`http://localhost:80/board/question_list`).then((res) => {
+      // console.log("res.data : " + JSON.stringify(res[1]));
+      setQuestionsInfo(res.data);
+    });
+  }, []);
+
   return (
-    <section>
+    <div className="Questions_QuestionsMain">
       <h3>문의사항</h3>
 
       {/* 검색창 */}
@@ -51,16 +58,17 @@ const Questions_QuestionsMain = () => {
               </th>
             </tr>
           </thead>
-          {/* 데이터 불러오기 */}
+          {/* DB 데이터 불러오기 */}
           <tbody>
-            {Questions_QuestionsMainJson.results.map((item) => {
+            {questions.map((item) => {
               return (
                 <Questions_QuestionsMain_Questions
-                  questions_id={item.questions_id}
-                  questions_category_name={item.questions_category_name}
-                  questions_title={item.questions_title}
-                  questions_reg_date={item.questions_reg_date}
-                  questions_memberId={item.questions_memberId}
+                  question_id={item.question_id}
+                  question_num={item.question_num}
+                  category_name={item.category_name}
+                  question_title={item.question_title}
+                  question_reg_date={item.question_reg_date}
+                  member_account={item.member_account}
                   // setId={setId}
                 />
               );
@@ -68,10 +76,12 @@ const Questions_QuestionsMain = () => {
           </tbody>
         </table>
         <Link to="Questions_Write">
-          <button className="Questions_QuestionsMain_btn">등록</button>
+          <button className="Questions_QuestionsMain_btn">Q & A 등록</button>
         </Link>
+        <br />
+        <br />
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -1,10 +1,13 @@
 /* Section_article.css */
 
 .Section_article {
-  margin: 10px;
+  width: 1000px;
+  margin: 0px auto; /* 위아래 여백 없이 가로 중앙에 배치 */
+
+  /* margin: 10px;
   padding: 10px;
   border: 3px solid #bfbfbf;
-  border-radius: 20px;
+  border-radius: 20px; */
 }
 
 .Section_article01 {

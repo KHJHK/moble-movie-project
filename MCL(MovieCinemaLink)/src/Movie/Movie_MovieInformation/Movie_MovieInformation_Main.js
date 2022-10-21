@@ -51,7 +51,9 @@ function Movie_MovieInformation_Main(props) {
                 <h5>상세정보 : {movie[key].overview}</h5>
               </td>
             </tr>
-            <tr><td colSpan={2} height={"30px"}></td></tr>
+            <tr>
+              <td colSpan={2} height={"30px"}></td>
+            </tr>
             <tr>
               <td colSpan={2}>
                 <ReactPlayer
@@ -59,12 +61,11 @@ function Movie_MovieInformation_Main(props) {
                   height="75vh"
                   width="100%"
                   controls={true}
-
                 />
               </td>
             </tr>
           </table>
-        </div >
+        </div>
       );
     }
   };

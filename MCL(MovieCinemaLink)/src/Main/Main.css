@@ -3,40 +3,86 @@
 * {
   margin: 0;
   padding: 0;
+  margin: 0px auto; /* 위아래 여백 없이 가로 중앙에 배치 */
 }
 
-body {
+/* body {
   width: 1000px;
-  /* 위아래 여백 없이 가로 중앙에 배치 */
+  height: auto;
   margin: 0px auto;
-}
+} */
 
 h3 {
   margin: 20px;
 }
 
+/* 모든 a 태그 css 적용 */
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+/* 모든 button css 적용 */
 button {
-  margin: 10px;
-  border-radius: 10px;
+  margin: 5px;
+  padding: 5px;
+
   width: 100px;
-  height: 30px;
+  height: auto;
+
+  border-radius: 10px;
+  text-align: center;
   color: #ffffff;
   background: #1f324b;
   border: 1px solid #1f324b;
 }
 
-/* 로그인, 회원가입의 input,
-선택박스 CSS 적용 */
-input {
-  width: 200px;
-  height: auto;
+button:hover {
   margin: 5px;
-  padding: 10px;
-  border-radius: 5px;
-  border: 3px solid #1f324b;
-  text-align: left;
+  padding: 5px;
+
+  width: 100px;
+  height: auto;
+
+  border-radius: 10px;
+  text-align: center;
+  color: #ffffff;
+  background: #ff6347;
+  border: 1px solid #ff6347;
 }
 
+.close_btn,
+.close_btn:hover {
+  position: absolute;
+  display: inline-block;
+  top: 0.1px;
+  bottom: 0.1px;
+  right: 15px;
+
+  width: 27px;
+  height: 27px;
+  text-align: center;
+  color: #d9d9d9;
+  border: 1px solid #d9d9d9;
+  background: #1f324b;
+}
+
+/* 모든 input css 적용 */
+input {
+  margin: 5px;
+  padding: 0px;
+
+  width: 200px;
+  height: auto;
+
+  padding: 10px;
+
+  border-radius: 10px;
+  text-align: left;
+  border: 3px solid #1f324b;
+}
+
+/* 보류 */
 .Notice_btn {
   text-align: right;
 }

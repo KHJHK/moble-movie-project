@@ -9,22 +9,27 @@ export default function Questions_QuestionsMain_Questions(props) {
     //   <table class="board_table">
     //     <tbody>
     <tr>
+      {/* 번호 */}
       <td>
-        <span>{props.questions_id}</span>
+        <span>{props.question_num}</span>
       </td>
+      {/* 구분 */}
       <td>
-        <span>{props.questions_category_name}</span>
+        <span>{props.category_name}</span>
       </td>
-      <td className="tbodyTitle" key={props.questions_id}>
-        <Link to={`/Questions_QuestionsInfo/${props.questions_id}`}>
-          <strong>{props.questions_title}</strong>
+      {/* 제목 */}
+      <td className="tbodyTitle" key={props.question_id}>
+        <Link to={`/Questions_QuestionsInfo/${props.question_id}`}>
+          <strong>{props.question_title}</strong>
         </Link>
       </td>
+      {/* 등록일 */}
       <td>
-        <span>{props.questions_reg_date}</span>
+        <span>{props.question_reg_date}</span>
       </td>
+      {/* 회원ID */}
       <td>
-        <span>{props.questions_memberId}</span>
+        <span>{props.member_account}</span>
       </td>
     </tr>
     //     </tbody>
