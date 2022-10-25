@@ -1,5 +1,11 @@
 /* Food_MovieFood.css */
 
+.Food_MovieFood {
+  margin: 0px auto;
+  max-width: 1000px;
+  height: auto;
+}
+
 .food {
   z-index: 0;
   /* margin-top: 50px; */
@@ -12,8 +18,6 @@
 .Ade,
 .coffee,
 .dessert {
-  /* margin-top: 100px; */
-  width: 1000px;
   height: 300px;
   position: relative;
 }

@@ -1,15 +1,15 @@
 // Questions_QuestionsInfo_Main.js
-
 import React, { useState, useEffect } from "react";
 import "./Questions_QuestionsInfo_Main.css";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Questions_modal_Delete from "../modal/Questions_modal_Delete";
 
 function Questions_QuestionsInfo_Main(props) {
   const { id } = useParams();
 
-  // DB 데이터 불러오기
+  // DB 데이터 불러오기 (상세정보)
   const [questions, setQuestionsInfo] = useState("");
   useEffect(() => {
     axios
@@ -22,8 +22,36 @@ function Questions_QuestionsInfo_Main(props) {
       });
   }, []);
 
+  // DB 데이터 불러오기 (리스트 삭제)
+  const deleteQA = () => {
+    const member_id = 1; //document.getElementById("memberId").value;
+    const question_id = document.getElementById("questionId").value;
+    console.log("삭제 : ", member_id, question_id);
+
+    const params = {
+      member_id: 1,
+      question_id: question_id,
+    };
+
+    axios.post(`http://localhost:80/board/question_delete`, params);
+  };
+
+  // 관리자 DB 데이터 불러오기 (관리자 답변)
+  const [answer, setAnswerInfo] = useState("");
+  useEffect(() => {
+    axios
+      .get(`http://localhost:80/board/answer_detail?id=${id}`)
+      .then((res) => {
+        setAnswerInfo(res.data);
+      });
+  }, []);
+
+  // 등록했을 때 팝업창 실행
+  const [modalOpenDelete, setmodalOpenDelete] = useState(false);
+
   return (
     <div className="Questions_QuestionsInfo_Main">
+      {/* ======================== 사용자 질문 ======================== */}
       <section className="article_detail">
         <table>
           <thead>
@@ -42,26 +70,68 @@ function Questions_QuestionsInfo_Main(props) {
               <th>등록일</th>
               <td>{questions.question_reg_date}</td>
             </tr>
+            {/* <tr>
+              <td id="questionId">{questions.question_id}</td>
+            </tr> */}
+            <input
+              type="hidden"
+              id="questionId"
+              value={questions.question_id}
+            />
           </thead>
         </table>
 
         {/* 내용 */}
-        <div class="article_body">
-          <p>{questions.question_content}</p>
+        <div className="article_body">
+          <pre>{questions.question_content}</pre>
         </div>
       </section>
+      <br />
 
-      {/* btn */}
+      {/* ======================== 관리자 답변 ======================== */}
+      <section className="article_detail">
+        <table>
+          <thead>
+            <tr>
+              <th>관리자ID</th>
+              <td>{answer.member_nickname}</td>
+
+              <th>답변날짜</th>
+              <td>{answer.answer_reg_date}</td>
+            </tr>
+
+            <tr>
+              <th>제목</th>
+              <td>{answer.answer_title}</td>
+            </tr>
+
+            <input type="hidden" id="questionId" value={answer.question_id} />
+          </thead>
+        </table>
+
+        {/* 내용 */}
+        <div className="article_body">
+          <pre>{answer.answer_content}</pre>
+        </div>
+      </section>
+      {/* ======================== btn ======================== */}
       <div className="Notice_btn">
         <Link to="/Questions_Questions">
           <button>목록</button>
         </Link>
-        {/* 수정필요 */}
-        <Link to="/Questions_Write">
+
+        <Link to={`/Questions_Update/${questions.question_id}`}>
           <button>수정</button>
         </Link>
-        {/* 추가필요 */}
-        <button>삭제</button>
+
+        <React.Fragment>
+          <button onClick={() => setmodalOpenDelete(true)}>삭제</button>
+          <Questions_modal_Delete
+            open={modalOpenDelete}
+            close={() => setmodalOpenDelete(false)}
+            deleteQAFunc={deleteQA}
+          />
+        </React.Fragment>
       </div>
     </div>
   );

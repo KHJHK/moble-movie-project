@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./UpComingMovie_Main_Movie.css";
 import axios from "axios";
 
-const IMG_BASE_URL = "https://image.tmdb.org/t/p/w1280/";
+const IMG_BASE_URL = "https://image.tmdb.org/t/p/w1280";
 
 // 영화명, 포스터 경로, 평점
 export default function UpComingMovie_Main_Movie(props) {
@@ -31,7 +31,7 @@ export default function UpComingMovie_Main_Movie(props) {
         <div className="UpComingMovie_Main_Movie">
           <div key={m.id + "-" + inx}>
             <Link
-              to={`/Movie_MovieInformation/${m.id}`}
+              to={`/Movie_MovieInformationUpComing/${m.id}`}
               // id={movie.id}
               // onClick={() => movie.setId(m.id)}
             >

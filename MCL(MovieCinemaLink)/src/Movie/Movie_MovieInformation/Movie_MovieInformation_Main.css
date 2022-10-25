@@ -1,13 +1,14 @@
 /* Movie_MovieInformation_Main.css */
 
 .Movie_MovieInformation_Main {
-  width: 1000px;
-  height: 1000px;
+  max-width: 1000px;
+  height: auto;
 }
 .Movie_MovieInformation_Main img {
   float: left;
   width: 200px;
   height: 300px;
+  border-radius: 3px;
 }
 
 .MovieInfo {

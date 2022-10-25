@@ -26,79 +26,81 @@ const Food_MovieFood = () => {
   }
 
   return (
-    <div className="Section">
+    <div>
       <Header />
-      <h3>무비푸드</h3>
-      <div className="food">
-        <div className="Popcorn">
-          <div className="underline">
-            <h4 id="Popcornclick">팝콘</h4>
-          </div>
-          <div className="foodimg1">{Popcorn.map(renderFood)}</div>
-        </div>
 
-        <div className="Ade">
-          <div className="underline">
-            <h4 id="Adeclick">에이드</h4>
+      <div className="Food_MovieFood">
+        <h3>무비푸드</h3>
+        <div className="food">
+          <div className="Popcorn">
+            <div className="underline">
+              <h4 id="Popcornclick">팝콘</h4>
+            </div>
+            <div className="foodimg1">{Popcorn.map(renderFood)}</div>
           </div>
-          <div className="foodimg2">{Cookie.map(renderFood)}</div>
-        </div>
 
-        <div className="tea">
-          <div className="underline">
-            <h4 id="teaclick">티(티바나)</h4>
+          <div className="Ade">
+            <div className="underline">
+              <h4 id="Adeclick">에이드</h4>
+            </div>
+            <div className="foodimg2">{Cookie.map(renderFood)}</div>
           </div>
-          <div className="foodimg3">{ade.map(renderFood)}</div>
-        </div>
 
-        <div className="coffee">
-          <div className="underline">
-            <h4 id="coffeeclick">커피</h4>
+          <div className="tea">
+            <div className="underline">
+              <h4 id="teaclick">티(티바나)</h4>
+            </div>
+            <div className="foodimg3">{ade.map(renderFood)}</div>
           </div>
-          <div className="foodimg4">{coffee.map(renderFood)}</div>
-        </div>
 
-        <div className="dessert">
-          <div className="underline">
-            <h4 id="dessertclick">간식</h4>
+          <div className="coffee">
+            <div className="underline">
+              <h4 id="coffeeclick">커피</h4>
+            </div>
+            <div className="foodimg4">{coffee.map(renderFood)}</div>
           </div>
-          <div className="foodimg5">{dessert.map(renderFood)}</div>
-        </div>
 
-        <div className="scroll">
-          <div id="smallmenu1">
-            <Link to="Popcornclick" spy={true} smooth={true}>
-              <h4>팝콘</h4>
-              <p>Popcorn</p>
-            </Link>
+          <div className="dessert">
+            <div className="underline">
+              <h4 id="dessertclick">간식</h4>
+            </div>
+            <div className="foodimg5">{dessert.map(renderFood)}</div>
           </div>
-          <div id="smallmenu2">
-            <Link to="Adeclick" spy={true} smooth={true}>
-              <h4>에이드</h4>
-              <p>Ade</p>
-            </Link>
-          </div>
-          <div id="smallmenu3">
-            <Link to="teaclick" spy={true} smooth={true}>
-              <h4>티(티바나)</h4>
-              <p>tea</p>
-            </Link>
-          </div>
-          <div id="smallmenu4">
-            <Link to="coffeeclick" spy={true} smooth={true}>
-              <h4>커피</h4>
-              <p>coffee</p>
-            </Link>
-          </div>
-          <div id="smallmenu5">
-            <Link to="dessertclick" sp={true} smooth={true}>
-              <h4>간식</h4>
-              <p>dessert</p>
-            </Link>
+
+          <div className="scroll">
+            <div id="smallmenu1">
+              <Link to="Popcornclick" spy={true} smooth={true}>
+                <h4>팝콘</h4>
+                <p>Popcorn</p>
+              </Link>
+            </div>
+            <div id="smallmenu2">
+              <Link to="Adeclick" spy={true} smooth={true}>
+                <h4>에이드</h4>
+                <p>Ade</p>
+              </Link>
+            </div>
+            <div id="smallmenu3">
+              <Link to="teaclick" spy={true} smooth={true}>
+                <h4>티(티바나)</h4>
+                <p>tea</p>
+              </Link>
+            </div>
+            <div id="smallmenu4">
+              <Link to="coffeeclick" spy={true} smooth={true}>
+                <h4>커피</h4>
+                <p>coffee</p>
+              </Link>
+            </div>
+            <div id="smallmenu5">
+              <Link to="dessertclick" sp={true} smooth={true}>
+                <h4>간식</h4>
+                <p>dessert</p>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
-
       <Footer />
     </div>
   );

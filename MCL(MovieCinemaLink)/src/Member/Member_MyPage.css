@@ -1,7 +1,7 @@
 /* Member_MyPage.css */
 
 .Member_MyPage {
-  width: 1000px;
+  max-width: 1000px;
   height: auto;
 }
 

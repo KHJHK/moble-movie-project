@@ -1,4 +1,4 @@
-// Questions_QuestionsMain.js
+// Questions_QuestionsMain.js 리스트
 import React, { useState, useEffect } from "react";
 import "./Questions_QuestionsMain.css";
 import Questions_QuestionsMain_Questions from "./Questions_QuestionsMain_Questions";
@@ -69,17 +69,16 @@ const Questions_QuestionsMain = () => {
                   question_title={item.question_title}
                   question_reg_date={item.question_reg_date}
                   member_account={item.member_account}
-                  // setId={setId}
                 />
               );
             })}
           </tbody>
         </table>
-        <Link to="Questions_Write">
-          <button className="Questions_QuestionsMain_btn">Q & A 등록</button>
-        </Link>
-        <br />
-        <br />
+        <div className="Notice_btn">
+          <Link to="Questions_Write">
+            <button>Q & A 등록</button>
+          </Link>
+        </div>
       </div>
     </div>
   );

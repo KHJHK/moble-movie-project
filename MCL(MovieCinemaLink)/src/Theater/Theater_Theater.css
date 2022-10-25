@@ -1,7 +1,13 @@
 /* Theater_Theater.css */
 
+.Theater_Theater {
+  max-width: 1000px;
+  height: auto;
+  margin: 0px auto;
+}
+
 .theater span {
-  font-size: 20px;
+  /* font-size: 20px; */
   position: absolute;
   right: 30px;
   bottom: 10px;

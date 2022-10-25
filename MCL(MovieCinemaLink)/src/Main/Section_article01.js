@@ -1,13 +1,18 @@
 // Section_article01.js
-import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
 import axios from "axios";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Section_article.css";
-import "swiper/css";
-import "swiper/css/navigation";
 
+// Import Swiper styles
+import "swiper/css"; //basic
+import "swiper/css/navigation";
+// import "swiper/css/pagination";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+// Autoplay
+import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
+// import { useState } from "react";
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 const IMG_BASE_URL = "https://image.tmdb.org/t/p/w1280";
 
@@ -28,10 +33,11 @@ function Section_article01() {
 
   axios
     .get(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=c4e59022826dc465ea5620d6adaa6813&language=ko&page=1&region=KR`
+      // `https://api.themoviedb.org/3/movie/now_playing?api_key=c4e59022826dc465ea5620d6adaa6813&language=ko&page=1&region=KR`
+      `http://localhost/movie/showAll`
     )
     .then((res) => {
-      setMovie(res.data.results);
+      setMovie(res.data);
     });
 
   return (
@@ -62,27 +68,27 @@ function Section_article01() {
             },
           }}
         >
-          {Object.keys(movie).map((id) => (
+          {movie.map((m) => (
             <SwiperSlide>
-              <div key={movie.id}>
+              <div key={m.movie_id}>
                 <Link
-                  to={`/Movie_MovieInformation/${movie.id}`}
-                  id={movie.id}
-                  onClick={() => movie.setId(movie.id)}
+                  to={`/Movie_MovieInformation/${m.movie_id}`}
+                  id={m.movie_id}
+                  // onClick={() => movie.setId(m.movie_id)}
                 >
-                  <img src={IMG_BASE_URL + movie[id].poster_path} />
+                  <img src={IMG_BASE_URL + m.movie_poster_path} />
                 </Link>
                 <br />
                 <div className="posterContent_title">
-                  <h4>{movie[id].title}</h4>
+                  <h4>{m.movie_name}</h4>
                 </div>
                 <br />
                 <div>
-                  <p>{movie[id].release_date}</p>
+                  <p>{m.movie_open_date}</p>
                 </div>
                 <br />
                 <Link to="Ticketing">
-                  <button className={movie[id].title} onClick={mainmovieClick}>
+                  <button className={m.movie_name} onClick={mainmovieClick}>
                     예매하기
                   </button>
                 </Link>

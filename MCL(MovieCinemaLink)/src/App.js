@@ -1,7 +1,7 @@
 // App.js
-
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
 
 //import Main
 import Main from "./Main/Main";
@@ -10,6 +10,7 @@ import Main from "./Main/Main";
 import NowPlayingMovie from "./Movie/NowPlayingMovie/NowPlayingMovie";
 import UpComingMovie from "./Movie/UpComingMovie/UpComingMovie";
 import Movie_MovieInformation from "./Movie/Movie_MovieInformation/Movie_MovieInformation";
+import Movie_MovieInformationUpComing from "./Movie/Movie_MovieInformation/Movie_MovieInfomationUpComing";
 
 // import Member
 // import Member_Login from "./Member/Member_Login";
@@ -24,11 +25,12 @@ import Ticketing from "./Ticketing/Ticketing";
 import Notice_Notice from "./Notice/Notice/Notice_Notice";
 import Notice_NoticeInfo from "./Notice/Notice/NoticeInfo/Notice_NoticeInfo";
 
-// import Questions_Questions
+// import Questions
 import Questions_Questions from "./Notice/Questions/Questions_Questions";
 import Questions_QuestionsInfo from "./Notice/Questions/QuestionsInfo/Questions_QuestionsInfo";
-import Questions_Write from "./Notice/Questions/Questions_Write";
-import Questions_modal from "./Notice/Questions/Questions_modal";
+import Questions_Write from "./Notice/Questions/Write/Questions_Write";
+import Questions_Update from "./Notice/Questions/Update/Questions_Update";
+import Questions_modal_Create from "./Notice/Questions/modal/Questions_modal_Create";
 
 // import Theater
 import Theater_MovieTheaterLocationInformation from "./Theater/Theater_MovieTheaterLocationInformation";
@@ -56,6 +58,17 @@ function App() {
             path="/Movie_MovieInformation/:id"
             component={Movie_MovieInformation}
           />
+          <Route
+            exact
+            path="/Movie_MovieInformationUpComing"
+            component={Movie_MovieInformationUpComing}
+          />
+          <Route
+            exact
+            path="/Movie_MovieInformationUpComing/:id"
+            component={Movie_MovieInformationUpComing}
+          />
+
           {/* Member */}
           {/* <Route exact path="/Member_Login" component={Member_Login} /> */}
           {/* <Route exact path="/Member_Logout" component={Member_Logout} /> */}
@@ -78,7 +91,11 @@ function App() {
           />
 
           {/* Questions_Questions */}
-          <Route exact path="/Questions_modal" component={Questions_modal} />
+          <Route
+            exact
+            path="/Questions_modal_Create"
+            component={Questions_modal_Create}
+          />
           <Route
             exact
             path="/Questions_Questions"
@@ -95,6 +112,12 @@ function App() {
             path="/Questions_QuestionsInfo_Main"
             component={Questions_QuestionsInfo_Main}
           /> */}
+
+          <Route
+            exact
+            path="/Questions_Update/:question_id"
+            component={Questions_Update}
+          />
 
           {/* Theater */}
           <Route

@@ -2,7 +2,7 @@
 
 .firstpart {
   /* z-index: 1; */
-  width: 1000px;
+  max-width: 1000px;
   height: 50px;
   margin: 10px auto;
   /* position: relative; */
@@ -17,9 +17,11 @@
 
 /* ===== 로그인, 회원가입, 마이페이지 ===== */
 .TopMenu {
-  margin: 10px;
+  width: 200px;
+  height: 50px;
   display: flex; /* 가로 배치 */
-  float: right; /* 오른쪽 정렬 */
+  /* 오른쪽 정렬 */
+  float: right;
 }
 
 .TopMenu1,
@@ -84,27 +86,4 @@
 #menu > ul > li > ul > li > a {
   text-decoration: none;
   color: #000000;
-}
-
-/* ===== ModalComponent CSS ===== */
-
-/* modal 전체 */
-.customStyles {
-  margin: 0 auto;
-  width: 450px;
-  height: auto;
-  padding: 10px;
-  text-align: center;
-  border-radius: 10px;
-  /* 팝업이 열릴때 스르륵 열리는 효과 */
-  animation: modal-show 0.3s;
-}
-
-.customStyles > .Modal_fullTitle {
-  border-radius: 10px;
-  position: relative;
-  padding: 10px;
-  background-color: #1f324b;
-  color: #ffffff;
-  /* font-weight: 700; */
 }

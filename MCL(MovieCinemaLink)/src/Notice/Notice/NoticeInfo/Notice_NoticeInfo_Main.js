@@ -52,7 +52,7 @@ function Notice_NoticeInfo_Main(props) {
 
         {/* 내용 */}
         <div class="article_body">
-          <p>{noticeInfo.notice_title}</p>
+          <pre>{noticeInfo.notice_content}</pre>
         </div>
       </section>
 

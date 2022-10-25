@@ -48,7 +48,9 @@ function Movie_MovieInformation_Main(props) {
             </tr>
             <tr>
               <td>
-                <h5>상세정보 : {movie[key].overview}</h5>
+                <h4>상세정보</h4>
+                {/* <br /> */}
+                <h4>{movie[key].overview}</h4>
               </td>
             </tr>
             <tr>

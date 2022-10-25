@@ -1,5 +1,4 @@
 /* Main.css */
-
 * {
   margin: 0;
   padding: 0;
@@ -7,11 +6,12 @@
 }
 
 /* body {
-  width: 1000px;
+  max-width: 1000px;
   height: auto;
   margin: 0px auto;
 } */
 
+h2,
 h3 {
   margin: 20px;
 }
@@ -82,7 +82,31 @@ input {
   border: 3px solid #1f324b;
 }
 
-/* 보류 */
+/* 팝업창 */
+/* modal 전체 */
+.customStyles {
+  margin: 0 auto;
+  width: 450px;
+  height: auto;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+  /* 팝업이 열릴때 스르륵 열리는 효과 */
+  animation: modal-show 0.3s;
+  color: #000000;
+  background: #ffffff;
+}
+
+.customStyles > .Modal_fullTitle {
+  border-radius: 10px;
+  position: relative;
+  padding: 10px;
+  background-color: #1f324b;
+  color: #ffffff;
+  /* font-weight: 700; */
+}
+
+/* 공지사항 > 공지사항, Q&A 버튼 div */
 .Notice_btn {
   text-align: right;
 }

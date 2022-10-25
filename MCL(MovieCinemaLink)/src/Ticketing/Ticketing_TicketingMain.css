@@ -2,7 +2,7 @@
 
 /* 예매하기 */
 .Ticketing_TicketingMain {
-  width: 1000px;
+  max-width: 1000px;
   height: 1300px;
 }
 

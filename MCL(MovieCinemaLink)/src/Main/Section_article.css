@@ -1,7 +1,7 @@
 /* Section_article.css */
 
 .Section_article {
-  width: 1000px;
+  max-width: 1000px;
   margin: 0px auto; /* 위아래 여백 없이 가로 중앙에 배치 */
 
   /* margin: 10px;

@@ -8,7 +8,7 @@ const Section_Header = () => {
     <div>
       <div>
         <video muted autoPlay loop className="background">
-          <source src="/mp4/universus.mp4" />
+          <source src="./mp4/universus.mp4" />
         </video>
       </div>
       <div>
