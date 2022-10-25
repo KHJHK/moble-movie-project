@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.movie.dao.MovieDao">
+	<select id="getMovieInfo" resultType="MovieVo">
+		SELECT * 
+		FROM movie;
+	</select>
+	
+	<select id="findMovieById" parameterType = "java.lang.Long" resultType="MovieVo">
+	SELECT *
+	FROM movie
+	WHERE movie_id = #{movie_id}
+	</select>
+	
+	<insert id="insertMovie" parameterType = "com.movie.vo.MovieVo">
+		INSERT
+		INTO movie (movie_id, movie_name, movie_open_date, movie_popularity, movie_poster_path)
+		VALUES (#{movie_id}, #{movie_name}, #{movie_open_date}, #{movie_popularity}, #{movie_poster_path});
+	</insert>
+	
+	<delete id="deleteAllMovie">
+		DELETE
+		FROM movie;
+	</delete>
+	
+	<delete id="deleteMovie">
+		DELETE
+		FROM movie
+		WHERE movie_id = #{movie_id}
+	</delete>
+</mapper>

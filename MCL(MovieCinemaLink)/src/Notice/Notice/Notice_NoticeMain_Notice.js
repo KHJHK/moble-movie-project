@@ -10,13 +10,13 @@ export default function Notice_NoticeMain_Notice(props) {
     //     <tbody>
     <tr>
       <td>
-        <span>{props.notice_id}</span>
+        <span>{props.notice_num}</span>
       </td>
       <td>
         <span>{props.category_name}</span>
       </td>
-      <td className="tbodyTitle" key={props.notice_id}>
-        <Link to={`/Notice_NoticeInfo/${props.notice_id}`}>
+      <td className="tbodyTitle" key={props.notice_num}>
+        <Link to={`/Notice_NoticeInfo/${props.notice_num}`}>
           <strong>{props.notice_title}</strong>
         </Link>
       </td>

@@ -17,15 +17,11 @@ import {movieClicked,localStoragereset} from "../Ticketing/Ticketing_Selectdoing
 import "../Ticketing/Ticketing_Selectdoing"
 import { useEffect } from "react";
 
-// Select 동작 구현
-
+const [movie, setMovie] = useState([]);
+const [movie_id, setMovieId] = useState();
+localStorage.clear();
 
 const Ticketing_TicketingMain = () => {
-  
-  var movievalue = localStorage.getItem('key');
-  console.log("Test MOVIE : "+movievalue);
-
-  
 
   // movieClicked ();
   return (

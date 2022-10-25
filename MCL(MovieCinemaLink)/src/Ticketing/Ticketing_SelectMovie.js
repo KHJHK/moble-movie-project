@@ -1,31 +1,27 @@
 // Ticketing_SelectMovie.js
 
 import React, { useState } from "react";
+import "../Ticketing/Ticketing_SelectRegion";
 
 import { movieClick } from "../Ticketing/Ticketing_Selectdoing";
 import "./Ticketing_SelectMovie.css";
 import axios from "axios";
 import { useEffect } from "react";
+import Ticketing_SelectRegion from "../Ticketing/Ticketing_SelectRegion";
 // import {movieClicked} from "../Ticketing/Ticketing_Selectdoing";
 
 const Ticketing_SelectMovie = () => {
 
-
-  
-  const [movie, setMovie] = useState([]);
-  
+  const storeId = (id) =>{
+    localStorage.setItem('movie_id',id);
+  };
 
   axios
     .get(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=c4e59022826dc465ea5620d6adaa6813&language=ko&page=1&region=KR`
-    )
-
-    
-
+      `http://localhost/ticketing/selectMovie`
+    ) 
     .then((res) => {
-      //console.log("res.data.results : " + JSON.stringify(res.data.results));
-      // console.log("res.data.results : " + JSON.stringify(res.data.results[0]));
-      setMovie(res.data.results);
+      setMovie(res.data);
     });
 
   return (
@@ -38,14 +34,14 @@ const Ticketing_SelectMovie = () => {
           
           <div>
             <ul>
-              <li className="SelectMV" onClick={movieClick}>
-              {item.title}
+              <li className="SelectMV" onClick={(e)=>{movieClick(e), storeId(item.movie_id)}}>
+              {item.movie_name}
               </li>
             </ul> 
 
               <ul>
               <li className="SelectIMG">
-                {item.backdrop_path}
+                {item.movie_pos}
 
                 {/* <a href="#">{item.title}</a> */}
               </li>
