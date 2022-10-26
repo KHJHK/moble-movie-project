@@ -5,11 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.movie.dao.MovieDao;
+import com.movie.dao.PickDao;
 import com.movie.dao.ScheduleDao;
 import com.movie.dao.SeatDao;
 import com.movie.vo.MovieVo;
@@ -24,6 +24,8 @@ public class TicketingService {
 	ScheduleDao scheduleDao;
 	@Autowired
 	SeatDao seatDao;
+	@Autowired
+	PickDao pickDao;
 	
 	public List<MovieVo> getMovieList(){
 		return movieDao.getMovieInfo();
@@ -48,7 +50,7 @@ public class TicketingService {
 		
 		List<String> cinemaNameStrList = scheduleDao.getCinemaNameByInfo(input);
 		List<Map<String, String>> output = new ArrayList<Map<String, String>>();
-		for(int i = 0; i < input.size(); i++) {
+		for(int i = 0; i < cinemaNameStrList.size(); i++) {
 			HashMap<String, String> cinemaNameData = new HashMap<>();
 			cinemaNameData.put("cinema_name", cinemaNameStrList.get(i));
 			output.add(cinemaNameData);
@@ -64,7 +66,7 @@ public class TicketingService {
 		
 		List<String> scheduleDateStrList = scheduleDao.getScheduleDateByInfo(input);
 		List<Map<String, String>> output = new ArrayList<Map<String, String>>();
-		for(int i = 0; i < input.size(); i++) {
+		for(int i = 0; i < scheduleDateStrList.size(); i++) {
 			HashMap<String, String> scheduleDateData = new HashMap<>();
 			scheduleDateData.put("cinema_name", scheduleDateStrList.get(i));
 			output.add(scheduleDateData);
@@ -88,5 +90,9 @@ public class TicketingService {
 	
 	public int insertSeat(Long schedule_id, Long seat_num, String seat_name){
 		return seatDao.insertSeat(schedule_id, seat_num, seat_name);
+	}
+	
+	public int insertPick(Long seat_id, Long member_id) {
+		return pickDao.insertPick(seat_id, member_id);
 	}
 }

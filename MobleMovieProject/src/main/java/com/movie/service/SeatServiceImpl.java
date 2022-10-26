@@ -19,8 +19,8 @@ public class SeatServiceImpl implements SeatService{
 	}
 
 	@Override
-	public int insertSeat(Long schedule_id, Long seat_num, String seat_name) {
-		return seatDao.insertSeat(schedule_id, seat_num, seat_name);
+	public int insertSeat(Long schedule_id, String seat_name) {
+		return seatDao.insertSeat(schedule_id, seat_name);
 	}
 
 	@Override

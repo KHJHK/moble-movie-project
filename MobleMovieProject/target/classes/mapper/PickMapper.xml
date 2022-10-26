@@ -2,8 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.movie.dao.SeatDao">
+	<insert id="insertPick">
+		INSERT
+		INTO pick(seat_id, member_id)
+		VALUES (#{seat_id}, #{member_id})
+	</insert>
 
-	<!-- 공지사항 리스트 -->
 	<delete id="deletePick">
         DELETE
         FROM pick

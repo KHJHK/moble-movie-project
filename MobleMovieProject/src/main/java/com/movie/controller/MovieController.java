@@ -58,6 +58,8 @@ public class MovieController {
 	@ResponseBody
 	@GetMapping("/showAll")
 	public List<MovieVo> showAllMovies(){
+		apiUrl = BASE_URL + "now_playing" + MOVIE_API_KEY;
+		System.out.println(apiUrl);
 		return movieService.getMovieInfo();
 	}
 
@@ -81,11 +83,18 @@ public class MovieController {
 			for(int i = 0; i < jsonArr.size(); i++) {
 				JSONObject jsonSubObj = (JSONObject) jsonArr.get(i);
 				
+				Double jsonPopularity = 0.0;
 				Long jsonId = (Long)jsonSubObj.get("id");
 				String jsonTitle = (String)jsonSubObj.get("title");
 				String jsonDate = (String)jsonSubObj.get("release_date");
-				Double jsonPopularity = (Double)jsonSubObj.get("popularity");
 				String jsonPoster = (String)jsonSubObj.get("poster_path");
+				
+				if(jsonSubObj.get("vote_average").getClass().getName().equals("java.lang.Long")) {
+					jsonPopularity = ((Long)jsonSubObj.get("vote_average")).doubleValue();
+				}
+				else {
+					jsonPopularity = (Double)jsonSubObj.get("vote_average");
+				}
 				
 				if(movieService.findMovieById(jsonId) == null) {
 					movieVo.setMovie_id(jsonId);
@@ -105,6 +114,6 @@ public class MovieController {
 		
 		//출력
 		model.addAttribute("movieList", movieList);
-		return "indexMovie";
+		return "Movie/Schedule inserted and deleted";
 	}
 }

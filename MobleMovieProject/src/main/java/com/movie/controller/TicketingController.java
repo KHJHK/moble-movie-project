@@ -52,7 +52,7 @@ public class TicketingController {
 		return ticketingService.getScheduleTimeAndTheater(movie_id, cinema_name, schedule_date);
 	}
 	
-	@GetMapping("/selectSeat")
+	@GetMapping("/selectedSeat")
 	public List<SeatVo> selectSeat(@RequestParam("schedule_id")Long schedule_id){
 		return ticketingService.getSeatInfo(schedule_id);
 	}

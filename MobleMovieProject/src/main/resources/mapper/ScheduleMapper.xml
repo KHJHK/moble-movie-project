@@ -51,9 +51,10 @@
 	</select>
 	
 	<select id="getScheduleDateByInfo" parameterType = "hashMap" resultType="String">
-		SELECT schedule_date
+		SELECT DISTINCT schedule_date
 		FROM schedule
 		WHERE movie_id = #{movie_id} AND cinema_name = #{cinema_name}
+		ORDER BY schedule_date ASC;
 	</select>
 	
 	<select id="getScheduleTimeAndTheater" parameterType = "hashMap" resultType="com.movie.vo.ScheduleVo">
