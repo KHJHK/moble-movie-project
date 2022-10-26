@@ -9,4 +9,5 @@ public class MovieVo {
 	private String movie_open_date;
 	private Double movie_popularity;
 	private String movie_poster_path;
+	private String movie_overview;
 }

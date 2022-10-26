@@ -16,8 +16,8 @@
 	
 	<insert id="insertMovie" parameterType = "com.movie.vo.MovieVo">
 		INSERT
-		INTO movie (movie_id, movie_name, movie_open_date, movie_popularity, movie_poster_path)
-		VALUES (#{movie_id}, #{movie_name}, #{movie_open_date}, #{movie_popularity}, #{movie_poster_path});
+		INTO movie (movie_id, movie_name, movie_open_date, movie_popularity, movie_poster_path, movie_overview)
+		VALUES (#{movie_id}, #{movie_name}, #{movie_open_date}, #{movie_popularity}, #{movie_poster_path}, #{movie_overview});
 	</insert>
 	
 	<delete id="deleteAllMovie">

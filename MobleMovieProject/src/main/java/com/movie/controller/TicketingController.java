@@ -1,5 +1,6 @@
 package com.movie.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -53,12 +54,13 @@ public class TicketingController {
 	}
 	
 	@GetMapping("/selectedSeat")
-	public List<SeatVo> selectSeat(@RequestParam("schedule_id")Long schedule_id){
+	public List<String> selectSeat(@RequestParam("schedule_id")Long schedule_id){
 		return ticketingService.getSeatInfo(schedule_id);
 	}
 	
-	public int insertSeat(@RequestParam("schedule_id")Long schedule_id, @RequestParam("seat_num")Long seat_num, 
+	@GetMapping("/insertSeat")
+	public int insertSeat(@RequestParam("schedule_id")Long schedule_id, 
 			@RequestParam("seat_name")String seat_name) {
-		return ticketingService.insertSeat(schedule_id, seat_num, seat_name);
+		return ticketingService.insertSeat(schedule_id, seat_name);
 	}
 }

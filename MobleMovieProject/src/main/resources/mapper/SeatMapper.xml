@@ -6,7 +6,7 @@
 	<select id="getSeletedSeat" resultType="SeatVo">
 	SELECT *
 	FROM seat
-	WEHRE schedule_id = #{schedule_id}
+	WHERE schedule_id = #{schedule_id}
 	</select>
 	
 	<select id="getSeatIdBySchedule" resultType="Long">

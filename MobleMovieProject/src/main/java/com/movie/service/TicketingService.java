@@ -84,12 +84,21 @@ public class TicketingService {
 		return scheduleDao.getScheduleTimeAndTheater(input);
 	}
 	
-	public List<SeatVo> getSeatInfo(Long schedule_id){
-		return seatDao.getSeletedSeat(schedule_id);
+	public List<String> getSeatInfo(Long schedule_id){
+		List<SeatVo> seatList = seatDao.getSeletedSeat(schedule_id);
+		List<String> blockSeatList = new ArrayList();
+		
+		for(int i = 0; i < seatList.size(); i++) {
+			String[] seatStrArr = (seatList.get(i).getSeat_name()).split(",");
+			for(int j = 0; j < seatStrArr.length; j++) {
+				blockSeatList.add(seatStrArr[j]);
+			}
+		}
+		return blockSeatList;
 	}
 	
-	public int insertSeat(Long schedule_id, Long seat_num, String seat_name){
-		return seatDao.insertSeat(schedule_id, seat_num, seat_name);
+	public int insertSeat(Long schedule_id, String seat_name){
+		return seatDao.insertSeat(schedule_id, seat_name);
 	}
 	
 	public int insertPick(Long seat_id, Long member_id) {

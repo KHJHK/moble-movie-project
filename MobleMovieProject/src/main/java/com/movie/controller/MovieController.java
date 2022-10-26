@@ -88,6 +88,7 @@ public class MovieController {
 				String jsonTitle = (String)jsonSubObj.get("title");
 				String jsonDate = (String)jsonSubObj.get("release_date");
 				String jsonPoster = (String)jsonSubObj.get("poster_path");
+				String jsonOverview = (String)jsonSubObj.get("overview");
 				
 				if(jsonSubObj.get("vote_average").getClass().getName().equals("java.lang.Long")) {
 					jsonPopularity = ((Long)jsonSubObj.get("vote_average")).doubleValue();
@@ -102,6 +103,7 @@ public class MovieController {
 					movieVo.setMovie_open_date(jsonDate);
 					movieVo.setMovie_popularity(jsonPopularity);
 					movieVo.setMovie_poster_path(jsonPoster);
+					movieVo.setMovie_overview(jsonOverview);
 					movieService.insertMovie(movieVo);
 				}//if end
 				scheduleMaker.makeSchedule(jsonId);
