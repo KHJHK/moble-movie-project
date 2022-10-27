@@ -4,25 +4,37 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import com.movie.service.MemberService;
 import com.movie.vo.MemberVo;
 
 @RestController
+@CrossOrigin
 @RequestMapping("member")
 public class MemberCotroller {
 	@Autowired
 	MemberService memberService;
+
 	
 	//메인
 	@GetMapping
@@ -31,22 +43,30 @@ public class MemberCotroller {
 	}
 	
 	//로그인
-	@GetMapping("/login")
-	public String login() {
-		return "login";
+	@PostMapping("/login")
+	public String login(MemberVo memberVo,@RequestParam("member_account")String member_account,@RequestParam("member_pw")String member_pw) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		
+		
+		if(passwordEncoder.matches(member_pw, memberVo.getMember_pw())) {
+			 return memberService.loginToken(member_account);
+		}else {
+			return "일치하지 않습니다.";
+		}
+
 	}
-	//로그인 실패
-	@GetMapping("/login_fail")
-	public String loginFail() {
-		return "로그인 실패";
-	}
-	//로그인 성공
-	@GetMapping("/login_success")
-	public String loginSuccess(Model model, Authentication a) {
-		MemberVo memberVo = (MemberVo) a.getPrincipal();
-		model.addAttribute("info", memberVo.getMember_account()+" 의 "+memberVo.getMember_name()+"님");
-		return "로그인 성공";
-	}
+//	//로그인 실패
+//	@GetMapping("/login_fail")
+//	public String loginFail() {
+//		return "로그인 실패";
+//	}
+//	//로그인 성공
+//	@GetMapping("/login_success")
+//	public String loginSuccess(Model model, Authentication a) {
+//		MemberVo memberVo = (MemberVo) a.getPrincipal();
+//		model.addAttribute("info", memberVo.getMember_account()+" 의 "+memberVo.getMember_name()+"님");
+//		return "로그인 성공";
+//	}
 	
 	//로그아웃
 	@GetMapping("/logout")
@@ -56,15 +76,15 @@ public class MemberCotroller {
 	}
 	
 	//회원가입
-	@GetMapping("/signup")
-	public String signup(MemberVo memberVo) {
-		int result = memberService.signup(memberVo);
-		if(result == 1) {
-			return "회원가입 완료";
-		}else {
-			return "입력 다시하세요.";
-		}
-	}
+	@PostMapping("/signup")
+	   public String signup(@RequestBody MemberVo memberVo) {
+	      int result = memberService.signup(memberVo);
+	      if(result == 1) {
+	         return "회원가입 완료";
+	      }else {
+	         return "입력을 다시하세요.";
+	      }
+	   }
 	
 	//비밀번호 확인 후 수정
 	@GetMapping("/member_update")

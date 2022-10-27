@@ -1,12 +1,16 @@
 package com.movie.service;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
+import org.apache.ibatis.javassist.compiler.ast.Member;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -15,7 +19,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.movie.dao.MemberDao;
+import com.movie.jwt.TokenProvider;
 import com.movie.vo.MemberVo;
+import com.movie.vo.TokenVo;
 
 @Service
 public class MemberService implements UserDetailsService{
@@ -27,6 +33,10 @@ public class MemberService implements UserDetailsService{
 
     @Autowired
     MemberDao memberDao;
+    
+    @Autowired
+    private TokenProvider tokenProvider;
+   
 
     //회원가입
     @Transactional
@@ -48,6 +58,28 @@ public class MemberService implements UserDetailsService{
 			throw new UsernameNotFoundException("User not authorized.");
 		}
 		return memberVo;
+	}
+	
+	public String loginToken(TokenVo tokenVo) {
+		MemberVo memberVo = memberDao.login(tokenVo.getMember_account());
+//		JSONObject userjsonObject = new JSONObject();
+		BCryptPasswordEncoder Encoder = new BCryptPasswordEncoder();
+		if(memberVo == null) {
+			return "아이디가 없습니다.";
+		}else if(!Encoder.matches(tokenVo.getMember_pw(), memberVo.getMember_pw())){
+			return "비밀번호가 일치하지 않습니다.";
+		}else {
+//			userjsonObject.put("member_account",memberVo.getMember_account());
+//			userjsonObject.put("member_auth", memberVo.getMember_auth());
+//			userjsonObject.put("member_name", memberVo.getMember_name());
+//			userjsonObject.put("member_nickname", memberVo.getMember_nickname());
+//			userjsonObject.put("member_email", memberVo.getMember_email());
+//			userjsonObject.put("member_birth", memberVo.getMember_birth());
+//			userjsonObject.put("member_reg_date", memberVo.getMember_reg_date());
+//			userjsonObject.put("member_modify_date", memberVo.getMember_modify_date());
+			return tokenProvider.generateToken(memberVo, memberVo.getMember_account());
+	}
+
 	}
 	
 	//회원정보수정
