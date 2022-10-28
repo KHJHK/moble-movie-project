@@ -3,6 +3,8 @@ package com.movie.service;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import org.apache.ibatis.javassist.compiler.ast.Member;
@@ -20,8 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.movie.dao.MemberDao;
 import com.movie.jwt.TokenProvider;
+import com.movie.vo.LoginVo;
 import com.movie.vo.MemberVo;
-import com.movie.vo.TokenVo;
 
 @Service
 public class MemberService implements UserDetailsService{
@@ -60,15 +62,33 @@ public class MemberService implements UserDetailsService{
 		return memberVo;
 	}
 	
-	public String loginToken(TokenVo tokenVo) {
-		MemberVo memberVo = memberDao.login(tokenVo.getMember_account());
-//		JSONObject userjsonObject = new JSONObject();
+	public String login(LoginVo loginVo) {
+		MemberVo memberVo = memberDao.login(loginVo.getMember_account());
 		BCryptPasswordEncoder Encoder = new BCryptPasswordEncoder();
 		if(memberVo == null) {
 			return "아이디가 없습니다.";
-		}else if(!Encoder.matches(tokenVo.getMember_pw(), memberVo.getMember_pw())){
+		}else if(!Encoder.matches(loginVo.getMember_pw(), memberVo.getMember_pw())){
 			return "비밀번호가 일치하지 않습니다.";
 		}else {
+			return tokenProvider.generateToken(memberVo, memberVo.getMember_account());
+		}
+	}
+
+	
+	
+//	public Map loginToken(TokenVo tokenVo) {
+//		MemberVo memberVo = memberDao.login(tokenVo.getMember_account());
+//		Map userjsonObject = new HashMap<>();
+//		BCryptPasswordEncoder Encoder = new BCryptPasswordEncoder();
+//		if(memberVo == null) {
+//			userjsonObject.put("token", "아이디가 없습니다.");
+//			return userjsonObject;
+//		}else if(!Encoder.matches(tokenVo.getMember_pw(), memberVo.getMember_pw())){
+//			userjsonObject.put("token", "비밀번호가 일치하지 않습니다.");
+//			return userjsonObject;
+//		}else {
+//			userjsonObject.put("token",tokenProvider.generateToken(memberVo, memberVo.getMember_account()));
+//			userjsonObject.put("member_id",memberVo.getMember_id());
 //			userjsonObject.put("member_account",memberVo.getMember_account());
 //			userjsonObject.put("member_auth", memberVo.getMember_auth());
 //			userjsonObject.put("member_name", memberVo.getMember_name());
@@ -77,10 +97,11 @@ public class MemberService implements UserDetailsService{
 //			userjsonObject.put("member_birth", memberVo.getMember_birth());
 //			userjsonObject.put("member_reg_date", memberVo.getMember_reg_date());
 //			userjsonObject.put("member_modify_date", memberVo.getMember_modify_date());
-			return tokenProvider.generateToken(memberVo, memberVo.getMember_account());
-	}
-
-	}
+//			
+//			return userjsonObject;
+//	}
+//
+//	}
 	
 	//회원정보수정
 	 @Transactional

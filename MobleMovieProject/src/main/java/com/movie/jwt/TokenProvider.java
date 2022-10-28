@@ -60,6 +60,10 @@ public class TokenProvider implements Serializable{
     	String username = String.valueOf(extractAllClaims(token).get("member_account"));
     	return username;
     }
+    public String getMemberPwToken(String token) {
+    	String username = String.valueOf(extractAllClaims(token).get("member_pw"));
+    	return username;
+    }
     public String getMemberAuthToken(String token) {
     	String username = String.valueOf(extractAllClaims(token).get("member_auth"));
     	return username;
@@ -105,6 +109,7 @@ public class TokenProvider implements Serializable{
     	Map<String,Object> claims = new HashMap<>();
     	claims.put("member_id", memberVo.getMember_id());
     	claims.put("member_account", memberVo.getMember_account());
+    	claims.put("member_pw", memberVo.getMember_pw());
     	claims.put("member_auth", memberVo.getMember_auth());
     	claims.put("member_name", memberVo.getMember_name());
     	claims.put("member_nickname", memberVo.getMember_nickname());

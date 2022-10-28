@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,8 +29,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.movie.service.MemberService;
+import com.movie.vo.LoginVo;
 import com.movie.vo.MemberVo;
-import com.movie.vo.TokenVo;
 
 @RestController
 @CrossOrigin
@@ -39,32 +40,15 @@ public class MemberCotroller {
 	MemberService memberService;
 
 	
-	//메인
-	@GetMapping
-	public String main() {
-		return "redirect:/member/login";
-	}
-	
 	//로그인
 	@PostMapping("/login")
 	public String login(@RequestBody Map map) {
-		TokenVo token = new TokenVo();
-		token.setMember_account(map.get("member_account").toString());
-		token.setMember_pw(map.get("member_pw").toString());
-		return memberService.loginToken(token);
+		LoginVo loginVo = new LoginVo();
+		loginVo.setMember_account(map.get("member_account").toString());
+		loginVo.setMember_pw(map.get("member_pw").toString());
+		return memberService.login(loginVo);
 	}
-//	//로그인 실패
-//	@GetMapping("/login_fail")
-//	public String loginFail() {
-//		return "로그인 실패";
-//	}
-//	//로그인 성공
-//	@GetMapping("/login_success")
-//	public String loginSuccess(Model model, Authentication a) {
-//		MemberVo memberVo = (MemberVo) a.getPrincipal();
-//		model.addAttribute("info", memberVo.getMember_account()+" 의 "+memberVo.getMember_name()+"님");
-//		return "로그인 성공";
-//	}
+	
 	
 	//로그아웃
 	@GetMapping("/logout")
@@ -84,29 +68,40 @@ public class MemberCotroller {
 	      }
 	   }
 	
-	//비밀번호 확인 후 수정
-	@GetMapping("/member_update")
-	public String memberUpdate(Authentication a, @RequestParam("check_pw")String check_pw, @RequestParam("member_pw")String member_pw,
-			@RequestParam("member_email")String member_email, @RequestParam("member_nickname")String member_nickname) {
+	//비밀번호 확인
+	@GetMapping("/member_pw_check")
+	public String memberPwCheck(@RequestBody Map map) {
+		String input_pw = map.get("input_pw").toString();
+		String member_pw = map.get("member_pw").toString();
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		MemberVo memberVo = (MemberVo) a.getPrincipal();
-		if(passwordEncoder.matches(check_pw, memberVo.getMember_pw())) {
-			int result =memberService.UpdateMember(member_pw, member_email, member_nickname, memberVo.getMember_account());
+		if(passwordEncoder.matches(input_pw,member_pw)) {
+			return "비밀번호가 맞습니다.";
+		}else {
+			return "비밀번호가 틀립니다.";
+		}
+	}
+	
+	//회원정보 수정
+	@PostMapping("/member_update")
+	public String memberUpdate(@RequestBody Map map) {
+		String member_pw = map.get("member_pw").toString();
+		String member_email = map.get("member_email").toString();
+		String member_nickname = map.get("member_nickname").toString();
+		String member_account = map.get("member_account").toString();
+		int result =memberService.UpdateMember(member_pw, member_email, member_nickname, member_account);
 			if(result == 1) {
 				return "정보 수정 완료";
 			}else {
 				return "정보 수정 실패";
 			}
-		}else {
-			return "비밀번호가 틀립니다.";
 		}
-	}
+	
 
 	//회원 탈퇴
-	@GetMapping("/member_delete")
-	public String memberDelete(Authentication a) {
-		MemberVo memberVo = (MemberVo) a.getPrincipal();
-		memberService.DeleteMember(memberVo.getMember_account());
+	@PostMapping("/member_delete")
+	public String memberDelete(@RequestBody Map map) {
+		String member_account = map.get("member_account").toString();
+		memberService.DeleteMember(member_account);
 		return "회원 탈퇴 완료";
 	}
 	

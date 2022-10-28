@@ -13,6 +13,9 @@ import com.movie.vo.QuestionVo;
 @Mapper
 public interface ManageDao {
 	
+	//관리자
+	public MemberVo manageMain(@Param("member_account")String member_account);
+	
 	//회원
 	//관리자 리스트
 	public List<MemberVo> adminList(@Param("member_auth")String member_auth);
@@ -23,7 +26,7 @@ public interface ManageDao {
 	//강제 탈퇴
 	public int deleteMember(@Param("member_auth")String member_auth,
 							@Param("member_modify_date")String member_modify_date,
-							@Param("member_account")String member_account,
+							@Param("member_id")Long member_id,
 							@Param("member_email")String member_email);
 	
 	//게시판
