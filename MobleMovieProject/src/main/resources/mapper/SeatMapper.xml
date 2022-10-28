@@ -6,13 +6,37 @@
 	<select id="getSeletedSeat" resultType="SeatVo">
 	SELECT *
 	FROM seat
-	WEHRE schedule_id = #{schedule_id}
+	WHERE schedule_id = #{schedule_id}
+	</select>
+	
+	<select id="getSeatInfoById" resultType="SeatVo">
+	SELECT *
+	FROM seat
+	WHERE seat_id = #{seat_id}
+	</select>
+	
+	<select id="getSeatIdBySchedule" resultType="Long">
+	SELECT seat_id
+	FROM seat
+	WHERE schedule_id = #{schedule_id}
 	</select>
 	
 	<insert id="insertSeat">
 	INSERT
-	INTO seat(schedule_id, seat_num, seat_name)
-	VALUES (#{schedule_id}, #{seat_num}, #{seat_name})
+	INTO seat(schedule_id, seat_name)
+	VALUES (#{schedule_id}, #{seat_name})
 	</insert>
+	
+	<delete id="deleteSeat">
+	DELETE
+	FROM seat
+	WHERE seat_id = #{seat_id}
+	</delete>
+	
+	<delete id="deleteSeatBySchedule">
+	DELETE
+	FROM seat
+	WHERE schedule_id = #{schedule_id}
+	</delete>
 
 </mapper>

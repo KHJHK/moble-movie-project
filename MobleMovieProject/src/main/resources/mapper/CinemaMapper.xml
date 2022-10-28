@@ -18,4 +18,10 @@
 		FROM cinema 
 		WHERE cinema_location = #{cinema_location}
 	</select>
+	
+	<select id="getCinemaByName" resultType="CinemaVo">
+		SELECT * 
+		FROM cinema 
+		WHERE cinema_name = #{cinema_name}
+	</select>
 </mapper>

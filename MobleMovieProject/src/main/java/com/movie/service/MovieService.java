@@ -9,4 +9,5 @@ public interface MovieService {
 	public int insertMovie(MovieVo movieVo);
 	public int deleteAllMovie();
 	public MovieVo findMovieById(Long id);
+	public int deleteMovie(Long movie_id);
 }

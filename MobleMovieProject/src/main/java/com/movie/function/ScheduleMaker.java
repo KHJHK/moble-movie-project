@@ -15,7 +15,10 @@ import org.springframework.stereotype.Component;
 
 import com.movie.dao.ScheduleDao;
 import com.movie.dao.TheaterDao;
+import com.movie.service.MovieService;
+import com.movie.service.PickService;
 import com.movie.service.ScheduleService;
+import com.movie.service.SeatService;
 import com.movie.service.TheaterService;
 import com.movie.vo.ScheduleVo;
 import com.movie.vo.TheaterVo;
@@ -31,6 +34,15 @@ public class ScheduleMaker {
 	private ScheduleService scheduleService;
 	@Autowired
 	private ScheduleDao scheduleDao;
+	
+	@Autowired
+	private SeatService seatService;
+	
+	@Autowired
+	private PickService pickService;
+	
+	@Autowired
+	private MovieService movieService;
 	
 	//스캐줄표 list
 	private static List<ScheduleVo> scheduleList = new ArrayList<ScheduleVo>();
@@ -124,8 +136,12 @@ public class ScheduleMaker {
         		cnt++;
         	}//if~else end
         }	//while end
-        
-        //현재 날짜 저장
+	}
+	
+	public void deleteSchedule() {
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar cal = Calendar.getInstance();
+		//현재 날짜 저장
         String nowDateStr = df.format(cal.getTime());
         //현재 시간 저장
         LocalTime nowTime = LocalTime.now();
@@ -135,8 +151,31 @@ public class ScheduleMaker {
         now.setSchedule_date(nowDateStr);
         now.setSchedule_time(nowTimeStr);
         
+        List<Long> deleteScheduleIdList = scheduleService.getIdByDateTime(now);
+        List<Long> deleteSeatIdList = new ArrayList<Long>();
+        for(int i = 0; i < deleteScheduleIdList.size(); i++) {
+        	deleteSeatIdList = seatService.getSeatIdBySchedule(deleteScheduleIdList.get(i));
+        	
+        	//seat 기준 pick 삭제
+            for(int j = 0; j < deleteSeatIdList.size(); j++) {
+            	pickService.deletePickBySeat(deleteSeatIdList.get(j));
+            }
+        }
+        
+        //schedule 기준 seat 삭제
+        for(int i = 0; i< deleteScheduleIdList.size(); i++) {
+        	seatService.deleteSeatBySchedule(deleteScheduleIdList.get(i));
+        }
+        
         //현재 날짜, 시간 기준 오래된 스케줄 정보 삭제
         scheduleService.deleteSchedule(now);
+	}
+	
+	public void deleteMovie(Long movieId) {
+		 //스케줄이 없으면 영화 삭제
+        if(scheduleService.getScheduleByMovieId(movieId).isEmpty()) {
+        	movieService.deleteMovie(movieId);
+        }
 	}
 }
 

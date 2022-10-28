@@ -37,4 +37,9 @@ public class MovieServiceImpl implements MovieService {
 		return movieDao.findMovieById(id);
 	}
 
+	@Override
+	public int deleteMovie(Long movie_id) {
+		return movieDao.deleteMovie(movie_id);
+	}
+
 }
