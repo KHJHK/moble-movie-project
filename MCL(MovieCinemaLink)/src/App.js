@@ -39,6 +39,23 @@ import Theater_Theater from "./Theater/Theater_Theater";
 // import Food
 import Food_MovieFood from "./Food/Food_MovieFood";
 
+// ============ AdminMain ============
+import AdminMain from "./AdminPage/AdminMain";
+import AdminMember from "./AdminPage/AdminMember/AdminMember";
+import AdminTheater from "./AdminPage/AdminTheater/AdminTheater";
+import AdminMovie from "./AdminPage/AdminMovie/AdminMovie";
+// AdminNotice
+import AdminNotice from "./AdminPage/AdminNotice/AdminNotice";
+import manage_notice_add from "./AdminPage/AdminNotice/add/manage_notice_add";
+import manage_notice_detail from "./AdminPage/AdminNotice/manage_notice_detail";
+import manage_notice_update from "./AdminPage/AdminNotice/update/manage_notice_update";
+// AdminQuestion
+import manage_question_list from "./AdminPage/AdminQuestion/manage_question_list";
+import manage_answer_add from "./AdminPage/AdminQuestion/add/manage_answer_add";
+import manage_question_detail from "./AdminPage/AdminQuestion/manage_question_detail";
+import manage_answer_update from "./AdminPage/AdminQuestion/update/manage_answer_update";
+import manage_answer_delete from "./AdminPage/AdminQuestion/delete/manage_answer_delete";
+
 function App() {
   return (
     <Router>
@@ -68,7 +85,6 @@ function App() {
             path="/Movie_MovieInformationUpComing/:id"
             component={Movie_MovieInformationUpComing}
           />
-
           {/* Member */}
           {/* <Route exact path="/Member_Login" component={Member_Login} /> */}
           {/* <Route exact path="/Member_Logout" component={Member_Logout} /> */}
@@ -81,7 +97,6 @@ function App() {
           />
           {/* Ticketing */}
           <Route exact path="/Ticketing" component={Ticketing} />
-
           {/* Notice_Notice */}
           <Route exact path="/Notice_Notice" component={Notice_Notice} />
           <Route
@@ -89,7 +104,6 @@ function App() {
             path="/Notice_NoticeInfo/:id"
             component={Notice_NoticeInfo}
           />
-
           {/* Questions_Questions */}
           <Route
             exact
@@ -108,17 +122,15 @@ function App() {
           />
           <Route exact path="/Questions_Write" component={Questions_Write} />
           {/* <Route
-            exact
-            path="/Questions_QuestionsInfo_Main"
-            component={Questions_QuestionsInfo_Main}
-          /> */}
-
+              exact
+              path="/Questions_QuestionsInfo_Main"
+              component={Questions_QuestionsInfo_Main}
+            /> */}
           <Route
             exact
             path="/Questions_Update/:question_id"
             component={Questions_Update}
           />
-
           {/* Theater */}
           <Route
             exact
@@ -128,6 +140,60 @@ function App() {
           <Route exact path="/Theater_Theater" component={Theater_Theater} />
           {/* Food */}
           <Route exact path="/Food_MovieFood" component={Food_MovieFood} />
+          {/* ====== AdminMain ====== */}
+          <Route exact path="/AdminMain" component={AdminMain} />
+          <Route exact path="/AdminMember" component={AdminMember} />
+          <Route exact path="/AdminTheater" component={AdminTheater} />
+          <Route exact path="/AdminMovie" component={AdminMovie} />
+
+          {/* Notice */}
+          <Route exact path="/AdminNotice" component={AdminNotice} />
+
+          <Route
+            exact
+            path="/manage_notice_add"
+            component={manage_notice_add}
+          />
+          <Route
+            exact
+            path="/manage_notice_detail/:id"
+            component={manage_notice_detail}
+          />
+          <Route
+            exact
+            path="/manage_notice_update/:id"
+            component={manage_notice_update}
+          />
+
+          {/* Question */}
+          <Route
+            exact
+            path="/manage_question_list"
+            component={manage_question_list}
+          />
+
+          <Route
+            exact
+            path="/manage_question_detail/:id"
+            component={manage_question_detail}
+          />
+
+          <Route
+            exact
+            path="/manage_answer_add/:id"
+            component={manage_answer_add}
+          />
+
+          <Route
+            exact
+            path="/manage_answer_update/:id"
+            component={manage_answer_update}
+          />
+          <Route
+            exact
+            path="/manage_answer_delete/:id"
+            component={manage_answer_delete}
+          />
         </Switch>
       </div>
     </Router>

@@ -1,8 +1,11 @@
 // Ticketing_SelectMovie.js
 
 import React, { useState } from "react";
-
+import { Redirect } from 'react-router-dom';
 import { movieClick } from "../Ticketing/Ticketing_Selectdoing";
+import Ticketing_SelectRegion from "./Ticketing_SelectRegion";
+
+
 import "./Ticketing_SelectMovie.css";
 import axios from "axios";
 import { useEffect } from "react";
@@ -10,42 +13,56 @@ import { useEffect } from "react";
 
 const Ticketing_SelectMovie = () => {
   const [movie, setMovie] = useState([]);
+  const [movie_id, setMovieId] = useState(404); 
+  localStorage.setItem('movie_id',0);
 
-  axios
-    .get(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=c4e59022826dc465ea5620d6adaa6813&language=ko&page=1&region=KR`
-    )
 
-    .then((res) => {
-      //console.log("res.data.results : " + JSON.stringify(res.data.results));
-      // console.log("res.data.results : " + JSON.stringify(res.data.results[0]));
-      setMovie(res.data.results);
-    });
+
+  const storeMovieId = (id) =>{
+    localStorage.setItem('movie_id',id);
+    console.log("moveid ", movie_id, id);
+    test(id);
+  }
+
+function test(id) {
+
+  setMovieId((id)=id);
+
+
+}
+
+  useEffect(() => {
+    console.log(movie_id);
+    axios.get(`http://localhost/ticketing/selectMovie`)
+    .then((response) => {
+      setMovie(response.data);
+  })
+}, [movie_id]);
 
   return (
-    <div className="SelectMovie">
+    <div className="SelectMovie" >
+     
       <h3>영화 선택</h3>
       {movie.map((item) => {
+        
         return (
-          <div>
+          
+          <div >
             <ul>
-              <li className="SelectMV" onClick={movieClick}>
-                {item.title}
+              <li className="SelectMV" onClick={(e) => { storeMovieId(item.movie_id), movieClick(e) }} >
+              {item.movie_name}
               </li>
-            </ul>
-
-            <ul>
-              <li className="SelectIMG">
-                {item.backdrop_path}
-
-                {/* <a href="#">{item.title}</a> */}
-              </li>
-            </ul>
+            </ul> 
           </div>
+          
         );
+       
       })}
-    </div>
+       <Ticketing_SelectRegion movie_id={movie_id}/>
+      </div>
+    
   );
+  
 };
 
 export default Ticketing_SelectMovie;

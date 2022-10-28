@@ -21,12 +21,14 @@
 .screen {
   border-radius: 8px;
   background: #1f324b;
-  width: 100%;
+  width:75%;
+  
   color: #ffffff;
   transform: rotateX(-30deg) scale(1.2);
 
   margin-top: 50px;
   margin-bottom: 30px;
+  margin-left: 130px;
 }
 
 .blank {

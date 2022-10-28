@@ -40,3 +40,9 @@
 .article_detail .article_body {
   margin: 30px;
 }
+
+/* 관리자 답변 */
+#answer {
+  /* 숨기기 */
+  /* display: none; */
+}

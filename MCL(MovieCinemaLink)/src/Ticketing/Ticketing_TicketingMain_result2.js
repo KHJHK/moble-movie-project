@@ -1,57 +1,92 @@
 // Member_MyPage_MemberInformation_PasswordConfirmation.js
-import React, { useState } from "react";
-import "../Member/Member_MyPage.js";
+import React, {useState} from "react";
+import "../Member/Member_MyPage.js"
 import axios from "axios";
 // import { Link } from "react-router-dom";
-import Ticketing_TicketingMain_result3 from "./Ticketing_TicketingMain_result3";
+import Ticketing_TicketingMain_result3 from "./Ticketing_TicketingMain_result3"
+
+
 
 const Ticketing_Ticketing_TicketingMain_result = (props) => {
+
+
   const [movie, setMovie] = useState([]);
+  const [movie_SeatPass, setMovie_SeatPass] = useState([]);
+
 
   axios
     .get(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=c4e59022826dc465ea5620d6adaa6813&language=ko&page=1&region=KR`
+      `http://localhost/ticketing/selectMovie`
     )
 
     .then((res) => {
       //console.log("res.data.results : " + JSON.stringify(res.data.results));
       // console.log("res.data.results : " + JSON.stringify(res.data.results[0]));
-      setMovie(res.data.results);
+      setMovie(res.data);
     });
+
+
+
+
 
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, header } = props;
   const [modalOpenSignUp, setModalOpenSignUp] = useState(false);
 
   const openModalSignup = () => {
-    console.log("비밀번호 값: " + document.querySelector("#password").value);
-    if (document.querySelector("#password").value === "1234") {
+     
+    console.log("비밀번호 값: "+ document.querySelector('#password').value);
+
+
+
+    if(document.querySelector('#password').value==="1234"){
+
+
       console.log(movie);
 
+      const params = {
+        schedule_id: localStorage.getItem('schedule_id'),
+        seat_name: localStorage.getItem('movieSeat')
+      };
+  
+      axios.post(`http://localhost:80/ticketing/insertSeat`, params)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((error) => {
+          // 없을시 받는 창 구현(X)
+          // setSHowModalX(true);
+          console.log(error);
+        });
+
       for (var i = 0; i < movie.length; i++) {
-        var moviecheck = localStorage.getItem("moviecheck");
-        console.log(movie[i].title);
+        var moviecheck = localStorage.getItem('moviecheck');
+        console.log(movie[i].movie_name);
         console.log(moviecheck);
 
-        if (movie[i].title === moviecheck) {
+        if(movie[i].movie_name===moviecheck){
           console.log("제목값이 일치했습니다.!!!!");
-          const poster_path = movie[i].poster_path;
+          const poster_path = movie[i].movie_poster_path;
           localStorage.setItem("movieporster", poster_path);
 
           var a = localStorage.getItem("movieporster");
           console.log(a);
         }
       }
-
+    
+    
       setModalOpenSignUp(true);
-    } else if (document.querySelector("#password").value === "") {
-      document.querySelector("#warningtext").innerHTML = "비밀번호를 눌러라!!!";
-    } else {
-      document.querySelector("#warningtext").innerHTML =
-        "비밀번호가 틀렸습니다!!!!";
+    
     }
+
+      else if(document.querySelector('#password').value===""){
+        document.querySelector('#warningtext').innerHTML= "비밀번호를 눌러라!!!";}
+
+     else {document.querySelector('#warningtext').innerHTML= "비밀번호가 틀렸습니다!!!!";}
+   
   };
   const closeModalSignUp = () => {
+
     setModalOpenSignUp(false);
   };
   return (

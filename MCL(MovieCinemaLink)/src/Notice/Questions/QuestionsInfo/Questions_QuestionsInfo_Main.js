@@ -34,6 +34,9 @@ function Questions_QuestionsInfo_Main(props) {
     };
 
     axios.post(`http://localhost:80/board/question_delete`, params);
+
+    // 새로고침
+    window.location.replace("/Questions_Questions");
   };
 
   // 관리자 DB 데이터 불러오기 (관리자 답변)
@@ -89,7 +92,7 @@ function Questions_QuestionsInfo_Main(props) {
       <br />
 
       {/* ======================== 관리자 답변 ======================== */}
-      <section className="article_detail">
+      <section className="article_detail" id="answer">
         <table>
           <thead>
             <tr>

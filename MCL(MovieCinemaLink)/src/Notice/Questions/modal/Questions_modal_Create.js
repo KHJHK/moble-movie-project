@@ -27,9 +27,9 @@ const Questions_modal_Create = (props) => {
           </main>
           <br />
 
-          <Link to="/Questions_Questions">
-            <button onClick={addQAFunc}>확인</button>
-          </Link>
+          {/* <Link to="/Questions_Questions"> */}
+          <button onClick={addQAFunc}>확인</button>
+          {/* </Link> */}
         </div>
       ) : null}
     </div>

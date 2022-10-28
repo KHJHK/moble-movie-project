@@ -1,9 +1,8 @@
 // Member_MyPage_MemberInformation_PasswordConfirmation.js
-import React, { useState } from "react";
+import React, {useState} from "react";
 // import { Link } from "react-router-dom";
 
 import { Link } from "react-router-dom";
-
 const Ticketing_Ticketing_TicketingMain_result = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, header } = props;
@@ -43,7 +42,10 @@ const Ticketing_Ticketing_TicketingMain_result = (props) => {
               확인
             </button>
           </Link>
-
+            
+           
+            
+         
           {/* </Link> */}
         </section>
       ) : null}

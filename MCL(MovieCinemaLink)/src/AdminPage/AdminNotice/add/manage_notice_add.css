@@ -1,0 +1,51 @@
+/* manage_notice_add.css */
+
+.manage_notice_add {
+  max-width: 1000px;
+  height: auto;
+  margin: 0px auto;
+}
+
+.ui_border .border_cont {
+  padding: 20px;
+  border-top: 3px solid #999999;
+  border-bottom: 3px solid #999999;
+}
+
+.ui_border .border_cont table th {
+  width: 200px;
+  height: auto;
+  background: #595959;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* 구분 입력 */
+.ui_border .border_cont select {
+  width: 150px;
+  height: auto;
+  padding: 10px;
+  border-radius: 5px;
+
+  margin-left: 5px;
+}
+
+/* 제목 입력 */
+.ui_border .border_cont .questions_title {
+  width: 500px;
+  height: auto;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #595959;
+}
+
+/* 내용 입력 */
+.ui_border .border_cont textarea {
+  max-width: 850px;
+  min-width: 850px;
+  margin: 50px 0px 50px 0px;
+  padding: 30px;
+  border: 1px solid #595959;
+  border-radius: 10px;
+}

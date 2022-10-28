@@ -5,6 +5,8 @@ const SelectSeat = () => {
   return (
     <div>
       <h3>좌석 선택</h3>
+
+
     </div>
   );
 };

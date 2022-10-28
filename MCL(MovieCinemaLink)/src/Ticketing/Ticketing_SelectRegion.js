@@ -1,51 +1,57 @@
 // Ticketing_SelectRegion.js
-import React, { useEffect } from "react";
-import { RegionClick } from "../Ticketing/Ticketing_Selectdoing";
-import {
-  movieClicked,
-  localStoragereset,
-} from "../Ticketing/Ticketing_Selectdoing";
-import axios from "axios";
-import { useState } from "react";
-// import { useEffect } from "react";
-const Ticketing_SelectRegion = (props) => {
-  const [movie, setMovie] = useState([]);
+import React,{useEffect, useState} from "react";
 
-  var movie_id = localStorage.getItem("movie_id");
+import {RegionClick} from "../Ticketing/Ticketing_Selectdoing";
+import {movieClicked,localStoragereset } from "../Ticketing/Ticketing_Selectdoing";
+import axios from "axios";
+
+
+const Ticketing_SelectRegion = (props) => {
+
+  console.log("일단 지역창 넘어옴");
+  
+  const movie_id = localStorage.getItem('movie_id');
+  const [movie, setMovie] = useState([]);
+  // movie_id = localStorage.getItem('movie_id');
+  const movie_check = localStorage.getItem('moviecheck');
+  const [moviea, setMoviea] = useState(props.movie_id);
+ 
+  // const storeMovieId = (id) =>{
+  //   localStorage.setItem('movie_id',id);
+  //   console.log("fefefef")
+  // }
 
   useEffect(() => {
-    axios
-      .get(
-        // `https://api.themoviedb.org/3/movie/now_playing?api_key=c4e59022826dc465ea5620d6adaa6813&language=ko&page=1&region=KR`
-        `http://localhost/ticketing/selectLocation?movie_id=${movie_id}`
-      )
+    setMoviea(props.movie_id);
+    console.log("moviea : " + moviea);
 
-      .then((res) => {
-        //console.log("res.data.results : " + JSON.stringify(res.data.results));
-        // console.log("res.data.results : " + JSON.stringify(res.data.results[0]));
-        setMovie(res.data);
-      });
-  }, []);
-
+    axios.get(`http://localhost/ticketing/selectLocation?movie_id=${moviea}`)
+    .then((response) => {
+      setMovie(response.data);
+  })
+  console.log("useEffect에 들어온 상황(movie) : " + movie);
+}, [props.movie_id]);
+  
   return (
     <div className="SelectRegion">
-      <h3>지역 선택</h3>
+       <h3>지역 선택</h3>
+       
       {movie.map((item) => {
+        
         return (
+          
           <div>
             <ul>
-              <li
-                className="SelectRG"
-                onClick={(e) => {
-                  RegionClick(e);
-                }}
-              >
-                {item.cinema_location}
+              <li className="SelectRG" onClick={(e) => {RegionClick}}>
+              {item.cinema_location}
               </li>
-            </ul>
+            </ul> 
           </div>
+          
         );
+       
       })}
+      
     </div>
   );
 };

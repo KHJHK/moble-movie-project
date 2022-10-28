@@ -1,4 +1,4 @@
-/* Theater_Theater.css */
+/* .Theater_Theater.css */
 
 .Theater_Theater {
   max-width: 1000px;
@@ -6,171 +6,107 @@
   margin: 0px auto;
 }
 
-.theater span {
-  /* font-size: 20px; */
-  position: absolute;
-  right: 30px;
-  bottom: 10px;
-  font-size: 20px;
-  color: #ffffff;
-  font-weight: 900;
+.Theater_Theater .theater div {
+  margin-top: 20px;
+  border-radius: 20px;
 }
 
-.TempPur,
-.soundX,
-.sphereX,
-.IMAX,
-.fourDX {
-  position: absolute;
-}
-
-.theater div img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: all 0.2s linear;
-}
-
-.theater div img:hover {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1.4);
-  opacity: 0.2;
-}
-
-.TempPurbg {
-  position: absolute;
-  top: 40px;
-  width: 626px;
-  height: 260px;
-  background: #000000;
-}
-
-.soundXbg {
-  background: #000000;
-  position: absolute;
-  top: 332px;
-  width: 298px;
-  height: 410px;
-}
-
-.sphereXbg {
-  position: absolute;
-  background: #000000;
-  top: 332px;
-  left: 328px;
-  width: 298px;
-  height: 410px;
-}
-
-.IMAXbg {
-  position: absolute;
-  background: #000000;
-  top: 40px;
-  right: 0px;
-  width: 340px;
-  height: 700px;
-}
-
+/* 상세설명 + img */
+.TempPurbg,
+.soundXbg,
+.sphereXbg,
+.IMAXbg,
 .fourDXbg {
-  position: absolute;
-  background: #000000;
-  top: 773px;
-  width: 980px;
-  height: 320px;
-}
-
-.TempPur_explanation {
-  position: relative;
-  left: 166px;
-  padding-top: 30px;
-  text-align: center;
-  width: 300px;
-  height: 160px;
-  color: #ffffff;
-}
-
-.soundX_explanation {
-  position: relative;
-  color: #ffffff;
-  top: 100px;
-  left: 40px;
-  width: 220px;
-  text-align: center;
-  height: px;
-}
-
-.sphereX_explanation {
-  position: relative;
-  color: #ffffff;
-  top: 100px;
-  left: 39px;
-  text-align: center;
-  width: 220px;
-  height: 200px;
-}
-
-.IMAX_explanation {
-  position: relative;
-  color: #ffffff;
-  top: 220px;
-  left: 30px;
-  width: 280px;
-  text-align: center;
-}
-
-.fourDX_explanation {
-  position: relative;
-  color: #ffffff;
-  top: 100px;
-  left: 274px;
-  width: 420px;
-  text-align: center;
-}
-
-.theater > div {
-  overflow: hidden;
-  border-radius: 20px;
-  box-shadow: 1px 1px 10px 1px #ffffff;
-}
-
-.theater {
-  position: relative;
-  height: 1165px;
-  border-radius: 20px;
-  /* background: #1f324b; */
   margin: 10px;
 }
 
-.TempPur {
-  top: 0px;
-  width: 626px;
-  height: 260px;
+/* 상세설명 */
+.TempPur_explanation,
+.soundX_explanation,
+.sphereX_explanation,
+.IMAX_explanation,
+.fourDX_explanation {
+  text-align: center;
+  color: #ffffff;
+  background: #1f324b;
+
+  position: absolute;
+}
+.Theater_Theater h2 {
+  padding: 30px;
+}
+.Theater_Theater p {
+  padding: 30px 30px 0px 30px;
+}
+/* ===== img ===== */
+.Theater_Theater .theater div img {
+  border-radius: 20px;
+  /* width: 100%;
+  height: 100%; */
+  /* object-fit: cover; */
+  /* transition: all 0.2s linear; */
+  position: absolute;
 }
 
-.IMAX {
-  top: 0px;
-  right: 0px;
-  width: 340px;
-  height: 700px;
+.Theater_Theater .theater div img:hover {
+  /* border-radius: 20px; */
+  /* width: 100%;
+  height: 100%; */
+  /* object-fit: cover; */
+  /* transform: scale(1.4); */
+  opacity: 0.2;
 }
 
-.soundX {
-  top: 0px;
-  width: 298px;
-  height: 410px;
+/* ========================= */
+/* 템퍼시네마 */
+.TempPurbg,
+.TempPur_explanation,
+.TempPur,
+.TempPur img {
+  width: 600px;
+  height: 250px;
+
+  float: left;
 }
 
-.sphereX {
-  top: 0px;
-  left: 0px;
-  width: 298px;
-  height: 410px;
-}
+/* 시피어X시네마 */
+.sphereXbg,
+.sphereX_explanation,
+.sphereX,
+.sphereX img {
+  width: 350px;
+  height: 570px;
 
-.fourDX {
-  top: 0px;
+  float: right;
+}
+/* 사운드x시네마 */
+.soundXbg,
+.soundX_explanation,
+.soundX,
+.soundX img {
+  width: 290px;
+  height: 300px;
+
+  /* clear: both; */
+  float: left;
+}
+/* IMAX시네마 */
+.IMAXbg,
+.IMAX_explanation,
+.IMAX,
+.IMAX img {
+  width: 290px;
+  height: 300px;
+
+  /* clear: both; */
+  float: left;
+}
+/* 4DX시네마 */
+.fourDXbg,
+.fourDX_explanation,
+.fourDX,
+.fourDX img {
   width: 980px;
-  height: 320px;
+  height: 350px;
+  clear: both;
 }

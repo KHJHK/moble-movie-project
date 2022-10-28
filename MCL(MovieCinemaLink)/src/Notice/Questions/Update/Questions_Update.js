@@ -43,6 +43,9 @@ const Questions_Update = (props) => {
     };
 
     axios.post(`http://localhost:80/board/question_update`, params);
+
+    // 새로고침
+    window.location.replace("/Questions_Questions");
   };
 
   // 등록했을 때 팝업창 실행

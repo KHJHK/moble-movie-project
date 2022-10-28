@@ -27,9 +27,9 @@ const Questions_modal_Delete = (props) => {
           </main>
           <br />
 
-          <Link to="/Questions_Questions">
+          {/* <Link to="/Questions_Questions"> */}
             <button onClick={deleteQAFunc}>확인</button>
-          </Link>
+          {/* </Link> */}
         </div>
       ) : null}
     </div>

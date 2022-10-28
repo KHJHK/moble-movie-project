@@ -13,17 +13,20 @@ const Questions_Write = (props) => {
   const addQA = () => {
     const category_id = document.getElementById("categoryId").value;
     const question_title = document.getElementById("questionTitle").value;
-    const quetion_content = document.getElementById("quetionContent").value;
-    console.log("등록 : ", category_id, question_title, quetion_content);
+    const question_content = document.getElementById("quetionContent").value;
+    console.log("등록 : ", category_id, question_title, question_content);
 
     const params = {
       category_id: category_id,
       question_title: question_title,
-      question_content: quetion_content,
+      question_content: question_content,
       member_id: 1,
     };
 
     axios.post(`http://localhost:80/board/question_add`, params);
+
+    // 새로고침
+    window.location.replace("/Questions_Questions");
   };
 
   // 등록했을 때 팝업창 실행

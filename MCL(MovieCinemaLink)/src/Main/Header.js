@@ -35,23 +35,32 @@ const Header = (props) => {
   let [savedLoginId, setSavedLoginId] = useState("");
   let [savedLoginPassword, setSavedLoginPassword] = useState("");
 
-  // 1: 로그인 2: ID/Pw찾기 3: 메일전송(PW찾기) 4: 회원가입 5: IW찾기 6:회원가입완료 7,8 : 로그인 실패,성공 9,10: pw찾기
   const [useCustomModal, setUseCustomModal] = React.useState(false);
+
+  // 로그인 화면 1
   const [showModal1, setShowModal1] = React.useState(false);
-  const [showModal2, setShowModal2] = React.useState(false);
-  const [showModal3, setShowModal3] = React.useState(false);
+  // 회원가입 화면 4
   const [showModal4, setShowModal4] = React.useState(false);
+  // ID,PW 찾기 화면 2
+  const [showModal2, setShowModal2] = React.useState(false);
+  // ID 찾기 5
   const [showModal5, setShowModal5] = React.useState(false);
+
+  // PW 변경
+  // (PW 변경 -> 인증메일전송) 11 =>
+  // 인증번호 전송 후 PW 설정창 6 =>
+  // PW 재설정 결과 12
+  const [showModal11, setShowModal11] = React.useState(false);
   const [showModal6, setShowModal6] = React.useState(false);
+  const [showModal12, setShowModal12] = React.useState(false);
+
+  // 7, 8 : 로그인 실패, 성공 (미구현)
   const [showModal7, setShowModal7] = React.useState(false);
   const [showModal8, setShowModal8] = React.useState(false);
-  const [showModal9, setShowModal9] = React.useState(false);
-  const [showModal10, setShowModal10] = React.useState(false);
-  const [showModal11, setShowModal11] = React.useState(false);
-  const [showModal12, setShowModal12] = React.useState(false);
 
   const ModalComponent = useCustomModal ? CustomModal : ReactModal;
 
+  // ==========================================================================
   // 2: ID/PW찾기
   //ID 찾기
   const [nameID, setNameID] = useState("");
@@ -260,6 +269,11 @@ const Header = (props) => {
       return (
         <div className="TopMenu">
           <div className="TopMenu3">
+            <Link to="/AdminMain">
+              <strong onClick="">관리자</strong>
+            </Link>
+          </div>
+          <div className="TopMenu3">
             <strong onClick={() => setShowModal1(true)}>로그인</strong>
           </div>
           <div className="TopMenu2">
@@ -296,28 +310,6 @@ const Header = (props) => {
     }
   };
 
-  // axios({
-  //   method: "post",
-  //   url: "http://localhost:80/member/login",
-  //   data: {
-  //     username: loginId,
-  //     password: loginPassword,
-  //   },
-  // })
-  //   .then((res) => {
-  //     console.log(res);
-  //     dispatch(
-  //       setUser({
-  //         username: res.data.username,
-  //         password: res.data.password,
-  //       })
-  //     );
-
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
-
   // 회원가입 db
 
   async function SignUp() {
@@ -352,8 +344,6 @@ const Header = (props) => {
         console.log(res);
       })
       .catch((error) => {
-        // 없을시 받는 창 구현(X)
-        // setSHowModalX(true);
         console.log(error);
       });
   }
@@ -412,6 +402,7 @@ const Header = (props) => {
         setIdId(res.data);
       });
   };
+
   // pw 찾기
   const [fPWId, setFPWId] = useState(""); //pw찾기 아이디 입력 값
   const [fPWName, setFPWName] = useState(""); //pw찾기 이름 입력 값
@@ -474,7 +465,7 @@ const Header = (props) => {
       {/* 로고 */}
       <div className="firstpart">
         <Link to="/">
-          <img src="./img/toppicture.png" alt="Logo" id="toppicture" />
+          <img src="./img/toppicture.png" alt="상단 로고사진" id="toppicture" />
         </Link>
 
         {/* 모달창 전체 */}
@@ -591,167 +582,7 @@ const Header = (props) => {
           </form>
         </ModalComponent>
 
-        {/* ID/PW 찾기 */}
-        <ModalComponent
-          isOpen={showModal2}
-          onRequestClose={() => setShowModal2(false)}
-          style={customStyles}
-        >
-          <div className="customStyles">
-            <header className="Modal_fullTitle">
-              <strong>ID/PW 찾기</strong>
-              <button
-                className="close_btn"
-                onClick={() => setShowModal2(false)}
-              >
-                &times;
-              </button>
-            </header>
-            <main>
-              <br />
-              <input
-                text="이름"
-                type="name"
-                id="find_name"
-                typeName="name"
-                variant={"outlined"}
-                onChange={(e) => {
-                  setFName(e.target.value), onNameChangeID;
-                }}
-                placeholder="이름 입력"
-                size="small"
-              />
-              {nameID.length > 0 && (
-                <p className={`message ${isNameID ? "success" : "error"}`}>
-                  {nameMessageID}
-                </p>
-              )}
-              <br />
-              <input
-                text="이메일"
-                type="email"
-                typeName="email"
-                id="find_email"
-                variant="outlined"
-                onChange={(e) => {
-                  setFEmail(e.target.value), onEmailChangeID;
-                }}
-                placeholder="이메일 입력"
-                size="small"
-              />
-              {emailID.length > 0 && (
-                <p className={`message ${isEmailID ? "success" : "error"}`}>
-                  {emailMessageID}
-                </p>
-              )}
-              <br />
-              <br />
-              <button
-                onClick={(e) => {
-                  setShowModal5(true), FindId(e);
-                }}
-              >
-                ID찾기
-              </button>
-              {/* ///////////////////////////////////////////////////////////////////////////////////////////// */}
-              <br />
-              <br />
-              <input
-                text="ID"
-                type="id"
-                typeName="id"
-                variant="outlined"
-                onChange={(e) => {
-                  setFPWId(e.target.value), onIdChangePW;
-                }}
-                placeholder="아이디"
-                size="small"
-              />
-              {idPW.length > 0 && (
-                <p className={`message ${isIdPW ? "success" : "error"}`}>
-                  {idMessagePW}
-                </p>
-              )}
-              <br />
-              <input
-                text="이름"
-                type="name"
-                typeName="name"
-                variant={"outlined"}
-                onChange={(e) => {
-                  setFPWName(e.target.value), onNameChangePW;
-                }}
-                placeholder="이름 입력"
-                size="small"
-              />
-              {namePW.length > 0 && (
-                <p className={`message ${isNamePW ? "success" : "error"}`}>
-                  {nameMessagePW}
-                </p>
-              )}
-              <br />
-              <input
-                text="이메일"
-                type="email"
-                typeName="email"
-                variant="outlined"
-                onChange={(e) => {
-                  setFPWEmail(e.target.value), onEmailChangePW;
-                }}
-                placeholder="이메일 입력"
-                size="small"
-              />
-              {emailPW.length > 0 && (
-                <p className={`message ${isEmailPW ? "success" : "error"}`}>
-                  {emailMessagePW}
-                </p>
-              )}
-              <br />
-              <br />
-            </main>
-            {/* 현재 footer에 다른 css가 적용되어 있다.(회색) */}
-            <footer1>
-              <button
-                onClick={(e) => {
-                  setShowModal11(true), FindPW(e);
-                }}
-              >
-                PW 찾기
-              </button>
-              <span />
-              <button onClick={() => setShowModal2(false)}>닫기</button>
-            </footer1>
-          </div>
-        </ModalComponent>
-
-        {/* 메일전송(PW찾기) */}
-        <ModalComponent
-          isOpen={showModal3}
-          onRequestClose={() => setShowModal3(false)}
-          style={customStyles}
-        >
-          <div className="customStyles">
-            <header className="Modal_fullTitle">
-              <strong>메일 전송</strong>
-              <button
-                className="close_btn"
-                onClick={() => setShowModal3(false)}
-              >
-                &times;
-              </button>
-            </header>
-            <main>
-              <br />
-              <br />
-              <p>이메일 전송 완료</p>
-              <br />
-              <br />
-              <button onClick={() => setShowModal3(false)}>확인</button>
-            </main>
-          </div>
-        </ModalComponent>
-
-        {/* 회원가입 */}
+        {/* 회원가입 화면*/}
         <ModalComponent
           isOpen={showModal4}
           onRequestClose={() => setShowModal4(false)}
@@ -912,6 +743,139 @@ const Header = (props) => {
           </div>
         </ModalComponent>
 
+        {/* ID/PW 찾기 화면 */}
+        <ModalComponent
+          isOpen={showModal2}
+          onRequestClose={() => setShowModal2(false)}
+          style={customStyles}
+        >
+          <div className="customStyles">
+            <header className="Modal_fullTitle">
+              <strong>ID/PW 찾기</strong>
+              <button
+                className="close_btn"
+                onClick={() => setShowModal2(false)}
+              >
+                &times;
+              </button>
+            </header>
+            <main>
+              <br />
+              <input
+                text="이름"
+                type="name"
+                id="find_name"
+                typeName="name"
+                variant={"outlined"}
+                onChange={(e) => {
+                  setFName(e.target.value), onNameChangeID;
+                }}
+                placeholder="이름 입력"
+                size="small"
+              />
+              {nameID.length > 0 && (
+                <p className={`message ${isNameID ? "success" : "error"}`}>
+                  {nameMessageID}
+                </p>
+              )}
+              <br />
+              <input
+                text="이메일"
+                type="email"
+                typeName="email"
+                id="find_email"
+                variant="outlined"
+                onChange={(e) => {
+                  setFEmail(e.target.value), onEmailChangeID;
+                }}
+                placeholder="이메일 입력"
+                size="small"
+              />
+              {emailID.length > 0 && (
+                <p className={`message ${isEmailID ? "success" : "error"}`}>
+                  {emailMessageID}
+                </p>
+              )}
+              <br />
+              <br />
+              <button
+                onClick={(e) => {
+                  setShowModal5(true), FindId(e);
+                }}
+              >
+                ID찾기
+              </button>
+              {/* ///////////////////////////////////////////////////////////////////////////////////////////// */}
+              <br />
+              <br />
+              <input
+                text="ID"
+                type="id"
+                typeName="id"
+                variant="outlined"
+                onChange={(e) => {
+                  setFPWId(e.target.value), onIdChangePW;
+                }}
+                placeholder="아이디"
+                size="small"
+              />
+              {idPW.length > 0 && (
+                <p className={`message ${isIdPW ? "success" : "error"}`}>
+                  {idMessagePW}
+                </p>
+              )}
+              <br />
+              <input
+                text="이름"
+                type="name"
+                typeName="name"
+                variant={"outlined"}
+                onChange={(e) => {
+                  setFPWName(e.target.value), onNameChangePW;
+                }}
+                placeholder="이름 입력"
+                size="small"
+              />
+              {namePW.length > 0 && (
+                <p className={`message ${isNamePW ? "success" : "error"}`}>
+                  {nameMessagePW}
+                </p>
+              )}
+              <br />
+              <input
+                text="이메일"
+                type="email"
+                typeName="email"
+                variant="outlined"
+                onChange={(e) => {
+                  setFPWEmail(e.target.value), onEmailChangePW;
+                }}
+                placeholder="이메일 입력"
+                size="small"
+              />
+              {emailPW.length > 0 && (
+                <p className={`message ${isEmailPW ? "success" : "error"}`}>
+                  {emailMessagePW}
+                </p>
+              )}
+              <br />
+              <br />
+            </main>
+            {/* 현재 footer에 다른 css가 적용되어 있다.(회색) */}
+            <footer1>
+              <button
+                onClick={(e) => {
+                  setShowModal11(true), FindPW(e);
+                }}
+              >
+                PW 찾기
+              </button>
+              <span />
+              <button onClick={() => setShowModal2(false)}>닫기</button>
+            </footer1>
+          </div>
+        </ModalComponent>
+
         {/* ID찾기 */}
         <ModalComponent
           isOpen={showModal5}
@@ -934,54 +898,8 @@ const Header = (props) => {
             <button onClick={() => setShowModal5(false)}>확인</button>
           </div>
         </ModalComponent>
-        {/* 인증번호 입력 */}
-        <ModalComponent
-          isOpen={showModal9}
-          onRequestClose={() => setShowModal9(false)}
-          style={customStyles}
-        >
-          <div className="customStyles">
-            <header className="Modal_fullTitle">
-              <strong>인증번호</strong>
-              <button
-                className="close_btn"
-                onClick={() => setShowModal9(false)}
-              >
-                &times;
-              </button>
-            </header>
-            <main>
-              <input type="text" placeholder="인증번호" />
-            </main>
-            <button onClick={() => setShowModal9(false)}>확인</button>
-          </div>
-        </ModalComponent>
 
-        {/* 비밀번호 재설정 */}
-        <ModalComponent
-          isOpen={showModal10}
-          onRequestClose={() => setShowModal10(false)}
-          style={customStyles}
-        >
-          <div className="customStyles">
-            <header className="Modal_fullTitle">
-              <strong>비밀번호 재설정</strong>
-              <button
-                className="close_btn"
-                onClick={() => setShowModal10(false)}
-              >
-                &times;
-              </button>
-            </header>
-            <main>
-              <input type={"password"} placeholder="비밀번호 재설정" />
-              <input type={"password"} placeholder="비밀번호 재설정 확인" />
-            </main>
-            <button onClick={() => setShowModal10(false)}>확인</button>
-          </div>
-        </ModalComponent>
-
-        {/* 비밀번호찾기 정보 없음 */}
+        {/* 비밀번호 변경 -> 인증메일전송 */}
         <ModalComponent
           isOpen={showModal11}
           onRequestClose={() => setShowModal11(false)}

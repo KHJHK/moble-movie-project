@@ -1,0 +1,16 @@
+/* Nav.css */
+
+.AdminNav {
+  margin: 10px;
+  padding: 10px;
+
+  width: 150px;
+  height: 500px;
+
+  background: #1f324b;
+}
+
+.AdminNav h3 {
+  text-align: center;
+  color: #ffffff;
+}
