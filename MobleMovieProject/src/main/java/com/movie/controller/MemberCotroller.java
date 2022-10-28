@@ -142,12 +142,15 @@ public class MemberCotroller {
 		return pickService.getPickInfoList(member_id);
 	}
 	
-	@PostMapping("/deletePick")
+	@GetMapping("/delete_pick")
 	public String deletePick(@RequestParam("pick_id")String pick_id_str) {
 		Long pick_id = Long.parseLong(pick_id_str);
-		int seat_result = seatService.deleteSeat(pickService.getPickById(pick_id).getSeat_id());
+		Long seat_id = pickService.getPickById(pick_id).getSeat_id();
+		
 		int pick_result = pickService.deletePick(pick_id);
-		int result = seat_result = pick_result;
+		int seat_result = seatService.deleteSeat(seat_id);
+		int result = seat_result + pick_result;
+		
 		if(result == 2)	return "예매 취소 완료";
 		else	return "예매 취소 실패";
 	}

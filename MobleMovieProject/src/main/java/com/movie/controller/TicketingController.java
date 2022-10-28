@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -58,9 +60,11 @@ public class TicketingController {
 		return ticketingService.getSeatInfo(schedule_id);
 	}
 	
-	@GetMapping("/insertSeat")
-	public int insertSeat(@RequestParam("schedule_id")Long schedule_id, 
-			@RequestParam("seat_name")String seat_name) {
-		return ticketingService.insertSeat(schedule_id, seat_name);
+	@PostMapping("/insertSeat")
+	public int insertSeat(@RequestBody Map insert) {
+		Long seat_id = ticketingService.insertSeat(insert);
+		insert.put("seat_id", seat_id);
+		
+		return ticketingService.insertPick(insert);
 	}
 }

@@ -38,8 +38,8 @@ public class PickServiceImpl implements PickService{
 	}
 
 	@Override
-	public int insertPick(Long seat_id, Long member_id) {
-		return pickDao.insertPick(seat_id, member_id);
+	public int insertPick(Long seat_id, Long member_id, Long schedule_id) {
+		return pickDao.insertPick(seat_id, member_id, schedule_id);
 	}
 
 	@Override

@@ -4,8 +4,8 @@
 <mapper namespace="com.movie.dao.PickDao">
 	<insert id="insertPick">
 		INSERT
-		INTO pick(seat_id, member_id)
-		VALUES (#{seat_id}, #{member_id})
+		INTO pick(seat_id, member_id, schedule_id)
+		VALUES (#{seat_id}, #{member_id}, #{schedule_id})
 	</insert>
 
 	<delete id="deletePick">
@@ -29,7 +29,7 @@
     <select id="getPickById" resultType = "PickVo">
 	    SELECT *
 	    FROM pick
-	    WEHRE pick_id = #{pick_id};
+	    WHERE pick_id = #{pick_id};
     </select>
     
 </mapper>

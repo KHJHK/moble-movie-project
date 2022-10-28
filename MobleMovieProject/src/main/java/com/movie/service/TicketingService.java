@@ -16,6 +16,8 @@ import com.movie.vo.MovieVo;
 import com.movie.vo.ScheduleVo;
 import com.movie.vo.SeatVo;
 
+import io.jsonwebtoken.lang.Collections;
+
 @Service
 public class TicketingService {
 	@Autowired
@@ -97,11 +99,24 @@ public class TicketingService {
 		return blockSeatList;
 	}
 	
-	public int insertSeat(Long schedule_id, String seat_name){
-		return seatDao.insertSeat(schedule_id, seat_name);
+	public Long insertSeat(Map insert){
+		Long schedule_id = Long.parseLong(insert.get("schedule_id").toString());
+		String seat_name = insert.get("seat_name").toString();
+		int result = seatDao.insertSeat(schedule_id, seat_name);
+		
+		if(result == 1) {
+			List<Long> seat_id_list = seatDao.getSeatIdBySchedule(schedule_id);
+			Long seat_id = seat_id_list.get(seat_id_list.size() - 1);
+			return seat_id;
+		}else {
+			return -1L;
+		}
 	}
 	
-	public int insertPick(Long seat_id, Long member_id) {
-		return pickDao.insertPick(seat_id, member_id);
+	public int insertPick(Map insert) {
+		Long seat_id = Long.parseLong(insert.get("seat_id").toString());
+		Long member_id = Long.parseLong(insert.get("member_id").toString());
+		Long schedule_id = Long.parseLong(insert.get("schedule_id").toString());
+		return pickDao.insertPick(seat_id, member_id, schedule_id);
 	}
 }
