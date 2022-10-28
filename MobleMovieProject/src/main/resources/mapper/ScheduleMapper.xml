@@ -10,7 +10,7 @@
 	</select>
 	
 	<select id="getScheduleById" resultType = "ScheduleVo">
-		SELECT schedule_id
+		SELECT *
 		FROM schedule
 		WHERE schedule_id = #{schedule_id}
 	</select>

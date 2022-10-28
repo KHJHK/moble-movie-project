@@ -32,8 +32,9 @@ public class PickServiceImpl implements PickService{
 	@Autowired
 	MovieDao movieDao;
 	
-	public int deletePick(Long seat_id) {
-		return pickDao.deletePick(seat_id);
+	@Override
+	public int deletePickBySeat(Long seat_id) {
+		return pickDao.deletePickBySeat(seat_id);
 	}
 
 	@Override
@@ -49,21 +50,25 @@ public class PickServiceImpl implements PickService{
 	@Override
 	public List<Map> getPickInfoList(Long member_id){
 		List<Map> result = new ArrayList();
+		String pick_id = "";
 		String movie_name = "";
 		String movie_poster_path = "";
 		String cinema_location = "";
 		String cinema_name = "";
+		String theater_name = "";
 		String schedule_date = "";
 		String schedule_time = "";
 		String seat_name = "";
 		
 		for(int i = 0; i < getPickByMemberId(member_id).size(); i++) {
+			pick_id = getPickByMemberId(member_id).get(i).getPick_id().toString();
 			SeatVo seat = seatDao.getSeatInfoById(getPickByMemberId(member_id).get(i).getSeat_id());
 			seat_name = seat.getSeat_name();
 			
 			ScheduleVo schedule = scheduleDao.getScheduleById(seat.getSchedule_id());
 			schedule_date = schedule.getSchedule_date();
 			schedule_time = schedule.getSchedule_time();
+			theater_name = schedule.getTheater_name();
 			
 			CinemaVo cinema = cinemaDao.getCinemaByName(schedule.getCinema_name());
 			cinema_name = cinema.getCinema_name();
@@ -74,10 +79,12 @@ public class PickServiceImpl implements PickService{
 			movie_poster_path = movie.getMovie_poster_path();
 			
 			Map<String, String> insert = new HashMap<>();
+			insert.put("pick_id", pick_id);
 			insert.put("movie_name", movie_name);
 			insert.put("movie_poster_path", movie_poster_path);
 			insert.put("cinema_location", cinema_location);
 			insert.put("cinema_name", cinema_name);
+			insert.put("theater_name", theater_name);
 			insert.put("schedule_date", schedule_date);
 			insert.put("schedule_time", schedule_time);
 			insert.put("seat_name", seat_name);
@@ -85,5 +92,15 @@ public class PickServiceImpl implements PickService{
 			result.add(insert);
 		};
 		return result;
+	}
+
+	@Override
+	public int deletePick(Long pick_id) {
+		return pickDao.deletePick(pick_id);
+	}
+
+	@Override
+	public PickVo getPickById(Long pick_id) {
+		return pickDao.getPickById(pick_id);
 	}
 }

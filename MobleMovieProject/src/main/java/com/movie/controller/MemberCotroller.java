@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.movie.service.MemberService;
 import com.movie.service.PickService;
+import com.movie.service.SeatService;
 import com.movie.vo.MemberVo;
 
 @RestController
@@ -29,6 +30,8 @@ public class MemberCotroller {
 	MemberService memberService;
 	@Autowired
 	PickService pickService;
+	@Autowired
+	SeatService seatService;
 	
 	//메인
 	@GetMapping
@@ -137,6 +140,16 @@ public class MemberCotroller {
 	@GetMapping("/mypage")
 	public List<Map> mypage(@RequestParam("member_id")Long member_id){
 		return pickService.getPickInfoList(member_id);
+	}
+	
+	@PostMapping("/deletePick")
+	public String deletePick(@RequestParam("pick_id")String pick_id_str) {
+		Long pick_id = Long.parseLong(pick_id_str);
+		int seat_result = seatService.deleteSeat(pickService.getPickById(pick_id).getSeat_id());
+		int pick_result = pickService.deletePick(pick_id);
+		int result = seat_result = pick_result;
+		if(result == 2)	return "예매 취소 완료";
+		else	return "예매 취소 실패";
 	}
 
 }

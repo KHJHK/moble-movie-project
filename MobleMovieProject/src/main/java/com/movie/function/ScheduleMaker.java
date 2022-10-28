@@ -152,15 +152,19 @@ public class ScheduleMaker {
         now.setSchedule_time(nowTimeStr);
         
         List<Long> deleteScheduleIdList = scheduleService.getIdByDateTime(now);
-        List<Long> deleteSeatIdList = seatService.getSeatIdBySchedule(deleteScheduleIdList);
-        
-        //seat 기준 pick 삭제
-        for(int i = 0; i < deleteSeatIdList.size(); i++) {
-        	pickService.deletePick(deleteSeatIdList.get(i));
+        List<Long> deleteSeatIdList = new ArrayList<Long>();
+        for(int i = 0; i < deleteScheduleIdList.size(); i++) {
+        	deleteSeatIdList = seatService.getSeatIdBySchedule(deleteScheduleIdList.get(i));
+        	
+        	//seat 기준 pick 삭제
+            for(int j = 0; j < deleteSeatIdList.size(); j++) {
+            	pickService.deletePickBySeat(deleteSeatIdList.get(j));
+            }
         }
+        
         //schedule 기준 seat 삭제
         for(int i = 0; i< deleteScheduleIdList.size(); i++) {
-        	seatService.deleteSeat(deleteScheduleIdList.get(i));
+        	seatService.deleteSeatBySchedule(deleteScheduleIdList.get(i));
         }
         
         //현재 날짜, 시간 기준 오래된 스케줄 정보 삭제

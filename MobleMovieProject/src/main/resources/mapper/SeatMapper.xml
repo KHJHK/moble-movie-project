@@ -30,6 +30,12 @@
 	<delete id="deleteSeat">
 	DELETE
 	FROM seat
+	WHERE seat_id = #{seat_id}
+	</delete>
+	
+	<delete id="deleteSeatBySchedule">
+	DELETE
+	FROM seat
 	WHERE schedule_id = #{schedule_id}
 	</delete>
 
