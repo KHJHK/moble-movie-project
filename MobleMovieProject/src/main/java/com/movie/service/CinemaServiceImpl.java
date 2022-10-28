@@ -31,4 +31,10 @@ public class CinemaServiceImpl implements CinemaService {
 		// TODO Auto-generated method stub
 		return cinemaDao.getCinemaNameByLocation(location);
 	}
+
+	@Override
+	public CinemaVo getCinemaById(String cinema_name) {
+		// TODO Auto-generated method stub
+		return cinemaDao.getCinemaByName(cinema_name);
+	}
 }

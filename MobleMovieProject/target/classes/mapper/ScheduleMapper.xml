@@ -8,6 +8,12 @@
 		FROM schedule
 		<![CDATA[WHERE schedule_date <= #{schedule_date} AND schedule_time <= #{schedule_time}]]> 
 	</select>
+	
+	<select id="getScheduleById" resultType = "ScheduleVo">
+		SELECT schedule_id
+		FROM schedule
+		WHERE schedule_id = #{schedule_id}
+	</select>
 
 	<select id="findOverlapSchedule" parameterType = "com.movie.vo.ScheduleVo" resultType="ScheduleVo">
 		SELECT * 

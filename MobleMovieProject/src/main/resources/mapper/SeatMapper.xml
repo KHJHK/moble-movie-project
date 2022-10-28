@@ -9,6 +9,12 @@
 	WHERE schedule_id = #{schedule_id}
 	</select>
 	
+	<select id="getSeatInfoById" resultType="SeatVo">
+	SELECT *
+	FROM seat
+	WHERE seat_id = #{seat_id}
+	</select>
+	
 	<select id="getSeatIdBySchedule" resultType="Long">
 	SELECT seat_id
 	FROM seat

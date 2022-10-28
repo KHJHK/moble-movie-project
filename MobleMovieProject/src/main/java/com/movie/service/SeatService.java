@@ -11,4 +11,5 @@ public interface SeatService {
 	public int insertSeat(Long schedule_id, String seat_name);
 	public List<Long> getSeatIdBySchedule(List<Long> schedule_id_List);
 	public int deleteSeat(Long schedule_id);
+	public SeatVo getSeatInfoById(Long seat_id);
 }

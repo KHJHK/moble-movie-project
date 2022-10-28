@@ -3,12 +3,10 @@ package com.movie.service;
 import java.util.List;
 import java.util.Map;
 
-import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.movie.dao.ScheduleDao;
-import com.movie.vo.MovieVo;
 import com.movie.vo.ScheduleVo;
 
 @Service
@@ -76,6 +74,11 @@ public class ScheduleServiceImpl implements ScheduleService{
 	@Override
 	public List<Long> getScheduleByMovieId(Long movie_id) {
 		return scheduleDao.getScheduleByMovieId(movie_id);
+	}
+
+	@Override
+	public ScheduleVo getScheduleById(Long schedule_id) {
+		return scheduleDao.getScheduleById(schedule_id);
 	}
 
 	

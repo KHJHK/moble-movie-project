@@ -3,8 +3,6 @@ package com.movie.service;
 import java.util.List;
 import java.util.Map;
 
-import org.json.simple.JSONArray;
-
 import com.movie.vo.ScheduleVo;
 
 public interface ScheduleService {
@@ -19,4 +17,5 @@ public interface ScheduleService {
 	public List<ScheduleVo> getScheduleTimeAndTheater(Map info);
 	public List<Long> getIdByDateTime(ScheduleVo scheduleVo);
 	public List<Long> getScheduleByMovieId(Long movie_id);
+	public ScheduleVo getScheduleById(Long schedule_id);
 }

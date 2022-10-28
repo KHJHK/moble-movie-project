@@ -21,4 +21,5 @@ public interface ScheduleDao {
 	public List<ScheduleVo> getScheduleTimeAndTheater(Map info);
 	public List<Long> getIdByDateTime(ScheduleVo scheduleVo);
 	public List<Long> getScheduleByMovieId(Long movie_id);
+	public ScheduleVo getScheduleById(@Param("schedule_id")Long schedule_id);
 }

@@ -1,5 +1,8 @@
 package com.movie.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.movie.service.MemberService;
+import com.movie.service.PickService;
 import com.movie.vo.MemberVo;
 
 @RestController
@@ -23,6 +27,8 @@ import com.movie.vo.MemberVo;
 public class MemberCotroller {
 	@Autowired
 	MemberService memberService;
+	@Autowired
+	PickService pickService;
 	
 	//메인
 	@GetMapping
@@ -128,5 +134,9 @@ public class MemberCotroller {
 		}
 	}
 	
+	@GetMapping("/mypage")
+	public List<Map> mypage(@RequestParam("member_id")Long member_id){
+		return pickService.getPickInfoList(member_id);
+	}
 
 }

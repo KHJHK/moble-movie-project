@@ -32,6 +32,11 @@ public class SeatServiceImpl implements SeatService{
 	public int deleteSeat(Long schedule_id) {
 		return seatDao.deleteSeat(schedule_id);
 	}
+
+	@Override
+	public SeatVo getSeatInfoById(Long seat_id) {
+		return seatDao.getSeatInfoById(seat_id);
+	}
 	
 	
 }
