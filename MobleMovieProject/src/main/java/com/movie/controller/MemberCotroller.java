@@ -1,5 +1,6 @@
 package com.movie.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +30,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.movie.service.MemberService;
+import com.movie.service.PickService;
+import com.movie.service.SeatService;
 import com.movie.vo.LoginVo;
 import com.movie.vo.MemberVo;
 
@@ -38,6 +41,10 @@ import com.movie.vo.MemberVo;
 public class MemberCotroller {
 	@Autowired
 	MemberService memberService;
+	@Autowired
+	PickService pickService;
+	@Autowired
+	SeatService seatService;
 
 	
 	//로그인
@@ -148,4 +155,23 @@ public class MemberCotroller {
            return "인증번호가 다릅니다.";
         }
      }
+     
+     @GetMapping("/mypage")
+ 	public List<Map> mypage(@RequestParam("member_id")Long member_id){
+ 		return pickService.getPickInfoList(member_id);
+ 	}
+ 	
+ 	@GetMapping("/delete_pick")
+ 	public String deletePick(@RequestParam("pick_id")String pick_id_str) {
+ 		Long pick_id = Long.parseLong(pick_id_str);
+ 		Long seat_id = pickService.getPickById(pick_id).getSeat_id();
+ 		
+ 		int pick_result = pickService.deletePick(pick_id);
+ 		int seat_result = seatService.deleteSeat(seat_id);
+ 		int result = seat_result + pick_result;
+ 		
+ 		if(result == 2)	return "예매 취소 완료";
+ 		else	return "예매 취소 실패";
+ 	}
+
 }
