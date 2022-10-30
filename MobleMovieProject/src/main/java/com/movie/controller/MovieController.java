@@ -1,6 +1,7 @@
 package com.movie.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -57,9 +58,7 @@ public class MovieController {
 	
 	@ResponseBody
 	@GetMapping("/showAll")
-	public List<MovieVo> showAllMovies(){
-		apiUrl = BASE_URL + "now_playing" + MOVIE_API_KEY;
-		System.out.println(apiUrl);
+	public List<Map> showAllMovies(){
 		return movieService.getMovieInfo();
 	}
 
@@ -110,12 +109,7 @@ public class MovieController {
 				scheduleMaker.deleteMovie(jsonId);
 			}//for end
 		}//if end
-		
-		//id로 영화 검색
-		List<MovieVo> movieList = movieService.getMovieInfo();
-		
-		//출력
-		model.addAttribute("movieList", movieList);
+
 		return "Movie/Schedule inserted and deleted";
 	}
 }

@@ -10,4 +10,7 @@ public class MovieVo {
 	private Double movie_popularity;
 	private String movie_poster_path;
 	private String movie_overview;
-}
+	private String movie_video_url;
+		
+	}
+

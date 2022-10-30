@@ -73,12 +73,12 @@ public class ManageController {
    //공지사항
    
    //관리자페이지 공지사항 리스트
-   @GetMapping("/manage_notice")
+   @GetMapping("/manage_notice_list")
    public List<Map<String,Object>> manageNotice() {
       return manageService.manageNoticeList();
    }
    //관리자페이지 공지사항 삭제 리스트
-   @GetMapping("/manage_delete_notice")
+   @GetMapping("/manage_delete_notice_list")
    public List<Map<String,Object>> manageDeleteNotice() {
       return manageService.manageNoticeDeleteList();
    }

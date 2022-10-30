@@ -1,6 +1,9 @@
 package com.movie.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,9 +17,30 @@ public class MovieServiceImpl implements MovieService {
 	MovieDao movieDao;
 
 	@Override
-	public List<MovieVo> getMovieInfo() {
+	public List<Map> getMovieInfo() {
 		// 영화 테이블 전체 SELECT
-		return movieDao.getMovieInfo();
+		List<MovieVo> movieList = movieDao.getMovieInfo();
+		List<Map> result = new ArrayList();
+		int movie_num = 0;
+		
+		for(int i = 0; i < movieList.size(); i++) {
+			Map insert = new HashMap<>();
+			
+			movie_num = i + 1;
+			
+			insert.put("movie_num", movie_num);
+			insert.put("movie_id", movieList.get(i).getMovie_id());
+			insert.put("movie_name", movieList.get(i).getMovie_name());
+			insert.put("movie_open_date", movieList.get(i).getMovie_open_date());
+			insert.put("movie_overview", movieList.get(i).getMovie_overview());
+			insert.put("movie_popularity", movieList.get(i).getMovie_popularity());
+			insert.put("movie_poster_path", movieList.get(i).getMovie_poster_path());
+			insert.put("movie_video_url", movieList.get(i).getMovie_video_url());
+			
+			result.add(insert);
+		}
+		
+		return result;
 	}
 
 	@Override
