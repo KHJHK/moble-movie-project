@@ -1,8 +1,8 @@
-// AdminQuestionDeleteList.js
+// Manage_Question_Delete_List.js
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function AdminQuestionDeleteList(props) {
+export default function Manage_Question_Delete_List(props) {
   return (
     // <div class="container">
     //   <table class="board_table">

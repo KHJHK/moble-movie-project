@@ -7,6 +7,7 @@ import axios from "axios";
 import Questions_modal_Create from "../modal/Questions_modal_Create";
 import Footer from "../../../Main/Footer";
 import Header from "../../../Main/Header";
+import jwtDecode from "jwt-decode";
 
 const Questions_Write = (props) => {
   // DB 데이터 불러오기 (리스트 추가)
@@ -15,12 +16,14 @@ const Questions_Write = (props) => {
     const question_title = document.getElementById("questionTitle").value;
     const question_content = document.getElementById("quetionContent").value;
     console.log("등록 : ", category_id, question_title, question_content);
-
+    const decode = jwtDecode(
+      JSON.stringify(window.localStorage.getItem("token"))
+    );
     const params = {
       category_id: category_id,
       question_title: question_title,
       question_content: question_content,
-      member_id: 1,
+      member_id: decode.member_id,
     };
 
     axios.post(`http://localhost:80/board/question_add`, params);

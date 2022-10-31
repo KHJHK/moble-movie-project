@@ -1,11 +1,11 @@
-// manage_answer_update.js
+// Manage_Answer_Update.js
 // 관리자 Q&A 답변수정
 
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
-const manage_answer_update = () => {
+const Manage_Answer_Update = () => {
   const { id } = useParams();
 
   // DB 데이터 불러오기 (상세정보)
@@ -34,12 +34,12 @@ const manage_answer_update = () => {
     axios.post(`http://localhost:80/manage/manage_answer_update`, params);
 
     // 새로고침
-    window.location.replace(`/manage_question_detail/${id}`);
+    window.location.replace(`/Manage_Question_Detail/${id}`);
   };
 
   return (
     <div>
-      <div className="manage_answer_update">
+      <div className="Manage_Answer_Update">
         <div class="ui_container">
           <h3>Q & A 답변수정</h3>
           <div class="ui_border">
@@ -76,7 +76,7 @@ const manage_answer_update = () => {
 
             <div class="Notice_btn">
               <button onClick={UpdateQA}>수정완료</button>
-              <Link to="/manage_question_list">
+              <Link to="/Manage_Question">
                 <button>목록</button>
               </Link>
             </div>
@@ -87,4 +87,4 @@ const manage_answer_update = () => {
   );
 };
 
-export default manage_answer_update;
+export default Manage_Answer_Update;

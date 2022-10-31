@@ -1,12 +1,11 @@
-// manage_notice_detail.js
+// Manage_Notice_Detail.js
 
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
 
-function manage_notice_detail(props) {
+function Manage_Notice_Detail(props) {
   const { id } = useParams();
 
   // DB 데이터 불러오기 (상세정보)
@@ -33,11 +32,11 @@ function manage_notice_detail(props) {
     axios.post(`http://localhost:80/manage/manage_notice_delete`, params);
 
     // 새로고침
-    window.location.replace("/AdminNotice");
+    window.location.replace("/Manage_Notice");
   };
 
   return (
-    <div className="manage_notice_detail">
+    <div className="Manage_Notice_Detail">
       <section className="article_detail">
         <table>
           <thead>
@@ -77,17 +76,17 @@ function manage_notice_detail(props) {
 
       {/* btn */}
       <div className="Notice_btn">
-        <Link to="/AdminNotice">
+        <Link to="/Manage_Notice">
           <button>목록</button>
         </Link>
-        <Link to={`/manage_answer_update/${notice_detail.notice_id}`}>
+        <Link to={`/Manage_Notice_Update/${notice_detail.notice_id}`}>
           <button>수정</button>
         </Link>
-        {/* <Link to="/AdminNotice"> */}
+        {/* <Link to="/Manage_Notice"> */}
         <button onClick={notice_delete}>삭제</button>
         {/* </Link> */}
       </div>
     </div>
   );
 }
-export default manage_notice_detail;
+export default Manage_Notice_Detail;

@@ -1,0 +1,14 @@
+/* AdminHeader.css */
+
+.AdminHeader {
+  width: 1280px;
+  height: auto;
+}
+
+.UserPageLogo {
+  float: left;
+}
+
+.ManagePageLogo {
+  display: inline-block;
+}

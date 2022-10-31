@@ -1,11 +1,11 @@
-// manage_notice_add.js
+// Manage_Notice_Add.js
 // 관리자 공지사항 등록
 
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 
-const manage_notice_add = (props) => {
+const Manage_Notice_Add = (props) => {
   const history = useHistory();
   // DB 데이터 불러오기 (리스트 추가)
   const addNotice = () => {
@@ -24,14 +24,14 @@ const manage_notice_add = (props) => {
     axios.post(`http://localhost:80/manage/manage_notice_add`, params);
 
     // 새로고침
-    window.location.replace("/AdminNotice");
+    window.location.replace("/Manage_Notice");
   };
 
   return (
     <div>
-      <div className="manage_notice_add">
+      <div className="Manage_Notice_Add">
         <div class="ui_container">
-          <h3>문의사항 등록</h3>
+          <h3>공지사항 등록</h3>
           <div class="ui_border">
             <div class="border_cont">
               <table>
@@ -66,10 +66,10 @@ const manage_notice_add = (props) => {
             </div>
 
             <div class="Notice_btn">
-              {/* <Link to="/AdminNotice"> */}
+              {/* <Link to="/Manage_Notice"> */}
               <button onClick={addNotice}>등록</button>
               {/* </Link> */}
-              <Link to="/AdminNotice">
+              <Link to="/Manage_Notice">
                 <button>목록</button>
               </Link>
             </div>
@@ -80,4 +80,4 @@ const manage_notice_add = (props) => {
   );
 };
 
-export default manage_notice_add;
+export default Manage_Notice_Add;

@@ -42,19 +42,17 @@ import Food_MovieFood from "./Food/Food_MovieFood";
 // ============ AdminMain ============
 import AdminMain from "./AdminPage/AdminMain";
 import AdminMember from "./AdminPage/AdminMember/AdminMember";
-import AdminTheater from "./AdminPage/AdminTheater/AdminTheater";
 import AdminMovie from "./AdminPage/AdminMovie/AdminMovie";
-// AdminNotice
-import AdminNotice from "./AdminPage/AdminNotice/AdminNotice";
-import manage_notice_add from "./AdminPage/AdminNotice/add/manage_notice_add";
-import manage_notice_detail from "./AdminPage/AdminNotice/manage_notice_detail";
-import manage_notice_update from "./AdminPage/AdminNotice/update/manage_notice_update";
+// Manage_Notice
+import Manage_Notice from "./AdminPage/AdminNotice/Manage_Notice";
+import Manage_Notice_Add from "./AdminPage/AdminNotice/add/Manage_Notice_Add";
+import Manage_Notice_Detail from "./AdminPage/AdminNotice/Manage_Notice_Detail";
+import Manage_Notice_Update from "./AdminPage/AdminNotice/update/Manage_Notice_Update";
 // AdminQuestion
-import manage_question_list from "./AdminPage/AdminQuestion/manage_question_list";
-import manage_answer_add from "./AdminPage/AdminQuestion/add/manage_answer_add";
-import manage_question_detail from "./AdminPage/AdminQuestion/manage_question_detail";
-import manage_answer_update from "./AdminPage/AdminQuestion/update/manage_answer_update";
-import manage_answer_delete from "./AdminPage/AdminQuestion/delete/manage_answer_delete";
+import Manage_Question from "./AdminPage/AdminQuestion/Manage_Question";
+import Manage_Answer_Add from "./AdminPage/AdminQuestion/add/Manage_Answer_Add";
+import Manage_Question_Detail from "./AdminPage/AdminQuestion/Manage_Question_Detail";
+import Manage_Answer_Update from "./AdminPage/AdminQuestion/update/Manage_Answer_Update";
 
 function App() {
   return (
@@ -143,56 +141,46 @@ function App() {
           {/* ====== AdminMain ====== */}
           <Route exact path="/AdminMain" component={AdminMain} />
           <Route exact path="/AdminMember" component={AdminMember} />
-          <Route exact path="/AdminTheater" component={AdminTheater} />
           <Route exact path="/AdminMovie" component={AdminMovie} />
 
           {/* Notice */}
-          <Route exact path="/AdminNotice" component={AdminNotice} />
+          <Route exact path="/Manage_Notice" component={Manage_Notice} />
 
           <Route
             exact
-            path="/manage_notice_add"
-            component={manage_notice_add}
+            path="/Manage_Notice_Add"
+            component={Manage_Notice_Add}
           />
           <Route
             exact
-            path="/manage_notice_detail/:id"
-            component={manage_notice_detail}
+            path="/Manage_Notice_Detail/:id"
+            component={Manage_Notice_Detail}
           />
           <Route
             exact
-            path="/manage_notice_update/:id"
-            component={manage_notice_update}
+            path="/Manage_Notice_Update/:id"
+            component={Manage_Notice_Update}
           />
 
           {/* Question */}
+          <Route exact path="/Manage_Question" component={Manage_Question} />
+
           <Route
             exact
-            path="/manage_question_list"
-            component={manage_question_list}
+            path="/Manage_Question_Detail/:id"
+            component={Manage_Question_Detail}
           />
 
           <Route
             exact
-            path="/manage_question_detail/:id"
-            component={manage_question_detail}
+            path="/Manage_Answer_Add/:id"
+            component={Manage_Answer_Add}
           />
 
           <Route
             exact
-            path="/manage_answer_add/:id"
-            component={manage_answer_add}
-          />
-
-          <Route
-            exact
-            path="/manage_answer_update/:id"
-            component={manage_answer_update}
-          />
-          <Route
-            exact
-            path="/manage_answer_delete/:id"
-            component={manage_answer_delete}
+            path="/Manage_Answer_Update/:id"
+            component={Manage_Answer_Update}
           />
         </Switch>
       </div>

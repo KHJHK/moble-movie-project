@@ -1,4 +1,4 @@
-// manage_question_detail.js
+// Manage_Question_Detail.js
 
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
-function manage_question_detail(props) {
+function Manage_Question_Detail(props) {
   const { id } = useParams();
 
   //사용자 Q & A
@@ -43,7 +43,7 @@ function manage_question_detail(props) {
     axios.post(`http://localhost:80/manage/manage_question_delete`, params);
 
     // 새로고침
-    window.location.replace("/manage_question_list");
+    window.location.replace("/Manage_Question");
   };
 
   // Q & A 답변 삭제
@@ -59,12 +59,12 @@ function manage_question_detail(props) {
 
     // 새로고침
     window.location.replace(
-      `/manage_question_detail/${question_detail.question_id}`
+      `/Manage_Question_Detail/${question_detail.question_id}`
     );
   };
 
   return (
-    <div className="manage_question_detail">
+    <div className="Manage_Question_Detail">
       {/* ======================== Q & A 사용자 질문 ======================== */}
       <h3>Q & A 사용자 질문</h3>
       <section className="article_detail">
@@ -135,13 +135,13 @@ function manage_question_detail(props) {
       </section>
       {/* ======================== btn ======================== */}
       <div className="question_btn">
-        <Link to="/manage_question_list">
+        <Link to="/Manage_Question">
           <button>목록</button>
         </Link>
-        <Link to={`/manage_answer_add/${question_detail.question_id}`}>
+        <Link to={`/Manage_Answer_Add/${question_detail.question_id}`}>
           <button>답변등록</button>
         </Link>
-        <Link to={`/manage_answer_update/${question_detail.question_id}`}>
+        <Link to={`/Manage_Answer_Update/${question_detail.question_id}`}>
           <button>답변수정</button>
         </Link>
         {/* <Link to={`/manage_answer_delete/${question_detail.question_id}`}> */}
@@ -151,4 +151,4 @@ function manage_question_detail(props) {
     </div>
   );
 }
-export default manage_question_detail;
+export default Manage_Question_Detail;

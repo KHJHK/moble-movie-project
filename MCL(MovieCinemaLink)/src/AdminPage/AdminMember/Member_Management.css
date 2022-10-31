@@ -1,0 +1,13 @@
+.Member_Management table {
+  /* position: relative; */
+  width: 1300px;
+  height: auto;
+  text-align: center;
+  border: 1px solid #1f324b;
+  border-collapse: collapse;
+}
+
+.Member_Management th,
+.Member_Management td {
+  border: 1px solid #1f324b;
+}

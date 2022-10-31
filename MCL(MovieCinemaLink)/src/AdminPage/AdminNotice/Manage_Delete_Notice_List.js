@@ -1,9 +1,7 @@
-// AdminNoticeList.js
+// Manage_Delete_Notice_List.js
 import React from "react";
-import "./AdminNoticeList.css";
-import { Link } from "react-router-dom";
 
-export default function AdminNoticeList(props) {
+export default function Manage_Delete_Notice_List(props) {
   return (
     // <div class="container">
     //   <table class="board_table">
@@ -18,11 +16,8 @@ export default function AdminNoticeList(props) {
         <span>{props.category_name}</span>
       </td>
       {/* 제목 */}
-      <div>
-        <Link to={`/manage_notice_detail/${props.notice_id}`}>
-          <td> {props.notice_title}</td>
-        </Link>
-      </div>
+
+      <td> {props.notice_title}</td>
 
       {/* 등록일 */}
       <td>

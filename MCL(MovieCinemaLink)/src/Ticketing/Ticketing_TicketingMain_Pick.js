@@ -19,7 +19,7 @@ console.log("pick창 넘어옴  ")
     var sid = localStorage.getItem("schedule_id");
 
     useEffect(() => { 
-        axios.get(`http://localhost/ticketing/selectSeat?schedule_id=${sid}`)
+        axios.get(`http://localhost/ticketing/selectedSeat?schedule_id=${sid}`)
         .then((response) => {
             setMoviebuy_respone2 (response.data);
         })      
@@ -31,9 +31,7 @@ console.log("pick창 넘어옴  ")
   const { open, close, header } = props;
   const [modalOpenSignUp, setModalOpenSignUp] = useState(false);
 
-  const seatTest = () => {
-    console.log(rows[0].find(x => x.id === "A1").isReserved);
-  }
+  
 
   const openModalSignup = () => {
 
@@ -93,10 +91,10 @@ console.log("pick창 넘어옴  ")
       { id: "A16", number: "A16", isReserved: movie_buy_respone },
     ],
     [
-      { id: "B1", number: "A1", isReserved: movie_buy_respone },
-      { id: "B2", number: "A2", isReserved: movie_buy_respone },
-      { id: "B3", number: "A3", isReserved: movie_buy_respone },
-      { id: "B4", number: "A4", isReserved: movie_buy_respone },
+      { id: "B1", number: "B1", isReserved: movie_buy_respone },
+      { id: "B2", number: "B2", isReserved: movie_buy_respone },
+      { id: "B3", number: "B3", isReserved: movie_buy_respone },
+      { id: "B4", number: "B4", isReserved: movie_buy_respone },
       null,
       { id: "B5", number: "B5", isReserved: movie_buy_respone },
       { id: "B6", number: "B6", isReserved: movie_buy_respone },
@@ -323,9 +321,7 @@ console.log("pick창 넘어옴  ")
                     ></Ticketing_TicketingMain_result>
                 </React.Fragment>
                 {/* </Link> */}
-                <button className="close" onClick={seatTest}>
-                    임시
-                </button>
+              
                 <button className="close" onClick={()=>{setSelected(""), close()}}>
                     닫기
                 </button>

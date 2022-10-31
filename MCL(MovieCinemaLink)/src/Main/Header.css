@@ -17,7 +17,7 @@
 
 /* ===== 로그인, 회원가입, 마이페이지 ===== */
 .TopMenu {
-  width: 300px;
+  width: 400px;
   height: 50px;
   display: flex; /* 가로 배치 */
   /* 오른쪽 정렬 */

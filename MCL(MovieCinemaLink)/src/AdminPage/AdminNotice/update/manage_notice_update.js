@@ -1,10 +1,10 @@
-// manage_notice_update.js Q&A 등록
+// Manage_Notice_Update.js Q&A 등록
 
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
-const manage_notice_update = (props) => {
+const Manage_Notice_Update = (props) => {
   const { id } = useParams();
 
   // DB 데이터 불러오기 (상세정보)
@@ -38,12 +38,12 @@ const manage_notice_update = (props) => {
     axios.post(`http://localhost:80/manage/manage_notice_update`, params);
 
     // 새로고침
-    window.location.replace("/AdminNotice");
+    window.location.replace("/Manage_Notice");
   };
 
   return (
     <div>
-      <div className="manage_notice_update">
+      <div className="Manage_Notice_Update">
         <div class="ui_container">
           <h3>공지사항 수정</h3>
           <div class="ui_border">
@@ -91,7 +91,7 @@ const manage_notice_update = (props) => {
 
             <div class="Notice_btn">
               <button onClick={UpdateNotice}>수정완료</button>
-              <Link to="/AdminNotice">
+              <Link to="/Manage_Notice">
                 <button>목록</button>
               </Link>
             </div>
@@ -102,4 +102,4 @@ const manage_notice_update = (props) => {
   );
 };
 
-export default manage_notice_update;
+export default Manage_Notice_Update;

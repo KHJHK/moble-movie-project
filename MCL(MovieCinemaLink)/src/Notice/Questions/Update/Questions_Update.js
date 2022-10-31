@@ -7,7 +7,7 @@ import axios from "axios";
 import Questions_modal_Update from "../modal/Questions_modal_Update";
 import Footer from "../../../Main/Footer";
 import Header from "../../../Main/Header";
-
+import jwtDecode from "jwt-decode";
 const Questions_Update = (props) => {
   const { question_id } = useParams();
 
@@ -33,9 +33,11 @@ const Questions_Update = (props) => {
     const question_title = document.getElementById("questionTitle").value;
     const quetion_content = document.getElementById("quetionContent").value;
     console.log("수정 : ", category_id, question_title, quetion_content);
-
+    const decode = jwtDecode(
+      JSON.stringify(window.localStorage.getItem("token"))
+    );
     const params = {
-      member_id: 1,
+      member_id: decode.member_id,
       question_id: question_id,
       category_id: category_id,
       question_title: question_title,

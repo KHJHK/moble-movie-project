@@ -1,8 +1,8 @@
-// AdminQuestionList.js
+// Manage_Notice_List.js
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function AdminQuestionList(props) {
+export default function Manage_Notice_List(props) {
   return (
     // <div class="container">
     //   <table class="board_table">
@@ -10,25 +10,26 @@ export default function AdminQuestionList(props) {
     <tr>
       {/* 번호 */}
       <td>
-        <span>{props.question_num}</span>
+        <span>{props.notice_num}</span>
       </td>
       {/* 구분 */}
       <td>
         <span>{props.category_name}</span>
       </td>
       {/* 제목 */}
-      <td className="tbodyTitle" key={props.question_id}>
-        <Link to={`/manage_question_detail/${props.question_id}`}>
-          <strong>{props.question_title}</strong>
+      <div>
+        <Link to={`/Manage_Notice_Detail/${props.notice_id}`}>
+          <td> {props.notice_title}</td>
         </Link>
-      </td>
+      </div>
+
       {/* 등록일 */}
       <td>
-        <span>{props.question_reg_date}</span>
+        <span>{props.notice_reg_date}</span>
       </td>
-      {/* 회원ID */}
+      {/* 조회수 */}
       <td>
-        <span>{props.member_account}</span>
+        <span>{props.notice_count}</span>
       </td>
     </tr>
     //     </tbody>

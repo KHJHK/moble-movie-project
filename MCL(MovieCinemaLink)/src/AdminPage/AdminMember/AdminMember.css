@@ -1,6 +1,18 @@
 /* AdminMember.css */
-.AdminMember {
+
+
+
+.AdminMember table {
   width: 1280px;
   height: auto;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.AdminMember th,
+.AdminMember td {
   border: 1px solid #1f324b;
+  width: auto;
+  height: 30px;
+  padding: 10px;
 }

@@ -3,16 +3,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import ReactModal from "react-modal";
-import { Modal, input, withWidth } from "@material-ui/core";
 import axios from "axios";
-// import Instance from "./LoginInstance";
+import jwtDecode from "jwt-decode";
+import Member_MyPage from "../Member/Member_MyPage";
 
 const CustomModal = (props) => {
   const { isOpen } = props;
   return isOpen ? <ReactModal {...props} /> : null;
 };
-
-// const Heading = ({ useCustomModal }) => <div style={modal}></div>;
 
 //ModalComponent 스타일
 const customStyles = {
@@ -26,14 +24,16 @@ const customStyles = {
   },
 };
 
-const Header = (props) => {
+const Header = () => {
   //로그인 유지 세션
-  let sessionStorage = window.sessionStorage;
+  // let sessionStorage = window.sessionStorage;
+  let localStorage = window.localStorage;
+
+  // 로그인 회원의 정보
+  const [list, setList] = useState([]);
 
   let [loginId, setLoginId] = useState("");
   let [loginPassword, setLoginPassword] = useState("");
-  let [savedLoginId, setSavedLoginId] = useState("");
-  let [savedLoginPassword, setSavedLoginPassword] = useState("");
 
   const [useCustomModal, setUseCustomModal] = React.useState(false);
 
@@ -41,6 +41,8 @@ const Header = (props) => {
   const [showModal1, setShowModal1] = React.useState(false);
   // 회원가입 화면 4
   const [showModal4, setShowModal4] = React.useState(false);
+  // 회원가입 결과 3
+  const [showModal3, setShowModal3] = React.useState(false);
   // ID,PW 찾기 화면 2
   const [showModal2, setShowModal2] = React.useState(false);
   // ID 찾기 5
@@ -180,6 +182,15 @@ const Header = (props) => {
   const [isPwCf, setIsPwCf] = useState(false);
   const [isNickname, setIsNickname] = useState(false);
 
+  /*로그인경우 예매하기로 넘어가는 함수*/
+  function Ticketlogin() {
+    if (localStorage.getItem("token") !== null) {
+      window.location.replace("/Ticketing");
+    } else {
+      setShowModal1(true);
+    }
+  }
+
   // 조건문
   const onNameChange = (e) => {
     setName(e.target.value);
@@ -244,90 +255,50 @@ const Header = (props) => {
       setIsPwCf(false);
     }
   };
+
+  const [dbCk, setDbCk] = useState("");
+  const [dbCk2, setDbCk2] = useState([]);
   const onNicknameChange = (e) => {
-    const nicknameRegex = /|didgusgn|/; //db의 nickname값과 비교
-    const nicknameCurrent = e.target.value;
-    setNickname(nicknameCurrent);
-
-    if (!nicknameRegex.test(nicknameCurrent)) {
-      setNicknameMessage("중복된 닉네임입니다.");
-      setIsNickname(false);
-    } else {
-      setNicknameMessage("사용 가능한 닉네임입니다.");
-      setIsNickname(true);
-    }
+    // axios.get(`http://localhost:80/manage/manage_userList`)
+    //   .then((res) => {
+    //     setDbCk(res.data);
+    //     console.log(res.data);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+    // const nicknameCurrent = e.target.value;
+    // setNickname(nicknameCurrent);
+    // for (var i = 0; i < 99; i++) {
+    //   // setDbCk2(dbCk[i].member_nickname);
+    // }
+    // if (dbCk2 == nicknameCurrent) {
+    //   setNicknameMessage("중복된 닉네임");
+    //   setIsNickname(false);
+    // } else {
+    //   setNicknameMessage("사용가능 닉네임");
+    //   setIsNickname(true);
+    // }
+    // if (!nicknameRegex.test(nicknameCurrent)) {
+    //   setNicknameMessage("중복된 닉네임입니다.");
+    //   setIsNickname(false);
+    // } else if (nicknameRegex.test(nicknameCurrent)) {
+    //   setNicknameMessage("사용 가능한 닉네임입니다.");
+    //   setIsNickname(true);
+    // }
   };
 
-  //visible
-  const [login, setLogin] = useState(false);
+  // 회원가입 정보 보내기
 
-  const logIn = (e) => {
-    if (
-      (sessionStorage.getItem("loginId"),
-      sessionStorage.getItem("loginPassword") == null)
-    ) {
-      return (
-        <div className="TopMenu">
-          <div className="TopMenu3">
-            <Link to="/AdminMain">
-              <strong onClick="">관리자</strong>
-            </Link>
-          </div>
-          <div className="TopMenu3">
-            <strong onClick={() => setShowModal1(true)}>로그인</strong>
-          </div>
-          <div className="TopMenu2">
-            <strong onClick={() => setShowModal4(true)}>회원가입</strong>
-          </div>
-        </div>
-      );
-    } else if (
-      (sessionStorage.getItem("loginId"),
-      sessionStorage.getItem("loginPassword") != null)
-    ) {
-      return (
-        <div className="TopMenu">
-          <div className="TopMenu2">
-            <Link to={"/"}>
-              <strong
-                onClick={() => {
-                  sessionStorage.removeItem("loginId", loginId),
-                    sessionStorage.removeItem("loginPassword", loginPassword),
-                    alert("로그아웃");
-                }}
-              >
-                로그아웃
-              </strong>
-            </Link>
-          </div>
-          <div className="TopMenu3">
-            <Link to="/Member_MyPage">
-              <strong> 마이페이지</strong>
-            </Link>
-          </div>
-        </div>
-      );
-    }
-  };
+  // const [signUpRs, setSignUpRs] = useState("");
 
-  // 회원가입 db
-
-  async function SignUp() {
+  const SignUp = (e) => {
     const member_account = document.getElementById("memberAccount").value;
     const member_pw = document.getElementById("memberPw").value;
     const member_email = document.getElementById("memberEmail").value;
     const member_name = document.getElementById("memberName").value;
     const member_nickname = document.getElementById("memberNickname").value;
     const member_birth = document.getElementById("memberBirth").value;
-    console.log(
-      "회원가입 : ",
-      member_account,
-      member_pw,
-      member_email,
-      member_name,
-      member_nickname,
-      member_birth
-    );
 
     const params = {
       member_account: member_account,
@@ -338,56 +309,31 @@ const Header = (props) => {
       member_birth: member_birth,
     };
 
-    await axios
+    axios
       .post(`http://localhost:80/member/signup`, params)
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
+        console.log(
+          "회원가입 : ",
+          member_account,
+          member_pw,
+          member_email,
+          member_name,
+          member_nickname,
+          member_birth
+        );
+        setSignUpResult(res.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }
+  };
 
-  // ===============================================================
-  // async function SignUp() {
+  // 회원가입 닉네임 중복확인
 
-  //   try {
-  //     const response = await Instance.post(`/member/signup`,
+  // 회원가입 결과
 
-  //     JSON.stringify({
-
-  //       "member_account": id,
-  //       "member_pw": pw,
-  //       "member_email": email,
-  //       "member_name": name,
-  //       "member_nickname": nickname,
-  //       "member_birth": date,
-
-  //     }));
-  //     console.log(response.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-  // ========================================================
-
-  // // id찾기
-  // async function FindId() {
-  //   const params = {
-  //     member_name: name,
-  //     member_email: email,
-  //   };
-  //   await axios.post(`http://localhost:80/member/find_id`, params)
-  //     .then((res) => {
-  //       console.log(res);
-  //     })
-
-  //     .catch((error) => {
-  //       // 없을시 받는 창 구현(X)
-  //       // setSHowModalX(true);
-  //       console.log(error);
-  //     });
-  // }
+  const [signUpResult, setSignUpResult] = useState("");
 
   // id 찾기
   const [fName, setFName] = useState(""); //id찾기 이름 입력 값
@@ -460,6 +406,128 @@ const Header = (props) => {
 
   // ==========================================================
 
+  async function LoginPost() {
+    try {
+      const response = await axios.post(`http://localhost:80/member/login`, {
+        member_account: loginId,
+        member_pw: loginPassword,
+      });
+      // console.log(response.data);
+
+      if (response.data == "비밀번호가 일치하지 않습니다.") {
+        console.log(response.data);
+        alert(response.data);
+      } else if (response.data == "아이디가 없습니다.") {
+        console.log(response.data);
+        setShowModal8(true);
+        alert(response.data);
+      } else if (response.data == "탈퇴 회원 입니다.") {
+        alert(response.data);
+      } else {
+        // 로그인 성공 시
+        localStorage.setItem("token", JSON.stringify(response.data));
+        alert("로그인 성공");
+        setShowModal1(false);
+
+        // 로그인 회원 정보 list에 넣어주기
+        const decoded = jwtDecode(JSON.stringify(response.data));
+        setList({
+          member_account: decoded.member_account,
+          member_pw: decoded.member_pw,
+          member_auth: decoded.member_auth,
+          member_birth: decoded.member_birth,
+          member_email: decoded.member_email,
+          member_id: decoded.member_id,
+          member_modify_date: decoded.member_modify_date,
+          member_name: decoded.member_name,
+          member_nickname: decoded.member_nickname,
+          member_reg_date: decoded.member_reg_date,
+        });
+        console.log("list : " + list);
+        window.location.href = "http://localhost:3000/";
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // const [isAdmin, setIsAdmin] = useState(false);
+
+  // if (decoded2.member_auth == "ADMIN") {
+  //   setIsAdmin(true);
+  // } else {
+  //   setIsAdmin(false);
+  // }
+
+  // 로그인, 회원가입 || 로그아웃, 마이페이지
+
+  // 관리자 상태 확인
+  function qwer() {
+    const decoded2 = jwtDecode(JSON.stringify(localStorage.getItem("token")));
+
+    if (decoded2.member_auth == "ADMIN") {
+      return (
+        <Link to="/AdminMain">
+          <storng>관리자</storng>
+        </Link>
+      );
+    }
+  }
+
+  const logIn = (e) => {
+    if (localStorage.getItem("token") == null) {
+      return (
+        <div className="TopMenu">
+          <div className="TopMenu3">
+            <strong onClick={() => setShowModal1(true)}>로그인</strong>
+          </div>
+          <div className="TopMenu2">
+            <strong onClick={() => setShowModal4(true)}>회원가입</strong>
+          </div>
+        </div>
+      );
+    } else if (localStorage.getItem("token") != null) {
+      return (
+        <div className="TopMenu">
+          <div className="TopMenu1">{qwer()}</div>
+          <div className="TopMenu2">
+            <Link to={"/"}>
+              <strong
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  alert("로그아웃");
+                  window.location.href = "http://localhost:3000/";
+                }}
+              >
+                로그아웃
+              </strong>
+            </Link>
+          </div>
+          <div className="TopMenu3">
+            <Link to="/Member_MyPage">
+              {/* <React.Fragment> */}
+              <strong> 마이페이지</strong>
+              {/* <Member_MyPage
+                  member_account={list.member_account}
+                  member_auth={list.member_auth}
+                  member_birth={list.member_birth}
+                  member_email={list.member_email}
+                  member_id={list.member_id}
+                  member_modify_date={list.member_modify_date}
+                  member_name={list.member_name}
+                  member_nickname={list.member_nickname}
+                  member_pw={list.member_pw}
+                  member_reg_date={list.member_reg_date}
+                />
+              </React.Fragment> */}
+              {/* 회원정보 넘기기 */}
+            </Link>
+          </div>
+        </div>
+      );
+    }
+  };
+
   return (
     <header>
       {/* 로고 */}
@@ -470,13 +538,13 @@ const Header = (props) => {
 
         {/* 모달창 전체 */}
 
+        <strong>{}</strong>
         {/* 로그인 */}
         <ModalComponent
           isOpen={showModal1}
           onRequestClose={() => setShowModal1(false)}
           style={customStyles}
         >
-          {/* <form action="http://localhost:80/member/login_proc" method="post"> */}
           <div className="customStyles">
             <header className="Modal_fullTitle">
               <strong className="Modal_title">로그인</strong>
@@ -515,18 +583,7 @@ const Header = (props) => {
               <button
                 type="submit"
                 onClick={() => {
-                  // setShowModal1(false);
-                  // setLogin(true);
-                  sessionStorage.setItem("loginId", loginId);
-                  sessionStorage.setItem("loginPassword", loginPassword);
-
-                  setSavedLoginId(sessionStorage.getItem("loginId"));
-                  setSavedLoginPassword(
-                    sessionStorage.getItem("loginPassword")
-                  );
-
-                  // 시큐리티 전송
-                  // axios.post(`http://localhost:80/member/login`)
+                  LoginPost();
                 }}
               >
                 로그인
@@ -536,50 +593,6 @@ const Header = (props) => {
             </main>
           </div>
           {/* </form> */}
-        </ModalComponent>
-
-        {/* 로그인 성공 */}
-        <ModalComponent
-          isOpen={showModal7}
-          onRequestClose={() => setShowModal7(false)}
-          style={customStyles}
-        >
-          <form action="http://localhost:80/member/login_success">
-            <div className="customStyles">
-              <header className="Modal_fullTitle">
-                <strong>로그인 성공</strong>
-                <button
-                  className="close_btn"
-                  onClick={() => setShowModal7(false)}
-                >
-                  &times;
-                </button>
-              </header>
-              로그인 성공
-            </div>
-          </form>
-        </ModalComponent>
-
-        {/* 로그인 실패 */}
-        <ModalComponent
-          isOpen={showModal8}
-          onRequestClose={() => setShowModal8(false)}
-          style={customStyles}
-        >
-          <form action="http://localhost:80/member/login_fail">
-            <div className="customStyles">
-              <header className="Modal_fullTitle">
-                <strong>로그인 실패</strong>
-                <button
-                  className="close_btn"
-                  onClick={() => setShowModal8(false)}
-                >
-                  &times;
-                </button>
-              </header>
-              로그인 실패
-            </div>
-          </form>
         </ModalComponent>
 
         {/* 회원가입 화면*/}
@@ -729,17 +742,44 @@ const Header = (props) => {
             <button
               type="submit"
               onClick={
-                // () => setShowModal4(false)
                 //db로 보내기
-                SignUp
+                (e) => {
+                  SignUp(e), setShowModal3(true), setShowModal4(false);
+                }
               }
-              // disabled={!(isName && isEmail && isId && isPw && isPwCf)}
+              disabled={!(isName && isEmail && isId && isPw && isPwCf)}
             >
               회원가입완료
             </button>
             <button className="close" onClick={() => setShowModal4(false)}>
               닫기
             </button>
+          </div>
+        </ModalComponent>
+
+        {/* 회원가입 결과 */}
+        <ModalComponent
+          isOpen={showModal3}
+          onRequestClose={() => setShowModal3(false)}
+          style={customStyles}
+        >
+          <div className="customStyles">
+            <header className="Modal_fullTitle">
+              <strong>회원가입</strong>
+              <button
+                className="close_btn"
+                onClick={() => setShowModal3(false)}
+              >
+                &times;
+              </button>
+            </header>
+            <main>
+              <br />
+              {signUpResult}
+              <br />
+              <br />
+            </main>
+            <button onClick={() => setShowModal3(false)}>확인</button>
           </div>
         </ModalComponent>
 
@@ -1035,12 +1075,9 @@ const Header = (props) => {
             <li>
               <a href="#">예매</a>
               <ul>
-                <li id="smallmenu">
-                  <Link to="/Ticketing">예매하기</Link>
+                <li id="smallmenu" onClick={Ticketlogin}>
+                  예매하기
                 </li>
-                {/* <li id="smallmenu">
-                  <a href="#">상영시간표</a>
-                </li> */}
               </ul>
             </li>
 
@@ -1059,14 +1096,6 @@ const Header = (props) => {
             </li>
             <li>
               <Link to="/Food_MovieFood">무비푸드</Link>
-              {/* <ul>
-                <li id="smallmenu">
-                  <a href="#">팝콘</a>
-                </li>
-                <li id="smallmenu">
-                  <a href="#">스낵</a>
-                </li>
-              </ul> */}
             </li>
             <li>
               <a href="#">공지사항</a>

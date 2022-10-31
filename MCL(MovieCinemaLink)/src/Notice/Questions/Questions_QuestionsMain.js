@@ -4,6 +4,7 @@ import "./Questions_QuestionsMain.css";
 import Questions_QuestionsMain_Questions from "./Questions_QuestionsMain_Questions";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import setShowModal1 from "../../Main/Header";
 
 const Questions_QuestionsMain = () => {
   // DB 데이터 불러오기
@@ -14,6 +15,14 @@ const Questions_QuestionsMain = () => {
       setQuestionsInfo(res.data);
     });
   }, []);
+
+  function loginCheck() {
+    if (localStorage.getItem("token") !== null) {
+      window.location.replace("/Questions_Write");
+    } else {
+      alert("로그인 필요");
+    }
+  }
 
   return (
     <div className="Questions_QuestionsMain">
@@ -75,9 +84,7 @@ const Questions_QuestionsMain = () => {
           </tbody>
         </table>
         <div className="Notice_btn">
-          <Link to="Questions_Write">
-            <button>Q & A 등록</button>
-          </Link>
+          <button onClick={loginCheck}>Q & A 등록</button>
         </div>
       </div>
     </div>

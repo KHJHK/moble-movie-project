@@ -1,4 +1,5 @@
 import React,{useEffect, useState} from "react";
+import axios from "axios";
 var SelectMV = document.getElementsByClassName("SelectMV");
 var SelectRG = document.getElementsByClassName("SelectRG");
 var SelectCN = document.getElementsByClassName("SelectCN");
@@ -271,6 +272,12 @@ export function TimeClick(event) {
          console.log(movieTime)
     
   }
+}
+
+export const deletePick = (pick_id) => { 
+  axios.get(`http://localhost:80/member/delete_pick?pick_id=${pick_id}`)
+  .then((response) =>  {console.log("삭제 확인 :"+ response.data)})
+  window.location.replace("/Member_MyPage");
 }
 
 
