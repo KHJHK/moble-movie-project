@@ -1,23 +1,27 @@
 /* Section_article.css */
 
 .Section_article {
-  width: 1000px;
-  height: 500px;
+  max-width: 1000px;
   margin: 0px auto; /* 위아래 여백 없이 가로 중앙에 배치 */
+
+  /* margin: 10px;
+  padding: 10px;
+  border: 3px solid #bfbfbf;
+  border-radius: 20px; */
 }
 
-.Section_article .Section_article01 {
+.Section_article01 {
   margin: 30px;
   text-align: center;
 }
 
-.Section_article .Section_article02 {
+.Section_article02 {
   margin: 30px;
   text-align: center;
 }
 
 /* 포스터 이미지 */
-.Section_article .swiper-slide img {
+.swiper-slide img {
   border-radius: 10px;
   width: auto;
   height: 180px;
@@ -25,7 +29,8 @@
 }
 
 /* 영화명 */
-.Section_article .posterContent_title {
+.posterContent_title {
+  font-weight: bolder;
   width: 200px;
   height: 60px;
   display: table-cell;

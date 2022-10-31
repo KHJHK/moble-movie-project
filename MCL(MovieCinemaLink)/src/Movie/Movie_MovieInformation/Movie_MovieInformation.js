@@ -1,4 +1,3 @@
-// Movie_MovieInformation.js
 import React from "react";
 import Header from "../../Main/Header";
 import Footer from "../../Main/Footer";

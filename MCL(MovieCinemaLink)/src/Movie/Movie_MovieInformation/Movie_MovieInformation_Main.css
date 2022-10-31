@@ -11,15 +11,15 @@
   border-radius: 3px;
 }
 
-.Movie_MovieInformation_Main .MovieInfo {
+.MovieInfo {
   background: red;
 }
 
-.Movie_MovieInformation_Main .overview {
+.overview {
   clear: both;
 }
 
-.Movie_MovieInformation_Main #TableTitle {
+#TableTitle {
   width: 150px;
 }
 
