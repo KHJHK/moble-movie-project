@@ -58,11 +58,11 @@ public class MemberCotroller {
 	
 	
 	//로그아웃
-	@GetMapping("/logout")
-	public String logoutPage(HttpServletRequest request,HttpServletResponse response) {
-		new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
-		return "로그아웃 성공";
-	}
+//	@GetMapping("/logout")
+//	public String logoutPage(HttpServletRequest request,HttpServletResponse response) {
+//		new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
+//		return "로그아웃 성공";
+//	}
 	
 	//회원가입
 	@PostMapping("/signup")
@@ -76,7 +76,7 @@ public class MemberCotroller {
 	   }
 	
 	//비밀번호 확인
-	@GetMapping("/member_pw_check")
+	@PostMapping("/member_pw_check")
 	public String memberPwCheck(@RequestBody Map map) {
 		String input_pw = map.get("input_pw").toString();
 		String member_pw = map.get("member_pw").toString();

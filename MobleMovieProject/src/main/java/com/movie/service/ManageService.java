@@ -27,7 +27,7 @@ public class ManageService {
    @Autowired
    private JavaMailSender mailSender;
    
-   SimpleDateFormat format = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:sss");
+   SimpleDateFormat format = new SimpleDateFormat ( "yyyy-MM-dd");
     Date time = new Date();
     String localTime = format.format(time);
    

@@ -27,7 +27,7 @@ import com.movie.vo.MemberVo;
 
 @Service
 public class MemberService implements UserDetailsService{
-	SimpleDateFormat format = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:sss");
+	SimpleDateFormat format = new SimpleDateFormat ( "yyyy-MM-dd");
     Date time = new Date();
     String localTime = format.format(time);
     @Autowired
@@ -69,39 +69,13 @@ public class MemberService implements UserDetailsService{
 			return "아이디가 없습니다.";
 		}else if(!Encoder.matches(loginVo.getMember_pw(), memberVo.getMember_pw())){
 			return "비밀번호가 일치하지 않습니다.";
+		}else if(memberVo.getMember_auth().equals("RESIGN")) {
+			return "탈퇴 회원 입니다.";
 		}else {
 			return tokenProvider.generateToken(memberVo, memberVo.getMember_account());
 		}
 	}
 
-	
-	
-//	public Map loginToken(TokenVo tokenVo) {
-//		MemberVo memberVo = memberDao.login(tokenVo.getMember_account());
-//		Map userjsonObject = new HashMap<>();
-//		BCryptPasswordEncoder Encoder = new BCryptPasswordEncoder();
-//		if(memberVo == null) {
-//			userjsonObject.put("token", "아이디가 없습니다.");
-//			return userjsonObject;
-//		}else if(!Encoder.matches(tokenVo.getMember_pw(), memberVo.getMember_pw())){
-//			userjsonObject.put("token", "비밀번호가 일치하지 않습니다.");
-//			return userjsonObject;
-//		}else {
-//			userjsonObject.put("token",tokenProvider.generateToken(memberVo, memberVo.getMember_account()));
-//			userjsonObject.put("member_id",memberVo.getMember_id());
-//			userjsonObject.put("member_account",memberVo.getMember_account());
-//			userjsonObject.put("member_auth", memberVo.getMember_auth());
-//			userjsonObject.put("member_name", memberVo.getMember_name());
-//			userjsonObject.put("member_nickname", memberVo.getMember_nickname());
-//			userjsonObject.put("member_email", memberVo.getMember_email());
-//			userjsonObject.put("member_birth", memberVo.getMember_birth());
-//			userjsonObject.put("member_reg_date", memberVo.getMember_reg_date());
-//			userjsonObject.put("member_modify_date", memberVo.getMember_modify_date());
-//			
-//			return userjsonObject;
-//	}
-//
-//	}
 	
 	//회원정보수정
 	 @Transactional

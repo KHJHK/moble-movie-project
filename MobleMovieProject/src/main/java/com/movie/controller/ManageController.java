@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.movie.service.ManageService;
 import com.movie.service.MemberService;
+import com.movie.service.MovieService;
 import com.movie.vo.AnswerVo;
 import com.movie.vo.MemberVo;
 import com.movie.vo.NoticeVo;
@@ -26,6 +28,8 @@ import com.movie.vo.QuestionVo;
 public class ManageController {
    @Autowired
    ManageService manageService;
+	@Autowired
+	private MovieService movieService;
    
    //관리자 페이지 메인
    @GetMapping("/manageMain")
@@ -69,6 +73,13 @@ public class ManageController {
       return "아이디와 메일이 일치하는 회원이 없습니다.";
       }
    }
+   
+	//영화정보
+	@ResponseBody
+	@GetMapping("/movie_showAll")
+	public List<Map> showAllMovies(){
+		return movieService.getMovieInfo();
+	}
 
    //공지사항
    
