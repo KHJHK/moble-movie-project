@@ -813,7 +813,7 @@ const Header = () => {
                 typeName="name"
                 variant={"outlined"}
                 onChange={(e) => {
-                  setFName(e.target.value), onNameChangeID;
+                  setFName(e.target.value), onNameChangeID(e);
                 }}
                 placeholder="이름 입력"
                 size="small"
@@ -831,7 +831,7 @@ const Header = () => {
                 id="find_email"
                 variant="outlined"
                 onChange={(e) => {
-                  setFEmail(e.target.value), onEmailChangeID;
+                  setFEmail(e.target.value), onEmailChangeID(e);
                 }}
                 placeholder="이메일 입력"
                 size="small"
@@ -860,7 +860,7 @@ const Header = () => {
                 typeName="id"
                 variant="outlined"
                 onChange={(e) => {
-                  setFPWId(e.target.value), onIdChangePW;
+                  setFPWId(e.target.value), onIdChangePW(e);
                 }}
                 placeholder="아이디"
                 size="small"
@@ -877,7 +877,7 @@ const Header = () => {
                 typeName="name"
                 variant={"outlined"}
                 onChange={(e) => {
-                  setFPWName(e.target.value), onNameChangePW;
+                  setFPWName(e.target.value), onNameChangePW(e);
                 }}
                 placeholder="이름 입력"
                 size="small"
@@ -894,7 +894,7 @@ const Header = () => {
                 typeName="email"
                 variant="outlined"
                 onChange={(e) => {
-                  setFPWEmail(e.target.value), onEmailChangePW;
+                  setFPWEmail(e.target.value), onEmailChangePW(e);
                 }}
                 placeholder="이메일 입력"
                 size="small"

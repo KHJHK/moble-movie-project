@@ -254,8 +254,8 @@ const Ticketing_Ticketing_TicketingMain_result = (props) => {
     // 모달이 열릴때 openModal 클래스가 생성된다.
     <div className={open ? "openModal modal" : "modalf"}>
       {open ? (
-        <div id="pick_width">
-          <div>
+        <div className="customStylesSeat">
+          <div className="Modal_fullTitle">
             <h3>좌석 선택</h3>
 
             <button
