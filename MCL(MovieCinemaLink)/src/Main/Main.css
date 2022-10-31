@@ -18,8 +18,13 @@ h3 {
 
 /* 모든 a 태그 css 적용 */
 a {
+  /* 밑줄 삭제 */
   text-decoration: none;
   color: #000000;
+}
+
+ul {
+  list-style: none;
 }
 
 /* 모든 button css 적용 */
@@ -49,61 +54,6 @@ button:hover {
   color: #ffffff;
   background: #ff6347;
   border: 1px solid #ff6347;
-}
-
-.close_btn,
-.close_btn:hover {
-  position: absolute;
-  display: inline-block;
-  top: 0.1px;
-  bottom: 0.1px;
-  right: 15px;
-
-  width: 27px;
-  height: 27px;
-  text-align: center;
-  color: #d9d9d9;
-  border: 1px solid #d9d9d9;
-  background: #1f324b;
-}
-
-/* 모든 input css 적용 */
-input {
-  margin: 5px;
-  padding: 0px;
-
-  width: 200px;
-  height: auto;
-
-  padding: 10px;
-
-  border-radius: 10px;
-  text-align: left;
-  border: 3px solid #1f324b;
-}
-
-/* 팝업창 */
-/* modal 전체 */
-.customStyles {
-  margin: 0 auto;
-  width: 450px;
-  height: auto;
-  padding: 10px;
-  text-align: center;
-  border-radius: 10px;
-  /* 팝업이 열릴때 스르륵 열리는 효과 */
-  animation: modal-show 0.3s;
-  color: #000000;
-  background: #ffffff;
-}
-
-.customStyles > .Modal_fullTitle {
-  border-radius: 10px;
-  position: relative;
-  padding: 10px;
-  background-color: #1f324b;
-  color: #ffffff;
-  /* font-weight: 700; */
 }
 
 /* 공지사항 > 공지사항, Q&A 버튼 div */

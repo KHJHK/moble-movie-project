@@ -10,13 +10,13 @@ const Questions_modal_Update = (props) => {
     <div className={open ? "openModal modal" : "modalf"}>
       {open ? (
         <div className="customStyles">
-          <header className="Modal_fullTitle">
-            <strong>알림</strong>
+          <div className="Modal_fullTitle">
+            <h4>알림</h4>
 
             <button className="close_btn" onClick={close}>
               &times;
             </button>
-          </header>
+          </div>
           <main>
             <br />
             <br />

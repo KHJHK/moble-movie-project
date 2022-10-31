@@ -8,80 +8,77 @@ import jwtDecode from "jwt-decode";
 import { Collapse } from "@material-ui/core";
 
 const Member_MyPage_MemberInformation_PasswordConfirmation = (props) => {
-    // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
-    const { open, close, result } = props;
-    const [modalOpenSignUp, setModalOpenSignUp] = useState(false);
+  // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
+  const { open, close, result } = props;
+  const [modalOpenSignUp, setModalOpenSignUp] = useState(false);
 
-    const openModalSignup = () => {
-        setModalOpenSignUp(true);
-    };
-    const closeModalSignUp = () => {
-        setModalOpenSignUp(false);
-    };
+  const openModalSignup = () => {
+    setModalOpenSignUp(true);
+  };
+  const closeModalSignUp = () => {
+    setModalOpenSignUp(false);
+  };
 
-    const resultCk = document.getElementById("resultCk");
-    const check = () => {
-
-        if (result === "비밀번호가 맞습니다.") {
-
-            return (
-                <div>
-                    <React.Fragment>
-                        <button className="close" onClick={
-                            () => {
-                                openModalSignup();
-                            }
-                        }>
-                            확인
-                        </button>
-                        <Member_MyPage_MemeberInfomation
-                            open={modalOpenSignUp}
-                            close={closeModalSignUp}
-                        ></Member_MyPage_MemeberInfomation>
-                    </React.Fragment>
-                    <button className="close" onClick={close}>
-                        닫기
-                    </button>
-                </div>
-            )
-        } else {
-            return (
-                <div>
-                    <button className="close" onClick={close}>
-                        닫기
-                    </button>
-                </div>
-            )
-
-        }
-    }
-
-    return (
-        // 모달이 열릴때 openModal 클래스가 생성된다.
-        <div className={open ? "openModal modal" : "modal"}>
-            {open ? (
-                <section>
-                    <header>
-                        <strong>비밀번호확인</strong>
-
-                        <button className="close" onClick={close}>
-                            &times;
-                        </button>
-                    </header>
-                    <main>
-                        <br />
-                        {result}
-                        <br />
-
-                    </main>
-                    <br />
-                    {/* <Link to="/Member_MyPage_MemberInformation"> */}
-                    {check()}
-                    {/* </Link> */}
-                </section>
-            ) : null}
+  const resultCk = document.getElementById("resultCk");
+  const check = () => {
+    if (result === "비밀번호가 맞습니다.") {
+      return (
+        <div>
+          <React.Fragment>
+            <button
+              className="close"
+              onClick={() => {
+                openModalSignup();
+              }}
+            >
+              확인
+            </button>
+            <Member_MyPage_MemeberInfomation
+              open={modalOpenSignUp}
+              close={closeModalSignUp}
+            ></Member_MyPage_MemeberInfomation>
+          </React.Fragment>
+          <button className="close" onClick={close}>
+            닫기
+          </button>
         </div>
-    );
+      );
+    } else {
+      return (
+        <div>
+          <button className="close" onClick={close}>
+            닫기
+          </button>
+        </div>
+      );
+    }
+  };
+
+  return (
+    // 모달이 열릴때 openModal 클래스가 생성된다.
+    <div className={open ? "openModal modal" : "modal"}>
+      {open ? (
+        <div className="customStyles">
+          <div className="Modal_fullTitle">
+            <h4>비밀번호확인</h4>
+
+            <button className="close_btn" onClick={close}>
+              &times;
+            </button>
+          </div>
+          <main>
+            <br />
+            {result}
+            <br />
+          </main>
+          <br />
+          {/* <Link to="/Member_MyPage_MemberInformation"> */}
+          {check()}
+          {/* </Link> */}
+        </div>
+      ) : null}
+    </div>
+  );
 };
 
 export default Member_MyPage_MemberInformation_PasswordConfirmation;

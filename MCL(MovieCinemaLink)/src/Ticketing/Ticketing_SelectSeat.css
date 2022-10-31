@@ -21,8 +21,8 @@
 .screen {
   border-radius: 8px;
   background: #1f324b;
-  width:75%;
-  
+  width: 75%;
+
   color: #ffffff;
   transform: rotateX(-30deg) scale(1.2);
 

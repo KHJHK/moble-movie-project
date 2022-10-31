@@ -1,47 +1,38 @@
-// Member_MyPage_MemberInformation_PasswordConfirmation.js
-import React, {useState, useEffect} from "react";
-// import { Link } from "react-router-dom";
+// Ticketing_TicketingMain_Pick.js
+import React, { useState, useEffect } from "react";
 import SeatPicker from "react-seat-picker";
+// import css
 import "./Ticketing_SelectSeat.css";
-import Ticketing_TicketingMain_result from "./Ticketing_TicketingMain_result"
+import Ticketing_TicketingMain_result from "./Ticketing_TicketingMain_result";
 import axios from "axios";
 
 const Ticketing_Ticketing_TicketingMain_result = (props) => {
+  console.log("pick창 넘어옴  ");
+  const [movie_buy_respone, setMoviebuy_respone] = useState(false);
+  const [movie_buy_respone2, setMoviebuy_respone2] = useState([]);
+  const [applyChange, setApplyChange] = useState(0);
 
-console.log("pick창 넘어옴  ")
-    const [movie_buy_respone, setMoviebuy_respone] = useState(false);
-    const [movie_buy_respone2, setMoviebuy_respone2] = useState([]);
-    const [applyChange, setApplyChange] = useState(0);
+  var isFirstRender = localStorage.getItem("isFirstRender");
+  var sid = localStorage.getItem("schedule_id");
 
-    
+  useEffect(() => {
+    axios
+      .get(`http://localhost/ticketing/selectedSeat?schedule_id=${sid}`)
+      .then((response) => {
+        setMoviebuy_respone2(response.data);
+      });
+  }, [localStorage.getItem("schedule_id"), applyChange]);
 
-    var isFirstRender = localStorage.getItem("isFirstRender");
-    var sid = localStorage.getItem("schedule_id");
-
-    useEffect(() => { 
-        axios.get(`http://localhost/ticketing/selectedSeat?schedule_id=${sid}`)
-        .then((response) => {
-            setMoviebuy_respone2 (response.data);
-        })      
-      
-      }, [localStorage.getItem("schedule_id"), applyChange]);
-
-  
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, header } = props;
   const [modalOpenSignUp, setModalOpenSignUp] = useState(false);
 
-  
-
   const openModalSignup = () => {
-
-    if(selected.toString()===''){
-      document.querySelector('#seatTest').style.display ='block'
-
+    if (selected.toString() === "") {
+      document.querySelector("#seatTest").style.display = "block";
+    } else {
+      setModalOpenSignUp(true);
     }
-
-    else{setModalOpenSignUp(true);}
-    
   };
   const closeModalSignUp = () => {
     setModalOpenSignUp(false);
@@ -54,7 +45,7 @@ console.log("pick창 넘어옴  ")
     const newTooltip = `${id} 선택가능`;
     addCb(row, number, id, newTooltip);
     addCb(row, number, id);
-    document.querySelector('#seatTest').style.display ='none'
+    document.querySelector("#seatTest").style.display = "none";
   };
 
   const removeSeatCallback = ({ row, number, id }, removeCb) => {
@@ -64,13 +55,9 @@ console.log("pick창 넘어옴  ")
 
   // 좌석 이용중 : isReserved: true
 
-  
-   
-    
-
   const rows = [
     [
-      { id: "A1", number: "A1", isReserved: movie_buy_respone},
+      { id: "A1", number: "A1", isReserved: movie_buy_respone },
       { id: "A2", number: "A2", isReserved: movie_buy_respone },
       { id: "A3", number: "A3", isReserved: movie_buy_respone },
       { id: "A4", number: "A4", isReserved: movie_buy_respone },
@@ -80,7 +67,7 @@ console.log("pick창 넘어옴  ")
       { id: "A7", number: "A7", isReserved: movie_buy_respone },
       { id: "A8", number: "A8", isReserved: movie_buy_respone },
       null,
-      { id: "A9",  number: "A9", isReserved: movie_buy_respone },
+      { id: "A9", number: "A9", isReserved: movie_buy_respone },
       { id: "A10", number: "A10", isReserved: movie_buy_respone },
       { id: "A11", number: "A11", isReserved: movie_buy_respone },
       { id: "A12", number: "A12", isReserved: movie_buy_respone },
@@ -218,115 +205,115 @@ console.log("pick창 넘어옴  ")
     ],
   ];
 
-  console.log("값 확인: "+movie_buy_respone2);
-  var isSeatFind = false
-//   var isFirstCall = false
- 
-  if(movie_buy_respone2.length !== 0){
-    for(var i = 0; i <  movie_buy_respone2.length; i++){
-        for(var j = 0; j < rows.length; j++){
-            for(var k = 0; k < rows[j].length; k++){
-                if(rows[j][k] !== null && rows[j][k].id === movie_buy_respone2[i]){
-                    rows[j][k].isReserved = true;
-                    isSeatFind = true;
-                    break;
-                }
-            }
-            if(isSeatFind){
-                isSeatFind = false;
-                break;
-            }
+  console.log("값 확인: " + movie_buy_respone2);
+  var isSeatFind = false;
+  //   var isFirstCall = false
+
+  if (movie_buy_respone2.length !== 0) {
+    for (var i = 0; i < movie_buy_respone2.length; i++) {
+      for (var j = 0; j < rows.length; j++) {
+        for (var k = 0; k < rows[j].length; k++) {
+          if (rows[j][k] !== null && rows[j][k].id === movie_buy_respone2[i]) {
+            rows[j][k].isReserved = true;
+            isSeatFind = true;
+            break;
+          }
+        }
+        if (isSeatFind) {
+          isSeatFind = false;
+          break;
         }
       }
-      //render 시도했는데 실패함
-      if(isFirstRender === "T"){
-          setApplyChange(applyChange + 1);
-          localStorage.setItem("isFirstRender", "F");
-      }
+    }
+    //render 시도했는데 실패함
+    if (isFirstRender === "T") {
+      setApplyChange(applyChange + 1);
+      localStorage.setItem("isFirstRender", "F");
+    }
   }
 
-// (arr.find 함수는 쓰는법 몰라서 안씀)
-//   if(movie_buy_respone2 !== null){
-//     console.log(movie_buy_respone2)
-//     for(var i = 0; i <  movie_buy_respone2.length; i++){
-//         for(var j = 0; j < rows.length; j++){
-//             if(rows[j].find(x => x !== null)){
-//                 if(rows[j].find(x => x.id === movie_buy_respone2[i])){
-//                     rows[j].find(x => x.id === movie_buy_respone2[i]).isReserved = true;
-//                     continue;
-//                 }
-//             }
-//         }
-//       }
-//   }
+  // (arr.find 함수는 쓰는법 몰라서 안씀)
+  //   if(movie_buy_respone2 !== null){
+  //     console.log(movie_buy_respone2)
+  //     for(var i = 0; i <  movie_buy_respone2.length; i++){
+  //         for(var j = 0; j < rows.length; j++){
+  //             if(rows[j].find(x => x !== null)){
+  //                 if(rows[j].find(x => x.id === movie_buy_respone2[i])){
+  //                     rows[j].find(x => x.id === movie_buy_respone2[i]).isReserved = true;
+  //                     continue;
+  //                 }
+  //             }
+  //         }
+  //       }
+  //   }
 
   const movievalue = selected.toString();
-  localStorage.setItem('movieSeat',movievalue);
-
+  localStorage.setItem("movieSeat", movievalue);
 
   return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
     <div className={open ? "openModal modal" : "modalf"}>
       {open ? (
-        <section id="pick_width">
-          <header>
+        <div id="pick_width">
+          <div>
+            <h3>좌석 선택</h3>
 
-            
-          <h3>좌석 선택</h3>
-
-            <button className="close" onClick={()=>{setSelected(""), close()}}>
+            <button
+              className="close_btn"
+              onClick={() => {
+                setSelected(""), close();
+              }}
+            >
               &times;
             </button>
-          </header>
+          </div>
           <main>
-
-
-
             <div className="TicketingSeat">
-                <h3>좌석 선택</h3>
-                <div className="screen">screen</div>
-                    <SeatPicker
-                        addSeatCallback={addSeatCallback.bind(this)}
-                        removeSeatCallback={removeSeatCallback.bind(this)}
-                        rows={rows}
-                        alpha
-                        maxReservableSeats={4} //최대 선택할 수 있는 좌석 수
-                        visible
-                    />
+              {/* <h3>좌석 선택</h3> */}
+              <div className="screen">screen</div>
+              <SeatPicker
+                addSeatCallback={addSeatCallback.bind(this)}
+                removeSeatCallback={removeSeatCallback.bind(this)}
+                rows={rows}
+                alpha
+                maxReservableSeats={4} //최대 선택할 수 있는 좌석 수
+                visible
+              />
 
-                <div className="SelectedSeatInquiry">
-                    <span>
-                        <br />
-                        <p>선택한 좌석 : {selected.toString()}</p>
-                        <p id="seatTest"> 좌석을 선택해주세요!!</p>
-                
-                    </span>  
-                </div>
+              <div className="SelectedSeatInquiry">
+                <span>
+                  <br />
+                  <h4>[ 선택한 좌석 ]</h4>
+                  <br />
+                  <h4>{selected.toString()}</h4>
+                  <p id="seatTest"> 좌석을 선택해주세요!!</p>
+                </span>
+              </div>
             </div>
-
-
-           
           </main>
           <br />
 
-           
-                {/* <Link to="/Member_MyPage_MemberInformation"> */}
-                <React.Fragment>
-                    <button className="close" onClick={openModalSignup}>
-                    예매하기
-                    </button>
-                    <Ticketing_TicketingMain_result
-                    open={modalOpenSignUp}
-                    close={closeModalSignUp}
-                    ></Ticketing_TicketingMain_result>
-                </React.Fragment>
-                {/* </Link> */}
-              
-                <button className="close" onClick={()=>{setSelected(""), close()}}>
-                    닫기
-                </button>
-           
-        </section>
+          {/* <Link to="/Member_MyPage_MemberInformation"> */}
+          <React.Fragment>
+            <button className="close" onClick={openModalSignup}>
+              예매하기
+            </button>
+            <Ticketing_TicketingMain_result
+              open={modalOpenSignUp}
+              close={closeModalSignUp}
+            ></Ticketing_TicketingMain_result>
+          </React.Fragment>
+          {/* </Link> */}
+
+          <button
+            className="close"
+            onClick={() => {
+              setSelected(""), close();
+            }}
+          >
+            닫기
+          </button>
+        </div>
       ) : null}
     </div>
   );

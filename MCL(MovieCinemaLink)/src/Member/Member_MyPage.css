@@ -1,5 +1,12 @@
 /* Member_MyPage.css */
 
+/*전체창*/
+.Member_MyPage {
+  margin: 0px auto;
+  width: 1000px;
+  height: auto;
+}
+
 /* 내정보 전체 */
 .profileinformation {
   z-index: 0;
@@ -7,8 +14,7 @@
   height: 330px;
   background: #e6e6e6;
   border-radius: 20px;
-  /* position: relative; */
- 
+  position: relative;
 }
 /* 사진 */
 #profilepicture {
@@ -34,8 +40,8 @@
   display: grid;
   grid-template-columns: 100px 100px 100px;
   position: absolute;
-  right: 100px;
-  top: 350px;
+  right: 54px;
+  top: 170px;
   text-align: center;
 }
 

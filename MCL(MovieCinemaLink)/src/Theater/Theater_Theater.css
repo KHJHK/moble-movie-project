@@ -1,13 +1,12 @@
 /* .Theater_Theater.css */
 
 .Theater_Theater {
-  max-width: 1000px;
+  width: 1000px;
   height: auto;
   margin: 0px auto;
 }
 
 .Theater_Theater .theater div {
-  margin-top: 20px;
   border-radius: 20px;
 }
 
@@ -41,10 +40,11 @@
 /* ===== img ===== */
 .Theater_Theater .theater div img {
   border-radius: 20px;
+
   /* width: 100%;
   height: 100%; */
-  /* object-fit: cover; */
-  /* transition: all 0.2s linear; */
+  object-fit: cover;
+  transition: all 0.2s linear;
   position: absolute;
 }
 
@@ -53,8 +53,9 @@
   /* width: 100%;
   height: 100%; */
   /* object-fit: cover; */
-  /* transform: scale(1.4); */
+  transform: scale(1.4);
   opacity: 0.2;
+  position: absolute;
 }
 
 /* ========================= */
@@ -109,4 +110,14 @@
   width: 980px;
   height: 350px;
   clear: both;
+}
+
+/* 각 상영관 이미지div*/
+.TempPur,
+.soundX,
+.sphereX,
+.IMAX,
+.fourDX {
+  position: relative;
+  overflow: hidden;
 }

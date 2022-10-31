@@ -1,5 +1,6 @@
 // Footer.js
 import React from "react";
+// import css
 import "./Footer.css";
 
 const Footer = () => {
@@ -22,6 +23,8 @@ const Footer = () => {
           >
             Notion
           </a>
+          <br />
+          <br />
           <h4>MCL Project</h4>
           <h4>Copyright 2022. cocoder. All Rights Reserved.</h4>
         </nav>

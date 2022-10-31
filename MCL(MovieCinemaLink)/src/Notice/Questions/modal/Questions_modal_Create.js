@@ -11,17 +11,17 @@ const Questions_modal_Create = (props) => {
     <div className={open ? "openModal modal" : "modalf"}>
       {open ? (
         <div className="customStyles">
-          <header className="Modal_fullTitle">
-            <strong>알림</strong>
+          <div className="Modal_fullTitle">
+            <h4>알림</h4>
 
             <button className="close_btn" onClick={close}>
               &times;
             </button>
-          </header>
+          </div>
           <main>
             <br />
             <br />
-            <strong>Q & A 등록완료</strong>
+            <h4>Q & A 등록완료</h4>
             <br />
             <br />
           </main>

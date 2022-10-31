@@ -1,6 +1,5 @@
 // Ticketing.js
 import React from "react";
-
 import Header from "../Main/Header";
 import Ticketing_TicketingMain from "./Ticketing_TicketingMain";
 import Footer from "../Main/Footer";

@@ -14,23 +14,22 @@ const Member_Login = (props) => {
     setModalOpenSignUp(false);
   };
 
-  
   return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
     <div className={open ? "openModal modal" : "modal"}>
       {open ? (
-        <section>
-          <header>
-            <strong>로그인</strong>
+        <div className="customStyles">
+          <div className="Modal_fullTitle">
+            <h4>로그인</h4>
             {header}
-            <button onClick={close}>&times;</button>
-          </header>
+            <button className="close_btn" onClick={close}>&times;</button>
+          </div>
 
           <main>
             <br />
             <input type="text" placeholder="아이디" />
             <br />
-            
+
             <input type="text" placeholder="비밀번호" />
             <br />
             <text>아이디 / 비밀번호 찾기</text>
@@ -52,7 +51,7 @@ const Member_Login = (props) => {
           <button className="close" onClick={close}>
             닫기
           </button>
-        </section>
+        </div>
       ) : null}
     </div>
   );

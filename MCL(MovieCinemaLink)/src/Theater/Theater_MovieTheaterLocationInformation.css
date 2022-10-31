@@ -1,8 +1,9 @@
 /* Theater_MovieTheaterLocationInformation.css */
 
 .Theater_MovieTheaterLocationInformation {
-  max-width: 1000px;
+  width: 1000px;
   height: 1000px;
+  margin: 0px auto;
 }
 
 .Theater_MovieTheaterLocationInformation li {

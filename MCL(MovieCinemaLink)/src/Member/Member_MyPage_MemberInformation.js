@@ -27,8 +27,6 @@ const LoginMain = (props) => {
   const [pwMessage, setPwMessage] = useState("");
   const [pwCfMessage, setPwCfMessage] = useState("");
 
-
-
   const onEmail = (e) => {
     const emailRegex =
       /([\w-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
@@ -42,12 +40,12 @@ const LoginMain = (props) => {
       setEmailMessage("올바른 이메일 형식입니다.");
       setIsEmail(true);
     }
-  }
+  };
 
   const onNickname = (e) => {
     const nicknameCurrent = e.target.value;
     setNickname(nicknameCurrent);
-  }
+  };
 
   const onPw = (e) => {
     const pwRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
@@ -77,12 +75,15 @@ const LoginMain = (props) => {
 
   async function Reset() {
     try {
-      const response = await axios.post(`http://localhost:80/member/member_update`, {
-        member_pw: pw,
-        member_nickname: nickname,
-        member_email: email,
-        member_account: decoded.member_account,
-      });
+      const response = await axios.post(
+        `http://localhost:80/member/member_update`,
+        {
+          member_pw: pw,
+          member_nickname: nickname,
+          member_email: email,
+          member_account: decoded.member_account,
+        }
+      );
       console.log(response.data);
       alert(response.data);
     } catch (error) {
@@ -94,42 +95,38 @@ const LoginMain = (props) => {
     // 모달이 열릴때 openModal 클래스가 생성된다.
     <div className={open ? "openModal modal" : "modal"}>
       {open ? (
-        <section>
-          <header>
-            <strong>정보수정</strong>
+        <div className="customStyles">
+          <div className="Modal_fullTitle">
+            <h4>정보수정</h4>
             {header}
-            <button className="close" onClick={close}>
+            <button className="close_btn" onClick={close}>
               &times;
             </button>
-          </header>
+          </div>
           <main>
             <br />
-            <input type="text" placeholder="이메일"
-              onChange={onEmail} />
+            <input type="text" placeholder="이메일" onChange={onEmail} />
             {email.length > 0 && (
               <p className={`message ${isEmail ? "success" : "error"}`}>
                 {emailMessage}
               </p>
             )}
             <br />
-            <input type="text" placeholder="닉네임"
-              onChange={onNickname} />
+            <input type="text" placeholder="닉네임" onChange={onNickname} />
             {nickname.length > 0 && (
               <p className={`message ${isNickname ? "success" : "error"}`}>
                 {nicknameMessage}
               </p>
             )}
             <br />
-            <input type="text" placeholder="비밀번호"
-              onChange={onPw} />
+            <input type="text" placeholder="비밀번호" onChange={onPw} />
             {pw.length > 0 && (
               <p className={`message ${isPw ? "success" : "error"}`}>
                 {pwMessage}
               </p>
             )}
             <br />
-            <input type="text" placeholder="비밀번호확인"
-              onChange={onPwCk} />
+            <input type="text" placeholder="비밀번호확인" onChange={onPwCk} />
             {pwCf.length > 0 && (
               <p className={`message ${isPwCf ? "success" : "error"}`}>
                 {pwCfMessage}
@@ -150,7 +147,7 @@ const LoginMain = (props) => {
           <button className="close" onClick={close}>
             닫기
           </button>
-        </section>
+        </div>
       ) : null}
     </div>
   );

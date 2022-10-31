@@ -1,7 +1,5 @@
 // Notice_NoticeInfo.js
-
 import React from "react";
-
 import Footer from "../../../Main/Footer";
 import Header from "../../../Main/Header";
 import Notice_NoticeInfo_Main from "./Notice_NoticeInfo_Main";

@@ -5,26 +5,19 @@ import axios from "axios";
 import "./Member_MyPage.css";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import submit, { ads2 } from "./Member_MyPage_resign";
-import { deletePick } from "../Ticketing/Ticketing_Selectdoing"
+import { deletePick } from "../Ticketing/Ticketing_Selectdoing";
 import Member_MyPage_MemberInformation_PasswordConfirmation from "./Member_MyPage_MemberInformation_PasswordConfirmation.js";
-
-
 
 import Header from "../Main/Header";
 import Footer from "../Main/Footer";
 import jwtDecode from "jwt-decode";
 
-
 const Member_MyPage = (props) => {
-
   const IMG_BASE_URL = "https://image.tmdb.org/t/p/w1280";
 
   const [modalOpenLogin, setModalOpenLogin] = useState(false);
   const [MypageTicket, setMypageTicket] = useState([]);
   const [imageUrl, setImageUrl] = useState(null);
-
-
-
 
   // const [modalOpenSignUp, setModalOpenSignUp] = useState(false);
   const openModalLogin = () => {
@@ -38,7 +31,6 @@ const Member_MyPage = (props) => {
   // localStorage.getItem("token");
 
   const decoded = jwtDecode(JSON.stringify(localStorage.getItem("token")));
-
 
   const imgRef = useRef();
 
@@ -58,145 +50,152 @@ const Member_MyPage = (props) => {
     imgRef.current.click();
   };
 
-
   useEffect(() => {
-    let seat_id = localStorage.getItem('seat_id');
-    axios.get(`http://localhost/member/mypage?member_id=${decoded.member_id}`)
+    let seat_id = localStorage.getItem("seat_id");
+    axios
+      .get(`http://localhost/member/mypage?member_id=${decoded.member_id}`)
       .then((response) => {
         setMypageTicket(response.data);
-      })
+      });
     //console.log("useEffect 시간에 들어온 상황(setmovie_Time) : " + movie_id);
-
   }, []);
 
   return (
-    <div className="Member_MyPage">
+    <div>
       <Header />
+      <div className="Member_MyPage">
+        <h3>마이페이지</h3>
+        <div className="profileinformation">
+          <div className="Mypagepicture">
+            <img
+              src={imageUrl ? imageUrl : "./img/Mypagepicture.png"}
+              id="profilepicture"
+              alt="프로필 변경"
+            />
+          </div>
 
-      <h3>마이페이지</h3>
-      <div className="profileinformation">
-        <div className="Mypagepicture">
-          <img
-            src={imageUrl ? imageUrl : "./img/Mypagepicture.png"}
-            id="profilepicture"
-            alt="프로필 변경"
-          />
-        </div>
+          <div className="profilename">
+            <strong>이름</strong> : {decoded.member_name} <br />
+            <strong>아이디</strong> : {decoded.member_account} <br />
+            <strong>생일</strong> : {decoded.member_birth} <br />
+            <strong>가입일</strong> : {decoded.member_reg_date} <br />
+            <strong>닉네임</strong> : {decoded.member_nickname} <br />
+            <br />
+            <button
+              onClick={() => {
+                onClickFileBtn();
+              }}
+            >
+              프로필 변경
+            </button>
+          </div>
 
-        <div className="profilename">
-          <strong >이름</strong> : {decoded.member_name} <br />
-          <strong>아이디</strong> : {decoded.member_account} <br />
-          <strong>생일</strong> : {decoded.member_birth} <br />
-          <strong>가입일</strong> : {decoded.member_reg_date} <br />
-          <strong>닉네임</strong> : {decoded.member_nickname} <br />
-          <br />
-          <button
-            onClick={() => {
-              onClickFileBtn();
-            }}
-          >
-            프로필 변경
-          </button>
-        </div>
+          <div className="iconspace">
+            <React.Fragment>
+              <input
+                type="file"
+                ref={imgRef}
+                onChange={onChangeImage}
+                style={{ display: "none" }}
+              ></input>
+            </React.Fragment>
 
-        <div className="iconspace">
-          <React.Fragment>
-            <input
-              type="file"
-              ref={imgRef}
-              onChange={onChangeImage}
-              style={{ display: "none" }}
-            ></input>
-          </React.Fragment>
+            <React.Fragment>
+              <div className="icon" onClick={openModalLogin}>
+                <img
+                  src="./img/icons8-lock-96.png"
+                  alt="마이페이지 정보수정 아이콘"
+                  id="Modifying-information"
+                />
 
-          <React.Fragment>
-            <div className="icon" onClick={openModalLogin}>
+                <div className="iconname">
+                  <strong>정보수정</strong>
+                </div>
+              </div>
+              <Member_MyPage_MemberInformation_PasswordConfirmation
+                open={modalOpenLogin}
+                close={closeModalLogin}
+              ></Member_MyPage_MemberInformation_PasswordConfirmation>
+            </React.Fragment>
+
+            <div className="icon">
               <img
-                src="./img/icons8-lock-96.png"
-                alt="마이페이지 정보수정 아이콘"
+                src="./img/icons8-delete-96.png"
+                onClick={ads2}
+                alt="마이페이지 회원탈퇴 아이콘"
                 id="Modifying-information"
               />
 
               <div className="iconname">
-                <strong>정보수정</strong>
+                <strong>회원탈퇴</strong>
               </div>
             </div>
-            <Member_MyPage_MemberInformation_PasswordConfirmation
-              open={modalOpenLogin}
-              close={closeModalLogin}
-            ></Member_MyPage_MemberInformation_PasswordConfirmation>
-          </React.Fragment>
 
-          <div className="icon">
-            <img
-              src="./img/icons8-delete-96.png"
-              onClick={ads2}
-              alt="마이페이지 회원탈퇴 아이콘"
-              id="Modifying-information"
-            />
-
-            <div className="iconname">
-              <strong>회원탈퇴</strong>
-            </div>
-          </div>
-
-          <div
-            className="icon"
-            onClick={() =>
-              window.open("https://entertain.naver.com/home", "_blank")
-            }
-          >
-            <img
-              src="./img/icons8-news-96.png"
-              alt="마이페이지 무비뉴스 아이콘"
-              id="Modifying-information"
-            />
-            <div className="iconname">
-              <strong>뮤비뉴스</strong>
+            <div
+              className="icon"
+              onClick={() =>
+                window.open("https://entertain.naver.com/home", "_blank")
+              }
+            >
+              <img
+                src="./img/icons8-news-96.png"
+                alt="마이페이지 무비뉴스 아이콘"
+                id="Modifying-information"
+              />
+              <div className="iconname">
+                <strong>뮤비뉴스</strong>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* My 예매 정보 시작*/}
-      <h3>My 예매정보</h3>
+        {/* My 예매 정보 시작*/}
+        <h3>My 예매정보</h3>
 
-      <div className="Ticketcenter">
+        <div className="Ticketcenter">
+          {MypageTicket.map((item) => {
+            return (
+              <div className="Reservation_information">
+                <div className="Reservation_picter">
+                  <img
+                    src={IMG_BASE_URL + item.movie_poster_path}
+                    alt="점검상태입니다"
+                    id="Reervation_picter"
+                  />
+                </div>
 
-
-
-        {MypageTicket.map((item) => {
-
-
-          return (
-
-            <div className="Reservation_information">
-              <div className="Reservation_picter">
-
-                <img src={IMG_BASE_URL + item.movie_poster_path} alt="점검상태입니다" id="Reervation_picter" />
+                <div className="profilename">
+                  <p>영화선택 : {item.movie_name} </p>
+                  <br />
+                  <p>선택지역 : {item.cinema_location} </p>
+                  <br />
+                  <p>극장위치 : {item.cinema_name} </p>
+                  <br />
+                  <p>상영날짜 : {item.schedule_date} </p>
+                  <br />
+                  <p>
+                    상영시간 : {item.theater_name + "관 " + item.schedule_time}{" "}
+                  </p>
+                  <br />
+                  <p>예매좌석 : {item.seat_name} </p>
+                  <br />
+                  <button
+                    className="cancelBtn"
+                    onClick={(e) => {
+                      deletePick(item.pick_id);
+                    }}
+                  >
+                    예매취소
+                  </button>
+                </div>
               </div>
-
-              <div className="profilename">
-                <p>영화선택 : {item.movie_name} </p><br />
-                <p>선택지역 : {item.cinema_location} </p><br />
-                <p>극장위치 : {item.cinema_name} </p><br />
-                <p>상영날짜 : {item.schedule_date} </p><br />
-                <p>상영시간 : {item.theater_name + "관 " + item.schedule_time} </p><br />
-                <p>예매좌석 : {item.seat_name} </p>
-                <br />
-                <button className="cancelBtn" onClick={(e) => { deletePick(item.pick_id) }} >
-                  예매취소
-                </button>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
+        {/* My 예매 정보 끝*/}
       </div>
-      {/* My 예매 정보 끝*/}
-
       <Footer />
     </div>
   );
 };
 export default Member_MyPage;
-

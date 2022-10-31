@@ -99,12 +99,12 @@ const Member_SignUp = (props) => {
     // 모달이 열릴때 openModal 클래스가 생성된다.
     <div className={open ? "openModal modal" : "modal"}>
       {open ? (
-        <section>
-          <header>
-            <strong>회원가입</strong>
+        <section className="customStyles">
+          <div className="Modal_fullTitle">
+            <h4>회원가입</h4>
             {header}
-            <button onClick={close}>&times;</button>
-          </header>
+            <button className="close_btn" onClick={close}>&times;</button>
+          </div>
 
           <form>
             <main>

@@ -5,7 +5,7 @@ import "./Member_MyPage_MemberInformation_PasswordConfirmation.css";
 // import Member_MyPage_MemeberInfomation from "../Member/Member_MyPage_MemberInformation";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
-import Member_MyPage_Membermiddle from "./Member_MyPage_Membermiddle"
+import Member_MyPage_Membermiddle from "./Member_MyPage_Membermiddle";
 
 const Member_MyPage_MemberInformation_PasswordConfirmation = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
@@ -23,7 +23,6 @@ const Member_MyPage_MemberInformation_PasswordConfirmation = (props) => {
 
   const decoded = jwtDecode(JSON.stringify(localStorage.getItem("token")));
 
-
   // const password = document.getElementById("password");
   const [pw, setPw] = useState("");
   const [result, setResult] = useState("");
@@ -32,40 +31,38 @@ const Member_MyPage_MemberInformation_PasswordConfirmation = (props) => {
   const pwCk2 = (e) => {
     const pwCurrent = e.target.value;
     setPw(pwCurrent);
-  }
+  };
 
   async function pwCk() {
-
     try {
-      const response = await axios.post(`http://localhost:80/member/member_pw_check`, ({
-        input_pw: pw,
-        member_pw: decoded.member_pw
-      }));
+      const response = await axios.post(
+        `http://localhost:80/member/member_pw_check`,
+        {
+          input_pw: pw,
+          member_pw: decoded.member_pw,
+        }
+      );
       // console.log((pw));
 
       console.log(response.data);
       setResult(response.data);
-
     } catch (error) {
       console.log(error);
     }
-
   }
-
-
 
   return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
     <div className={open ? "openModal modal" : "modal"}>
       {open ? (
-        <section>
-          <header>
-            <strong>비밀번호 확인</strong>
+        <div className="customStyles">
+          <div className="Modal_fullTitle">
+            <h4>비밀번호 확인</h4>
 
-            <button className="close" onClick={close}>
+            <button className="close_btn" onClick={close}>
               &times;
             </button>
-          </header>
+          </div>
           <main>
             <br />
             <input
@@ -76,18 +73,18 @@ const Member_MyPage_MemberInformation_PasswordConfirmation = (props) => {
             />
             <br />
             <br />
-
           </main>
           <br />
           {/* <Link to="/Member_MyPage_MemberInformation"> */}
           <React.Fragment>
-            <button className="close" onClick={
-              () => {
-                openModalSignup()
-                pwCk()
+            <button
+              className="close"
+              onClick={() => {
+                openModalSignup();
+                pwCk();
                 // console.log(decoded.member_pw);
-              }
-            }>
+              }}
+            >
               확인
             </button>
             <Member_MyPage_Membermiddle
@@ -101,7 +98,7 @@ const Member_MyPage_MemberInformation_PasswordConfirmation = (props) => {
           <button className="close" onClick={close}>
             닫기
           </button>
-        </section>
+        </div>
       ) : null}
     </div>
   );

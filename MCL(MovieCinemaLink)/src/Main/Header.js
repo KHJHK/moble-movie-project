@@ -1,11 +1,12 @@
 // Header.js
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Header.css";
 import ReactModal from "react-modal";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
-import Member_MyPage from "../Member/Member_MyPage";
+// import css
+import "./Header.css";
+import "./modal.css";
 
 const CustomModal = (props) => {
   const { isOpen } = props;
@@ -468,7 +469,7 @@ const Header = () => {
     if (decoded2.member_auth == "ADMIN") {
       return (
         <Link to="/AdminMain">
-          <storng>관리자</storng>
+          <h4>관리자</h4>
         </Link>
       );
     }
@@ -479,10 +480,10 @@ const Header = () => {
       return (
         <div className="TopMenu">
           <div className="TopMenu3">
-            <strong onClick={() => setShowModal1(true)}>로그인</strong>
+            <h4 onClick={() => setShowModal1(true)}>로그인</h4>
           </div>
           <div className="TopMenu2">
-            <strong onClick={() => setShowModal4(true)}>회원가입</strong>
+            <h4 onClick={() => setShowModal4(true)}>회원가입</h4>
           </div>
         </div>
       );
@@ -492,7 +493,7 @@ const Header = () => {
           <div className="TopMenu1">{qwer()}</div>
           <div className="TopMenu2">
             <Link to={"/"}>
-              <strong
+              <h4
                 onClick={() => {
                   localStorage.removeItem("token");
                   alert("로그아웃");
@@ -500,13 +501,14 @@ const Header = () => {
                 }}
               >
                 로그아웃
-              </strong>
+              </h4>
             </Link>
           </div>
           <div className="TopMenu3">
             <Link to="/Member_MyPage">
               {/* <React.Fragment> */}
-              <strong> 마이페이지</strong>
+              <h4> 마이페이지</h4>
+
               {/* <Member_MyPage
                   member_account={list.member_account}
                   member_auth={list.member_auth}
@@ -532,13 +534,16 @@ const Header = () => {
     <header>
       {/* 로고 */}
       <div className="firstpart">
-        <Link to="/">
-          <img src="./img/toppicture.png" alt="상단 로고사진" id="toppicture" />
-        </Link>
+        <div className="imgspace">
+          <Link to="/">
+            <img
+              src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F45568503-bf10-4f63-be4e-a4b3413cb210%2FKakaoTalk_20221031_162545044.png?table=block&id=2034f064-6f48-47d0-8c20-cc786ae79122&spaceId=a1667a61-abcb-4508-b4f5-60651e2ec6d2&width=2000&userId=5327ba06-0f76-4f4c-a1e6-2c1fc32fc768&cache=v2"
+              alt="상단 로고사진"
+              id="toppicture"
+            />
+          </Link>
+        </div>
 
-        {/* 모달창 전체 */}
-
-        <strong>{}</strong>
         {/* 로그인 */}
         <ModalComponent
           isOpen={showModal1}
@@ -546,15 +551,15 @@ const Header = () => {
           style={customStyles}
         >
           <div className="customStyles">
-            <header className="Modal_fullTitle">
-              <strong className="Modal_title">로그인</strong>
+            <div className="Modal_fullTitle">
+              <h4>로그인</h4>
               <button
                 className="close_btn"
                 onClick={() => setShowModal1(false)}
               >
                 &times;
               </button>
-            </header>
+            </div>
             <main>
               <br />
               <input
@@ -576,9 +581,9 @@ const Header = () => {
                 }}
               />
               <br />
-              <strong onClick={() => setShowModal2(true)}>
+              <h4 onClick={() => setShowModal2(true)}>
                 아이디 / 비밀번호 찾기
-              </strong>
+              </h4>
               <br />
               <button
                 type="submit"
@@ -602,19 +607,19 @@ const Header = () => {
           style={customStyles}
         >
           <div className="customStyles">
-            <header className="Modal_fullTitle">
-              <strong>회원가입</strong>
+            <div className="Modal_fullTitle">
+              <h4>회원가입</h4>
               <button
                 className="close_btn"
                 onClick={() => setShowModal4(false)}
               >
                 &times;
               </button>
-            </header>
+            </div>
 
             <main>
               <br />
-              <div className="formbox">
+              <div>
                 <input
                   text="이름"
                   type="name"
@@ -764,15 +769,15 @@ const Header = () => {
           style={customStyles}
         >
           <div className="customStyles">
-            <header className="Modal_fullTitle">
-              <strong>회원가입</strong>
+            <div className="Modal_fullTitle">
+              <h4>회원가입</h4>
               <button
                 className="close_btn"
                 onClick={() => setShowModal3(false)}
               >
                 &times;
               </button>
-            </header>
+            </div>
             <main>
               <br />
               {signUpResult}
@@ -790,15 +795,15 @@ const Header = () => {
           style={customStyles}
         >
           <div className="customStyles">
-            <header className="Modal_fullTitle">
-              <strong>ID/PW 찾기</strong>
+            <div className="Modal_fullTitle">
+              <h4>ID / PW 찾기</h4>
               <button
                 className="close_btn"
                 onClick={() => setShowModal2(false)}
               >
                 &times;
               </button>
-            </header>
+            </div>
             <main>
               <br />
               <input
@@ -839,11 +844,12 @@ const Header = () => {
               <br />
               <br />
               <button
+                disabled={!(isNameID && isEmailID)}
                 onClick={(e) => {
                   setShowModal5(true), FindId(e);
                 }}
               >
-                ID찾기
+                ID 찾기
               </button>
               {/* ///////////////////////////////////////////////////////////////////////////////////////////// */}
               <br />
@@ -904,6 +910,7 @@ const Header = () => {
             {/* 현재 footer에 다른 css가 적용되어 있다.(회색) */}
             <footer1>
               <button
+                disabled={!(isIdPW && isNamePW && isEmailPW)}
                 onClick={(e) => {
                   setShowModal11(true), FindPW(e);
                 }}
@@ -923,15 +930,15 @@ const Header = () => {
           style={customStyles}
         >
           <div className="customStyles">
-            <header className="Modal_fullTitle">
-              <strong>ID 찾기</strong>
+            <div className="Modal_fullTitle">
+              <h4>ID 찾기</h4>
               <button
                 className="close_btn"
                 onClick={() => setShowModal5(false)}
               >
                 &times;
               </button>
-            </header>
+            </div>
             <main>
               <p>ID : {idId}</p>
             </main>
@@ -946,15 +953,15 @@ const Header = () => {
           style={customStyles}
         >
           <div className="customStyles">
-            <header className="Modal_fullTitle">
-              <strong>PW 찾기</strong>
+            <div className="Modal_fullTitle">
+              <h4>PW 찾기</h4>
               <button
                 className="close_btn"
                 onClick={() => setShowModal11(false)}
               >
                 &times;
               </button>
-            </header>
+            </div>
             <main>
               <br />
               {fPWCode}
@@ -979,15 +986,15 @@ const Header = () => {
           style={customStyles}
         >
           <div className="customStyles">
-            <header className="Modal_fullTitle">
-              <strong>PW 찾기</strong>
+            <div className="Modal_fullTitle">
+              <h4>PW 찾기</h4>
               <button
                 className="close_btn"
                 onClick={() => setShowModal6(false)}
               >
                 &times;
               </button>
-            </header>
+            </div>
             <main>
               <br />
               {fPWEmail}
@@ -1028,15 +1035,15 @@ const Header = () => {
           style={customStyles}
         >
           <div className="customStyles">
-            <header className="Modal_fullTitle">
-              <strong>PW 재설정</strong>
+            <div className="Modal_fullTitle">
+              <h4>PW 재설정</h4>
               <button
                 className="close_btn"
                 onClick={() => setShowModal12(false)}
               >
                 &times;
               </button>
-            </header>
+            </div>
             <main>
               <br />
               {rsResult}

@@ -9,14 +9,14 @@ const LoginMain = (props) => {
     // 모달이 열릴때 openModal 클래스가 생성된다.
     <div className={open ? "openModal modal" : "modal"}>
       {open ? (
-        <section>
-          <header>
-            <strong>회원가입</strong>
+        <div className="customStyles">
+          <div className="Modal_fullTitle">
+            <h4>회원가입</h4>
             {header}
-            <button className="close" onClick={close}>
+            <button className="close_btn" onClick={close}>
               &times;
             </button>
-          </header>
+          </div>
           <main>
             <br />
             <input type="text" placeholder="이름" />
@@ -36,7 +36,7 @@ const LoginMain = (props) => {
           <button className="close" onClick={close}>
             닫기
           </button>
-        </section>
+        </div>
       ) : null}
     </div>
   );

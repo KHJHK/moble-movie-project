@@ -77,7 +77,6 @@ export function TimeClick(event) {
 const Theater_MovieTheaterLocationInformation = () => (
   <div>
     <Header />
-
     <div className="Theater_MovieTheaterLocationInformation">
       <h3>영화관 위치정보</h3>
 

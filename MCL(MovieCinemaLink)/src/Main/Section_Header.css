@@ -1,6 +1,6 @@
 /* Section_Header.css */
 
-.background {
+.Section_Header .background {
   z-index: -1;
   position: absolute;
   width: 100%;

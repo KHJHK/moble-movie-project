@@ -1,6 +1,5 @@
 // Questions_Questions.js
 import React from "react";
-
 import Header from "../../Main/Header";
 import Questions_QuestionsMain from "./Questions_QuestionsMain";
 import Footer from "../../Main/Footer";

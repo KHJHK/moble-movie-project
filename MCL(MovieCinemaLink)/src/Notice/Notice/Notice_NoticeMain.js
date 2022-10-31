@@ -18,23 +18,6 @@ const Notice_NoticeMain = () => {
     <div className="Notice_NoticeMain">
       <h3>공지사항</h3>
 
-      {/* 검색창 */}
-      <div id="board_search">
-        <div class="container">
-          <div class="search_window">
-            <div class="search_wrap">
-              {/* <label for="search" class="blind">공지사항 내용 검색</label> */}
-              <input
-                id="search"
-                type="search"
-                name=""
-                placeholder="검색어를 입력해주세요."
-              />
-              <button type="submit">검색</button>
-            </div>
-          </div>
-        </div>
-      </div>
       {/* <!-- Notice list --> */}
       <div class="container">
         <table class="board_table">

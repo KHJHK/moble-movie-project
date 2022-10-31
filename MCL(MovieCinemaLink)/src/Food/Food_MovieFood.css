@@ -2,31 +2,31 @@
 
 .Food_MovieFood {
   margin: 0px auto;
-  max-width: 1000px;
+  width: 1000px;
   height: auto;
 }
 
-.food {
+.Food_MovieFood .food {
   z-index: 0;
   /* margin-top: 50px; */
   height: 1500px;
   position: relative;
   margin: 20px;
 }
-.Popcorn,
-.tea,
-.Ade,
-.coffee,
-.dessert {
+.Food_MovieFood .Popcorn,
+.Food_MovieFood .tea,
+.Food_MovieFood .Ade,
+.Food_MovieFood .coffee,
+.Food_MovieFood .dessert {
   height: 300px;
   position: relative;
 }
 
-.foodimg1,
-.foodimg2,
-.foodimg3,
-.foodimg4,
-.foodimg5 {
+.Food_MovieFood .foodimg1,
+.Food_MovieFood .foodimg2,
+.Food_MovieFood .foodimg3,
+.Food_MovieFood .foodimg4,
+.Food_MovieFood .foodimg5 {
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
   position: absolute;
@@ -35,25 +35,25 @@
   width: 941px;
 }
 
-#menuimg {
+.Food_MovieFood #menuimg {
   width: 140px;
   height: 140px;
   border-radius: 15px;
 }
 
-.food h1 {
+.Food_MovieFood .food h1 {
   position: absolute;
   top: 12px;
   left: 20px;
 }
 
-.underline {
+.Food_MovieFood .underline {
   width: 950px;
   padding: 40px 0px 20px 0px;
   border-bottom: 2px solid #595959;
 }
 
-.information {
+.Food_MovieFood .information {
   /* background: rebeccapurple;
     border: 1px solid; */
   text-align: center;
@@ -64,7 +64,7 @@
   border-radius: 5px;
 }
 
-.scroll {
+.Food_MovieFood .scroll {
   position: fixed;
   height: 275px;
   top: 0px;
@@ -78,11 +78,11 @@
   text-align: center;
 }
 
-#smallmenu1,
-#smallmenu2,
-#smallmenu3,
-#smallmenu4,
-#smallmenu5 {
+.Food_MovieFood #smallmenu1,
+.Food_MovieFood #smallmenu2,
+.Food_MovieFood #smallmenu3,
+.Food_MovieFood #smallmenu4,
+.Food_MovieFood #smallmenu5 {
   border-bottom: 3px solid gray;
   padding: 5px;
 }

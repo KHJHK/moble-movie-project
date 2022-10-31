@@ -28,7 +28,6 @@ const Food_MovieFood = () => {
   return (
     <div>
       <Header />
-
       <div className="Food_MovieFood">
         <h3>무비푸드</h3>
         <div className="food">

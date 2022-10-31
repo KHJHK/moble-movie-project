@@ -1,17 +1,16 @@
 /* Footer.css */
 
+footer {
+  width: 1000px;
+  height: 150px;
+  margin: 30px auto;
+  color: #595959;
+}
+
 hr {
   margin-top: 20px;
   margin-bottom: 20px;
   width: auto;
   height: 1px;
   background: #999999;
-}
-
-footer {
-  max-width: 1000px;
-  height: auto;
-
-  margin: 30px auto; /* 위아래 여백 없이 가로 중앙에 배치 */
-  color: #595959;
 }

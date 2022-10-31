@@ -1,8 +1,7 @@
-// Member_MyPage_MemberInformation_PasswordConfirmation.js
+// Ticketing_TicketingMain_result2.js
 import React, { useState } from "react";
 import "../Member/Member_MyPage.js";
 import axios from "axios";
-// import { Link } from "react-router-dom";
 import Ticketing_TicketingMain_result3 from "./Ticketing_TicketingMain_result3";
 import jwtDecode from "jwt-decode";
 import { useEffect } from "react";
@@ -117,14 +116,14 @@ const Ticketing_Ticketing_TicketingMain_result = (props) => {
     // 모달이 열릴때 openModal 클래스가 생성된다.
     <div className={open ? "openModal modal" : "modal"}>
       {open ? (
-        <section>
-          <header>
-            <strong>비밀번호 확인</strong>
+        <div className="customStyles">
+          <div className="Modal_fullTitle">
+            <h4>비밀번호 확인</h4>
 
-            <button className="close" onClick={close}>
+            <button className="close_btn" onClick={close}>
               &times;
             </button>
-          </header>
+          </div>
           <main>
             <br />
             <input
@@ -155,7 +154,7 @@ const Ticketing_Ticketing_TicketingMain_result = (props) => {
           <button className="close" onClick={close}>
             닫기
           </button>
-        </section>
+        </div>
       ) : null}
     </div>
   );

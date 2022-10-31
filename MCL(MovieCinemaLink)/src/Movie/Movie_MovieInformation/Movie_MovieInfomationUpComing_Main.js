@@ -23,7 +23,7 @@ function Movie_MovieInformation_UpComing_Main(props) {
     if (id == movieC[key].id) {
       return (
         <div className="Movie_MovieInformation_Main">
-          <h2>&nbsp;&nbsp; 영화 상세정보</h2>
+          <h3>&nbsp;&nbsp; 영화 상세정보</h3>
           <table>
             <tr>
               <th rowSpan={5}>
@@ -32,7 +32,7 @@ function Movie_MovieInformation_UpComing_Main(props) {
             </tr>
             <tr>
               <td>
-                <h2>영화명 : {movieC[key].title}</h2>
+                <h2>{movieC[key].title}</h2>
               </td>
             </tr>
             <tr>
@@ -47,7 +47,7 @@ function Movie_MovieInformation_UpComing_Main(props) {
             </tr>
             <tr>
               <td>
-                <h5>상세정보 : {movieC[key].overview}</h5>
+                <h4>상세정보 : {movieC[key].overview}</h4>
               </td>
             </tr>
             <tr>

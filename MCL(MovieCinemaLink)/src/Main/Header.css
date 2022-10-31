@@ -1,89 +1,93 @@
 /* Header.css */
 
-.firstpart {
-  /* z-index: 1; */
-  max-width: 1000px;
-  height: 50px;
-  margin: 10px auto;
-  /* position: relative; */
+/* ===== Header.css 전체 ===== */
+header {
+  z-index: 1;
+  width: 1000px;
+  height: 150px;
+  margin: 0px auto;
 }
 
 /* ===== 로고 ===== */
 #toppicture {
   width: 130px;
   height: 50px;
-  /* position: absolute; */
 }
 
-/* ===== 로그인, 회원가입, 마이페이지 ===== */
-.TopMenu {
-  width: 400px;
+/* ===== 관리자, 로그인, 로그아웃, 회원가입, 마이페이지 ===== */
+header .TopMenu {
+  width: auto;
   height: 50px;
-  display: flex; /* 가로 배치 */
+  /* 가로 배치 */
+  display: flex;
   /* 오른쪽 정렬 */
   float: right;
 }
 
-.TopMenu1,
-.TopMenu2,
-.TopMenu3 {
-  padding: 7px 20px 7px 20px;
+header .TopMenu1,
+header .TopMenu2,
+header .TopMenu3 {
+  margin: 10px;
+  padding: 10px;
 }
 
-.TopMenu :hover {
+header .TopMenu :hover {
   color: #ff6347;
 }
 
 /* ===== 메인 메뉴바 전체 ===== */
-#menu {
+header #menu {
+  margin: 0px auto;
   width: 1000px;
-  /* height: 50px; */
   line-height: 50px;
-  /* vertical-align: middle; */
-
-  background: #1f324b;
   border-radius: 30px;
-
-  margin: 10px auto;
+  background: #1f324b;
   text-align: center;
 }
 
 /* 상위 부분 */
-#menu > ul > li {
+header #menu > ul > li {
   /* 가로 정렬 */
   display: inline-block;
   width: 150px;
-  /* position: relative; */
 }
 
-#menu > ul > li > a {
-  /* 밑줄 제거 */
-  text-decoration: none;
+header #menu > ul > li > a {
   color: #ffffff;
 }
 
 /* 하위 부분 */
-#menu > ul > li:hover > ul {
+header #menu > ul > li:hover > ul {
   /* 메뉴바 펼치기 */
   display: block;
 }
 
-#menu > ul > li > ul {
+header #menu > ul > li > ul {
   width: 150px;
   display: none;
   position: absolute;
   background: #87ceeb;
+  transition: ease 1s;
   border-radius: 10px;
-  list-style: none;
 }
 
-#menu > ul > li > ul > li:hover {
+header #menu > ul > li > ul > li:hover {
+  /* width: 150px; */
+  /* display: none; */
+  /* position: absolute; */
   background: orange;
   transition: ease 1s;
   border-radius: 10px;
 }
 
-#menu > ul > li > ul > li > a {
-  text-decoration: none;
-  color: #000000;
+.imgspace {
+  width: 130px;
+  height: 50px;
+  float: left;
+  text-align: center;
+  line-height: 60px;
+}
+
+.maincenter {
+  clear: both;
 }

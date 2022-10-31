@@ -1,7 +1,8 @@
 // Main.js
 import React from "react";
+// import css
 import "./Main.css";
-
+//component call
 import Header from "./Header";
 import Section_Header from "./Section_Header";
 import Section_article01 from "./Section_article01";
