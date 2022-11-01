@@ -1,6 +1,5 @@
 /* Member_MyPage.css */
 
-/*전체창*/
 .Member_MyPage {
   margin: 0px auto;
   width: 1000px;
@@ -14,8 +13,9 @@
   height: 330px;
   background: #e6e6e6;
   border-radius: 20px;
-  position: relative;
+  /* position: relative; */
 }
+
 /* 사진 */
 #profilepicture {
   margin: 20px;
@@ -36,12 +36,9 @@
 
 /* 아이콘 전체영역 */
 .iconspace {
-  float: left;
+  float: right;
   display: grid;
   grid-template-columns: 100px 100px 100px;
-  position: absolute;
-  right: 54px;
-  top: 170px;
   text-align: center;
 }
 
@@ -81,5 +78,3 @@
   object-fit: cover;
   border-radius: 15px;
 }
-
-/* .Member_MyPage{background-color: red;} */

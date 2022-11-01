@@ -1068,7 +1068,7 @@ const Header = () => {
         <div id="menu">
           <ul>
             <li>
-              <a href="#">영화</a>
+              <p>영화</p>
               <ul>
                 <li id="smallmenu">
                   <Link to="/NowPlayingMovie">현재 상영중인 영화</Link>
@@ -1080,7 +1080,7 @@ const Header = () => {
             </li>
 
             <li>
-              <a href="#">예매</a>
+              <p>예매</p>
               <ul>
                 <li id="smallmenu" onClick={Ticketlogin}>
                   예매하기
@@ -1089,7 +1089,7 @@ const Header = () => {
             </li>
 
             <li>
-              <a href="#">극장</a>
+              <p>극장</p>
               <ul>
                 <li id="smallmenu">
                   <Link to="/Theater_MovieTheaterLocationInformation">
@@ -1105,7 +1105,7 @@ const Header = () => {
               <Link to="/Food_MovieFood">무비푸드</Link>
             </li>
             <li>
-              <a href="#">공지사항</a>
+              <p>공지사항</p>
               <ul>
                 <li id="smallmenu">
                   <Link to="/Notice_Notice">공지사항</Link>

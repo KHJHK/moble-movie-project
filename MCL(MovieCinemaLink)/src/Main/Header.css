@@ -36,6 +36,11 @@ header .TopMenu :hover {
 }
 
 /* ===== 메인 메뉴바 전체 ===== */
+
+header p {
+  color: #ffffff;
+}
+
 header #menu {
   margin: 0px auto;
   width: 1000px;

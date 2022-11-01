@@ -1,9 +1,9 @@
 /* Questions_QuestionsInfo.css */
 
 .Questions_QuestionsInfo_Main {
-  max-width: 1000px;
+  width: 1000px;
   height: auto;
-  margin: 100px auto;
+  margin: 0px auto;
 }
 
 .article_detail {
@@ -42,7 +42,6 @@
 }
 
 /* 관리자 답변 */
-#answer {
-  /* 숨기기 */
-  /* display: none; */
-}
+/* #answer {
+  display: none;
+} */

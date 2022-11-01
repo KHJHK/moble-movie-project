@@ -90,6 +90,7 @@ const Member_MyPage = (props) => {
             </button>
           </div>
 
+          {/* icon 아이콘 : 정보수정, 회원탈퇴, 무비뉴스 */}
           <div className="iconspace">
             <React.Fragment>
               <input

@@ -1,9 +1,9 @@
 /* Notice_NoticeInfo.css */
 
 .Notice_NoticeInfo_Main {
-  max-width: 1000px;
+  width: 1000px;
   height: auto;
-  margin: 100px auto;
+  margin: 0px auto;
 }
 
 .article_detail {
