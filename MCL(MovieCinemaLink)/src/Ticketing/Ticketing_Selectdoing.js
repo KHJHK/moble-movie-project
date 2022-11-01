@@ -54,7 +54,7 @@ export function movieClick(event) {
     document.querySelector(".SelectCinema").style.display = "none";
     document.querySelector(".SelectDate").style.display = "none";
     document.querySelector(".SelectTime").style.display = "none";
-    document.querySelector(".SelectTicket_btn").style.display = "none";
+    document.querySelector(".SelectTicket_button").style.display = "none";
     // document.querySelector(".TicketingSeat").style.display = "none";
 
     console.log("6");
@@ -82,7 +82,7 @@ export function movieClick(event) {
       document.querySelector(".SelectCinema").style.display = "none";
       document.querySelector(".SelectDate").style.display = "none";
       document.querySelector(".SelectTime").style.display = "none";
-      document.querySelector(".SelectTicket_btn").style.display = "none";
+      document.querySelector(".SelectTicket_button").style.display = "none";
       // document.querySelector(".TicketingSeat").style.display = "none";
       const moviecheck = event.target.textContent;
       localStorage.setItem("moviecheck", moviecheck);
@@ -103,7 +103,7 @@ export function RegionClick(event) {
     document.querySelector(".SelectCinema").style.display = "none";
     document.querySelector(".SelectDate").style.display = "none";
     document.querySelector(".SelectTime").style.display = "none";
-    document.querySelector(".SelectTicket_btn").style.display = "none";
+    document.querySelector(".SelectTicket_button").style.display = "none";
     // document.querySelector(".TicketingSeat").style.display = "none";
     console.log("6");
     localStorage.removeItem("movieRegion");
@@ -126,7 +126,7 @@ export function RegionClick(event) {
       }
       document.querySelector(".SelectDate").style.display = "none";
       document.querySelector(".SelectTime").style.display = "none";
-      document.querySelector(".SelectTicket_btn").style.display = "none";
+      document.querySelector(".SelectTicket_button").style.display = "none";
       // document.querySelector(".TicketingSeat").style.display = "none";
 
       const movieRegion = event.target.textContent;
@@ -147,8 +147,8 @@ export function CinemaClick(event) {
     event.target.classList.remove("clicked");
     document.querySelector(".SelectDate").style.display = "none";
     document.querySelector(".SelectTime").style.display = "none";
-    document.querySelector(".SelectTicket_btn").style.display = "none";
-    document.querySelector(".SelectTicket_btn").style.display = "none";
+    document.querySelector(".SelectTicket_button").style.display = "none";
+    document.querySelector(".SelectTicket_button").style.display = "none";
     // document.querySelector(".TicketingSeat").style.display = "none";
   } else {
     for (var i = 0; i < SelectCN.length; i++) {
@@ -165,9 +165,9 @@ export function CinemaClick(event) {
         SelectTI[i].classList.remove("clicked");
       }
       document.querySelector(".SelectTime").style.display = "none";
-      document.querySelector(".SelectTicket_btn").style.display = "none";
+      document.querySelector(".SelectTicket_button").style.display = "none";
       // document.querySelector(".TicketingSeat").style.display = "none";
-      document.querySelector(".SelectTicket_btn").style.display = "none";
+      document.querySelector(".SelectTicket_button").style.display = "none";
 
       const movieCinema = event.target.textContent;
       localStorage.setItem("movieCinema", movieCinema);
@@ -186,7 +186,7 @@ export function DateClick(event) {
   if (event.target.classList[1] === "clicked") {
     event.target.classList.remove("clicked");
     document.querySelector(".SelectTime").style.display = "none";
-    document.querySelector(".SelectTicket_btn").style.display = "none";
+    document.querySelector(".SelectTicket_button").style.display = "none";
     // document.querySelector(".TicketingSeat").style.display = "none";
     localStorage.removeItem("movieDate");
 
@@ -204,7 +204,7 @@ export function DateClick(event) {
     if (event.target.classList.value === "SelectDT clicked") {
       document.querySelector(".SelectTime").style.display = "block";
       // document.querySelector(".TicketingSeat").style.display = "none";
-      document.querySelector(".SelectTicket_btn").style.display = "none";
+      document.querySelector(".SelectTicket_button").style.display = "none";
 
       for (var i = 0; i < SelectTI.length; i++) {
         SelectTI[i].classList.remove("clicked");
@@ -223,7 +223,7 @@ export function TimeClick(event) {
   if (event.target.classList[1] === "clicked") {
     event.target.classList.remove("clicked");
     // document.querySelector(".TicketingSeat").style.display = "none";
-    document.querySelector(".SelectTicket_btn").style.display = "none";
+    document.querySelector(".SelectTicket_button").style.display = "none";
     console.log("6");
   } else {
     for (var i = 0; i < SelectTI.length; i++) {
@@ -231,7 +231,7 @@ export function TimeClick(event) {
     }
     event.target.classList.add("clicked");
     // document.querySelector(".TicketingSeat").style.display = "block";
-    document.querySelector(".SelectTicket_btn").style.display = "block";
+    document.querySelector(".SelectTicket_button").style.display = "block";
     const movieTime = event.target.textContent;
     localStorage.setItem("movieTime", movieTime);
     console.log(movieTime);

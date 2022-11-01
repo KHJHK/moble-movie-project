@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 export default function Questions_QuestionsMain_Questions(props) {
   return (
-    // <div class="container">
-    //   <table class="board_table">
+    // <div className="container">
+    //   <table className="board_table">
     //     <tbody>
     <tr>
       {/* 번호 */}

@@ -30,10 +30,10 @@ const Manage_Notice_Add = (props) => {
   return (
     <div>
       <div className="Manage_Notice_Add">
-        <div class="ui_container">
+        <div className="ui_container">
           <h3>공지사항 등록</h3>
-          <div class="ui_border">
-            <div class="border_cont">
+          <div className="ui_border">
+            <div className="border_cont">
               <table>
                 <thead>
                   <tr>
@@ -65,7 +65,7 @@ const Manage_Notice_Add = (props) => {
               <textarea id="noticeContent" cols="30" rows="10"></textarea>
             </div>
 
-            <div class="Notice_btn">
+            <div className="Notice_button">
               {/* <Link to="/Manage_Notice"> */}
               <button onClick={addNotice}>등록</button>
               {/* </Link> */}

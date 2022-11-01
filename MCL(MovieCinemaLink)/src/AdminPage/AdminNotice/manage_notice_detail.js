@@ -74,8 +74,8 @@ function Manage_Notice_Detail(props) {
         </div>
       </section>
 
-      {/* btn */}
-      <div className="Notice_btn">
+      {/* button */}
+      <div className="Notice_button">
         <Link to="/Manage_Notice">
           <button>목록</button>
         </Link>

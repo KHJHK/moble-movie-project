@@ -99,7 +99,7 @@ const LoginMain = (props) => {
           <div className="Modal_fullTitle">
             <h4>정보수정</h4>
             {header}
-            <button className="close_btn" onClick={close}>
+            <button className="x_button" onClick={close}>
               &times;
             </button>
           </div>

@@ -242,11 +242,10 @@ const Ticketing_TicketingMain = () => {
 
         {/* 좌석 선택 */}
       </div>
-
-      <div className="SelectTicket_btn">
+      <div className="SelectTicket_button">
         <React.Fragment>
-          <button className="Ticket_btn" onClick={openModalSignup}>
-            예매좌석선택하기
+          <button className="Ticket_button" onClick={openModalSignup}>
+            <h1>예매좌석 선택하기</h1>
           </button>
           <Ticketing_TicketingMain_Pick
             open={modalOpenSignUp}

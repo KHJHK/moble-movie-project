@@ -101,8 +101,8 @@ function Manage_Question_Detail(props) {
         </div>
       </section>
 
-      {/* ======================== btn ======================== */}
-      <div className="question_btn">
+      {/* ======================== button ======================== */}
+      <div>
         <button onClick={question_delete}>질문삭제</button>
       </div>
       <br />
@@ -133,8 +133,8 @@ function Manage_Question_Detail(props) {
           <pre>{answer.answer_content}</pre>
         </div>
       </section>
-      {/* ======================== btn ======================== */}
-      <div className="question_btn">
+      {/* ======================== button ======================== */}
+      <div>
         <Link to="/Manage_Question">
           <button>목록</button>
         </Link>

@@ -51,13 +51,13 @@ function Notice_NoticeInfo_Main(props) {
         </table>
 
         {/* 내용 */}
-        <div class="article_body">
+        <div className="article_body">
           <pre>{noticeInfo.notice_content}</pre>
         </div>
       </section>
 
-      {/* btn */}
-      <div className="Notice_btn">
+      {/* button */}
+      <div className="Notice_button">
         <Link to="/Notice_Notice">
           <button>목록</button>
         </Link>

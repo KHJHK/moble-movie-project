@@ -28,20 +28,34 @@ const Ticketing_Ticketing_TicketingMain_result = (props) => {
           <div className="Modal_fullTitle">
             <h4>영화예매확인</h4>
 
-            <button className="close_btn" onClick={close}>
+            <button className="x_button" onClick={close}>
               &times;
             </button>
           </div>
-          <main>
+          <main className="modalMain">
             <br />
-            <p>영화선택 : {moviecheck} </p>
-            <p>선택지역 : {movieRegion} </p>
-            <p>극장위치 : {movieCinema} </p>
-            <p>상영날짜 : {movieDate} </p>
-            <p>상영시간 : {movieTime} </p>
-            <p>예매좌석 : {movieSeat} </p>
+            <p>
+              <strong>영화선택</strong> : {moviecheck}{" "}
+            </p>
+            <p>
+              <strong>선택지역</strong> : {movieRegion}{" "}
+            </p>
+            <p>
+              <strong>극장위치</strong> : {movieCinema}{" "}
+            </p>
+            <p>
+              <strong>상영날짜</strong> : {movieDate}{" "}
+            </p>
+            <p>
+              <strong>상영시간</strong> : {movieTime}{" "}
+            </p>
+            <p>
+              <strong>예매좌석</strong> : {movieSeat}{" "}
+            </p>
             <br />
-            <p>결제를 진행하시겠습니까? </p>
+            <center>
+              <strong>결제를 진행하시겠습니까? </strong>
+            </center>
 
             {props.children}
           </main>

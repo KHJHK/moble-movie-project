@@ -1,9 +1,10 @@
 // App.js
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// .css
 import "./App.css";
 
-//import Main
+// ============ UserPage ============
 import Main from "./Main/Main";
 
 // import Movie
@@ -39,7 +40,7 @@ import Theater_Theater from "./Theater/Theater_Theater";
 // import Food
 import Food_MovieFood from "./Food/Food_MovieFood";
 
-// ============ AdminMain ============
+// ============ ManagePage ============
 import AdminMain from "./AdminPage/AdminMain";
 import AdminMember from "./AdminPage/AdminMember/AdminMember";
 import AdminMovie from "./AdminPage/AdminMovie/AdminMovie";

@@ -3,8 +3,8 @@ import React from "react";
 
 export default function Manage_Delete_Notice_List(props) {
   return (
-    // <div class="container">
-    //   <table class="board_table">
+    // <div className="container">
+    //   <table className="board_table">
     //     <tbody>
     <tr>
       {/* 번호 */}

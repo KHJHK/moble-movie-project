@@ -29,23 +29,23 @@ const Questions_QuestionsMain = () => {
       <h3>문의사항</h3>
 
       {/* <!-- Notice list --> */}
-      <div class="container">
-        <table class="board_table">
+      <div className="container">
+        <table className="board_table">
           <thead>
             <tr>
-              <th scope="col" class="th_num">
+              <th scope="col" className="th_num">
                 번호
               </th>
-              <th scope="col" class="th_category">
+              <th scope="col" className="th_category">
                 구분
               </th>
-              <th scope="col" class="th_title">
+              <th scope="col" className="th_title">
                 제목
               </th>
-              <th scope="col" class="th_date">
+              <th scope="col" className="th_date">
                 등록일
               </th>
-              <th scope="col" class="th_views">
+              <th scope="col" className="th_views">
                 회원ID
               </th>
             </tr>
@@ -66,7 +66,7 @@ const Questions_QuestionsMain = () => {
             })}
           </tbody>
         </table>
-        <div className="Notice_btn">
+        <div>
           <button onClick={loginCheck}>Q & A 등록</button>
         </div>
       </div>

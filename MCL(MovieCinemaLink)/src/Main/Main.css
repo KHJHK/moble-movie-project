@@ -11,7 +11,12 @@
   margin: 0px auto;
 } */
 
-h2,
+/* 영화 상세정보 > 영화명,
+상영관 title */
+h2 {
+  margin: 10px;
+}
+
 h3 {
   margin: 20px;
 }
@@ -57,6 +62,6 @@ button:hover {
 }
 
 /* 공지사항 > 공지사항, Q&A 버튼 div */
-.Notice_btn {
+.Notice_button {
   text-align: right;
 }

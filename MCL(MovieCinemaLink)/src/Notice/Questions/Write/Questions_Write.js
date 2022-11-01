@@ -39,10 +39,10 @@ const Questions_Write = (props) => {
     <div>
       <Header />
       <div className="Questions_Write">
-        <div class="ui_container">
+        <div className="ui_container">
           <h3>문의사항 등록</h3>
-          <div class="ui_border">
-            <div class="border_cont">
+          <div className="ui_border">
+            <div className="border_cont">
               <table>
                 <thead>
                   <tr>
@@ -75,7 +75,7 @@ const Questions_Write = (props) => {
             </div>
             {/* const [modalOpenSignUp, setModalOpenSignUp] = useState(false); */}
             {/* modal */}
-            <div class="Notice_btn">
+            <div className="Notice_button">
               <React.Fragment>
                 <button onClick={() => setModalOpenSignUp(true)}>등록</button>
                 <Link to="/Questions_Questions">

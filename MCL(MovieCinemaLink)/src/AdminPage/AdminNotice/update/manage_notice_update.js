@@ -44,10 +44,10 @@ const Manage_Notice_Update = (props) => {
   return (
     <div>
       <div className="Manage_Notice_Update">
-        <div class="ui_container">
+        <div className="ui_container">
           <h3>공지사항 수정</h3>
-          <div class="ui_border">
-            <div class="border_cont">
+          <div className="ui_border">
+            <div className="border_cont">
               <table>
                 <thead>
                   <tr>
@@ -89,7 +89,7 @@ const Manage_Notice_Update = (props) => {
               />
             </div>
 
-            <div class="Notice_btn">
+            <div className="Notice_button">
               <button onClick={UpdateNotice}>수정완료</button>
               <Link to="/Manage_Notice">
                 <button>목록</button>

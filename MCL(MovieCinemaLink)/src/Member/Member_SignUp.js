@@ -103,7 +103,7 @@ const Member_SignUp = (props) => {
           <div className="Modal_fullTitle">
             <h4>회원가입</h4>
             {header}
-            <button className="close_btn" onClick={close}>&times;</button>
+            <button className="x_button" onClick={close}>&times;</button>
           </div>
 
           <form>

@@ -24,7 +24,7 @@ function Movie_MovieInformation_Main(props) {
     if (id == movie[key].id) {
       return (
         <div className="Movie_MovieInformation_Main">
-          <h2>&nbsp;&nbsp; 영화 상세정보</h2>
+          <h3>&nbsp;&nbsp; 영화 상세정보</h3>
           <table>
             <tr>
               <th rowSpan={5}>
@@ -32,8 +32,9 @@ function Movie_MovieInformation_Main(props) {
               </th>
             </tr>
             <tr>
+              {/* 영화명 */}
               <td>
-                <h2>영화명 : {movie[key].title}</h2>
+                <h2>{movie[key].title}</h2>
               </td>
             </tr>
             <tr>

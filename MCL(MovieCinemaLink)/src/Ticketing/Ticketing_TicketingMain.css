@@ -3,7 +3,7 @@
 /* 예매하기 */
 .Ticketing_TicketingMain {
   width: 1000px;
-  height: 1000px;
+  height: 900px;
   margin: 0px auto;
 }
 
@@ -23,15 +23,12 @@
 /* 영화 선택 */
 .Ticketing_SelectMovie {
   float: left;
-
   width: 400px;
   height: 800px;
-
   background: #e6e6e6;
   margin: 10px;
   text-align: center;
   border-radius: 10px;
-
   /* 스크롤 */
   overflow: auto;
 }
@@ -60,10 +57,8 @@
 .Ticketing_SelectDate,
 .Ticketing_SelectTime {
   float: left;
-
   width: 550px;
   height: auto;
-
   background: #e6e6e6;
   margin: 10px;
   text-align: center;
@@ -94,39 +89,20 @@ li.SelectCN {
   float: left;
 }
 
-/*예매좌석 선택 팝업창*/
-.modal > #pick_width {
-  width: 1000px;
-  margin: 0 auto;
-  border-radius: 10px;
-  background-color: #fff;
-  /* 팝업이 열릴때 스르륵 열리는 효과 */
-  animation: modal-show 0.3s;
-  overflow: hidden;
-  height: auto;
-}
-
-.pick_btn {
-  display: inline;
-  background-color: red;
-}
-
-.SelectTicket_btn {
-  width: 1000px;
-  height: 250px;
+.SelectTicket_button {
+  /* width: 1000px; */
+  /* height: 250px; */
   text-align: center;
-  margin-bottom: 40px;
-  display: none;
+  /* display: none; */
 }
 
-/* 에매좌석 버튼 클릭시 효과 */
-.Ticket_btn {
+/* 에매좌석 선택하기 버튼 */
+.Ticket_button {
   width: 800px;
-  height: 200px;
-  font-size: 40px;
-  transition: all 2s;
+  height: 100px;
+  transition: all 0.5s;
 }
-.Ticket_btn:hover {
-  width: 400px;
+.Ticket_button:hover {
+  width: 700px;
   height: 100px;
 }

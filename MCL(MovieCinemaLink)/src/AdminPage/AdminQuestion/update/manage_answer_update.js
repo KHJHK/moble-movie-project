@@ -40,10 +40,10 @@ const Manage_Answer_Update = () => {
   return (
     <div>
       <div className="Manage_Answer_Update">
-        <div class="ui_container">
+        <div className="ui_container">
           <h3>Q & A 답변수정</h3>
-          <div class="ui_border">
-            <div class="border_cont">
+          <div className="ui_border">
+            <div className="border_cont">
               <table>
                 <thead>
                   <tr>
@@ -74,7 +74,7 @@ const Manage_Answer_Update = () => {
               />
             </div>
 
-            <div class="Notice_btn">
+            <div className="Notice_button">
               <button onClick={UpdateQA}>수정완료</button>
               <Link to="/Manage_Question">
                 <button>목록</button>

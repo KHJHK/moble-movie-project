@@ -120,7 +120,7 @@ const Ticketing_Ticketing_TicketingMain_result = (props) => {
           <div className="Modal_fullTitle">
             <h4>비밀번호 확인</h4>
 
-            <button className="close_btn" onClick={close}>
+            <button className="x_button" onClick={close}>
               &times;
             </button>
           </div>

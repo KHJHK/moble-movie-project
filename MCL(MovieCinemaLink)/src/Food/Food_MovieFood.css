@@ -41,12 +41,6 @@
   border-radius: 15px;
 }
 
-.Food_MovieFood .food h1 {
-  position: absolute;
-  top: 12px;
-  left: 20px;
-}
-
 .Food_MovieFood .underline {
   width: 950px;
   padding: 40px 0px 20px 0px;

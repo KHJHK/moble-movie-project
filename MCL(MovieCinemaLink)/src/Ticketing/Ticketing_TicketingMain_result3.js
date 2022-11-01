@@ -22,7 +22,7 @@ const Ticketing_Ticketing_TicketingMain_result = (props) => {
           <div className="Modal_fullTitle">
             <h4>안내문</h4>
             <Link to="/Member_MyPage">
-              <button className="close_btn" onClick={close}>
+              <button className="x_button" onClick={close}>
                 &times;
               </button>
             </Link>

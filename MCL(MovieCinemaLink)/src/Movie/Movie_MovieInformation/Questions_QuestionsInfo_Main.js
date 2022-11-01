@@ -8,14 +8,13 @@ import Questions_modal_Delete from "../modal/Questions_modal_Delete";
 import jwtDecode from "jwt-decode";
 
 function Questions_QuestionsInfo_Main(props) {
-  const { id } = useParams(); 
+  const { id } = useParams();
 
   // DB 데이터 불러오기 (상세정보)
   const [questions, setQuestionsInfo] = useState("");
 
-
-  const deleteBTN = ()=>{
-    console.log ("테스트합니다 : "+ questions.member_account);
+  const deleteButton = () => {
+    console.log("테스트합니다 : " + questions.member_account);
   };
 
   const decode = jwtDecode(
@@ -26,46 +25,28 @@ function Questions_QuestionsInfo_Main(props) {
     axios
       .get(`http://localhost:80/board/question_detail?id=${id}`)
       .then((res) => {
-        
         setQuestionsInfo(res.data);
-
       });
   }, []);
 
+  useEffect(() => {
+    if (questions.member_account !== decode.member_account) {
+      document.querySelector(".Q_amethyst").style.display = "none";
+      document.querySelector(".Q_delete").style.display = "none";
+    } else {
+      document.querySelector(".Q_amethyst").style.display = "block";
+      document.querySelector(".Q_delete").style.display = "block";
 
-
-
-useEffect(() => {
- 
-  if(questions.member_account!==decode.member_account){
-    document.querySelector(".Q_amethyst").style.display="none"
-    document.querySelector(".Q_delete").style.display="none"
-    }else{
-      document.querySelector(".Q_amethyst").style.display="block"
-      document.querySelector(".Q_delete").style.display="block"
-
-      document.querySelector(".Q_amethyst").style.float="right"
-      document.querySelector(".Q_delete").style.float="right"
-
-
+      document.querySelector(".Q_amethyst").style.float = "right";
+      document.querySelector(".Q_delete").style.float = "right";
     }
-  
-}, [questions]);
+  }, [questions]);
 
   // if(questions.member_account!==decode.member_account){
   // document.querySelector(".Q_amethyst").style.display="none"
   // document.querySelector(".Q_delete").style.display="none"
   // console.log("들어왔다.")
   // }
-
-
-
-
-
-
-
-
-
 
   // DB 데이터 불러오기 (리스트 삭제)
   const deleteQA = () => {
@@ -162,18 +143,20 @@ useEffect(() => {
           <pre>{answer.answer_content}</pre>
         </div>
       </section>
-      {/* ======================== btn ======================== */}
-      <div className="Notice_btn">
+      {/* ======================== button ======================== */}
+      <div className="Notice_button">
         <Link to="/Questions_Questions">
           <button>목록</button>
         </Link>
 
         <Link to={`/Questions_Update/${questions.question_id}`}>
-          <button  className='Q_amethyst'>수정</button>
+          <button className="Q_amethyst">수정</button>
         </Link>
 
         <React.Fragment>
-          <button onClick={() => setmodalOpenDelete(true)} className='Q_delete'>삭제</button>
+          <button onClick={() => setmodalOpenDelete(true)} className="Q_delete">
+            삭제
+          </button>
           <Questions_modal_Delete
             open={modalOpenDelete}
             close={() => setmodalOpenDelete(false)}

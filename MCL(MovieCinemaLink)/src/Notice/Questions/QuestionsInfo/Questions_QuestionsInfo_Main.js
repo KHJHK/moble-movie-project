@@ -13,7 +13,7 @@ function Questions_QuestionsInfo_Main(props) {
   // DB 데이터 불러오기 (상세정보)
   const [questions, setQuestionsInfo] = useState("");
 
-  const deleteBTN = () => {
+  const deleteButton = () => {
     console.log("테스트합니다 : " + questions.member_account);
   };
 
@@ -145,8 +145,8 @@ function Questions_QuestionsInfo_Main(props) {
           <pre>{answer.answer_content}</pre>
         </div>
       </section>
-      {/* ======================== btn ======================== */}
-      <div className="Notice_btn">
+      {/* ======================== button ======================== */}
+      <div className="Notice_button">
         <Link to="/Questions_Questions">
           <button>목록</button>
         </Link>

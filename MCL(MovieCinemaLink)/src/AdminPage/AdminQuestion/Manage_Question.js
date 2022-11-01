@@ -30,29 +30,29 @@ const manage_QuestionList = () => {
   }, []);
 
   return (
-    <div className="manage_QuestionList">
+    <div classNameName="manage_QuestionList">
       <AdminHeader />
       <AdminNav />
       <h3>관리자페이지 Q & A 리스트</h3>
 
       {/* <!-- Notice list --> */}
-      <div class="container">
-        <table class="board_table">
+      <div classNameName="container">
+        <table classNameName="board_table">
           <thead>
             <tr>
-              <th scope="col" class="th_num">
+              <th scope="col" className="th_num">
                 번호
               </th>
-              <th scope="col" class="th_category">
+              <th scope="col" className="th_category">
                 구분
               </th>
-              <th scope="col" class="th_title">
+              <th scope="col" className="th_title">
                 제목
               </th>
-              <th scope="col" class="th_date">
+              <th scope="col" className="th_date">
                 등록일
               </th>
-              <th scope="col" class="th_views">
+              <th scope="col" className="th_views">
                 회원ID
               </th>
             </tr>
@@ -74,22 +74,22 @@ const manage_QuestionList = () => {
           </tbody>
         </table>
         <h3>Q&A 삭제 리스트</h3>
-        <table class="board_table">
+        <table className="board_table">
           <thead>
             <tr>
-              <th scope="col" class="th_num">
+              <th scope="col" className="th_num">
                 번호
               </th>
-              <th scope="col" class="th_category">
+              <th scope="col" className="th_category">
                 구분
               </th>
-              <th scope="col" class="th_title">
+              <th scope="col" className="th_title">
                 제목
               </th>
-              <th scope="col" class="th_date">
+              <th scope="col" className="th_date">
                 등록일
               </th>
-              <th scope="col" class="th_views">
+              <th scope="col" className="th_views">
                 회원ID
               </th>
             </tr>

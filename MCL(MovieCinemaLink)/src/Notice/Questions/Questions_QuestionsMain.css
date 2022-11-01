@@ -16,42 +16,6 @@
   background: re;
 }
 
-/* =========================== search ===========================*/
-#board_search .search_window {
-  margin: 50px 20px 50px 20px;
-  padding: 20px;
-  background-color: #e6e6e6;
-  border-radius: 10px;
-}
-
-#board_search .search_window .search_wrap {
-  position: relative;
-  margin: 0 auto;
-  width: 500px;
-}
-
-#board_search .search_window .search_wrap input {
-  border-radius: 10px;
-  width: 500px;
-  height: 40px;
-  padding: 10px;
-  border: 1px solid #e6e6e6;
-}
-
-/* 검색창 클릭 시 */
-/* #board_search .search_window .search_wrap input:focus {
-        border-color: #999999;
-        outline: 0;
-        border-width: 1px;
-    } */
-
-/* 검색 버튼 */
-#board_search .search_window .search_wrap button {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-}
 /* =========================== table ===========================*/
 /* table */
 .table {

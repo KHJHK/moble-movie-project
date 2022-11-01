@@ -62,7 +62,7 @@ const Member_MyPage_MemberInformation_PasswordConfirmation = (props) => {
           <div className="Modal_fullTitle">
             <h4>비밀번호확인</h4>
 
-            <button className="close_btn" onClick={close}>
+            <button className="x_button" onClick={close}>
               &times;
             </button>
           </div>

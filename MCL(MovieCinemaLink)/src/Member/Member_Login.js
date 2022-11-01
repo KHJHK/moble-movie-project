@@ -22,7 +22,7 @@ const Member_Login = (props) => {
           <div className="Modal_fullTitle">
             <h4>로그인</h4>
             {header}
-            <button className="close_btn" onClick={close}>&times;</button>
+            <button className="x_button" onClick={close}>&times;</button>
           </div>
 
           <main>

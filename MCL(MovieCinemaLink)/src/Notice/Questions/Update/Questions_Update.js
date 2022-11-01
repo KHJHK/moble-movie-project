@@ -57,10 +57,10 @@ const Questions_Update = (props) => {
     <div>
       <Header />
       <div className="Questions_Update">
-        <div class="ui_container">
+        <div className="ui_container">
           <h3>문의사항 수정</h3>
-          <div class="ui_border">
-            <div class="border_cont">
+          <div className="ui_border">
+            <div className="border_cont">
               <table>
                 <thead>
                   <tr>
@@ -103,7 +103,7 @@ const Questions_Update = (props) => {
             </div>
             {/* const [modalOpenUpdate, setModalOpenUpdate] = useState(false); */}
             {/* modal */}
-            <div class="Notice_btn">
+            <div className="Notice_button">
               <React.Fragment>
                 <button onClick={() => setModalOpenUpdate(true)}>
                   수정완료

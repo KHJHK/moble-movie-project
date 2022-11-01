@@ -39,10 +39,10 @@ const Manage_Answer_Add = (prop) => {
   return (
     <div>
       <div className="manage_answer_add">
-        <div class="ui_container">
+        <div className="ui_container">
           <h3>Q & A 답변등록</h3>
-          <div class="ui_border">
-            <div class="border_cont">
+          <div className="ui_border">
+            <div className="border_cont">
               <table>
                 <thead>
                   <tr>
@@ -62,7 +62,7 @@ const Manage_Answer_Add = (prop) => {
               <textarea id="answerContent" cols="30" rows="10"></textarea>
             </div>
 
-            <div class="Notice_btn">
+            <div className="Notice_button">
               <button onClick={addQA}>등록</button>
               <Link to="/Manage_Question">
                 <button>목록</button>

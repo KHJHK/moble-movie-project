@@ -553,10 +553,7 @@ const Header = () => {
           <div className="customStyles">
             <div className="Modal_fullTitle">
               <h4>로그인</h4>
-              <button
-                className="close_btn"
-                onClick={() => setShowModal1(false)}
-              >
+              <button className="x_button" onClick={() => setShowModal1(false)}>
                 &times;
               </button>
             </div>
@@ -609,10 +606,7 @@ const Header = () => {
           <div className="customStyles">
             <div className="Modal_fullTitle">
               <h4>회원가입</h4>
-              <button
-                className="close_btn"
-                onClick={() => setShowModal4(false)}
-              >
+              <button className="x_button" onClick={() => setShowModal4(false)}>
                 &times;
               </button>
             </div>
@@ -771,10 +765,7 @@ const Header = () => {
           <div className="customStyles">
             <div className="Modal_fullTitle">
               <h4>회원가입</h4>
-              <button
-                className="close_btn"
-                onClick={() => setShowModal3(false)}
-              >
+              <button className="x_button" onClick={() => setShowModal3(false)}>
                 &times;
               </button>
             </div>
@@ -797,10 +788,7 @@ const Header = () => {
           <div className="customStyles">
             <div className="Modal_fullTitle">
               <h4>ID / PW 찾기</h4>
-              <button
-                className="close_btn"
-                onClick={() => setShowModal2(false)}
-              >
+              <button className="x_button" onClick={() => setShowModal2(false)}>
                 &times;
               </button>
             </div>
@@ -932,10 +920,7 @@ const Header = () => {
           <div className="customStyles">
             <div className="Modal_fullTitle">
               <h4>ID 찾기</h4>
-              <button
-                className="close_btn"
-                onClick={() => setShowModal5(false)}
-              >
+              <button className="x_button" onClick={() => setShowModal5(false)}>
                 &times;
               </button>
             </div>
@@ -956,7 +941,7 @@ const Header = () => {
             <div className="Modal_fullTitle">
               <h4>PW 찾기</h4>
               <button
-                className="close_btn"
+                className="x_button"
                 onClick={() => setShowModal11(false)}
               >
                 &times;
@@ -988,10 +973,7 @@ const Header = () => {
           <div className="customStyles">
             <div className="Modal_fullTitle">
               <h4>PW 찾기</h4>
-              <button
-                className="close_btn"
-                onClick={() => setShowModal6(false)}
-              >
+              <button className="x_button" onClick={() => setShowModal6(false)}>
                 &times;
               </button>
             </div>
@@ -1038,7 +1020,7 @@ const Header = () => {
             <div className="Modal_fullTitle">
               <h4>PW 재설정</h4>
               <button
-                className="close_btn"
+                className="x_button"
                 onClick={() => setShowModal12(false)}
               >
                 &times;
@@ -1064,7 +1046,7 @@ const Header = () => {
         {logIn()}
       </div>
 
-      <div class="maincenter">
+      <div className="maincenter">
         <div id="menu">
           <ul>
             <li>

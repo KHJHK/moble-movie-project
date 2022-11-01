@@ -256,10 +256,10 @@ const Ticketing_Ticketing_TicketingMain_result = (props) => {
       {open ? (
         <div className="customStylesSeat">
           <div className="Modal_fullTitle">
-            <h3>좌석 선택</h3>
+            <h4>좌석 선택</h4>
 
             <button
-              className="close_btn"
+              className="x_button"
               onClick={() => {
                 setSelected(""), close();
               }}
@@ -294,25 +294,27 @@ const Ticketing_Ticketing_TicketingMain_result = (props) => {
           <br />
 
           {/* <Link to="/Member_MyPage_MemberInformation"> */}
-          <React.Fragment>
-            <button className="close" onClick={openModalSignup}>
-              예매하기
-            </button>
-            <Ticketing_TicketingMain_result
-              open={modalOpenSignUp}
-              close={closeModalSignUp}
-            ></Ticketing_TicketingMain_result>
-          </React.Fragment>
-          {/* </Link> */}
+          <div className="Ticketing_button">
+            <React.Fragment>
+              <button className="close" onClick={openModalSignup}>
+                예매하기
+              </button>
+              <Ticketing_TicketingMain_result
+                open={modalOpenSignUp}
+                close={closeModalSignUp}
+              ></Ticketing_TicketingMain_result>
+            </React.Fragment>
+            {/* </Link> */}
 
-          <button
-            className="close"
-            onClick={() => {
-              setSelected(""), close();
-            }}
-          >
-            닫기
-          </button>
+            <button
+              className="close"
+              onClick={() => {
+                setSelected(""), close();
+              }}
+            >
+              닫기
+            </button>
+          </div>
         </div>
       ) : null}
     </div>

@@ -46,7 +46,7 @@ const Member_MyPage = (props) => {
     };
   };
 
-  const onClickFileBtn = (e) => {
+  const onClickFileButton = (e) => {
     imgRef.current.click();
   };
 
@@ -83,7 +83,7 @@ const Member_MyPage = (props) => {
             <br />
             <button
               onClick={() => {
-                onClickFileBtn();
+                onClickFileButton();
               }}
             >
               프로필 변경
@@ -166,22 +166,32 @@ const Member_MyPage = (props) => {
                 </div>
 
                 <div className="profilename">
-                  <p>영화선택 : {item.movie_name} </p>
-                  <br />
-                  <p>선택지역 : {item.cinema_location} </p>
-                  <br />
-                  <p>극장위치 : {item.cinema_name} </p>
-                  <br />
-                  <p>상영날짜 : {item.schedule_date} </p>
-                  <br />
                   <p>
-                    상영시간 : {item.theater_name + "관 " + item.schedule_time}{" "}
+                    <strong>영화선택</strong> : {item.movie_name}{" "}
                   </p>
                   <br />
-                  <p>예매좌석 : {item.seat_name} </p>
+                  <p>
+                    <strong>선택지역</strong> : {item.cinema_location}{" "}
+                  </p>
+                  <br />
+                  <p>
+                    <strong>극장위치</strong> : {item.cinema_name}{" "}
+                  </p>
+                  <br />
+                  <p>
+                    <strong>상영날짜</strong> : {item.schedule_date}{" "}
+                  </p>
+                  <br />
+                  <p>
+                    <strong>상영시간</strong> :{" "}
+                    {item.theater_name + "관 " + item.schedule_time}{" "}
+                  </p>
+                  <br />
+                  <p>
+                    <strong>예매좌석</strong> : {item.seat_name}{" "}
+                  </p>
                   <br />
                   <button
-                    className="cancelBtn"
                     onClick={(e) => {
                       deletePick(item.pick_id);
                     }}

@@ -19,8 +19,8 @@ const Notice_NoticeMain = () => {
       <h3>공지사항</h3>
 
       {/* <!-- Notice list --> */}
-      <div class="container">
-        <table class="board_table">
+      <div className="container">
+        <table className="board_table">
           <thead>
             <tr>
               <th scope="col" className="th_num">

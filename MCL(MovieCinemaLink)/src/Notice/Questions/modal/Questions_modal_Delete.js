@@ -14,7 +14,7 @@ const Questions_modal_Delete = (props) => {
           <div className="Modal_fullTitle">
             <h4>알림</h4>
 
-            <button className="close_btn" onClick={close}>
+            <button className="x_button" onClick={close}>
               &times;
             </button>
           </div>
