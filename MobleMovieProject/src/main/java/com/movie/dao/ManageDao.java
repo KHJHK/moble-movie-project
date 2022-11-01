@@ -26,7 +26,7 @@ public interface ManageDao {
 	//강제 탈퇴
 	public int deleteMember(@Param("member_auth")String member_auth,
 							@Param("member_modify_date")String member_modify_date,
-							@Param("member_id")Long member_id,
+							@Param("member_account")String member_account,
 							@Param("member_email")String member_email);
 	
 	//게시판

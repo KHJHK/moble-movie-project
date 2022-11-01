@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 
+import com.movie.jwt.JwtAccessDeniedHandler;
 import com.movie.jwt.JwtAuthenticationEntryPoint;
 import com.movie.jwt.JwtFilter;
 import com.movie.jwt.TokenProvider;
@@ -45,19 +46,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception{
     	
+    	
     	http
     		.httpBasic().disable() // security에서 기본으로 생성하는 login페이지 사용 안 함 
     		.csrf().disable() // csrf 사용 안 함 == REST API 사용하기 때문에  
-    		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)	// JWT인증사용하므로 세션 사용  함
+    		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)	// JWT인증사용하므로 세션 사용 안함
     		  .and()
             .authorizeRequests() // 해당 메소드 아래는 각 경로에 따른 권한을 지정할 수 있다.
-            .antMatchers("/" , "/member/login" , "/member/service" , "/resources/**" , "/create").permitAll() // 로그인 권한은 누구나, resources파일도 모든권한
-//            .antMatchers("/admin").hasRole("ADMIN") // 괄호의 권한을 가진 유저만 접근가능, ROLE_가 붙어서 적용 됨. 즉, 테이블에 ROLE_권한명 으로 저장해야 함.
-//            .antMatchers("/user").hasRole("USER")
-//            .antMatchers("/member").hasRole("MEMBER")
+//            .antMatchers("/manage/**", "/movie/indexMovie").hasRole("ADMIN") // 괄호의 권한을 가진 유저만 접근가능, ROLE_가 붙어서 적용 됨. 즉, 테이블에 ROLE_권한명 으로 저장해야 함.
+//            .antMatchers("/member/mypage", "/board/question_add", "/board/question_update", "/board/question_delete", "/ticketing").hasRole("USER")
+//            .antMatchers("/member/login" , "/member/service").permitAll() // 로그인 권한은 누구나, resources파일도 모든권한
+            .anyRequest().permitAll()
 //            .anyRequest().authenticated()  //  로그인된 사용자가 요청을 수행할 떄 필요하다  만약 사용자가 인증되지 않았다면, 스프링 시큐리티 필터는 요청을 잡아내고 사용자를 로그인 페이지로 리다이렉션 해준다.
             .and()
-    		  	.exceptionHandling().authenticationEntryPoint(new JwtAuthenticationEntryPoint())
+    		  	.exceptionHandling()
+    		  	.authenticationEntryPoint(new JwtAuthenticationEntryPoint())
+    		  	.accessDeniedHandler(new JwtAccessDeniedHandler())
     		  .and()
     		  	.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     	

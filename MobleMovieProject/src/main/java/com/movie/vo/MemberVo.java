@@ -1,5 +1,6 @@
 package com.movie.vo;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -26,8 +27,18 @@ public class MemberVo implements UserDetails{
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return Collections.singletonList(new SimpleGrantedAuthority(this.member_auth));
+		String member_auth = this.member_auth;
+		
+		Collection<GrantedAuthority> collect = new ArrayList<>();
+		collect.add(new GrantedAuthority() {
+			
+			@Override
+			public String getAuthority() {
+				// TODO Auto-generated method stub
+				return member_auth;
+			}
+		});
+		return collect;
 	}
 	@Override
 	public String getPassword() {

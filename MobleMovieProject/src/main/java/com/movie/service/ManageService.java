@@ -99,14 +99,14 @@ public class ManageService {
    }
    //회원 강제 탈퇴
    @Transactional
-   public int deleteMember(Long member_id, String member_email) {
+   public int deleteMember(String member_account, String member_email) {
       SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("woqja0192@gmail.com");
         message.setTo(member_email);
         message.setSubject("MCL 영화 예매 사이트 입니다.");
         message.setText("회원이 강제 탈퇴 되었습니다.");
         mailSender.send(message);
-      return manageDao.deleteMember("RESIGN",localTime, member_id, member_email);
+      return manageDao.deleteMember("RESIGN",localTime, member_account, member_email);
    }
    
    //공지사항

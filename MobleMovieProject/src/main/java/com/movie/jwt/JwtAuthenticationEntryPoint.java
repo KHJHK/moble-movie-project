@@ -15,7 +15,7 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
 	public void commence(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException authException) throws IOException, ServletException {
 		// TODO Auto-generated method stub
-		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Access Denied");
+		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "권한이 없습니다.");
 		
 	}
 

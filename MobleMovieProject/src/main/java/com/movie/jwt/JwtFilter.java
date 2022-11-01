@@ -30,12 +30,12 @@ public class JwtFilter extends OncePerRequestFilter{
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String authorizationHeader = request.getHeader("Authorization");
+		String authorizationHeader = request.getHeader("token");
 		 
         String token = null;
         String userName = null;
  
-        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+        if (authorizationHeader != null && authorizationHeader.startsWith("")) {
             token = authorizationHeader.substring(7);
             userName = tokenProvider.extractUsername(token);
         }

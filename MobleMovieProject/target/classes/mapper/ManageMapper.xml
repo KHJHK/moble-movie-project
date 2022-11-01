@@ -41,7 +41,7 @@
     	UPDATE member SET
     	member_auth = #{member_auth},
     	member_modify_date = #{member_modify_date}
-    	where member_id = #{member_id} and
+    	where member_account = #{member_account} and
     	member_email = #{member_email}
     </update>
     	

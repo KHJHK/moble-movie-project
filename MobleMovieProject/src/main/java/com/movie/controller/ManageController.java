@@ -61,12 +61,11 @@ public class ManageController {
    //회원 강제 탈퇴
    @PostMapping("/manage_member_delete")
    public String manageDelete(@RequestBody Map map) {
-      String member_id_str = map.get("member_id").toString();
+      String member_account = map.get("member_account").toString();
       String member_email = map.get("member_email").toString();
       
-      Long member_id = Long.valueOf(member_id_str);
       
-      int result = manageService.deleteMember(member_id, member_email);
+      int result = manageService.deleteMember(member_account, member_email);
       if(result == 1) {
          return "회원을 탈퇴 시켰습니다.";
       }else {
