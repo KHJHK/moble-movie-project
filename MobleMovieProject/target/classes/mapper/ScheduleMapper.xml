@@ -6,7 +6,7 @@
 	<select id="getIdByDateTime" parameterType = "com.movie.vo.ScheduleVo" resultType = "Long">
 		SELECT schedule_id
 		FROM schedule
-		<![CDATA[WHERE schedule_date <= #{schedule_date} AND schedule_time <= #{schedule_time}]]> 
+		<![CDATA[WHERE schedule_date < #{schedule_date}]]> 
 	</select>
 	
 	<select id="getScheduleById" resultType = "ScheduleVo">
@@ -79,6 +79,6 @@
 	<delete id = "deleteSchedule" parameterType = "com.movie.vo.ScheduleVo">
 		DELETE
 		FROM schedule
-		<![CDATA[WHERE schedule_date <= #{schedule_date} AND schedule_time < #{schedule_time}]]>
+		<![CDATA[WHERE schedule_date < #{schedule_date}]]>
 	</delete>
 </mapper>

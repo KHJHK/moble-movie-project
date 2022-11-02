@@ -59,9 +59,15 @@ public class MemberService implements UserDetailsService{
 		if(memberVo == null) {
 			throw new UsernameNotFoundException("User not authorized.");
 		}
+	
 		return memberVo;
 	}
 	
+	private String getAuthorities(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public String login(LoginVo loginVo) {
 		MemberVo memberVo = memberDao.login(loginVo.getMember_account());
 		BCryptPasswordEncoder Encoder = new BCryptPasswordEncoder();
@@ -75,6 +81,12 @@ public class MemberService implements UserDetailsService{
 			return tokenProvider.generateToken(memberVo, memberVo.getMember_account());
 		}
 	}
+	
+//	//권한
+//	public String Authenticate(LoginVo loginVo) {
+//		
+//		return loginVo.setMember_auth(memberVo.get);
+//	}
 
 	
 	//회원정보수정

@@ -1,5 +1,11 @@
 package com.movie.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -24,6 +31,7 @@ import com.movie.service.MovieService;
 import com.movie.service.ScheduleService;
 import com.movie.service.TestService;
 import com.movie.vo.MovieVo;
+import com.movie.vo.ScheduleVo;
 
 @Controller
 @RequestMapping(value="/movie")
@@ -77,7 +85,6 @@ public class MovieController {
 		JSONArray jsonArr = (JSONArray) jsonMainObj.get("results");
 		
 		MovieVo movieVo = new MovieVo();
-		scheduleMaker.deleteSchedule();
 		if(jsonArr.size() > 0) {
 			for(int i = 0; i < jsonArr.size(); i++) {
 				JSONObject jsonSubObj = (JSONObject) jsonArr.get(i);
@@ -106,10 +113,19 @@ public class MovieController {
 					movieService.insertMovie(movieVo);
 				}//if end
 				scheduleMaker.makeSchedule(jsonId);
-				scheduleMaker.deleteMovie(jsonId);
 			}//for end
 		}//if end
 
 		return "Movie/Schedule inserted and deleted";
+	}
+	
+	@ResponseBody
+	@GetMapping("/test")
+	public String test() {
+//		ScheduleMaker s = new ScheduleMaker();
+//		s.deleteSchedule();
+		
+		System.out.println(scheduleService);
+		return "done";
 	}
 }

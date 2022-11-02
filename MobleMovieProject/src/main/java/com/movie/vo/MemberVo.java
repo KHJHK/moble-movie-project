@@ -2,7 +2,7 @@ package com.movie.vo;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,19 +27,18 @@ public class MemberVo implements UserDetails{
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		String member_auth = this.member_auth;
+		String member_auth = "ROLE_"+this.member_auth;
 		
-		Collection<GrantedAuthority> collect = new ArrayList<>();
-		collect.add(new GrantedAuthority() {
-			
-			@Override
-			public String getAuthority() {
-				// TODO Auto-generated method stub
-				return member_auth;
-			}
-		});
+		List<GrantedAuthority> collect = new ArrayList<>();
+		collect.add(new SimpleGrantedAuthority(this.member_auth));
 		return collect;
 	}
+//	@Override
+//	public Collection<? extends GrantedAuthority> getAuthorities() {
+//		// TODO Auto-generated method stub
+//		ArrayList<GrantedAuthority> role = new ArrayList<GrantedAuthority>();
+//		return Collections.singletonList(new SimpleGrantedAuthority("ROLE_"+this.member_auth));
+//	}
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,6 +43,7 @@ public class ManageController {
 	   }
    }
 
+   
    //회원 관리자 리스트
    @GetMapping("/manage_adminList")
    public List<Map<String,Object>> adminList(){

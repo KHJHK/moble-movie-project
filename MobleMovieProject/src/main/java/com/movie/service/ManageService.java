@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.movie.dao.ManageDao;
+import com.movie.dao.MemberDao;
 import com.movie.vo.AnswerVo;
 import com.movie.vo.MemberVo;
 import com.movie.vo.NoticeVo;
@@ -23,6 +24,9 @@ import com.movie.vo.QuestionVo;
 public class ManageService {
    @Autowired
    ManageDao manageDao;
+   
+   @Autowired
+   MemberDao memberDao;
    
    @Autowired
    private JavaMailSender mailSender;
