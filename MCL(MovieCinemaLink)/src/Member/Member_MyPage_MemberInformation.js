@@ -1,4 +1,4 @@
-// LoginMain.js
+// Member_MyPage_MemberInformation.js
 import axios from "axios";
 import React from "react";
 import jwtDecode from "jwt-decode";
@@ -7,6 +7,7 @@ import { useState } from "react";
 const LoginMain = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, header } = props;
+  let localStorage = window.localStorage;
 
   const decoded = jwtDecode(JSON.stringify(localStorage.getItem("token")));
 
@@ -73,6 +74,7 @@ const LoginMain = (props) => {
     }
   };
 
+  // 저장버튼
   async function Reset() {
     try {
       const response = await axios.post(
@@ -86,6 +88,14 @@ const LoginMain = (props) => {
       );
       console.log(response.data);
       alert(response.data);
+      localStorage.removeItem("token");
+      const login = await axios.post(`http://localhost:80/member/login`, {
+        member_account: decoded.member_account,
+        member_pw: pw,
+      });
+      localStorage.setItem("token", JSON.stringify(login.data));
+
+      window.location.replace("/Member_MyPage");
     } catch (error) {
       console.log(error);
     }
@@ -113,20 +123,24 @@ const LoginMain = (props) => {
             )}
             <br />
             <input type="text" placeholder="닉네임" onChange={onNickname} />
-            {nickname.length > 0 && (
+            {/* {nickname.length > 0 && (
               <p className={`message ${isNickname ? "success" : "error"}`}>
                 {nicknameMessage}
               </p>
-            )}
+            )} */}
             <br />
-            <input type="text" placeholder="비밀번호" onChange={onPw} />
+            <input type="password" placeholder="비밀번호" onChange={onPw} />
             {pw.length > 0 && (
               <p className={`message ${isPw ? "success" : "error"}`}>
                 {pwMessage}
               </p>
             )}
             <br />
-            <input type="text" placeholder="비밀번호확인" onChange={onPwCk} />
+            <input
+              type="password"
+              placeholder="비밀번호확인"
+              onChange={onPwCk}
+            />
             {pwCf.length > 0 && (
               <p className={`message ${isPwCf ? "success" : "error"}`}>
                 {pwCfMessage}
@@ -139,7 +153,7 @@ const LoginMain = (props) => {
           {/* <button className="close">로그인</button> */}
           {/* <button className="close">회원가입</button> */}
           <button
-            disabled={!(isEmail && isNickname && isPw && isPwCf)}
+            disabled={!(isEmail && isPw && isPwCf)}
             onClick={() => Reset()}
           >
             저장

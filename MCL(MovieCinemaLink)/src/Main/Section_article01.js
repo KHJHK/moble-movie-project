@@ -14,6 +14,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Autoplay
 import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
 import { Ticketlogin } from "../Movie/NowPlayingMovie/NowPlayingMovie_Main_Movie";
+import { useEffect } from "react";
 // import { useState } from "react";
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 const IMG_BASE_URL = "https://image.tmdb.org/t/p/w1280";
@@ -32,6 +33,7 @@ function Section_article01() {
   //   const movievalue = event.target.classList.value;
   //   localStorage.setItem("key", movievalue);
   // }
+useEffect(()=> {
 
   axios
     .get(
@@ -41,6 +43,7 @@ function Section_article01() {
     .then((res) => {
       setMovie(res.data);
     });
+  },[]);
 
   return (
     <div className="Section_article">

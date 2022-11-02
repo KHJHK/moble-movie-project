@@ -13,7 +13,10 @@ const Footer = () => {
             Blog
           </a>
           |
-          <a href="https://github.com/cocoder16" target="_blank">
+          <a
+            href="https://github.com/KHJHK/moble-movie-project.git"
+            target="_blank"
+          >
             Github
           </a>
           |

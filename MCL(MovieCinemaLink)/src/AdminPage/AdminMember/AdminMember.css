@@ -1,12 +1,23 @@
 /* AdminMember.css */
 
+.AdminMember {
+  width: 1250px;
+  margin-top: 40px;
+  float: left;
+  height: 800px;
+  height: 720px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
+  /* background-color: aqua; */
+}
 
 .AdminMember table {
-  width: 1280px;
+  width: 1150px;
   height: auto;
   text-align: left;
   border-collapse: collapse;
+  margin-left: 20px;
 }
 
 .AdminMember th,
@@ -16,3 +27,18 @@
   height: 30px;
   padding: 10px;
 }
+
+/* .AdminMember::-webkit-scrollbar {
+  width: 20px;
+} */
+/* .AdminMember::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.AdminMember::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: gray;
+}
+.AdminMember::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}  */

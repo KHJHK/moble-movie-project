@@ -6,7 +6,7 @@
   width: 970px;
   height: auto;
   position: static;
-  background-color: #e6e6e6;
+  background: #e6e6e6;
   margin: 10px 10px 10px 10px;
 
   font-family: sans-serif;
@@ -43,7 +43,6 @@ a.loader {
   width: 100%;
   display: flex;
   background: #f0f0f0e6;
-  z-index: 1;
   justify-content: center;
   align-items: center;
 }
@@ -51,7 +50,7 @@ a.loader {
 .seat {
   border-radius: 8px;
   box-shadow: inset 0 0 0 2px #e6e6e6;
-  background-color: #999999;
+  background: #999999;
   height: 30px;
   width: 30px;
   color: #ffffff;
@@ -78,18 +77,18 @@ a.loader {
 
 /* 좌석 마우스 hover */
 .seat--enabled:hover {
-  background-color: #595959;
+  background: #595959;
 }
 
 .seat--selected {
   cursor: pointer;
-  background-color: #ffd700;
+  background: #ffd700;
   color: #000000;
 }
 
 .seat--reserved {
   cursor: not-allowed;
-  background-color: #e6e6e6;
+  background: #e6e6e6;
 }
 
 .seat-content {
@@ -142,5 +141,5 @@ a.loader {
 /* 행, 열 그림자 */
 /* .seat-picker__row--enabled:hover,
 .seat-picker__row--selecte {
-  background-color: #e6e6e6;
+  background: #e6e6e6;
 } */

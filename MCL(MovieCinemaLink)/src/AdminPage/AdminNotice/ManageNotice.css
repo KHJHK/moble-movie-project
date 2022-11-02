@@ -1,0 +1,7 @@
+.ADManageNotice {
+  float: left;
+  width: 1260px;
+  height: 800px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}

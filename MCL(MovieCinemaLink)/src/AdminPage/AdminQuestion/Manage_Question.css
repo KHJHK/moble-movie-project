@@ -1,0 +1,8 @@
+.manage_QuestionList {
+  float: left;
+  width: 1260px;
+  height: 800px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-align: center;
+}

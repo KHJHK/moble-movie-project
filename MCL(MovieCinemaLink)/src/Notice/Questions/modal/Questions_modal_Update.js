@@ -20,7 +20,7 @@ const Questions_modal_Update = (props) => {
           <main>
             <br />
             <br />
-            <strong>수정이 완료되었습니다.</strong>
+            <strong>Q & A 수정되었습니다.</strong>
             <br />
             <br />
           </main>

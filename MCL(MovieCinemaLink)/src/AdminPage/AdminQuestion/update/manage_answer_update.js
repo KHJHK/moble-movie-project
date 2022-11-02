@@ -4,6 +4,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import AdminHeader from "../../AdminHeader";
+import AdminNav from "../../AdminNav";
 
 const Manage_Answer_Update = () => {
   const { id } = useParams();
@@ -38,7 +40,9 @@ const Manage_Answer_Update = () => {
   };
 
   return (
-    <div>
+    <div className="ADMIN">
+      <AdminHeader />
+      <AdminNav />
       <div className="Manage_Answer_Update">
         <div className="ui_container">
           <h3>Q & A 답변수정</h3>
@@ -74,7 +78,7 @@ const Manage_Answer_Update = () => {
               />
             </div>
 
-            <div className="Notice_button">
+            <div className="Notice_btn">
               <button onClick={UpdateQA}>수정완료</button>
               <Link to="/Manage_Question">
                 <button>목록</button>

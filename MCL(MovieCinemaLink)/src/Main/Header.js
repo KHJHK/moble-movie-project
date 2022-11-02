@@ -1,5 +1,5 @@
 // Header.js
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ReactModal from "react-modal";
 import axios from "axios";
@@ -218,6 +218,48 @@ const Header = () => {
       setIsEmail(true);
     }
   };
+
+  const [userIdDbCk, setUserIdDbCk] = useState("");
+  const [isIdDbCk, setIsIdDbCk] = useState(false);
+  const idvalue = document.getElementById("memberAccount");
+
+  const idDbCk = (e) => {
+    axios
+      .get(`http://localhost:80/manage/manage_userList`)
+      .then((res) => {
+        setUserIdDbCk(
+          res.data.map((u) => {
+            return u.member_account;
+          })
+        );
+        console.log(userIdDbCk);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    console.log(idvalue);
+
+    for (var i = 0; i < userIdDbCk.length; i++) {
+      if (userIdDbCk[i] === idvalue.value) {
+        alert("중복된 아이디입니다.");
+        setIsIdDbCk(false);
+        break;
+      } else if (
+        userIdDbCk[i] !== idvalue.value &&
+        i === userIdDbCk.length - 1
+      ) {
+        alert("사용가능한 아이디입니다.");
+        setIsIdDbCk(true);
+      }
+    }
+    // for (var i = 0; i < userIdDbCk.length; i++) {
+    // if (userIdDbCk = idCurrent) {
+    //   alert("중복된 아이디입니다.");
+    // } else {
+    //   alert("사용가능한 아이디입니다.");
+    // }
+    // }
+  };
   const onIdChange = (e) => {
     const idRegex = /[~!@#$%^&*()_+|<>?:{}.,/;='"|a-z|A-Z|0-9]/;
     const idCurrent = e.target.value;
@@ -268,8 +310,8 @@ const Header = () => {
     //   .catch((error) => {
     //     console.log(error);
     //   });
-    // const nicknameCurrent = e.target.value;
-    // setNickname(nicknameCurrent);
+    const nicknameCurrent = e.target.value;
+    setNickname(nicknameCurrent);
     // for (var i = 0; i < 99; i++) {
     //   // setDbCk2(dbCk[i].member_nickname);
     // }
@@ -674,6 +716,9 @@ const Header = () => {
                   placeholder="아이디"
                   size="small"
                 />
+                <button onChange={onIdChange} onClick={(e) => idDbCk(e)}>
+                  중복확인
+                </button>
                 {id.length > 0 && (
                   <p className={`message ${isId ? "success" : "error"}`}>
                     {idMessage}
@@ -746,7 +791,9 @@ const Header = () => {
                   SignUp(e), setShowModal3(true), setShowModal4(false);
                 }
               }
-              disabled={!(isName && isEmail && isId && isPw && isPwCf)}
+              disabled={
+                !(isName && isEmail && isId && isPw && isPwCf && isIdDbCk)
+              }
             >
               회원가입완료
             </button>

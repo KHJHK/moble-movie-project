@@ -4,6 +4,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import axios from "axios";
+import AdminHeader from "../../AdminHeader";
+import AdminNav from "../../AdminNav";
 
 const Manage_Notice_Add = (props) => {
   const history = useHistory();
@@ -28,50 +30,55 @@ const Manage_Notice_Add = (props) => {
   };
 
   return (
-    <div>
-      <div className="Manage_Notice_Add">
-        <div className="ui_container">
-          <h3>공지사항 등록</h3>
-          <div className="ui_border">
-            <div className="border_cont">
-              <table>
-                <thead>
-                  <tr>
-                    <th>구분</th>
-                    <td>
-                      <select id="categoryId" className="notices_select">
-                        <option value="1">영화</option>
-                        <option value="2">예매</option>
-                        <option value="3">극장</option>
-                        <option value="4">무비푸드</option>
-                      </select>
-                    </td>
-                  </tr>
+    <div className="ADMIN">
+      <AdminHeader />
+      <AdminNav />
 
-                  <tr>
-                    <th>제목</th>
-                    <td>
-                      <input
-                        type="text"
-                        id="noticeTitle"
-                        className="notices_title"
-                      />
-                    </td>
-                  </tr>
-                </thead>
-              </table>
+      <div className="ADMIN">
+        <div className="Manage_Notice_Add">
+          <div className="ui_container">
+            <h3>공지사항 등록</h3>
+            <div className="ui_border">
+              <div className="border_cont">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>구분</th>
+                      <td>
+                        <select id="categoryId" className="notices_select">
+                          <option value="1">영화</option>
+                          <option value="2">예매</option>
+                          <option value="3">극장</option>
+                          <option value="4">무비푸드</option>
+                        </select>
+                      </td>
+                    </tr>
 
-              {/* 내용 */}
-              <textarea id="noticeContent" cols="30" rows="10"></textarea>
-            </div>
+                    <tr>
+                      <th>제목</th>
+                      <td>
+                        <input
+                          type="text"
+                          id="noticeTitle"
+                          className="notices_title"
+                        />
+                      </td>
+                    </tr>
+                  </thead>
+                </table>
 
-            <div className="Notice_button">
-              {/* <Link to="/Manage_Notice"> */}
-              <button onClick={addNotice}>등록</button>
-              {/* </Link> */}
-              <Link to="/Manage_Notice">
-                <button>목록</button>
-              </Link>
+                {/* 내용 */}
+                <textarea id="noticeContent" cols="30" rows="10"></textarea>
+              </div>
+
+              <div className="Notice_btn">
+                {/* <Link to="/Manage_Notice"> */}
+                <button onClick={addNotice}>등록</button>
+                {/* </Link> */}
+                <Link to="/Manage_Notice">
+                  <button>목록</button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

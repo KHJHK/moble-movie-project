@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import AdminHeader from "../AdminHeader";
+import AdminNav from "../AdminNav";
 
 function Manage_Question_Detail(props) {
   const { id } = useParams();
@@ -64,89 +66,93 @@ function Manage_Question_Detail(props) {
   };
 
   return (
-    <div className="Manage_Question_Detail">
-      {/* ======================== Q & A 사용자 질문 ======================== */}
-      <h3>Q & A 사용자 질문</h3>
-      <section className="article_detail">
-        <table>
-          <thead>
-            <tr>
-              <th>구분</th>
-              <td>{question_detail.category_name}</td>
+    <div className="ADMIN">
+      <AdminHeader />
+      <AdminNav />
+      <div className="Manage_Question_Detail">
+        {/* ======================== Q & A 사용자 질문 ======================== */}
+        <h3>Q & A 사용자 질문</h3>
+        <section className="article_detail">
+          <table>
+            <thead>
+              <tr>
+                <th>구분</th>
+                <td>{question_detail.category_name}</td>
 
-              <th>아이디</th>
-              <td>{question_detail.member_account}</td>
-            </tr>
+                <th>아이디</th>
+                <td>{question_detail.member_account}</td>
+              </tr>
 
-            <tr>
-              <th>날짜</th>
-              <td>{question_detail.question_reg_date}</td>
-            </tr>
+              <tr>
+                <th>날짜</th>
+                <td>{question_detail.question_reg_date}</td>
+              </tr>
 
-            <tr>
-              <th>제목</th>
-              <td>{question_detail.question_title}</td>
-            </tr>
-            <input
-              type="hidden"
-              id="questionId"
-              value={question_detail.question_id}
-            />
-          </thead>
-        </table>
+              <tr>
+                <th>제목</th>
+                <td>{question_detail.question_title}</td>
+              </tr>
+              <input
+                type="hidden"
+                id="questionId"
+                value={question_detail.question_id}
+              />
+            </thead>
+          </table>
 
-        {/* 내용 */}
-        <div className="article_body">
-          <pre>{question_detail.question_content}</pre>
+          {/* 내용 */}
+          <div className="article_body">
+            <pre>{question_detail.question_content}</pre>
+          </div>
+        </section>
+
+        {/* ======================== btn ======================== */}
+        <div className="question_btn">
+          <button onClick={question_delete}>질문삭제</button>
         </div>
-      </section>
+        <br />
+        {/* ======================== Q & A 관리자 답변 ======================== */}
+        <h3>Q & A 관리자 답변</h3>
+        <section className="article_detail" id="answer">
+          <table>
+            <thead>
+              <tr>
+                <th>관리자ID</th>
+                <td>{answer.member_nickname}</td>
 
-      {/* ======================== button ======================== */}
-      <div>
-        <button onClick={question_delete}>질문삭제</button>
-      </div>
-      <br />
-      {/* ======================== Q & A 관리자 답변 ======================== */}
-      <h3>Q & A 관리자 답변</h3>
-      <section className="article_detail" id="answer">
-        <table>
-          <thead>
-            <tr>
-              <th>관리자ID</th>
-              <td>{answer.member_nickname}</td>
+                <th>답변날짜</th>
+                <td>{answer.answer_reg_date}</td>
+              </tr>
 
-              <th>답변날짜</th>
-              <td>{answer.answer_reg_date}</td>
-            </tr>
+              <tr>
+                <th>제목</th>
+                <td>{answer.answer_title}</td>
+              </tr>
 
-            <tr>
-              <th>제목</th>
-              <td>{answer.answer_title}</td>
-            </tr>
+              <input type="hidden" id="answerId" value={answer.answer_id} />
+            </thead>
+          </table>
 
-            <input type="hidden" id="answerId" value={answer.answer_id} />
-          </thead>
-        </table>
-
-        {/* 내용 */}
-        <div className="article_body">
-          <pre>{answer.answer_content}</pre>
+          {/* 내용 */}
+          <div className="article_body">
+            <pre>{answer.answer_content}</pre>
+          </div>
+        </section>
+        {/* ======================== btn ======================== */}
+        <div className="question_btn">
+          <Link to="/Manage_Question">
+            <button>목록</button>
+          </Link>
+          <Link to={`/Manage_Answer_Add/${question_detail.question_id}`}>
+            <button>답변등록</button>
+          </Link>
+          <Link to={`/Manage_Answer_Update/${question_detail.question_id}`}>
+            <button>답변수정</button>
+          </Link>
+          {/* <Link to={`/manage_answer_delete/${question_detail.question_id}`}> */}
+          <button onClick={deleteQA}>답변삭제</button>
+          {/* </Link> */}
         </div>
-      </section>
-      {/* ======================== button ======================== */}
-      <div>
-        <Link to="/Manage_Question">
-          <button>목록</button>
-        </Link>
-        <Link to={`/Manage_Answer_Add/${question_detail.question_id}`}>
-          <button>답변등록</button>
-        </Link>
-        <Link to={`/Manage_Answer_Update/${question_detail.question_id}`}>
-          <button>답변수정</button>
-        </Link>
-        {/* <Link to={`/manage_answer_delete/${question_detail.question_id}`}> */}
-        <button onClick={deleteQA}>답변삭제</button>
-        {/* </Link> */}
       </div>
     </div>
   );

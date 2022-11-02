@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import AdminHeader from "../../AdminHeader";
+import AdminNav from "../../AdminNav";
 
 const Manage_Notice_Update = (props) => {
   const { id } = useParams();
@@ -42,7 +44,9 @@ const Manage_Notice_Update = (props) => {
   };
 
   return (
-    <div>
+    <div className="ADMIN">
+      <AdminHeader />
+      <AdminNav />
       <div className="Manage_Notice_Update">
         <div className="ui_container">
           <h3>공지사항 수정</h3>
@@ -89,7 +93,7 @@ const Manage_Notice_Update = (props) => {
               />
             </div>
 
-            <div className="Notice_button">
+            <div className="Notice_btn">
               <button onClick={UpdateNotice}>수정완료</button>
               <Link to="/Manage_Notice">
                 <button>목록</button>

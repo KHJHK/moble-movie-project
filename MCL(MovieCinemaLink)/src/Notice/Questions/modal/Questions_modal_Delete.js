@@ -21,7 +21,7 @@ const Questions_modal_Delete = (props) => {
           <main>
             <br />
             <br />
-            <strong>삭제되었습니다.</strong>
+            <strong>Q & A 삭제되었습니다.</strong>
             <br />
             <br />
           </main>

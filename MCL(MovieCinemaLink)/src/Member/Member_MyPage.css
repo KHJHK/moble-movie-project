@@ -8,7 +8,6 @@
 
 /* 내정보 전체 */
 .profileinformation {
-  z-index: 0;
   width: 100%;
   height: 330px;
   background: #e6e6e6;

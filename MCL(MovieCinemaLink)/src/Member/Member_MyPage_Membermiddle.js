@@ -1,4 +1,4 @@
-// Member_MyPage_MemberInformation_PasswordConfirmation.js
+// Member_MyPage_Membermiddle.js
 import React, { useState } from "react";
 // import { Link } from "react-router-dom";
 import "./Member_MyPage_MemberInformation_PasswordConfirmation.css";
@@ -60,7 +60,7 @@ const Member_MyPage_MemberInformation_PasswordConfirmation = (props) => {
       {open ? (
         <div className="customStyles">
           <div className="Modal_fullTitle">
-            <h4>비밀번호확인</h4>
+            <h4>비밀번호 확인</h4>
 
             <button className="x_button" onClick={close}>
               &times;

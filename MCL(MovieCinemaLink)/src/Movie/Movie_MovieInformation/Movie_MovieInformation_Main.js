@@ -12,46 +12,42 @@ function Movie_MovieInformation_Main(props) {
   const { id } = useParams();
   const [movie, setMovie] = useState("");
 
-  axios
-    .get(
-      `https://api.themoviedb.org/3/movie/now_playing?api_key=c4e59022826dc465ea5620d6adaa6813&language=ko&page=1&region=KR`
-    )
-    .then((res) => {
-      setMovie(res.data.results);
-    });
+  axios.get(`http://localhost/movie/showAll`).then((res) => {
+    setMovie(res.data);
+  });
 
   const info = (key) => {
-    if (id == movie[key].id) {
+    if (id == movie[key].movie_id) {
       return (
         <div className="Movie_MovieInformation_Main">
           <h3>&nbsp;&nbsp; 영화 상세정보</h3>
           <table>
             <tr>
               <th rowSpan={5}>
-                <img src={IMG_BASE_URL + movie[key].poster_path} />
+                <img src={IMG_BASE_URL + movie[key].movie_poster_path} />
               </th>
             </tr>
             <tr>
               {/* 영화명 */}
               <td>
-                <h2>{movie[key].title}</h2>
+                <h2>{movie[key].movie_name}</h2>
               </td>
             </tr>
             <tr>
               <td>
-                <h4>개봉일 : {movie[key].release_date}</h4>
+                <h4>개봉일 : {movie[key].movie_open_date}</h4>
               </td>
             </tr>
             <tr>
               <td>
-                <h4>평점 : {movie[key].vote_average}/10</h4>
+                <h4>평점 : {movie[key].movie_popularity}/10</h4>
               </td>
             </tr>
             <tr>
               <td>
                 <h4>상세정보</h4>
                 {/* <br /> */}
-                <h4>{movie[key].overview}</h4>
+                <h4>{movie[key].movie_overview}</h4>
               </td>
             </tr>
             <tr>
@@ -60,7 +56,7 @@ function Movie_MovieInformation_Main(props) {
             <tr>
               <td colSpan={2}>
                 <ReactPlayer
-                  url={"https://youtu.be/xT76LsDubZ0"}
+                  url={movie[key].movie_video_url}
                   height="75vh"
                   width="100%"
                   controls={true}

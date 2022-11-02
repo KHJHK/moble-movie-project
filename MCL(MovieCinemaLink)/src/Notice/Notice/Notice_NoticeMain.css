@@ -50,7 +50,7 @@
 }
 
 /* 번호,
-회원ID */
+조회수 */
 .board_table .th_num,
 .board_table .th_views {
   width: auto;

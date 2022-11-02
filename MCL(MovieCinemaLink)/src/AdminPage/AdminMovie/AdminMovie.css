@@ -1,9 +1,34 @@
 /* AdminMovie.css */
+.AdminMovie {
+  width: 1260px;
+  float: left;
+  height: 800px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  /* background-color: blue; */
+}
+
+.AdminMovie::-webkit-scrollbar {
+  width: 10px;
+}
+/* .AdminMovie::-webkit-scrollbar-track {
+  background-color: transparent;
+} */
+.AdminMovie::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: gray;
+}
+/* .AdminMovie::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+} */
+
 .AdminMovie table {
-  width: 1280px;
+  width: 1160px;
   height: auto;
   text-align: left;
   border-collapse: collapse;
+  margin-left: 30px;
 }
 
 .AdminMovie th,

@@ -3,8 +3,8 @@
 
 import React, { useState, useEffect } from "react";
 import AdminHeader from "../AdminHeader";
+import "../AdminQuestion/Manage_Question.css";
 import AdminNav from "../AdminNav";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import Manage_Question_List from "./Manage_Question_List.js";
 import Manage_Question_Delete_List from "./Manage_Question_Delete_List.js";
@@ -30,14 +30,13 @@ const manage_QuestionList = () => {
   }, []);
 
   return (
-    <div classNameName="manage_QuestionList">
+    <div className="ADMIN">
       <AdminHeader />
       <AdminNav />
-      <h3>관리자페이지 Q & A 리스트</h3>
-
-      {/* <!-- Notice list --> */}
-      <div classNameName="container">
-        <table classNameName="board_table">
+      <div className="manage_QuestionList">
+        <h3>관리자페이지 Q & A 리스트</h3>
+        {/* <!-- Notice list --> */}
+        <table className="board_table">
           <thead>
             <tr>
               <th scope="col" className="th_num">

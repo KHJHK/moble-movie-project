@@ -58,7 +58,6 @@ const Member_MyPage_MemberInformation_PasswordConfirmation = (props) => {
         <div className="customStyles">
           <div className="Modal_fullTitle">
             <h4>비밀번호 확인</h4>
-
             <button className="x_button" onClick={close}>
               &times;
             </button>
@@ -91,7 +90,7 @@ const Member_MyPage_MemberInformation_PasswordConfirmation = (props) => {
               open={modalOpenSignUp}
               close={closeModalSignUp}
               result={result}
-            ></Member_MyPage_Membermiddle>
+            />
           </React.Fragment>
           {/* </Link> */}
 

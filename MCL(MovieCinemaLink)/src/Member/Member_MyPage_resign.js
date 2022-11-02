@@ -4,8 +4,6 @@ import axios from "axios";
 import { confirmAlert } from "react-confirm-alert";
 import jwtDecode from "jwt-decode";
 
-
-
 export default function ads() {
   confirmAlert({
     title: "예매를 취소하시겠습니까?",
@@ -24,22 +22,22 @@ export default function ads() {
 }
 
 export function ads2() {
-
-
   let localStorage = window.localStorage;
   const decoded = jwtDecode(JSON.stringify(localStorage.getItem("token")));
 
   async function resign() {
     try {
-      const response = await axios.post(`http://localhost:80/member/member_delete`, ({
-        member_account: decoded.member_account,
-      }));
+      const response = await axios.post(
+        `http://localhost:80/member/member_delete`,
+        {
+          member_account: decoded.member_account,
+        }
+      );
       console.log(response.data);
       alert(response.data);
       window.location.href = "http://localhost:3000/";
       localStorage.removeItem("token");
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
   }

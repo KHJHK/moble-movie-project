@@ -50,7 +50,6 @@
 
 /* 지도 크기 설정 */
 #map {
-  z-index: 0;
   margin: 10px;
   display: inline-block;
   width: 900px;

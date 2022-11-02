@@ -21,7 +21,7 @@ const Questions_modal_Create = (props) => {
           <main>
             <br />
             <br />
-            <h4>Q & A 등록완료</h4>
+            <h4>Q & A 등록되었습니다.</h4>
             <br />
             <br />
           </main>

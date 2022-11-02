@@ -2,7 +2,6 @@
 
 /* ===== Header.css 전체 ===== */
 header {
-  z-index: 1;
   width: 1000px;
   height: 150px;
   margin: 0px auto;

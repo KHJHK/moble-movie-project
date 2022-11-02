@@ -26,7 +26,7 @@ const Ticketing_Ticketing_TicketingMain_result = (props) => {
       {open ? (
         <div className="customStyles">
           <div className="Modal_fullTitle">
-            <h4>영화예매확인</h4>
+            <h4>영화 예매확인</h4>
 
             <button className="x_button" onClick={close}>
               &times;

@@ -17,12 +17,11 @@ export default function Manage_Notice_List(props) {
         <span>{props.category_name}</span>
       </td>
       {/* 제목 */}
-      <div>
+      <td className="tbodyTitle">
         <Link to={`/Manage_Notice_Detail/${props.notice_id}`}>
-          <td> {props.notice_title}</td>
+          <strong> {props.notice_title}</strong>
         </Link>
-      </div>
-
+      </td>
       {/* 등록일 */}
       <td>
         <span>{props.notice_reg_date}</span>

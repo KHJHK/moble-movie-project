@@ -4,6 +4,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import AdminHeader from "../../AdminHeader";
+import AdminNav from "../../AdminNav";
 
 const Manage_Answer_Add = (prop) => {
   const { id } = useParams();
@@ -37,7 +39,9 @@ const Manage_Answer_Add = (prop) => {
   };
 
   return (
-    <div>
+    <div className="ADMIN">
+      <AdminHeader />
+      <AdminNav />
       <div className="manage_answer_add">
         <div className="ui_container">
           <h3>Q & A 답변등록</h3>
@@ -62,7 +66,7 @@ const Manage_Answer_Add = (prop) => {
               <textarea id="answerContent" cols="30" rows="10"></textarea>
             </div>
 
-            <div className="Notice_button">
+            <div className="Notice_btn">
               <button onClick={addQA}>등록</button>
               <Link to="/Manage_Question">
                 <button>목록</button>

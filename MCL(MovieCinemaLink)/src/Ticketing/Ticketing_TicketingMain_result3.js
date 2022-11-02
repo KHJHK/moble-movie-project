@@ -20,7 +20,7 @@ const Ticketing_Ticketing_TicketingMain_result = (props) => {
       {open ? (
         <div className="customStyles">
           <div className="Modal_fullTitle">
-            <h4>안내문</h4>
+            <h4>알림</h4>
             <Link to="/Member_MyPage">
               <button className="x_button" onClick={close}>
                 &times;

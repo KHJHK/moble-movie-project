@@ -16,7 +16,7 @@ const AdminMovie = () => {
   }, []);
 
   return (
-    <div>
+    <div className="ADMIN">
       <AdminHeader />
       <AdminNav />
 

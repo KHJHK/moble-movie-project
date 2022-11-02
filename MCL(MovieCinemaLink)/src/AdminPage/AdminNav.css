@@ -1,5 +1,35 @@
 /* AdminNav.css */
 .AdminNav {
-  width: 1280px;
-  height: auto;
+  width: 240px;
+  height: 800px;
+  background-color: #1f324b;
+
+  text-align: center;
+  display: table-cell;
+  font-weight: 100;
+  float: left;
+  border-radius: 3px;
 }
+
+.AdminNav p:hover {
+  transition: all 0.2s linear;
+}
+
+.AdminNav .AdminNav2 {
+  /* background-color:green; */
+  height: 800px;
+  display: grid;
+  grid-template-rows: 1vr 1vr 1vr 1vr;
+  line-height: 170px;
+}
+
+/* .AdminNav2 div{height: 170px; } */
+
+.AdminNav a {
+  color: white;
+}
+
+/* .ADMember {background-color: aquamarine;}
+.ADMovie {background-color: gold;}
+.Manage_Notice {background-color: violet;}
+.Manage_Question{background-color: teal;} */

@@ -1,14 +1,23 @@
 /* AdminHeader.css */
 
+.ADMIN {
+  width: 1500px;
+}
 .AdminHeader {
-  width: 1280px;
-  height: auto;
+  width: 1500px;
+  height: 100px;
+  /* background-color: red; */
+  margin-top: 30px;
 }
 
 .UserPageLogo {
   float: left;
 }
 
-.ManagePageLogo {
+.ManagePageLogo { 
   display: inline-block;
+}
+
+.Hthree {
+  margin-top: 100px;
 }

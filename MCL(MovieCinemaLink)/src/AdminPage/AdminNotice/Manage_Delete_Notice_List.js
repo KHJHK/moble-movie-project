@@ -15,9 +15,11 @@ export default function Manage_Delete_Notice_List(props) {
       <td>
         <span>{props.category_name}</span>
       </td>
-      {/* 제목 */}
 
-      <td> {props.notice_title}</td>
+      {/* 제목 */}
+      <td className="tbodyTitle">
+        <strong> {props.notice_title}</strong>
+      </td>
 
       {/* 등록일 */}
       <td>

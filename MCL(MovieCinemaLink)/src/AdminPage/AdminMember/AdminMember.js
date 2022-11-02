@@ -27,14 +27,13 @@ const AdminMember = () => {
   }, []);
 
   return (
-    <div>
+    <div className="ADMIN">
       <AdminHeader />
       <AdminNav />
+
       <div className="AdminMember">
         <table>
-          <tr>
-            <h3>관리자 명단</h3>
-          </tr>
+          <h3>관리자 명단</h3>
           <tr>
             <th>번호</th>
             <th>ID</th>
@@ -62,9 +61,8 @@ const AdminMember = () => {
         <br />
 
         <table>
-          <tr>
-            <h3>회원 명단</h3>
-          </tr>
+          <h3>회원 명단</h3>
+
           <tr>
             <th>번호</th>
             <th>ID</th>
@@ -101,7 +99,7 @@ const AdminMember = () => {
                         console.log(error);
                       });
                     // 새로고침
-                    window.location.replace("/Member");
+                    window.location.replace("/AdminMember");
                   }}
                 >
                   강제탈퇴
@@ -113,9 +111,8 @@ const AdminMember = () => {
         <br />
 
         <table>
-          <tr>
-            <h3>탈퇴 회원 명단</h3>
-          </tr>
+          <h3>탈퇴 회원 명단</h3>
+
           <tr>
             <th>번호</th>
             <th>ID</th>
