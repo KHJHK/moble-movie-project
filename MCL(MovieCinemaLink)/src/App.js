@@ -1,3 +1,6 @@
+import errorPage from './Main/errorPage';
+import jwtDecode from 'jwt-decode';
+
 // App.js
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -6,6 +9,7 @@ import "./App.css";
 
 // ============ UserPage ============
 import Main from "./Main/Main";
+import error from "./Main/errorPage";
 
 // import Movie
 import NowPlayingMovie from "./Movie/NowPlayingMovie/NowPlayingMovie";
@@ -56,11 +60,14 @@ import Manage_Question_Detail from "./AdminPage/AdminQuestion/Manage_Question_De
 import Manage_Answer_Update from "./AdminPage/AdminQuestion/update/Manage_Answer_Update";
 
 function App() {
+  // const localStorage = window.localStorage;
+  // const decoded = jwtDecode(JSON.stringify(localStorage.getItem("token")));
   return (
     <Router>
       <div className="App">
         <Switch>
           <Route exact path="/" component={Main} />
+          <Route exact path="/error" component={error} />
           {/* Movie */}
           <Route exact path="/NowPlayingMovie" component={NowPlayingMovie} />
           <Route exact path="/UpComingMovie" component={UpComingMovie} />
@@ -140,10 +147,14 @@ function App() {
           {/* Food */}
           <Route exact path="/Food_MovieFood" component={Food_MovieFood} />
           {/* ====== AdminMain ====== */}
+            <Route exact path="/error" component={errorPage} />
+
+          {/* <Route exact path={jwtDecode(JSON.stringify(localStorage.getItem("token"))).member_auth="ADMIN" ? "/AdminMain" : "/error"} component={AdminMain} /> */}
           <Route exact path="/AdminMain" component={AdminMain} />
+
           <Route exact path="/AdminMember" component={AdminMember} />
           <Route exact path="/AdminMovie" component={AdminMovie} />
-
+          
           {/* Notice */}
           <Route exact path="/Manage_Notice" component={Manage_Notice} />
 

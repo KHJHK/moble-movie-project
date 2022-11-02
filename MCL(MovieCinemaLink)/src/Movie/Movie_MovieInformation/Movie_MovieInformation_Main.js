@@ -57,8 +57,8 @@ function Movie_MovieInformation_Main(props) {
               <td colSpan={2}>
                 <ReactPlayer
                   url={movie[key].movie_video_url}
-                  height="75vh"
-                  width="100%"
+                  height="600px"
+                  width="1000px"
                   controls={true}
                 />
               </td>

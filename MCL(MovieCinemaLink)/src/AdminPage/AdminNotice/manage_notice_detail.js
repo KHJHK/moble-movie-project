@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import AdminHeader from "../AdminHeader";
 import AdminNav from "../AdminNav";
+import jwtDecode from "jwt-decode";
 
 function Manage_Notice_Detail(props) {
   const { id } = useParams();
@@ -19,15 +20,15 @@ function Manage_Notice_Detail(props) {
         setnotice_detail(res.data);
       });
   }, []);
-
+  const decoded = jwtDecode(JSON.stringify(localStorage.getItem("token")));
   // DB 데이터 불러오기 (리스트 삭제)
   const notice_delete = () => {
-    const member_id = 1;
+    const member_id = decoded.member_id;
     const notice_id = document.getElementById("noticeId").value;
     console.log("삭제 : ", member_id, notice_id);
 
     const params = {
-      member_id: 1,
+      member_id: decoded.member_id,
       notice_id: notice_id,
     };
 

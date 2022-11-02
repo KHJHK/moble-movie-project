@@ -6,10 +6,13 @@ import { Link, useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 import AdminHeader from "../../AdminHeader";
 import AdminNav from "../../AdminNav";
+import jwtDecode from "jwt-decode";
 
 const Manage_Notice_Add = (props) => {
   const history = useHistory();
   // DB 데이터 불러오기 (리스트 추가)
+  const decoded = jwtDecode(JSON.stringify(localStorage.getItem("token")));
+
   const addNotice = () => {
     const category_id = document.getElementById("categoryId").value;
     const notice_title = document.getElementById("noticeTitle").value;
@@ -20,7 +23,7 @@ const Manage_Notice_Add = (props) => {
       category_id: category_id,
       notice_title: notice_title,
       notice_content: notice_content,
-      member_id: 1,
+      member_id: decoded.member_id,
     };
 
     axios.post(`http://localhost:80/manage/manage_notice_add`, params);

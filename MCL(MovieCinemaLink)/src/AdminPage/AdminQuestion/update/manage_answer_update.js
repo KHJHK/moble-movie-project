@@ -6,10 +6,11 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import AdminHeader from "../../AdminHeader";
 import AdminNav from "../../AdminNav";
+import jwtDecode from "jwt-decode";
 
 const Manage_Answer_Update = () => {
   const { id } = useParams();
-
+  const decoded = jwtDecode(JSON.stringify(localStorage.getItem("token")));
   // DB 데이터 불러오기 (상세정보)
   const [AnswerUpdate, setAnswerUpdate] = useState("");
   useEffect(() => {
@@ -27,7 +28,7 @@ const Manage_Answer_Update = () => {
     const answer_content = document.getElementById("answerContent").value;
 
     const params = {
-      member_id: 1,
+      member_id: decoded.member_id,
       answer_id: answer_id,
       answer_title: answer_title,
       answer_content: answer_content,

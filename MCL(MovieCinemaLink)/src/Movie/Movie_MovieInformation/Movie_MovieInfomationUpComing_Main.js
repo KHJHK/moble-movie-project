@@ -59,8 +59,8 @@ function Movie_MovieInformation_UpComing_Main(props) {
               <td colSpan={2}>
                 <ReactPlayer
                   url={"https://youtu.be/QnwIYIZki20"}
-                  height="75vh"
-                  width="100%"
+                  height="600px"
+                  width="1000px"
                   controls={true}
                 />
               </td>

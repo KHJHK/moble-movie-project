@@ -28,17 +28,17 @@
   padding: 10px;
 }
 
-/* .AdminMember::-webkit-scrollbar {
-  width: 20px;
-} */
+.AdminMember::-webkit-scrollbar {
+  width: 10px;
+}
 /* .AdminMember::-webkit-scrollbar-track {
   background-color: transparent;
-}
+} */
 .AdminMember::-webkit-scrollbar-thumb {
   border-radius: 3px;
   background-color: gray;
 }
-.AdminMember::-webkit-scrollbar-button {
+/* .AdminMember::-webkit-scrollbar-button {
   width: 0;
   height: 0;
-}  */
+} */

@@ -5,10 +5,11 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import AdminHeader from "../../AdminHeader";
 import AdminNav from "../../AdminNav";
+import jwtDecode from "jwt-decode";
 
 const Manage_Notice_Update = (props) => {
   const { id } = useParams();
-
+  const decoded = jwtDecode(JSON.stringify(localStorage.getItem("token")));
   // DB 데이터 불러오기 (상세정보)
   const [notice_detail, setnotice_detail] = useState("");
   useEffect(() => {
@@ -30,7 +31,7 @@ const Manage_Notice_Update = (props) => {
     console.log("수정 : ", category_id, notice_title, notice_content);
 
     const params = {
-      member_id: 1,
+      member_id: decoded.member_id,
       notice_id: notice_id,
       category_id: category_id,
       notice_title: notice_title,

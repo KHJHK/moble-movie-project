@@ -6,6 +6,7 @@ import AdminHeader from "./AdminHeader";
 import "./AdminMain.css";
 
 const AdminMain = () => {
+  
   return (
     <div className="ADMIN">
       <AdminHeader />

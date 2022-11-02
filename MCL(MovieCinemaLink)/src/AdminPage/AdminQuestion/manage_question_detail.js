@@ -7,10 +7,11 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 import AdminHeader from "../AdminHeader";
 import AdminNav from "../AdminNav";
+import jwtDecode from "jwt-decode";
 
 function Manage_Question_Detail(props) {
   const { id } = useParams();
-
+  const decoded = jwtDecode(JSON.stringify(localStorage.getItem("token")));
   //사용자 Q & A
   const [question_detail, setquestion_detail] = useState("");
   useEffect(() => {
@@ -33,12 +34,12 @@ function Manage_Question_Detail(props) {
 
   //Q & A 질문 삭제
   const question_delete = () => {
-    const member_id = 1;
+    const member_id = decoded.member_id;
     const question_id = document.getElementById("questionId").value;
     console.log("삭제 : ", member_id, question_id);
 
     const params = {
-      member_id: 1,
+      member_id: decoded.member_id,
       question_id: question_id,
     };
 
@@ -53,7 +54,7 @@ function Manage_Question_Detail(props) {
     const answer_id = document.getElementById("answerId").value;
 
     const params = {
-      member_id: 1,
+      member_id: decoded.member_id,
       answer_id: answer_id,
     };
 

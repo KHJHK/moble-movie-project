@@ -33,17 +33,16 @@ function Section_article01() {
   //   const movievalue = event.target.classList.value;
   //   localStorage.setItem("key", movievalue);
   // }
-useEffect(()=> {
-
-  axios
-    .get(
-      // `https://api.themoviedb.org/3/movie/now_playing?api_key=c4e59022826dc465ea5620d6adaa6813&language=ko&page=1&region=KR`
-      `http://localhost/movie/showAll`
-    )
-    .then((res) => {
-      setMovie(res.data);
-    });
-  },[]);
+  useEffect(() => {
+    axios
+      .get(
+        // `https://api.themoviedb.org/3/movie/now_playing?api_key=c4e59022826dc465ea5620d6adaa6813&language=ko&page=1&region=KR`
+        `http://localhost/movie/showAll`
+      )
+      .then((res) => {
+        setMovie(res.data);
+      });
+  }, []);
 
   return (
     <div className="Section_article">
