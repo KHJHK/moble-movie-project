@@ -7,24 +7,28 @@ import ReactPlayer from "react-player";
 import "./Section_Header.css";
 
 const Section_Header = () => {
-  const [movie, setMovie] = useState("");
-  const [vdo, setVdo] = useState([]);
+  const [playList, setPlayList] = useState();
+  // const [list, setList] = useState([]);
+  // const [playList, setPlayList] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost/movie/showAll`)
-      .then((res) => {
-        setMovie(res.data);
+  const getList = async () => {
+    const result = await axios.get(`http://localhost/movie/showAll`);
+    return result;
+  };
 
-        const random = Math.floor(Math.random() * res.data.length);
-        setVdo(res.data[random].movie_video_url);
+  // console.log("-----------", getList());
+  getList().then((res) => {
+    var urlList = [];
+    for (var i = 0; i < res.data.length; i++) {
+      urlList.push(res.data[i].movie_video_url);
+    }
 
-        console.log(vdo);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    console.log(res.data);
+
+    if (JSON.stringify(urlList) !== JSON.stringify(playList)) {
+      setPlayList(urlList);
+    }
+  });
 
   return (
     <div className="Section_Header">
@@ -32,7 +36,7 @@ const Section_Header = () => {
         <source src="./mp4/universus.mp4" />
       </video>
       <ReactPlayer
-        url={vdo}
+        url={playList}
         width="1000px"
         height="600px"
         playing={true} // 자동 재생 on
