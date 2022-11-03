@@ -1,0 +1,93 @@
+/* Food_MovieFood.css */
+
+.Food_MovieFood {
+  margin: 0px auto;
+  width: 1000px;
+  height: auto;
+}
+
+.Food_MovieFood .food {
+  /* margin-top: 50px; */
+  height: 1500px;
+  position: relative;
+  margin: 20px;
+}
+.Food_MovieFood .Popcorn,
+.Food_MovieFood .tea,
+.Food_MovieFood .Ade,
+.Food_MovieFood .coffee,
+.Food_MovieFood .dessert {
+  height: 300px;
+  position: relative;
+}
+
+.Food_MovieFood .foodimg1,
+.Food_MovieFood .foodimg2,
+.Food_MovieFood .foodimg3,
+.Food_MovieFood .foodimg4,
+.Food_MovieFood .foodimg5 {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  position: absolute;
+  top: 90px;
+  left: 58px;
+  width: 941px;
+}
+
+.Food_MovieFood #menuimg {
+  width: 140px;
+  height: 140px;
+  border-radius: 15px;
+}
+
+.Food_MovieFood .underline {
+  width: 950px;
+  padding: 40px 0px 20px 0px;
+  border-bottom: 2px solid #595959;
+}
+
+.Food_MovieFood .information {
+  /* background: rebeccapurple;
+    border: 1px solid; */
+  text-align: center;
+  background: #ffffff;
+  margin-top: 10px;
+  width: 140px;
+  height: 70px;
+  border-radius: 5px;
+}
+
+.Food_MovieFood .scroll {
+  position: fixed;
+  height: 275px;
+  top: 0px;
+  right: 0px;
+  border: 1px;
+  margin-top: 220px;
+  margin-right: 30px;
+  background: #ffd700;
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.Food_MovieFood #smallmenu1,
+.Food_MovieFood #smallmenu2,
+.Food_MovieFood #smallmenu3,
+.Food_MovieFood #smallmenu4,
+.Food_MovieFood #smallmenu5 {
+  border-bottom: 3px solid gray;
+  padding: 5px;
+}
+
+@media screen and (min-width: 1800px) {
+  .scroll {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .scroll {
+    display: none;
+  }
+}

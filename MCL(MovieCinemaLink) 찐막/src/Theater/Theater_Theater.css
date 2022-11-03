@@ -1,0 +1,123 @@
+/* .Theater_Theater.css */
+
+.Theater_Theater {
+  width: 1000px;
+  height: auto;
+  margin: 0px auto;
+}
+
+.Theater_Theater .theater div {
+  border-radius: 20px;
+}
+
+/* 상세설명 + img */
+.TempPurbg,
+.soundXbg,
+.sphereXbg,
+.IMAXbg,
+.fourDXbg {
+  margin: 10px;
+}
+
+/* 상세설명 */
+.TempPur_explanation,
+.soundX_explanation,
+.sphereX_explanation,
+.IMAX_explanation,
+.fourDX_explanation {
+  text-align: center;
+  color: #ffffff;
+  background: #1f324b;
+
+  position: absolute;
+}
+.Theater_Theater h2 {
+  padding: 30px;
+}
+.Theater_Theater p {
+  padding: 30px 30px 0px 30px;
+}
+/* ===== img ===== */
+.Theater_Theater .theater div img {
+  border-radius: 20px;
+
+  /* width: 100%;
+  height: 100%; */
+  object-fit: cover;
+  transition: all 0.2s linear;
+  position: absolute;
+}
+
+.Theater_Theater .theater div img:hover {
+  /* border-radius: 20px; */
+  /* width: 100%;
+  height: 100%; */
+  /* object-fit: cover; */
+  transform: scale(1.4);
+  opacity: 0.2;
+  position: absolute;
+}
+
+/* ========================= */
+/* 템퍼시네마 */
+.TempPurbg,
+.TempPur_explanation,
+.TempPur,
+.TempPur img {
+  width: 600px;
+  height: 250px;
+
+  float: left;
+}
+
+/* 시피어X시네마 */
+.sphereXbg,
+.sphereX_explanation,
+.sphereX,
+.sphereX img {
+  width: 350px;
+  height: 570px;
+
+  float: right;
+}
+/* 사운드x시네마 */
+.soundXbg,
+.soundX_explanation,
+.soundX,
+.soundX img {
+  width: 290px;
+  height: 300px;
+
+  /* clear: both; */
+  float: left;
+}
+/* IMAX시네마 */
+.IMAXbg,
+.IMAX_explanation,
+.IMAX,
+.IMAX img {
+  width: 290px;
+  height: 300px;
+
+  /* clear: both; */
+  float: left;
+}
+/* 4DX시네마 */
+.fourDXbg,
+.fourDX_explanation,
+.fourDX,
+.fourDX img {
+  width: 980px;
+  height: 350px;
+  clear: both;
+}
+
+/* 각 상영관 이미지div*/
+.TempPur,
+.soundX,
+.sphereX,
+.IMAX,
+.fourDX {
+  position: relative;
+  overflow: hidden;
+}

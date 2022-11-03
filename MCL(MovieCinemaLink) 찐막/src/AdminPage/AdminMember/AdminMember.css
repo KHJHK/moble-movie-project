@@ -1,0 +1,44 @@
+/* AdminMember.css */
+
+.AdminMember {
+  width: 1250px;
+  margin-top: 40px;
+  float: left;
+  height: 800px;
+  height: 720px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  /* background-color: aqua; */
+}
+
+.AdminMember table {
+  width: 1150px;
+  height: auto;
+  text-align: left;
+  border-collapse: collapse;
+  margin-left: 20px;
+}
+
+.AdminMember th,
+.AdminMember td {
+  border: 1px solid #1f324b;
+  width: auto;
+  height: 30px;
+  padding: 10px;
+}
+
+.AdminMember::-webkit-scrollbar {
+  width: 10px;
+}
+/* .AdminMember::-webkit-scrollbar-track {
+  background-color: transparent;
+} */
+.AdminMember::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: gray;
+}
+/* .AdminMember::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+} */

@@ -1,0 +1,24 @@
+/* NowPlayingMovie_Main_Movie.css */
+
+/* .NowPlayingMovie_Main, */
+.NowPlayingMovie_Main_Movie {
+  /* 가로배치 */
+  display: inline-block;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.NowPlayingMovie_Main_Movie {
+  width: 180px;
+  margin: 5px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px 0px #999999;
+}
+
+.NowPlayingMovie_Main_Movie img {
+  border-radius: 10px;
+  margin-bottom: 10px;
+  width: 180px;
+  height: 250px;
+}

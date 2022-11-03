@@ -1,0 +1,16 @@
+/* Footer.css */
+
+footer {
+  width: 1000px;
+  height: 150px;
+  margin: 30px auto;
+  color: #595959;
+}
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: auto;
+  height: 1px;
+  background: #999999;
+}

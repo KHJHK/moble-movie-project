@@ -42,6 +42,14 @@ public class ManageController {
 		   return "USER";
 	   }
    }
+   
+   //회원+관리자 리스트
+   @GetMapping("/manage_list")
+   public List<Map<String,Object>> manageList(){
+	   List manageList = manageService.adminList();
+	   manageList.addAll(manageService.userList());
+	   return manageList;
+   }
 
    
    //회원 관리자 리스트

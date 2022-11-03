@@ -1,0 +1,126 @@
+/* Ticketing_TicketingMain.css */
+
+/* 예매하기 */
+.Ticketing_TicketingMain {
+  width: 1000px;
+  height: 900px;
+  margin: 0px auto;
+}
+
+/*예매하기 목록들 css*/
+.Ticketing_TicketingMain li {
+  background: #595959;
+  margin: 10px;
+  padding: 10px;
+  color: #ffffff;
+  border-radius: 10px;
+  text-align: center;
+
+  text-decoration: none;
+  display: block;
+}
+
+/* 영화 선택 */
+.Ticketing_SelectMovie {
+  float: left;
+  width: 400px;
+  height: 800px;
+  background: #e6e6e6;
+  margin: 10px;
+  text-align: center;
+  border-radius: 10px;
+  /* 스크롤 */
+  overflow-x:hidden;
+  overflow-y:scroll;
+}
+
+ /* 스크롤꾸미기 */
+.Ticketing_SelectMovie::-webkit-scrollbar {
+  width: 10px;
+}
+/* .AdminMovie::-webkit-scrollbar-track {
+  background-color: transparent;
+} */
+.Ticketing_SelectMovie::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: gray;
+}
+/* .AdminMovie::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+} */
+
+
+/*영화 이미지값 리스트*/
+.SelectMovie .SelectIMG {
+  display: none;
+}
+
+/* 지역 선택,
+극장 선택,
+날짜 선택,
+시간 선택 */
+.Ticketing_Select_InlineBlock li {
+  display: inline-block;
+  width: 110px;
+}
+
+/* 지역 선택,
+극장 선택,
+날짜 선택,
+시간 선택 */
+.Ticketing_SelectRegion,
+.Ticketing_SelectCinema,
+.Ticketing_Theater,
+.Ticketing_SelectDate,
+.Ticketing_SelectTime {
+  float: left;
+  width: 550px;
+  height: auto;
+  background: #e6e6e6;
+  margin: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* 버튼 색 변경 */
+.SelectRegion,
+.SelectCinema,
+.SelectTheater,
+.SelectDate,
+.SelectTime,
+.TicketingSeat {
+  display: block;
+}
+
+/*리스트 클릭시 발생하는 색상*/
+li.SelectMV.clicked,
+li.SelectRG.clicked,
+li.SelectCN.clicked,
+li.SelectDT.clicked,
+li.SelectTI.clicked {
+  background: #ffd700;
+  color: #000000;
+}
+
+li.SelectCN {
+  float: left;
+}
+
+.SelectTicket_button {
+  /* width: 1000px; */
+  /* height: 250px; */
+  text-align: center;
+  /* display: none; */
+}
+
+/* 에매좌석 선택하기 버튼 */
+.Ticket_button {
+  width: 800px;
+  height: 100px;
+  transition: all 0.5s;
+}
+.Ticket_button:hover {
+  width: 700px;
+  height: 100px;
+}
