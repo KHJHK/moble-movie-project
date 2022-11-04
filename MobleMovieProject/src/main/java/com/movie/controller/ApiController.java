@@ -25,7 +25,6 @@ public class ApiController {
 		String getJson = JsonReader.callURL(apiUrl).toString();
 		
 		// Json을 OBJ로 파싱
-		//안드(Data) - JSON -> 서버
 		JSONObject jsonMainObj = (JSONObject) new JSONParser().parse(getJson);
 		
 		// Key = result 인 값들을 JSONArray로 저장(Json 속 Json 구조라 이와 같은 방식 사용)

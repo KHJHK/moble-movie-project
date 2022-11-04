@@ -1,0 +1,25 @@
+.manage_QuestionList {
+  float: left;
+  width: 1260px;
+  height: 800px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.manage_QuestionList::-webkit-scrollbar {
+  width: 10px;
+}
+/* .AdminMovie::-webkit-scrollbar-track {
+  background-color: transparent;
+} */
+.manage_QuestionList::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: gray;
+}
+/* .AdminMovie::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+} */
+
+
+.Manage_Question_Detail,.Manage_Answer_Update{ float: left;margin-left: 30px;}

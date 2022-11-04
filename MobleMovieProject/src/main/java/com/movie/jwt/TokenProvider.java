@@ -30,10 +30,8 @@ public class TokenProvider implements Serializable{
 	
 	@Value("${jwt.secret}")
     private String secretKey;
-	
 	public long jwtTokenMilisecond = 5 * 60 * 60;
     
-
 	@PostConstruct
     protected void init() {
 		secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
@@ -44,9 +42,9 @@ public class TokenProvider implements Serializable{
       Date now = new Date();
       return Jwts.builder()
             .setClaims(claims) // 데이터
-            .setSubject(subject)
+            .setSubject(subject) //서브젝트 세팅
             .setIssuedAt(now) // 토큰 발행일자
-            .setExpiration(new Date(now.getTime() + jwtTokenMilisecond)) // set Expire Time
+            .setExpiration(new Date(now.getTime() + jwtTokenMilisecond)) //시간
             .signWith(SignatureAlgorithm.HS256, secretKey) // 암호화 알고리즘, secret값 세팅
             .compact();
     }
@@ -133,10 +131,7 @@ public class TokenProvider implements Serializable{
 		// TODO Auto-generated method stub
 		return extractClaim(token, Claims::getSubject);
 	}
-	
 
-
-	
 	  // 토큰 유효시간 추출
     public Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
@@ -146,6 +141,5 @@ public class TokenProvider implements Serializable{
         return extractExpiration(token).before(new Date());
     }
 	
-    
-    
+
 }
