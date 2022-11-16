@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.movie.dao.BoardDao">
+
+	<!-- 공지사항 리스트 -->
+	<select id="noticeList" resultType="com.movie.vo.NoticeVo" >
+        SELECT notice_id, category_name, notice_title, 
+        notice_reg_date, notice_count
+          FROM notice
+          INNER JOIN category
+          ON notice.category_id = category.category_id
+          WHERE notice_flag = "Y"
+    </select>
+    
+    <!-- 공지사항 상세보기 -->
+     <select id="noticeView" resultType="com.movie.vo.NoticeVo" >
+        SELECT *
+          FROM notice
+          INNER JOIN category
+          ON notice.category_id = category.category_id
+          INNER JOIN member
+          ON notice.member_id = member.member_id
+          WHERE notice_id = #{notice_id}
+    </select> 
+    
+    <!-- 공지사항 조회수 증가 -->
+    <update id="countView" >
+    	UPDATE notice SET
+    	notice_count = notice_count + 1
+    	where notice_id = #{notice_id}
+    </update>
+    
+    
+    <!-- Q & A 리스트 -->
+    <select id="questionList" resultType="com.movie.vo.QuestionVo" >
+        SELECT question_id, category_name, question_title, 
+        member_account, question_reg_date
+          FROM question
+          INNER JOIN category
+          ON question.category_id = category.category_id
+          INNER JOIN member
+          ON question.member_id = member.member_id
+          where question_flag = "Y"
+    </select>
+    
+    <!-- Q & A 상세보기 -->
+    <select id="questionView" resultType="com.movie.vo.QuestionVo" >
+        SELECT *
+          FROM question
+          INNER JOIN category
+          ON question.category_id = category.category_id
+          INNER JOIN member
+          ON question.member_id = member.member_id
+          WHERE question_id = #{question_id}
+    </select> 
+    
+    <!-- Q & A 질문 작성 -->
+    <insert id="questionAdd" parameterType="com.movie.vo.QuestionVo">
+    	INSERT INTO question(
+    	member_id, category_id, question_reg_date, question_title,
+    	question_content, question_flag)
+    	VALUES(#{member_id},#{category_id},#{question_reg_date},#{question_title},
+    	#{question_content}, "Y")
+    </insert>
+    
+    <!-- Q & A 질문 수정 -->
+    <update id="questionUpdate">
+    	UPDATE question SET
+    	category_id = #{category_id},
+    	question_title = #{question_title},
+    	question_content = #{question_content}
+    	where question_id = #{question_id}
+    	and member_id = #{member_id}
+    </update>  
+    
+    <!-- Q & A 질문 삭제 -->
+    <update id="questionDelete" >
+    	UPDATE question SET
+    	question_flag = "N"
+    	where question_id = #{question_id}
+    	and member_id = #{member_id}
+    </update> 
+    
+    <!-- Q & A 답변 -->
+    <select id="answerView" resultType="com.movie.vo.AnswerVo" >
+        SELECT *
+          FROM answer
+          INNER JOIN question
+          ON answer.question_id = question.question_id
+          INNER JOIN member
+          ON answer.member_id = member.member_id
+          WHERE answer.question_id = #{question_id}
+    </select> 
+
+    
+    
+</mapper>

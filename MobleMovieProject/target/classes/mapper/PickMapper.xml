@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.movie.dao.PickDao">
+	<insert id="insertPick">
+		INSERT
+		INTO pick(seat_id, member_id, schedule_id)
+		VALUES (#{seat_id}, #{member_id}, #{schedule_id})
+	</insert>
+
+	<delete id="deletePick">
+        DELETE
+        FROM pick
+        WHERE pick_id = #{pick_id}
+    </delete>
+    
+    <delete id="deletePickBySeat">
+        DELETE
+        FROM pick
+        WHERE seat_id = #{seat_id}
+    </delete>  
+    
+    <select id="getPickByMemberId" resultType = "PickVo">
+    	SELECT *
+    	FROM pick
+    	WHERE member_id = #{member_id}
+    </select>
+    
+    <select id="getPickById" resultType = "PickVo">
+	    SELECT *
+	    FROM pick
+	    WHERE pick_id = #{pick_id};
+    </select>
+    
+</mapper>

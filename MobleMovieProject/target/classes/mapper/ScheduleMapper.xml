@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="com.movie.dao.ScheduleDao">
+	<select id="getIdByDateTime" parameterType = "com.movie.vo.ScheduleVo" resultType = "Long">
+		SELECT schedule_id
+		FROM schedule
+		<![CDATA[WHERE schedule_date < #{schedule_date}]]> 
+	</select>
+	
+	<select id="getScheduleById" resultType = "ScheduleVo">
+		SELECT *
+		FROM schedule
+		WHERE schedule_id = #{schedule_id}
+	</select>
+
+	<select id="findOverlapSchedule" parameterType = "com.movie.vo.ScheduleVo" resultType="ScheduleVo">
+		SELECT * 
+		FROM schedule
+		Where theater_id = #{theater_id} AND schedule_date = #{schedule_date} AND schedule_time = #{schedule_time};
+	</select>
+	
+	<select id="findScheduleDate" parameterType = "com.movie.vo.ScheduleVo" resultType="String">
+		SELECT schedule_date
+		FROM schedule
+		Where movie_id = #{movie_id} AND cinema_name = #{cinema_name}
+		GROUP BY schedule_date
+	</select>
+	
+	<select id="findScheduleByDetail" parameterType = "com.movie.vo.ScheduleVo" resultType="ScheduleVo">
+		SELECT * 
+		FROM schedule
+		WHERE movie_id = #{movie_id} AND schedule_date = #{schedule_date} AND cinema_name = #{cinema_name};
+	</select>
+	
+	<select id="getCinemaLocationByMovieId" parameterType = "int" resultType="String">
+		SELECT cinema_location
+		FROM schedule
+		INNER JOIN cinema on schedule.cinema_name = cinema.cinema_name
+		WHERE schedule.movie_id = #{movie_id}
+		GROUP BY cinema_location;
+	</select>
+	
+	<select id="getScheduleByMovieId" parameterType = "Long" resultType="Long">
+		SELECT schedule_id
+		FROM schedule
+		WHERE movie_id = #{movie_id}
+	</select>
+	
+	<select id="getCinemaNameByInfo" parameterType = "hashMap" resultType="String">
+		SELECT cinema.cinema_name
+		FROM schedule
+		INNER JOIN cinema on schedule.cinema_name = cinema.cinema_name
+		WHERE schedule.movie_id = #{movie_id} AND cinema.cinema_location = #{cinema_location}
+		GROUP BY cinema_name;
+	</select>
+	
+	<select id="getScheduleDateByInfo" parameterType = "hashMap" resultType="String">
+		SELECT DISTINCT schedule_date
+		FROM schedule
+		WHERE movie_id = #{movie_id} AND cinema_name = #{cinema_name}
+		ORDER BY schedule_date ASC;
+	</select>
+	
+	<select id="getScheduleTimeAndTheater" parameterType = "hashMap" resultType="com.movie.vo.ScheduleVo">
+		SELECT *
+		FROM schedule
+		WHERE movie_id = #{movie_id} AND cinema_name = #{cinema_name} AND schedule_date = #{schedule_date}
+		ORDER BY schedule_time ASC
+	</select>
+	
+	<insert id="insertSchedule" parameterType = "com.movie.vo.ScheduleVo">
+		INSERT
+		INTO schedule (movie_id, theater_id, schedule_date, schedule_time, cinema_name, theater_name)
+		VALUES (#{movie_id}, #{theater_id}, #{schedule_date}, #{schedule_time}, #{cinema_name}, #{theater_name});
+	</insert>
+	
+	<delete id = "deleteSchedule" parameterType = "com.movie.vo.ScheduleVo">
+		DELETE
+		FROM schedule
+		<![CDATA[WHERE schedule_date < #{schedule_date}]]>
+	</delete>
+</mapper>
