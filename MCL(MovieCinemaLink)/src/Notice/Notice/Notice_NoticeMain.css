@@ -1,0 +1,80 @@
+/* Notice_NoticeMain.css */
+
+.Notice_NoticeMain {
+  max-width: 1000px;
+  height: auto;
+  margin: 0px auto;
+}
+
+.blind {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  margin: -1px;
+  width: 1px;
+  height: 1px;
+  background: re;
+}
+
+/* =========================== table ===========================*/
+/* table */
+.table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.board_table {
+  max-width: 1000px;
+  border-top: 1px solid #999999;
+  border-bottom: 1px solid #999999;
+}
+
+.board_table a:hover {
+  text-decoration: underline;
+}
+
+.board_table th,
+.board_table td {
+  padding: 20px;
+  text-align: center;
+}
+
+/* 제목 열 */
+/* 번호, 구분, 제목, 등록일, 조회수 */
+.board_table .th_num,
+.board_table .th_category,
+.board_table .th_title,
+.board_table .th_date,
+.board_table .th_views {
+  padding: 5px;
+}
+
+/* 번호,
+조회수 */
+.board_table .th_num,
+.board_table .th_views {
+  width: auto;
+}
+
+/* 구분,
+등록일 */
+.board_table .th_category,
+.board_table .th_date {
+  width: auto;
+}
+
+/* 관리자가 작성한 글 목록 */
+.board_table tbody td {
+  border-top: 1px solid #d9d9d9;
+  text-align: center;
+}
+/* 제목 */
+.board_table tbody .tbodyTitle {
+  width: 400px;
+  color: #000000;
+  text-align: left;
+  display: inline-block;
+  line-height: 1.4;
+  word-break: break-all;
+  vertical-align: middle;
+}
